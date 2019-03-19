@@ -1,0 +1,103 @@
+# Site settings
+title: MickaelBARON
+description: >- # this means to ignore newlines until "baseurl:"
+  Blog de Mickael BARON basé sur le style https://github.com/YoussefRaafatNasry/portfolYOU
+baseurl: ""  # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+repo: https://github.com/mickaelbaron/mickaelbaron.github.io
+repository: https://github.com/mickaelbaron/mickaelbaron.github.io
+aboutme: Je suis Mickaël BARON Ingénieur de Recherche en Informatique 💻 au <a target="_blank" href="https://twitter.com/LIAS_LAB">@LIAS_LAB</a> le jour.<br>Responsable de zones &#35;Java sur <a target="_blank" href="https://twitter.com javaDeveloppez">@javaDeveloppez</a> la nuit.<br>❤️ &#35;Java &#35;Docker &#35;VueJS &#35;GWT &#35;Eclipse &#35;Microservices and &#35;WebSemantic.
+
+# Build settings
+markdown: kramdown
+# plugins:
+# - jekyll-feed
+
+
+# Author Info
+author:
+  name     : Mickael BARON
+  image    : ./images/mbaron.jpg
+  email    : baron DOT mickael@ {{ de chez Google }}
+  github   : mickaelbaron
+  twitter  : mickaelbaron
+  linkedin : mickaelbaron
+
+
+# Collections
+collections:
+  javaee:
+    output: true
+    permalink: /javaee/:name
+  java:
+    output: true
+    permalink: /java/:name
+  soa:
+    output: true
+    permalink: /soa/:name
+  eclipse:
+    output: true
+    permalink: /eclipse/:name
+  modeling:
+    output: true
+    permalink: /modeling/:name
+  data-nosql:
+    output: true
+    permalink: /data-nosql/:name
+  divers:
+    output: true
+    permalink: /divers/:name
+
+# Default values for collections
+defaults:
+  - scope:
+      path: ""
+      type: "soa"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "javaee"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "java"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "eclipse"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "modeling"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "divers"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "data-nosql"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Posts default Permalink
+permalink: blog/:year/:month/:day/:title
+
+# Exclude from processing.
+exclude:
+- README.md
+- CONTRIBUTING.md
+- LICENSE
+- Gemfile
+- Gemfile.lock

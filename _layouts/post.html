@@ -1,0 +1,50 @@
+---
+layout: page
+---
+
+<div class="row">
+  <div class="col-md-9">
+    <h1><b>{{ page.title }}</b></h1>
+
+    <p class="article-metadata text-muted">
+      {{ page.date | date_to_long_string }} -
+      <b>
+        {% assign words = content | number_of_words %}
+        {% if words < 360 %}
+        less than 1 min read time
+        {% else %}
+        {{ words | divided_by:180 }} mins read time
+        {% endif %}
+      </b>
+
+      <br>
+
+      {% if page.tags != empty %}
+      Tags:
+      {% for tag in page.tags %}
+      <span class="badge badge-pill text-primary border border-primary">{{ tag }}</span>
+      {% endfor %}
+      {% endif %}
+
+    </p>
+
+    {{ content }}
+
+    {% if page.blogger_orig_url %}
+    <p class="article-footer-metadata text-muted">
+      Ce billet est issu de mon ancien blog, retrouver le billet initial à cette adresse : <a
+        href="{{page.blogger_orig_url}}" target="_blank">{{page.title}}</a>.
+    </p>
+    {% endif %}
+
+    <footer>
+      Ce billet est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
+      Ou quelque chose d'obscur ? Améliorer ce billet à partir du dépôt
+      <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
+    </footer>
+
+  </div>
+  <div class="col-md-3 mt-5">
+    {% include rightside.html %}
+  </div>
+</div>

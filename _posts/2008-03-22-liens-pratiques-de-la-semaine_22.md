@@ -1,0 +1,22 @@
+---
+title: Liens pratiques de la semaine 12 (mars 2008)
+tags: [Eclipse]
+blogger_orig_url: https://keulkeul.blogspot.com/2008/03/liens-pratiques-de-la-semaine_22.html
+category: technological-watch
+description: Cette semaine a été marquée par la conférence EclipseCon 2008. Outre les photos de la conférence, l'ensemble des sessions de la conférence EclipseCon 2008 sont disponibles.
+---
+
+Cette semaine a été marquée par la conférence [EclipseCon 2008](http://www.eclipsecon.org/2008/). Outre les [photos](http://www.flickr.com/photos/tags/eclipsecon2008/) de la conférence, l'ensemble des [sessions](http://www.eclipsecon.org/2008/index.php?page=sub/) de la conférence EclipseCon 2008 sont disponibles. Il s'agit d'une mine d'or dans le sens où la plupart propose les pointeurs sur les supports de présentation. À noter que les supports des [précédentes versions](http://www.eclipsecon.org/2008/index.php?page=otherconferences/) de la conférence sont également disponibles.  
+
+* Une [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=228) traitant du sujet de la conception de plug-ins basée sur l'excellent livre [Eclipse Building Commercial -Quality Plug-ins](http://www.amazon.com/gp/redirect.html%3FASIN=032142672X%26tag=ws%26lcode=xm2%26cID=2025%26ccmID=165953%26location=/o/ASIN/032142672X%253FSubscriptionId=06CJD8KHW4Y914S7TTG2).
+* Une autre [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=429) traitant du sujet de développement d'applications RCP.
+* Un ensemble de liens relatif à Eclipse RAP : [Getting started with RAP development](http://www.eclipsecon.org/2008/index.php?page=sub/&id=318), [From RCP to RCP/RAP - Conversion and Singe-Sourcing Techniques](http://www.eclipsecon.org/2008/index.php?page=sub/&id=233) et [RAP the Web](http://www.eclipsecon.org/2008/index.php?page=sub/&id=199)
+* Une [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=317) qui présente la manière de construire un product
+* L'[annonce](http://www.computerworld.com/action/article.do?command=viewArticleBasic&taxonomyName=development&articleId=9069698&taxonomyId=11&intsrc=kc_top) du rapprochement de Microsoft et de la fondation Eclipse. Deux collaborations ont été dévoilées. La première concerne un meilleur support de SWT avec Windows Vista et la seconde concerne le sous-projet [Higgins](http://www.eclipse.org/higgins/) (gestion d'identité numérique). Personnellement j'espère de cette collaboration que la partie OLE de SWT soit étoffée et pourquoi pas un véritable GUI Builder dans l'IDE d'Eclipse ;-)
+* Une [session](http://www.eclipsecon.org/2008/?page=sub/&id=423) qui présente comment utiliser la plateforme OSGi pour développer une application Web. Il n'y a pas de supports de présentation, toutefois vous pourrez trouver des informations [ici](http://www.eclipse.org/equinox-portal/tutorials/server-side/) et [là](http://dev.eclipse.org/blogs/wayne/2008/03/18/server-side-eclipse-the-dynamic-server-platform-based-on-osgi/)
+* Une [session](http://www.eclipsecon.org/2008/?page=sub/&id=426) sur l'utilisation de l'API [JFace DataBinding](http://wiki.eclipse.org/index.php/JFace_Data_Binding) qui comme son nom l'indique permet de faire du DataBinding avec Eclipse. A noter que je prépare un tutoriel sur le sujet.
+* Une [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=398) qui montre comment restructurer une application Swing en Eclipse RCP
+* Une [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=194) qui présente la manière de gérer le profil utilisateur (notion d'Activities). En cherchant directement sur le [site](http://www.bredex.de/en/rcp-auth/paper.html) de la société de l'orateur, des informations assez intéressantes peuvent être trouvées.
+* Le projet [Babel](http://www.eclipse.org/proposals/babel/) a droit a ses sessions : [session 1](http://www.eclipsecon.org/2008/index.php?page=sub/&id=269) et [session 2](http://www.eclipsecon.org/2008/index.php?page=sub/&id=502)
+* Une [session](http://www.eclipsecon.org/2008/index.php?page=sub/&id=388) qui concerne les points d'extension
+* Pour finir, des annonces concernant Eclipse 4 (E4) : [ici](http://www.eclipsecon.org/2008/index.php?page=sub/&id=223) et [là](http://www.infoq.com/news/2008/03/e4;jsessionid=1BB8A0A54300E9AA1DD848BB9DE118FC)

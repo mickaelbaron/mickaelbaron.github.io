@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<div class="col-lg-12 mx-auto mt-5 article">
+  {{ content }}
+
+  {% if page.twitter %}
+    {% include twitter-box.html %}  
+  {% endif %}
+</div>

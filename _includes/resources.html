@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="card-columns mt-2 mt-5">
+
+      {% assign pages = include.id | sort: 'weight' %}
+
+      {% for project in pages %}
+      {% comment %} Determine project link {% endcomment %}
+      {% if project.direct_link %}
+      {% assign project_link = project.direct_link %}
+      {% else %}
+      {% assign project_link = project.url | relative_url %}
+      {% endif %}
+
+      <div class="wow animated fadeIn" data-wow-delay=".15s">
+        <a href="{{ project_link }}" class="project card text-dark">
+          {% if project.image %}
+          <img class="card-img-top" src="{{ project.image }}" alt="Card image cap">
+          {% endif %}
+          <div class="card-body">
+            {% if project.deprecated == true %}
+            <div class="ribbon blue"><span>Deprecated</span></div>
+            {% endif %}
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <p class="card-text">
+              {% for tag in project.tags %}
+              <span class="badge badge-pill text-primary border border-primary">{{tag}}</span>
+              {% endfor %}
+            </p>
+          </div>
+          <div class="card-footer {{ text_style }}">
+            <div class="row">
+              <div class="col-sm">{{ project.date | date_to_long_string }}</div>
+              <div class="col-sm card-footer-category">{{ project.category }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+  <div class="col-md-3 mt-5">
+    {% include rightside.html %}
+  </div>
+</div>

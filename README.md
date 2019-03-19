@@ -1,0 +1,1 @@
+docker run --rm --volume="$PWD/mickaelbaron.github.io:/srv/jekyll" --volume="$PWD/bundles:/usr/local/bundle" -p 4000:4000 -it jekyll/jekyll:latest jekyll serve
