@@ -14,7 +14,7 @@ Diplômé d'un doctorat en informatique de l'[Université de Poitiers] en 2003, 
 Mes activités au sein du [LIAS] [ISAE-ENSMA] sont triples :
 
 * activité de valorisation des résultats de recherche du [LIAS] ;
-* activité de recherche au sein de l'équipe de recherce Ingénieri des Données et des Modèles ;
+* activité de recherche au sein de l'équipe de recherce Ingénierie des Données et des Modèles ;
 * activité de contribution aux charges collectives du laboratoire et de l'établissement [ISAE-ENSMA].
 
 En parallèle à mes activités professionnelles, je suis également responsable sur [Developpez.com] de la rubrique Java (Java, Java Web, Eclipse, Netbeans, Spring et Android), l'une des plus importantes. [Developpez.com] c'est plus de 220 000 visites par jour, 2,5 millions de lecteurs distincts fréquentent au moins une fois par mois www.developpez.com, le forum d'entraide des professionnels de l'informatique est le plus actif dans son domaine avec plus de 5000 messages par jour et la plus grande équipe de rédaction IT Pro : plus de 1000 auteurs.
