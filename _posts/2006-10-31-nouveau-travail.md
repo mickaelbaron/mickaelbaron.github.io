@@ -1,6 +1,6 @@
 ---
 title: Nouveau travail
-tags: [Divers]
+tags: [Job]
 blogger_orig_url: https://keulkeul.blogspot.com/2006/10/nouveau-travail.html
 category: announcement
 description: Un billet pour vous annoncer que je vais changer de travail.
