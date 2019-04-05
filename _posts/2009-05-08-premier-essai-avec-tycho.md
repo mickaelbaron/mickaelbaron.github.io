@@ -53,4 +53,4 @@ Toutefois, j'ai de nombreuses interrogations.
 * Tycho par rapport à Maven 2 ? Tycho est-il le futur Maven 3 ? Les plugins Tycho suivent quel modèle ?
 * Qu'en pense la fondation Eclipse ? A part sur les groupes de discutions de la fondation qui en parle, il n'y a pas à mon avis de volonté d'intégrer un outil de Build type Maven pour la conception de plugins.
 
-En tout cas, je vais suivre ce projet avec attention ...
+En tout cas, je vais suivre ce projet avec attention.
