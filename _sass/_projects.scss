@@ -19,7 +19,12 @@
     margin: 10px auto;
 
     .card-img-top {
-        border-radius: $rounded-borders $rounded-borders 0 0;
+        border-radius: 0 0 0 0;
+    }
+
+    .card-title {
+        font-size: 17px;
+        font-weight: bold;
     }
 
     &:hover:not(.article) {

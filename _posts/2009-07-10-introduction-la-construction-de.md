@@ -5,7 +5,7 @@ blogger_orig_url: https://keulkeul.blogspot.com/2009/07/introduction-la-construc
 category: lectures
 ---
 
-Un support de cours concernant la construction de perspectives avec la plateforme Eclipse est disponible. 
+Un support de cours concernant la construction de perspectives avec la plateforme Eclipse est disponible.
 
 Il fait partie de la série des supports de cours liée au *Workbench*. D'autres supports de cours devraient arriver prochainement.
 

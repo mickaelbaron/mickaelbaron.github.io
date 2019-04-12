@@ -18,10 +18,10 @@
           <img class="card-img-top" src="{{ project.image }}" alt="Card image cap">
           {% endif %}
           <div class="card-body">
+            <div class="card-title">{{ project.title }}</div>
             {% if project.deprecated == true %}
             <div class="ribbon blue"><span>Deprecated</span></div>
             {% endif %}
-            <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">{{ project.description }}</p>
             <p class="card-text">
               {% for tag in project.tags %}
@@ -31,7 +31,7 @@
           </div>
           <div class="card-footer {{ text_style }}">
             <div class="row">
-              <div class="col-sm">{{ project.date | date_to_long_string }}</div>
+              <div class="col-sm-8">{{ project.date | date_to_long_string }}</div>
               <div class="col-sm card-footer-category">{{ project.category }}</div>
             </div>
           </div>

@@ -65,6 +65,26 @@ h3 {
 
 @media (min-width: 1200px) {
     .container{
-        max-width: 1200px;
+        max-width: 1400px;
     }
 }
+
+@media (min-width: 576px) { 
+    .container{
+        max-width: 776px;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .container{
+        max-width: 968px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .container{
+        max-width: 1192px;
+    }
+ }
