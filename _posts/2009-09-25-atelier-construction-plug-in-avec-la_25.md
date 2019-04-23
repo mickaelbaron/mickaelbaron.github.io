@@ -2,10 +2,10 @@
 title: Ressources pour l'atelier Construction Plug-in avec la plateforme Eclipse
 tags: [Eclipse]
 blogger_orig_url: https://keulkeul.blogspot.com/2009/09/atelier-construction-plug-in-avec-la_25.html
-category: announcement
+category: technical
 ---
 
-L'atelier Construction Plug-in avec la plateforme Eclipse s'est correctement déroulé lors de la session atelier organisée par le JUG Poitou-Charentes. 
+L'atelier Construction Plug-in avec la plateforme Eclipse s'est correctement déroulé lors de la session atelier organisée par le JUG Poitou-Charentes.
 
 Toutes les leçons que j'avais prévu n'ont pas pu être réalisées par manque de temps. Je mets à disposition les documents utilisés pendant cet événement pour les personnes qui n'ont pu assister à l'atelier.
 

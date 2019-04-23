@@ -2,7 +2,7 @@
 title: J'ai besoin ... de connaître les différences entre une vue et un éditeur d'une application Eclipse
 tags: [Eclipse]
 blogger_orig_url: https://keulkeul.blogspot.com/2010/02/jai-besoin-de-connaitre-les-differences.html
-description: Je profite de ma série des J'ai besoin ... pour m'intéresser à lister les différences entre une vue et un éditeur tous deux utilisés dans la plateforme Eclipse.  
+description: Je profite de ma série des J'ai besoin ... pour m'intéresser à lister les différences entre une vue et un éditeur tous deux utilisés dans la plateforme Eclipse.
 category: technical
 ---
 

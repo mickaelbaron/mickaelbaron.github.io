@@ -52,6 +52,9 @@ layout: page
       <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
     </footer>
 
+    {% if page.twitter %}
+      {% include twitter-box.html %}
+    {% endif %}
   </div>
   <div class="col-md-3 mt-5">
     {% include rightside.html %}
