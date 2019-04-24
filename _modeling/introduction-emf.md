@@ -12,4 +12,6 @@ weight: 1
 
 Ce support de cours s'intéresse à la modélisation via l'API Eclipse EMF (Eclipse Modeling Framework). Une première partie présente la construction d'un modèle EMF, une deuxième partie montre comment manipuler le méta-modèle Ecore puis dans une dernière partie nous présentons les transactions.
 
+Codes sources des exemples : [introemf_examples.zip](/files/introemf_examples.zip).
+
 {% include slides.html type="slideshare" id="4hOSJn7bLD6Ops" %}
