@@ -14,16 +14,14 @@ Ce premier article introductif s'intéresse à présenter le système de fichier
 
 Mes articles consacrés à Hadoop sont décrits ci-dessous :
 
-* [Généralités sur HDFS et MapReduce](http://mbaron.developpez.com/tutoriels/bigdata/hadoop/introduction-hdfs-map-reduce)
-* [Installation et configuration d'un cluster simple nœud avec Cloudera CDH 5](http://mbaron.developpez.com/tutoriels/bigdata/hadoop/installation-configuration-cluster-singlenode-avec-cloudera-cdh5/)
-* [Installation, supervision et performance d'un cluster multi-nœud avec Cloudera CDH 5](http://mbaron.developpez.com/tutoriels/bigdata/hadoop/installation-monitoring-performance-multinoeud-avec-cloudera-cdh5)
-* Développement, test et débogage de programmes MapReduce avec Cloudera CDH 5
+* [Généralités sur HDFS et MapReduce](/data-nosql/introduction-hdfs-map-reduce-hadoop) ;
+* [Installation et configuration d'un cluster simple nœud avec Cloudera CDH 5](/data-nosql/installation-hadoop-cloudera-single-node) ;
+* [Installation, supervision et performance d'un cluster multi-nœud avec Cloudera CDH 5](/data-nosql/installation-hadoop-cloudera-cluster) ;
+* Développement, test et débogage de programmes MapReduce avec Cloudera CDH 5.
 
 Je tiens à préciser que je ne suis pas un spécialiste d'Hadoop. Ces articles sont le résultat d'une veille technologique. Ils seront sûrement améliorés au fur et à mesure de mes différentes découvertes et de l'exploitation d'Hadoop lors de cas réels.
 
-L'objectif visé par ces articles est de démystifier Apache Hadoop et de tenter de rendre sa compréhension aussi facile qu'un jeu d'enfant (voir illustration générale).
-
-Pour réagir au contenu de cet article, un espace de dialogue vous est proposé sur le forum [forumdvp][1430421].
+L'objectif visé par ces articles est de démystifier Apache Hadoop et de tenter de rendre sa compréhension aussi facile qu'un jeu d'enfant.
 
 ## Généralités
 

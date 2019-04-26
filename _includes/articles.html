@@ -33,6 +33,9 @@
         <a href="{{ article_url }}" class="article card {{ card_style }}">
           <div class="card-body {{ text_style }}">
             <div class="card-title">{{ post.title }}</div>
+            {% if post.blogger_orig_url %}
+            <div class="ribbon orange"><span>Ancien Blog</span></div>
+            {% endif %}
             <p class="card-text">
               {% for tag in post.tags %}
               <span class="badge {{ badge_style }}">{{ tag }}</span>

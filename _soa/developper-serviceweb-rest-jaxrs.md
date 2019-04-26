@@ -6,7 +6,7 @@ description: Introduction au développement de services web REST avec le langage
 category: Cours
 date: 2011-03-22
 update: 2019-01-02
-weight: 7
+weight: 8
 twitter: 51729499208945664
 ---
 

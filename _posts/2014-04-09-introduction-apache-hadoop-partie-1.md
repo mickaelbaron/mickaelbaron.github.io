@@ -3,7 +3,7 @@ title: 'Introduction à Apache Hadoop. Partie 1 : Généralités sur HDFS et Map
 tags: [Hadoop]
 blogger_orig_url: https://keulkeul.blogspot.com/2014/04/introduction-apache-hadoop-partie-1.html
 category: technical
-description: Ce premier tutoriel introductif s'intéresse à présenter le système de fichiers HDFS et le modèle de programmation MapReduce.
+description: Un premier tutoriel introductif qui s'intéresse à présenter le système de fichiers HDFS et le modèle de programmation MapReduce.
 ---
 
 ![/images/hadoopjeuenfant.jpg](/images/hadoopjeuenfant.jpg)

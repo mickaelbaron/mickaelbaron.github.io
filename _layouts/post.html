@@ -31,10 +31,10 @@ layout: page
     {{ content }}
 
     {% if page.blogger_orig_url %}
-    <p class="article-footer-metadata text-muted">
+    <div class="alert alert-warning" role="alert">
       Ce billet est issu de mon ancien blog, retrouver le billet initial à cette adresse : <a
         href="{{page.blogger_orig_url}}" target="_blank">{{page.title}}</a>.
-    </p>
+    </div>
     {% endif %}
 
     <footer>

@@ -1,0 +1,42 @@
+@media (min-width: 544px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+.resource.card {
+    text-decoration: none!important;
+    margin: 10px auto;
+
+    .card-img-top {
+        border-radius: 0 0 0 0;
+    }
+
+    .card-title {
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    &:hover:not(.article) {
+        box-shadow: -2px 8px 40px -12px rgb(0, 0, 0);
+    }
+
+    .card-footer {
+        font-size: 14px;
+    }
+
+    .card-footer-category {
+        text-align: right;
+        color:red;
+    } 
+}

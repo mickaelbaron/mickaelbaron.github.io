@@ -1,5 +1,5 @@
 ---
-title: Introduction à Java EE...
+title: Introduction à Java EE...
 tags: [Java EE]
 blogger_orig_url: https://keulkeul.blogspot.com/2006/09/introduction-j2ee.html
 category: lectures

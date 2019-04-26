@@ -4,35 +4,35 @@
 
       {% assign pages = include.id | sort: 'weight' %}
 
-      {% for project in pages %}
-      {% comment %} Determine project link {% endcomment %}
-      {% if project.direct_link %}
-      {% assign project_link = project.direct_link %}
+      {% for resource in pages %}
+      {% comment %} Determine resource link {% endcomment %}
+      {% if resource.direct_link %}
+      {% assign resource_link = resource.direct_link %}
       {% else %}
-      {% assign project_link = project.url | relative_url %}
+      {% assign resource_link = resource.url | relative_url %}
       {% endif %}
 
       <div class="wow animated fadeIn" data-wow-delay=".15s">
-        <a href="{{ project_link }}" class="project card text-dark">
-          {% if project.image %}
-          <img class="card-img-top" src="{{ project.image }}" alt="Card image cap">
+        <a href="{{ resource_link }}" class="resource card text-dark">
+          {% if resource.image %}
+          <img class="card-img-top" src="{{ resource.image }}" alt="Card image cap">
           {% endif %}
           <div class="card-body">
-            <div class="card-title">{{ project.title }}</div>
-            {% if project.deprecated == true %}
+            <div class="card-title">{{ resource.title }}</div>
+            {% if resource.deprecated == true %}
             <div class="ribbon blue"><span>Deprecated</span></div>
             {% endif %}
-            <p class="card-text">{{ project.description }}</p>
+            <p class="card-text">{{ resource.description }}</p>
             <p class="card-text">
-              {% for tag in project.tags %}
+              {% for tag in resource.tags %}
               <span class="badge badge-pill text-primary border border-primary">{{tag}}</span>
               {% endfor %}
             </p>
           </div>
           <div class="card-footer {{ text_style }}">
             <div class="row">
-              <div class="col-sm-8">{{ project.date | date_to_long_string }}</div>
-              <div class="col-sm card-footer-category">{{ project.category }}</div>
+              <div class="col-sm-8">{{ resource.date | date_to_long_string }}</div>
+              <div class="col-sm card-footer-category">{{ resource.category }}</div>
             </div>
           </div>
         </a>
