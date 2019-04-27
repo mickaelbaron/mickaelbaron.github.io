@@ -5,7 +5,7 @@ blogger_orig_url: https://keulkeul.blogspot.com/2013/01/introduction-au-nosql-ap
 category: technical
 ---
 
-Je viens de rédiger un premier article sur le NoSQL Cassandra. Cet article présente brièvement les fonctionnalités, l'installation, une première prise en main et quelques outils d'administration.
+Je viens de rédiger un premier article sur le NoSQL Cassandra qui présente ses fonctionnalités, son installation, une première prise en main et quelques outils d'administration.
 
 Le lien est le suivant : [Introduction au NoSQL Apache Cassandra](/data-nosql/installation-outils-administration-cassandra)
 
