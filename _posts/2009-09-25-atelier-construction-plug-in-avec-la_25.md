@@ -12,7 +12,7 @@ Toutes les leçons que j'avais prévu n'ont pas pu être réalisées par manque 
 Vous trouverez dans ce billet, la présentation utilisée pour l'introduction à l'atelier et la première leçon.
 
 * Introduction de l'atelier Construction Plug-in avec la plateforme Eclipse : [jugintroeclipselabs.pdf](/files/jugintroeclipselabs.pdf).
-* Sujet de la leçon 1 : [Construction d'un plug-in avec la plateforme Eclipse](http://mbaron.developpez.com/tutoriels/eclipse/construire-et-executer-plug-in-part1/).
+* Sujet de la leçon 1 : [Construction d'un plug-in avec la plateforme Eclipse](/eclipse/handsonlab-intropluginlesson1).
 * Ressources et correction de la première leçon : [lesson1-ressources.zip](/files/lesson1-ressources.zip).
 
 Les autres leçons devraient être disponibles très prochainement.

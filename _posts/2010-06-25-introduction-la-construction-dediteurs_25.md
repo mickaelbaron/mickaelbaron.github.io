@@ -14,7 +14,7 @@ Le plan est le suivant :
 * registre des éditeurs ;
 * cycle de vie des éditeurs ;
 * `MultiPageEditorPart` ;
-* écouteurs ;`
+* écouteurs ;
 * éditeur et les commandes ;
 * workspace et les ressources ;
 * éditeur et le texte via `TextEditor` (Coloration syntaxique, assistant de contenu...).
@@ -23,4 +23,4 @@ Le plan est le suivant :
 
 Vous trouverez sur ce [lien](/eclipse/editors) un contenu détaillé de ce support de cours et sur ce [lien](/files/editors_examples.zip) le code source des exemples.
 
-{% include slides.html type="speakerdeck" id="b74be305523f49ea86d3e3956815b8f0" %}
+{% include slides.html type="speakerdeck" id="a357a390427a45f7b607f44c606ddefe" %}

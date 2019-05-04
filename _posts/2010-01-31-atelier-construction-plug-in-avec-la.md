@@ -10,7 +10,7 @@ Je continue, avec un peu de retard, la diffusion des supports concernant l'ateli
   
 Vous trouverez donc dans ce billet, les supports de la leçon 3.  
 
-*   Sujet de la leçon 3 : [Interaction entre plug-ins / vues avec la plateforme Eclipse](http://mbaron.developpez.com/tutoriels/eclipse/interaction-plug-ins-vues-part3/)
-*   Ressources et correction de la première leçon : [lesson3-ressources.zip](http://mbaron.developpez.com/tutoriels/eclipse/interaction-plug-ins-vues-part3/fichiers/lesson3-ressources.zip)
+* Sujet de la leçon 3 : [Interaction entre plug-ins / vues avec la plateforme Eclipse](/eclipse/handsonlab-interactionviewlesson3/)
+* Ressources et correction de la première leçon : [lesson3-ressources.zip](/files/lesson3-ressources.zip)
 
 La dernière leçon devrait être disponible prochainement.

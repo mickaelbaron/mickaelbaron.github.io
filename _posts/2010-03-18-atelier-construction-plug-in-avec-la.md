@@ -10,7 +10,7 @@ Je continue la diffusion des supports concernant l'atelier Construction Plug-in 
   
 Vous trouverez donc dans ce billet, les supports de la leçon 4.
 
-* Sujet de la leçon 4 : [Commandes](http://mbaron.developpez.com/tutoriels/eclipse/utilisation-commandes-part4)[](ftp://ftp-developpez.com/mbaron/eclipse/lesson4-commands.pdf).
-* Ressources et correction de la première leçon : [lesson4-ressources.zip](http://mbaron.developpez.com/tutoriels/eclipse/utilisation-commandes-part4/fichiers/lesson4-ressources.zip).
+* Sujet de la leçon 4 : [Commandes](/eclipse/handsonlab-perspectiveslesson2).
+* Ressources et correction de la première leçon : [lesson4-ressources.zip](/files/lesson4-ressources.zip).
 
 Je vais mettre en pause cette série, le temps de finaliser certains supports de cours qui ont pris un peu de retard.

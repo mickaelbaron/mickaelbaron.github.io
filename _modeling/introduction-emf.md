@@ -14,4 +14,4 @@ Ce support de cours s'intéresse à la modélisation via l'API Eclipse EMF (Ecli
 
 Codes sources des exemples : [introemf_examples.zip](/files/introemf_examples.zip).
 
-{% include slides.html type="slideshare" id="4hOSJn7bLD6Ops" %}
+{% include slides.html type="speakerdeck" id="49e65ec627f44d99816c67d4194b9e3b" %}

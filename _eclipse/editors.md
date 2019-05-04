@@ -14,4 +14,4 @@ Ce support de cours s'intéresse à détailler la construction d'éditeurs avec 
 
 Codes sources des exemples : [editors_examples.zip](/files/editors_examples.zip).
 
-{% include slides.html type="speakerdeck" id="b74be305523f49ea86d3e3956815b8f0" %}
+{% include slides.html type="speakerdeck" id="a357a390427a45f7b607f44c606ddefe" %}

@@ -31,4 +31,4 @@ Le premier support de cours consacré à la modélisation est désormais disponi
 
 Vous trouverez sur ce [lien](/modeling/introduction-emf) un contenu détaillé de ce support de cours et sur ce [lien](/files/introemf_examples.zip) le code source des exemples.
 
-{% include slides.html type="slideshare" id="4hOSJn7bLD6Ops" %}
+{% include slides.html type="speakerdeck" id="49e65ec627f44d99816c67d4194b9e3b" %}

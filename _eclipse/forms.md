@@ -16,4 +16,4 @@ Les aspects suivants sont étudiés : `FormToolkit`, `Form` et `ScrolledForm`, A
 
 Codes sources des exemples : [forms_examples.zip](/files/forms_examples.zip).
 
-{% include slides.html type="speakerdeck" id="b74be305523f49ea86d3e3956815b8f0" %}
+{% include slides.html type="speakerdeck" id="c67cd038765845a69dae7d3ecf43e8a0" %}

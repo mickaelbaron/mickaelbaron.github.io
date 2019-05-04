@@ -10,7 +10,7 @@ Je continue la diffusion des supports concernant l'atelier Construction Plug-in 
 
 Vous trouverez donc dans ce billet, les supports de la leçon 2.
 
-* Sujet de la leçon 2 : [Construction de perspectives avec la plateforme Eclipse](http://mbaron.developpez.com/tutoriels/eclipse/construire-perspectives-part2/).
+* Sujet de la leçon 2 : [Construction de perspectives avec la plateforme Eclipse](/eclipse/handsonlab-perspectiveslesson2/).
 * Ressources et correction de la première leçon : [lesson2-ressources.zip](/files/lesson2-ressources.zip).
 
 Les autres leçons devraient être disponibles très prochainement.
