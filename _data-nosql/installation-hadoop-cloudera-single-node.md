@@ -8,6 +8,7 @@ category: Article
 date: 2014-06-10
 weight: 5
 deprecated: true
+toc: true
 ---
 
 Ce deuxième article s'intéresse à l'installation et la configuration d'un cluster Hadoop simple nœud en utilisant la distribution CDH 5 fournie par Cloudera. Nous décrirons comment réaliser une telle installation dans un système virtualisé Linux. Bien entendu, Hadoop n'a d'intérêt que s'il est utilisé dans un cluster composé de plusieurs machines. En effet, utiliser Hadoop dans un environnement simple nœud, comme nous allons le faire, n'a de sens que pour tester la configuration de l'installation ou fournir un environnement de développement MapReduce.
@@ -909,7 +910,7 @@ Enfin, la capture d'écran qui suit montre la liste des jobs en cours d'exécuti
 
 ![](/images/installation-hadoop-cloudera-simple-node/hue-jobbrowser.png)
 
-## Conclusion, à suivre dans le prochain article
+## Conclusion et perspectives
 
 Dans cet article nous nous sommes intéressés à présenter les généralités d'Hadoop (HDFS et MapReduce) et à fournir une installation Hadoop de type simple nœud. Nous tenons à rappeler que l'objectif d'un cluster simple nœud a pour vocation d'être pédagogique (comprendre les fichiers de configuration, les outils de base…) et de disposer d'un environnement de développement pour tester ses développements de jobs MapReduce.
 

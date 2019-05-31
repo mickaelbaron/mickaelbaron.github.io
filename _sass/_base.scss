@@ -83,17 +83,18 @@ h3 {
     .container{
         max-width: 1192px;
     }
- }
+}
 
- .ribbon {
+.ribbon {
     position: absolute;
     right: -5px; top: -5px;
     z-index: 1;
     overflow: hidden;
     width: 100px; height: 100px; 
     text-align: right;
- }
- .ribbon span {
+}
+
+.ribbon span {
     font-size: 10px;
     color: #fff; 
     text-transform: uppercase; 
@@ -106,8 +107,9 @@ h3 {
     box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
     position: absolute;
     top: 23px; right: -23px;
- }
- .ribbon span::before {
+}
+
+.ribbon span::before {
     content: '';
     position: absolute; 
     left: 0px; top: 100%;
@@ -116,8 +118,8 @@ h3 {
     border-right: 3px solid transparent;
     border-bottom: 3px solid transparent;
     border-top: 3px solid #79A70A;
- }
- .ribbon span::after {
+}
+.ribbon span::after {
     content: '';
     position: absolute; 
     right: 0%; top: 100%;
@@ -126,10 +128,11 @@ h3 {
     border-left: 3px solid transparent;
     border-bottom: 3px solid transparent;
     border-top: 3px solid #79A70A;
- }
- .blue span {background: linear-gradient(#2989d8 0%, #1e5799 100%);}
- .blue span::before {border-left-color: #1e5799; border-top-color: #1e5799;}
- .blue span::after {border-right-color: #1e5799; border-top-color: #1e5799;}
- .orange span {background: linear-gradient(#ff8832 0%, #ff8832 100%);}
- .orange span::before {border-left-color: #ff8832; border-top-color: #ff8832;}
- .orange span::after {border-right-color: #ff8832; border-top-color: #ff8832;}
+}
+
+.blue span {background: linear-gradient(#2989d8 0%, #1e5799 100%);}
+.blue span::before {border-left-color: #1e5799; border-top-color: #1e5799;}
+.blue span::after {border-right-color: #1e5799; border-top-color: #1e5799;}
+.orange span {background: linear-gradient(#ff8832 0%, #ff8832 100%);}
+.orange span::before {border-left-color: #ff8832; border-top-color: #ff8832;}
+.orange span::after {border-right-color: #ff8832; border-top-color: #ff8832;}

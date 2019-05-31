@@ -7,6 +7,7 @@ category: Article
 weight: 13
 date: 2009-10-12
 update: 2013-05-27
+toc: true
 ---
 
 Le but de cette deuxième leçon est d'apprendre à construire des perspectives.
@@ -43,18 +44,18 @@ Au niveau du champ classe qui décrit de manière programmatique la perspective 
 Dans le corps de la méthode *createInitialLayout(IPageLayout layout)* de la classe *JUGAttendeesPerspectiveFactory* saisissez le code présent ci-dessous.
 
 ```java
-	public void createInitialLayout(IPageLayout layout) {
-		layout.setEditorAreaVisible(false);
-		String editorArea = layout.getEditorArea();
+    public void createInitialLayout(IPageLayout layout) {
+        layout.setEditorAreaVisible(false);
+        String editorArea = layout.getEditorArea();
 
-		layout.addView("eclipse.labs.jugercp.attendees.attendeeid",
-				IPageLayout.LEFT, 0.5f, editorArea);
-		layout.addView("eclipse.labs.jugercp.attendees.listattendeesid",
-				IPageLayout.BOTTOM, 0.5f, editorArea);
-		layout.addView("org.eclipse.ui.views.PropertySheet",
-				IPageLayout.BOTTOM, 0.5f,
-				"eclipse.labs.jugercp.attendees.attendeeid");
-	}
+        layout.addView("eclipse.labs.jugercp.attendees.attendeeid",
+                IPageLayout.LEFT, 0.5f, editorArea);
+        layout.addView("eclipse.labs.jugercp.attendees.listattendeesid",
+                IPageLayout.BOTTOM, 0.5f, editorArea);
+        layout.addView("org.eclipse.ui.views.PropertySheet",
+                IPageLayout.BOTTOM, 0.5f,
+                "eclipse.labs.jugercp.attendees.attendeeid");
+    }
 ```
 
 Dans le code qui a été copié, seules deux vues sont intégrées dans la perspective **JUGParticipants**. Il vous reste à intégrer la vue **Properties** définie par la plateforme Eclipse. Pour récupérer l'identifiant de cette vue, une solution consiste à utiliser l'outil Plug-in Spy permettant d'introspecter le contenu d'une application Eclipse en cours d'exécution. Cet outil est installé par défaut dans l'environnement de développement. A partir de l'environnement de développement Eclipse, ouvrez la vue **Properties**. Puis effectuez le raccourci clavier suivant **ALT + SHIFT + F1**. Notez l'identifiant de cette vue.

@@ -7,6 +7,7 @@ description: Ce tutoriel s'intéresse à présenter ROS (Robot Operating System)
 category: Article
 date: 2018-05-28
 weight: 13
+toc: true
 ---
 
 Ce tutoriel s'intéresse à présenter ROS (*Robot Operating System)* et à décrire comment proposer à un développeur un environnement de développement prêt à l'emploi quel que soit le système d'exploitation utilisé pour le développement et pour le déploiement. Notre proposition s'appuiera sur l'utilisation exclusive des outils **Docker** pour créer des conteneurs basés sur des images **Docker** ROS.
@@ -155,7 +156,7 @@ Dans un premier temps, l'image **Docker** *ros:kinetic* va être téléchargée 
 
 * Assurons-nous que les images **Docker** correspondant à ROS soient présentes sur le système. Depuis le terminal, saisir la commande suivante :
 
-```bash
+```console
 $ docker images
 
 REPOSITORY                                TAG                 IMAGE ID            CREATED             SIZE
@@ -165,7 +166,7 @@ ros                                       kinetic             4b2e99aadf55      
 
 Nous constatons que les deux images sont présentes. La nôtre intitulée *ros:mykinetic* et celle que nous avons téléchargée *ros:kinetic*. Vous remarquerez que la taille des images est identique (1.18GB). Comme notre image **Docker** repose sur *ros:kinetic*, elle dispose de la même taille modulo les modifications mineures apportées dans le fichier *ros_entrypoint.sh*.
 
-## Créer des conteneurs basés sur une image Docker ROS : exemple Publieur/Consommateur
+## Créer des conteneurs : exemple Publieur/Consommateur
 
 Désormais, notre image **Docker** ROS est créée. Nous allons pouvoir l'utiliser afin de mener un développement et une exécution sans installer ROS nativement sur notre système. Nous allons nous appuyer sur l'exemple Publieur/Consommateur pour illustrer l'utilisation de notre image **Docker** ROS.
 
@@ -177,15 +178,15 @@ Nous allons donc commencer par créer un workspace pour contenir notre projet.
 
 * Ouvrir un terminal, se placer dans un répertoire de travail par exemple *ros* (pas forcément le même que pour la construction de l'image **Docker**) et exécuter la commande suivante pour créer le squelette du répertoire workspace :
 
-```bash
-$ mkdir -p workspace/src
+```console
+mkdir -p workspace/src
 ```
 
 Nous allons ensuite créer un package qui portera le nom de l'exemple de la documentation officielle. La création de package avec ROS se fait à partir de l'outil **catkin_create_pkg**. Pour créer un package *beginner_tutorials* quand ROS est installé nativement sur votre système, vous auriez fait comme cela : `$ catkin_create_pkg beginner_tutorials std_msgs rospy`. Désormais, nous allons invoquer la même commande en utilisant notre image **Docker** ROS.
 
 * Depuis le même terminal, saisir la ligne de commande suivante :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -v $(pwd)/workspace:/root/workspace -w /root/workspace/src ros:mykinetic catkin_create_pkg beginner_tutorials std_msgs rospy
 ... Sera détaillé par la suite
 ```
@@ -196,7 +197,7 @@ Dans la suite de nos expérimentations, un patron de commande identique à celui
 
 Avant de continuer, examinons le résultat de l'exécution de la commande précédente :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -v $(pwd)/workspace:/root/workspace -w /root/workspace/src ros:mykinetic catkin_create_pkg beginner_tutorials std_msgs rospy
 Base path: /root/workspace
 Source space: /root/workspace/src
@@ -266,7 +267,7 @@ De la ligne 1 à 57, il s'agit de l'affichage du retour pour la construction du 
 
 Observons les répertoires et fichiers depuis le répertoire *workspace/*.
 
-```bash
+```console
 workspace/
   build/
   devel/
@@ -316,8 +317,8 @@ Une API Python appelée `rospy` est importée (ligne 3). Elle fournit des foncti
 * Créer un fichier *workspace/src/beginner_tutorials/talker.py* et placer le contenu ci-dessus.
 * Rendre le fichier *workspace/src/beginner_tutorials/talker.py* exécutable :
 
-```bash
-$ chmod +x workspace/src/beginner_tutorials/talker.py
+```console
+chmod +x workspace/src/beginner_tutorials/talker.py
 ```
 
 Le code Python du consommateur est donné ci-dessous (fichier *listener.py*) :
@@ -329,7 +330,7 @@ from std_msgs.msg import String
 
 def callback(data):
     rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
-    
+
 def listener():
 
     # In ROS, nodes are uniquely named. If two nodes with the same
@@ -353,8 +354,8 @@ La même API Python est importée (ligne 2). Tout comme le code correspondant au
 * Créer un fichier *workspace/src/beginner_tutorials/listener.py* et placer le contenu ci-dessus.
 * Rendre le fichier *workspace/src/beginner_tutorials/listener.py* exécutable :
 
-```bash
-$ chmod +x workspace/src/beginner_tutorials/talker.py
+```console
+chmod +x workspace/src/beginner_tutorials/talker.py
 ```
 
 ### Compilation du package de l'exemple Publieur/Consommateur
@@ -363,7 +364,7 @@ La compilation sous ROS consiste à construire un package (générer des fichier
 
 * Depuis le même terminal (en vous assurant que vous être placé à la racine contenant le répertoire *workspace*), exécuter la commande suivante qui va appeler l'outil **catkin_make** :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -v $(pwd)/workspace:/root/workspace -w /root/workspace ros:mykinetic catkin_make
 /opt/ros/kinetic/setup.bash
 Base path: /root/workspace
@@ -412,14 +413,14 @@ Les trois nœuds seront créés via des conteneurs **Docker** toujours basés su
 
 * Depuis un terminal, exécuter la ligne de commande ci-dessous :
 
-```bash
+```console
 $ docker network create ros
 9602c12e629a33ef27859fdaa13d0f9b4fa55ed8fc0eba30e7119837b8c129cb
 ```
 
 * S'assurer que le réseau a correctement été créé en exécutant la commande suivante :
 
-```bash
+```console
 $ docker network ls
 9e9c7638aaa2        bridge              bridge              local
 4523411e4251        host                host                local
@@ -431,7 +432,7 @@ Pour l'exécution de notre programme ROS, nous allons avoir besoin de trois term
 
 * Depuis un premier terminal, exécuter la commande suivante qui va démarrer le nœud *Master* à partir de l'outil **roscore** :
 
-```bash
+```console
 $ docker run --rm -it --net ros --name roscore ros:kinetic roscore
 
 /opt/ros/kinetic/setup.bash
@@ -466,7 +467,7 @@ La commande **Docker** invoquée est sensiblement identique aux précédentes. N
 
 * Depuis un deuxième terminal, exécuter la commande suivante qui va créer le conteneur correspondant au nœud *Publieur* (le conteneur sera nommé *talker*) à partir de l'outil **rosrun** :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace --net ros --name talker -e ROS_MASTER_URI=http://roscore:11311 -v $(pwd)/workspace:/root/workspace -w /root/workspace ros:mykinetic rosrun beginner_tutorials talker.py
 [INFO] [1519060948.447008]: hello world 1519060948.45
 [INFO] [1519060948.549300]: hello world 1519060948.55
@@ -483,7 +484,7 @@ En sortie de console, le nœud *Publieur* émet toutes les 1/10e de seconde le m
 
 * Depuis un troisième terminal, exécuter la commande suivante qui va créer le conteneur correspondant au nœud *Consommateur* (le conteneur sera nommé *listener*) à partir de l'outil **rosrun** :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -e ROS_MASTER_URI=http://roscore:11311 --net ros --name listener -v $(pwd)/workspace:/root/workspace -w /root/workspace ros:mykinetic rosrun beginner_tutorials listener.py
 [INFO] [1519060974.951692]: /listener_1_1519060974752I heard hello world 1519060974.95
 [INFO] [1519060975.051022]: /listener_1_1519060974752I heard hello world 1519060975.05
@@ -506,7 +507,7 @@ Comme on peut le constater, les trois nœuds communiquent correctement ensemble.
 
 * Pour vérifier que les conteneurs ont été créés et sont toujours en cours d'exécution, affichez-les via la commande suivante :
 
-```bash
+```console
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 2625ffbb9490        ros:mykinetic       "/ros_entrypoint.sh …"   12 seconds ago      Up 11 seconds                           listener
@@ -520,14 +521,14 @@ Dans la section précédente, nous avons utilisé l'outil **rosrun** pour créer
 
 * Depuis le premier terminal, démarrer le nœud *Master* via la ligne de commande ci-dessous :
 
-```bash
+```console
 $ docker run --rm -it --net ros --name roscore ros:mykinetic roscore
 ...
 ```
 
 * Depuis le deuxième terminal, démarrer le nœud *Publieur* via la ligne de commande ci-dessous :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -e ROS_MASTER_URI=http://roscore:11311 --net ros -v $(pwd)/workspace:/root/workspace -w /root/workspace/src/beginner_tutorials/src ros:mykinetic python talker.py
 /opt/ros/kinetic/setup.bash
 [INFO] [1524512900.033339]: hello world 1524512900.03
@@ -541,7 +542,7 @@ $ docker run --rm -it -e WORKSPACE_NAME=workspace -e ROS_MASTER_URI=http://rosco
 
 * Depuis le troisième terminal, démarrer le nœud *Consommateur* via la ligne de commande ci-dessous :
 
-```bash
+```console
 $ docker run --rm -it -e WORKSPACE_NAME=workspace -e ROS_MASTER_URI=http://roscore:11311 --net ros -v $(pwd)/workspace:/root/workspace -w /root/workspace/src/beginner_tutorials/src ros:mykinetic python listener.py
 /opt/ros/kinetic/setup.bash
 [INFO] [1524512981.878919]: /listener_1_1524512981675I heard hello world 1524512981.88
@@ -608,7 +609,7 @@ Il s'agit d'un fichier yaml qui impose que l'indentation, par des espaces, manif
 
 * Pour démarrer cette orchestration, exécuter la ligne de commande suivante :
 
-```bash
+```console
 $ docker-compose up -d
 Creating roscore ... done
 Creating talker   ... done
@@ -617,7 +618,7 @@ Creating listener ... done
 
 * Pour afficher les logs, exécuter la ligne de commande suivante :
 
-```bash
+```console
 $ docker-compose logs
 ...
 listener    | [INFO] [1524577237.793343]: /listener_1_1524577146122I heard hello world 1524577237.79
@@ -642,7 +643,7 @@ listener    | [INFO] [1524577238.594597]: /listener_1_1524577146122I heard hello
 
 * Pour afficher uniquement les logs d'un service, faire suivre par le nom du service :
 
-```bash
+```console
 $ docker-compose logs listener
 Attaching to talker
 talker      | /opt/ros/kinetic/setup.bash
@@ -668,7 +669,7 @@ La commande **list** permet d'afficher l'ensemble des *topics* actuellement abon
 
 * Pour afficher, tous les *topics* abonnés et publiés, exécuter la commande suivante :
 
-```bash
+```console
 $ docker run --rm -it --net ros -e ROS_MASTER_URI=http://roscore:11311 ros:mykinetic rostopic list -v
 /opt/ros/kinetic/setup.bash
 
@@ -690,7 +691,7 @@ La commande **echo** permet d'afficher les données qui sont publiées dans un _
 
 * Pour afficher, les données qui sont publiées dans le _topic_ `/chatter`, exécuter la commande suivante :
 
-```bash
+```console
 $ docker run --rm -it --net ros -e ROS_MASTER_URI=http://roscore:11311 ros:mykinetic rostopic echo /chatter
 /opt/ros/kinetic/setup.bash
 data: "hello world 1525277581.64"
@@ -710,14 +711,14 @@ La commande **pub** permet d'envoyer des données vers un *topic*. La syntaxe de
 
 * Nous allons commencer par arrêter le nœud *Publieur* afin de pouvoir suivre les données publiées dans le *topic* `/chatter`. Exécuter la commande suivante en vous assurant d'être dans le même répertoire contenant le fichier *docker-compose.yml*.
 
-```bash
+```console
 $ docker-compose stop talker
 Stopping talker ... done
 ```
 
 * Exécuter la commande suivante permettant de publier des données dans le *topic* `/chatter` :
 
-```bash
+```console
 $ docker run --rm -it --net ros -e ROS_MASTER_URI=http://roscore:11311 ros:mykinetic rostopic pub -1 /chatter std_msgs/String 'Hello From Docker'
 /opt/ros/kinetic/setup.bash
 publishing and latching message for 3.0 seconds
@@ -725,7 +726,7 @@ publishing and latching message for 3.0 seconds
 
 * Depuis un autre terminal, afficher le contenu des logs du nœud *Consommateur* en exécutant la commande suivante :
 
-```bash
+```console
 $ docker logs listener
 [INFO] [1525279892.647035]: /listener_1_1525113602169I heard hello world 1525279892.65
 [INFO] [1525279893.147292]: /listener_1_1525113602169I heard hello world 1525279893.15
@@ -737,7 +738,7 @@ $ docker logs listener
 
 Vous pouvez remarquer sur la dernière ligne, la donnée que nous venons d'envoyer.
 
-## Créer des conteneurs basés sur une image Docker ROS avec une interface graphique : exemple de la Tortue
+## Créer des conteneurs avec une interface graphique : exemple de la Tortue
 
 Actuellement, nous avons montré comment exécuter une application ROS composée de trois nœuds ROS sous **Docker** et dont le retour de l'exécution de chaque nœud se faisait sur la console du terminal. Il est tout à fait possible d'exécuter des nœuds ROS qui fournissent des interfaces graphiques de type client lourd.
 
@@ -749,7 +750,7 @@ L'exemple de la tortue est disponible via des packages Debian. Nous allons prép
 
 * Créer un fichier *DockerfileTutorial* au même endroit que le précédent fichier *Dockerfile* et saisir le texte suivant :
 
-```bash
+```console
 FROM ros:mykinetic
 
 RUN apt-get update && apt-get install -y ros-kinetic-ros-tutorials ros-kinetic-common-tutorials ros-kinetic-rqt ros-kinetic-rqt-common-plugins && rm -rf /var/lib/apt/lists/
@@ -759,7 +760,7 @@ Cette image sera basée sur notre précédente image appelée *ros:mykinetic* à
 
 * Ouvrir un terminal et saisir la ligne de commande suivante :
 
-```bash
+```console
 docker build -f DockerfileTutorial --tag ros:mykinetictutorial .
 Sending build context to Docker daemon  2.048kB
 Step 1/2 : FROM ros:mykinetic
@@ -779,7 +780,7 @@ Successfully tagged ros:mykinetictutorial
 
 * Assurons-nous que la nouvelle image **Docker** intégrant les exemples du tutoriel est présente. Depuis le terminal, saisir la ligne de commande suivante :
 
-```bash
+```console
 $ docker images
 
 REPOSITORY                                TAG                 IMAGE ID            CREATED             SIZE
@@ -800,23 +801,23 @@ La première étape est de récupérer l'adresse IP publique du client (système
 
 1 - Exécuter la commande suivante pour récupérer l'adresse du client (système hôte) :
 
-```bash
-$ ip=$(ifconfig|grep 'inet '|grep -v '127.0.0.1'| tail -1|awk '{print $2}')
-$ echo $ip
+```console
+ip=$(ifconfig|grep 'inet '|grep -v '127.0.0.1'| tail -1|awk '{print $2}')
+echo $ip
 ```
 
 Les configurations réseaux sont listées via `ifconfig` ; filtrer par `inet` ; les adresses `127.0.0.1` sont exclues ; la dernière IP est choisie (faire attention si vous avez à la fois le Wi-Fi et l'Ethernet) et finalement seule l'adresse IP est conservée.
 
 2 - Exécuter la commande suivante pour démarrer l'outil **socat** afin d'exposer la *socket* de XQuartz locale sur un port TCP :
 
-```bash
+```console
 socat TCP-LISTEN:6001,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
 ```
 
 3 - Quand un conteneur est créé, définir la variable d'environnement `DISPLAY` en précisant l'adresse IP du système hôte. Exécuter la ligne de commande suivante :
 
-```bash
-$ docker run -e DISPLAY=$ip:1 ...
+```console
+docker run -e DISPLAY=$ip:1 ...
 ```
 
 #### Pour Linux
@@ -825,14 +826,14 @@ Pour le système Linux, c'est un peu plus simple puisque le serveur X11 est int�
 
 1 - Exécuter la commande suivante permettant à l'utilisateur root d'accéder au serveur X11 :
 
-```bash
-$ xhost +SI:localuser:root
+```console
+xhost +SI:localuser:root
 ```
 
 2 - Quand un conteneur est créé, définir la variable d'environnement `DISPLAY` en précisant comme valeur le contenu de la variable `DISPLAY` du système local :
 
-```bash
-$ docker run -e DISPLAY=unix$DISPLAY ...
+```console
+docker run -e DISPLAY=unix$DISPLAY ...
 ```
 
 ### Exécution de l'exemple Tortue
@@ -841,7 +842,7 @@ Pour l'exécution de l'exemple complet, nous allons préparer quatre terminaux. 
 
 * Exécuter la commande suivante afin de créer le nœud *Master* :
 
-```bash
+```console
 $ docker run --rm -it --name roscore --net ros ros:mykinetictutorial roscore
 /opt/ros/kinetic/setup.bash
 ... logging to /root/.ros/log/1f0bbca6-4eee-11e8-b026-0242ac120002/roslaunch-90e712dfdfbf-1.log
@@ -875,7 +876,7 @@ Nous allons ensuite créer le nœud correspondant à l'affichage de la tortue da
 
 * Exécuter les lignes de commande suivantes depuis un nouveau terminal pour créer un nouveau nœud basé sur l'application *turtlesim_node* du package *turtlesim* :
 
-```bash
+```console
 $ ip=$(ifconfig|grep 'inet '|grep -v '127.0.0.1'| tail -1|awk '{print $2}')
 $ socat TCP-LISTEN:6001,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
 $ docker run --rm -it --name turtlesim --net ros -e ROS_MASTER_URI=http://roscore:11311 -e XAUTHORITY=/tmp/xauth -e DISPLAY=$ip:1 ros:mykinetictutorial rosrun turtlesim turtlesim_node
@@ -894,7 +895,7 @@ Pour contrôler la tortue, nous allons créer le nœud basé sur l'application *
 
 * Depuis un nouveau terminal, exécuter la ligne de commande suivante :
 
-```bash
+```console
 $ docker run --rm -it --name turtleteleopkey --net ros -e ROS_MASTER_URI=http://roscore:11311 ros:mykinetictutorial rosrun turtlesim turtle_teleop_key
 /opt/ros/kinetic/setup.bash
 Reading from keyboard
@@ -910,8 +911,8 @@ Pour compléter cet exemple, nous allons ajouter un nouveau nœud pour intégrer
 
 * Depuis un nouveau terminal, exécuter la ligne de commande suivante pour démarrer l'application *rqt_graph* du package *rqt_graph* :
 
-```bash
-$ docker run --rm -it --name rqt_graph --net ros -e ROS_MASTER_URI=http://roscore:11311 -e XAUTHORITY=/tmp/xauth -e DISPLAY=$ip:1 ros:mykinetictutorial rosrun rqt_graph rqt_graph
+```console
+docker run --rm -it --name rqt_graph --net ros -e ROS_MASTER_URI=http://roscore:11311 -e XAUTHORITY=/tmp/xauth -e DISPLAY=$ip:1 ros:mykinetictutorial rosrun rqt_graph rqt_graph
 ```
 
 ![Déplacement de la tortue ](/images/environnement-developpement-ros-docker/rqtgraph.png)
@@ -968,15 +969,15 @@ Afin d'éviter de vous authentifier via l'utilisation explicite d'un mot de pass
 
 * Ouvrir une invite de commande et saisir la ligne de commande suivante :
 
-```bash
-$ ssh-copy-id -i ~/.ssh/id_rsa.pub pirate@XXX.YYY.ZZZ.76
+```console
+ssh-copy-id -i ~/.ssh/id_rsa.pub pirate@XXX.YYY.ZZZ.76
 ```
 
 Actuellement le système d'exploitation installé sur les cartes Raspberry Pi est HypriotOS lui-même basé sur Raspbian. Toutefois **Docker-Machine** de la suite **Docker** permettant de contrôler des moteurs **Docker** (Docker engine) à distance ne reconnaît pas encore le système Raspbian. Nous allons donc renommer le système en Debian afin de résoudre ce problème.
 
 * Se connecter en ssh (`ssh pirate@XXX.YYY.ZZZ.74`) sur chaque carte Raspberry Pi et changer la valeur *ID* depuis le fichier */etc/os-release* :
 
-```bash
+```console
 $ ssh pirate@XXX.YYY.ZZZ.74
 ...
 $ sudo nano /etc/os-release
@@ -1000,7 +1001,7 @@ Afin de synchroniser le répertoire *workspace* avec les différents Raspberry P
 
 * Se connecter sur chaque carte Raspberry Pi et installer l'outil **rsync** :
 
-```bash
+```console
 $ sudo apt-get update
 Get:1 http://raspbian.raspberrypi.org/raspbian stretch InRelease [15.0 kB]
 Get:2 http://archive.raspberrypi.org/debian stretch InRelease [25.3 kB]
@@ -1024,7 +1025,7 @@ Depuis macOS, nous allons créer trois machines **Docker** connectées respectiv
 
 * Saisir la ligne de commande suivante pour créer un **docker-machine** vers la carte Raspberry Pi dédiée à la gestion du nœud *Master*.
 
-```bash
+```console
 $ docker-machine create --driver generic --generic-ip-address=XXX.YYY.ZZZ.74 --generic-ssh-user "pirate" --generic-ssh-key ~/.ssh/id_rsa --engine-storage-driver overlay2 master
 Running pre-create checks...
 Creating machine...
@@ -1046,7 +1047,7 @@ La création de cette machine **Docker** passe par l'utilisation du *driver* gé
 
 * Saisir la ligne de commande suivante pour créer un **docker-machine** vers la carte Raspberry Pi dédiée à la gestion du nœud *Publieur* :
 
-```bash
+```console
 $ docker-machine create --driver generic --generic-ip-address=XXX.YYY.ZZZ.75 --generic-ssh-user "pirate" --generic-ssh-key ~/.ssh/id_rsa --engine-storage-driver overlay2 talker
 Running pre-create checks...
 Creating machine...
@@ -1066,7 +1067,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 * Saisir la ligne de commande suivante pour créer un **docker-machine** vers la carte Raspberry Pi dédiée à la gestion du nœud *Consommateur* :
 
-```bash
+```console
 $ docker-machine create --driver generic --generic-ip-address=XXX.YYY.ZZZ.76 --generic-ssh-user "pirate" --generic-ssh-key ~/.ssh/id_rsa --engine-storage-driver overlay2 talker
 Running pre-create checks...
 Creating machine...
@@ -1086,7 +1087,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 * Pour s'assurer que les trois machines **Docker** ont été correctement créées, saisir la commande suivante :
 
-```bash
+```console
 NAME       ACTIVE   DRIVER    STATE     URL                        SWARM   DOCKER        ERRORS
 master     -        generic   Running   tcp://XXX.YYY.ZZZ.74:2376           v18.04.0-ce
 talker     -        generic   Running   tcp://XXX.YYY.ZZZ.75:2376           v18.04.0-ce
@@ -1099,28 +1100,28 @@ Pour prendre le contrôle d'une machine **Docker**, utiliser la commande suivant
 
 * Pour se connecter à la machine **Docker** du nœud *Master*, saisir la ligne de commande suivante :
 
-```bash
-$ eval $(docker-machine env master)
+```console
+eval $(docker-machine env master)
 ```
 
 Une fois connectée, toutes les commandes **Docker** que nous avons étudiées sont utilisables à savoir les commandes pour la gestion des images, la gestion des conteneurs…
 
 * Exécuter la ligne de commande suivante pour vérifier qu'aucune image **Docker** n'est présente puisque nous n'avons pas encore interagi avec cette instance **Docker** :
 
-```bash
+```console
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ```
 
 * Saisir la commande ci-dessous pour se connecter à l'instance locale de **Docker** (celui installé sur macOS) :
 
-```bash
-$ eval $(docker-machine env -u)
+```console
+eval $(docker-machine env -u)
 ```
 
 * Puis afficher les images **Docker** via la ligne de commande :
 
-```bash
+```console
 $ docker images
 REPOSITORY                                TAG                 IMAGE ID            CREATED             SIZE
 ros                                       mykinetic           f2aae4e9c1fa        3 minutes ago       1.18GB
@@ -1141,13 +1142,13 @@ Bien entendu, comme les architectures matérielles entre macOS (plateforme x86) 
 
 * Se connecter à la machine **Docker** intitulée *Master* via la ligne de commande suivante :
 
-```bash
+```console
 eval $(docker-machine env master)
 ```
 
 * Se positionner dans le répertoire contenant le fichier *Dockerfile* que nous avions utilisé précédemment pour construire l'image `ros:mykinetic` et lancer la ligne de commande suivante :
 
-```bash
+```console
 docker build --tag ros:mykinetic .
 Sending build context to Docker daemon  579.6kB
 Step 1/2 : FROM ros:kinetic
@@ -1178,7 +1179,7 @@ Premier constat évident, la construction de l'image **Docker** `ros:mykinetic` 
 
 * Afficher la liste des images **Docker** de la carte Raspberry Pi *Master* pour s'assurer que `ros:mykinetic` est bien présente :
 
-```bash
+```console
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ros                 mykinetic           a9598ee40ef9        8 days ago          944MB
@@ -1187,7 +1188,7 @@ ros                 kinetic             f1b693d5d950        9 days ago          
 
 * Procéder de la même façon pour la carte Raspberry Pi *Publieur*, saisir les lignes de commandes ci-dessous :
 
-```bash
+```console
 eval $(docker-machine env talker)
 docker build --tag ros:mykinetic .
 Sending build context to Docker daemon  579.6kB
@@ -1219,7 +1220,7 @@ Il reste encore une image **Docker** à construire, celle qui sera utilisée sur
 
 * Ouvrir un éditeur de texte et saisir le code ci-dessous. Sauvegardez dans un fichier appelé *DockerfileRPI*.
 
-```bash
+```console
 FROM ros:mykinetic
 
 RUN apt-get update && apt-get install -y wget && wget -qO- https://files.pythonhosted.org/packages/e2/58/6e1b775606da6439fa3fd1550e7f714ac62aa75e162eed29dbec684ecb3e/RPi.GPIO-0.6.3.tar.gz --no-check-certificate | tar xvz && cd RPi.GPIO-0.6.3/ && python setup.py install
@@ -1227,7 +1228,7 @@ RUN apt-get update && apt-get install -y wget && wget -qO- https://files.pythonh
 
 * Depuis une invite de commande, saisir les commandes suivantes pour construire l'image depuis la machine **Docker** appelée *Consommateur* :
 
-```bash
+```console
 eval $(docker-machine env listener)
 docker build -f DockerfileRPI --tag ros:mykineticrpi .
 Sending build context to Docker daemon  580.6kB
@@ -1251,7 +1252,7 @@ Successfully tagged ros:mykineticrpi
 
 * Afficher la liste des images **Docker** de la carte Raspberry Pi correspondant au nœud *Consommateur* pour s'assurer que `ros:mykineticrpi` est bien présente :
 
-```bash
+```console
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ros                 mykineticrpi        018a768e8f3c        10 days ago         987MB
@@ -1273,13 +1274,13 @@ Pour revenir à notre exemple, un répertoire de travail *workspacerpi* avec le 
 
 * Activer la machine **Docker** du poste de développeur à partir de la ligne de commande suivante :
 
-```bash
-$ eval $(docker-machine env -u)
+```console
+eval $(docker-machine env -u)
 ```
 
 * Ouvrir une invite de commande et exécuter les commandes suivantes :
 
-```bash
+```console
 $ mkdir -p workspacerpi/src
 
 $ docker run --rm -it -e WORKSPACE_NAME=workspacerpi -v $(pwd)/workspacerpi:/root/workspacerpi -w /root/workspacerpi/src ros:mykinetic catkin_create_pkg beginner_tutorials std_msgs rospy
@@ -1358,8 +1359,8 @@ Ce code est basé sur celui du fichier *listener.py* utilisé au début du tutor
 
 * Exécuter la ligne de commande suivante pour démarrer l'écoute du répertoire de travail *workspacerpi* et réaliser les actions de synchronisation :
 
-```bash
-$ fswatch -o $(pwd)/workspacerpi | xargs -n1 -I{} /bin/sh -c "rsync -avzhe ssh --progress $(pwd)/workspacerpi pirate@XXX.YYY.ZZZ.75:/home/pirate && rsync -avzhe ssh --progress $(pwd)/workspacerpi pirate@XXX.YYY.ZZZ.76:/home/pirate" &
+```console
+fswatch -o $(pwd)/workspacerpi | xargs -n1 -I{} /bin/sh -c "rsync -avzhe ssh --progress $(pwd)/workspacerpi pirate@XXX.YYY.ZZZ.75:/home/pirate && rsync -avzhe ssh --progress $(pwd)/workspacerpi pirate@XXX.YYY.ZZZ.76:/home/pirate" &
 ```
 
 À chaque changement du répertoire de travail *workspacerpi*, tout son contenu est transféré vers les deux cartes Raspberry Pi dédiées aux nœuds *Publieur* et *Consommateur*. Les actions consistent à invoquer l'outil **rsync**. Dans cette proposition, nous considérons que tous les changements liés au répertoire de travail (par exemple une compilation via l'outil **catkin_make**) seront effectués depuis le poste du développeur.
@@ -1372,7 +1373,7 @@ Avant de débuter notre expérimentation, il est important de préciser que tous
 
 * Depuis un premier terminal, exécuter les lignes de commandes suivantes pour démarrer le nœud *Master* :
 
-```bash
+```console
 $ eval $(docker-machine env master)
 $ docker run --rm -it --name roscore ros:mykinetic roscore
 /opt/ros/kinetic/setup.bash
@@ -1407,7 +1408,7 @@ La première chose à réaliser est de rendre active la machine **Docker** intit
 
 * Depuis un deuxième terminal, exécuter les lignes de commandes suivantes pour démarrer le nœud *Publieur* :
 
-```bash
+```console
 $ eval $(docker-machine env talker)
 $ docker run --rm -it -e WORKSPACE_NAME=workspacerpi --net host --name talker -e ROS_IP=XXX.YYY.ZZZ.75 -e ROS_MASTER_URI=http://XXX.YYY.ZZZ.74:11311 -v /home/pirate/workspacerpi:/root/workspacerpi -w /root/workspacerpi ros:mykinetic rosrun beginner_tutorials talker.py
 /opt/ros/kinetic/setup.bash
@@ -1422,9 +1423,9 @@ Nous commençons par rendre active la machine **Docker** intitulée *Talker* (ce
 
 * Depuis un troisième terminal, exécuter la ligne de commande suivante :
 
-```bash
-$ eval $(docker-machine env listener)
-$ docker run --rm -it --privileged --net host -e WORKSPACE_NAME=workspacerpi -e ROS_IP=XXX.YYY.ZZZ.76 -e ROS_MASTER_URI=http://XXX.YYY.ZZZ.74:11311 --name listener -v /home/pirate/workspacerpi:/root/workspacerpi -w /root/workspacerpi ros:mykineticrpi rosrun beginner_tutorials listener.py
+```console
+eval $(docker-machine env listener)
+docker run --rm -it --privileged --net host -e WORKSPACE_NAME=workspacerpi -e ROS_IP=XXX.YYY.ZZZ.76 -e ROS_MASTER_URI=http://XXX.YYY.ZZZ.74:11311 --name listener -v /home/pirate/workspacerpi:/root/workspacerpi -w /root/workspacerpi ros:mykineticrpi rosrun beginner_tutorials listener.py
 ```
 
 Même explication que précédemment excepté pour cette nouvelle option `--privileged` utilisée lors de la création du conteneur pour démarrer le nœud *Consommateur*. `--privileged` permet d'autoriser le conteneur à accéder aux éléments matériels du système hôte, en l'occurrence les ports GPIO.

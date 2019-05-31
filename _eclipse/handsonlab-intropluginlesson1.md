@@ -7,6 +7,7 @@ category: Article
 weight: 12
 date: 2009-09-28
 update: 2013-05-24
+toc: true
 ---
 
 Le but de cette première leçon est d'apprendre à construire et exécuter un plug-in minimal sous Eclipse.

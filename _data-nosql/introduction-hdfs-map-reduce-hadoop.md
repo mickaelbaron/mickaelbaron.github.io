@@ -8,6 +8,7 @@ category: Article
 date: 2014-04-15
 update: 2014-12-20
 weight: 4
+toc: true
 ---
 
 Ce premier article introductif s'intéresse à présenter le système de fichiers HDFS (Hadoop Distributed File System) et le modèle de programmation MapReduce.
@@ -338,7 +339,7 @@ Le problème pour tester Apache Hadoop est de disposer de jeux de données réal
 * [Grouplens](http://grouplens.org/datasets) : groupe de recherche, dans le domaine de systèmes de recommandation et d'interaction homme-machine, qui a collecté de grands volumes de données comme par exemple sur des classements de films auprès d'utilisateurs.
 * [DBPedia](http://wiki.dbpedia.org/) : version structurée de Wikipédia
 
-## Conclusion, à suivre dans le prochain article
+## Conclusion et perspectives
 
 Cet article s'est intéressé à présenter les généralités d'Hadoop, HDFS et le modèle de programmation MapReduce. La présentation des concepts était obligatoire afin de mieux cerner les articles plus techniques qui vont suivre.
 

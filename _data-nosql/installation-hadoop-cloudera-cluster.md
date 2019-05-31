@@ -8,6 +8,7 @@ category: Article
 date: 2015-02-16
 weight: 6
 deprecated: true
+toc: true
 ---
 
 Ce troisième article s'intéresse d'une part à l'installation et la configuration d'un cluster Apache Hadoop multinœud et d'autre part à l'exécution d'un job MapReduce dans ce même cluster. Afin de montrer l'avantage de l'architecture matérielle que supporte Apache Hadoop, nous avons comparé l'exécution d'un job MapReduce avec celle d'un simple programme Java en insistant sur l'évolution 1) du nombre de nœuds pour Apache Hadoop et 2) du nombre de cœurs CPU pour le programme Java. La distribution CDH 5 fournie par la société Cloudera a été utilisée pour les expérimentations.
@@ -864,7 +865,7 @@ Enfin, l'occupation CPU a été identifiée comme un facteur limitant durant tou
 
 Concernant les perspectives de ces expérimentations et comme dit juste en haut, il faudrait reprendre celles concernant Hadoop afin d'augmenter principalement la taille des données et le nombre de nœuds. Il faudrait voir également si d'autres facteurs limitants entrent en jeu comme le débit du réseau.
 
-## Conclusion, à suivre dans le prochain article
+## Conclusion et perspectives
 
 Dans cet article nous nous sommes intéressés d'une part à l'installation et la configuration d'un cluster Apache Hadoop multinœud et d'autre part à l'exécution d'un job MapReduce dans ce même cluster. Afin de montrer l'avantage de l'architecture matérielle que supporte Apache Hadoop, nous avons eu à comparer l'exécution d'un job MapReduce avec celle d'un simple programme Java. Certes le programme Java *ad hoc* est plus efficace mais le framework Hadoop fournit un cadre très simple pour gérer la programmation distribuée.
 

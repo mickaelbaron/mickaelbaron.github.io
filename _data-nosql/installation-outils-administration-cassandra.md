@@ -8,6 +8,7 @@ category: Article
 date: 2013-01-21
 update: 2013-08-07
 weight: 3
+toc: true
 ---
 
 Ce premier article sur la base de données NoSQL Apache Cassandra présente brièvement les fonctionnalités, l'installation, une première prise en main et quelques outils d'administration.
@@ -586,7 +587,7 @@ Il peut également s'occuper de visualiser les données et fournit des interface
 
 ![Administration et supervision avec OpsCenter de DataStax](/images/installation-outils-administration-cassandra/opscenter.png)
 
-## Conclusion, à suivre dans le prochain article
+## Conclusion et perspectives
 
 Certes, cet article n'est pas révolutionnaire pour une présentation de Cassandra, mais l'objectif visé et avant tout de présenter les concepts-clés, de manipuler un premier modèle et de présenter les outils de supervision. De même vous auriez pu vous attendre à ce que l'article détaille les technologies innovantes de Cassandra (cluster, scalabilité horizontale…), mais ce n'est que le premier article d'une série de cinq.
 

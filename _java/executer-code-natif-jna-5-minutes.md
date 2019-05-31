@@ -8,6 +8,7 @@ category: Article
 date: 2009-09-28
 update: 2013-05-24
 weight: 7
+toc: true
 ---
 
 Ce tutoriel s'intéresse à présenter l'utilisation de la bibliothèque JNA pour adresser du code natif dans du code Java. Alors que le précédent tutoriel ([lien](/java/executer-code-natif-avec-jni-jna)) se focalisait sur les différences entre JNA et JNI, ce nouveau tutoriel se propose de montrer via un exemple complet comment utiliser exclusivement JNA en 5 minutes.

@@ -51,6 +51,8 @@ Ce blog a été construit à partir de Jekyll et il utilise l'excellent thème [
 
 Le système de commentaire basé sur Twitter a été inspiré par ce [billet](https://flamiszoltan.me/twitter-as-comment-system).
 
+Le générateur de tables des matières utilise le projet [jekyll-toc](https://github.com/allejo/jekyll-toc).
+
 [Youssef Raafat]: https://github.com/YoussefRaafatNasry
 [portfolYOU]: https://github.com/YoussefRaafatNasry/portfolYOU
 [Developpez.com]: http://www.reddit.com

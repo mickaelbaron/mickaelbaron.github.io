@@ -8,6 +8,7 @@ category: Article
 date: 2009-09-28
 update: 2013-05-24
 weight: 7
+toc: true
 ---
 
 [JNI](https://dico.developpez.com/html/1020-Langages-JNI-Java-Native-Interface.php) (Java Native Interface) et [JNA](https://dico.developpez.com/html/3165-Langages-JNA-Java-Native-Access.php) (Java Native Access) sont deux technologies qui permettent d'adresser du code natif dans du code Java. Nous explorerons dans cet article une comparaison de ces deux technologies en les appliquant à un même exemple dans le but de dresser un bilan de leur utilisation.
@@ -23,7 +24,6 @@ Les sources de l'exemple sont disponibles : [jnijna.zip](/fichiers/jnijna.zip).
 L'objectif de cet article est de mettre en avant des technologies permettant d'adresser du code natif dans du code Java. Nous tenterons ainsi de lister leurs défauts et leurs avantages en vue de choisir au mieux la technologie adaptée selon les circonstances.
 
 Deux technologies seront présentées :
-
 
 * la première technologie s'appelle [JNI](https://dico.developpez.com/html/1020-Langages-JNI-Java-Native-Interface.php) (Java Native Interface). Elle est fournie par défaut par le JDK et nécessite de manipuler un langage natif pour effectuer les appels aux fonctions natives ; 
 * la seconde technologie s'appelle [JNA](https://dico.developpez.com/html/3165-Langages-JNA-Java-Native-Access.php) (Java Native Access). C'est une [API](https://dico.developpez.com/html/1453-Langages-API-Application-Programming-Interface.php) tierce qui offre l'avantage de s'abstraire de la couche native. 
@@ -612,7 +612,7 @@ Nous avons montré que pour la solution [JNI](https://dico.developpez.com/html/1
 
 Mais il est indéniable que [JNA](https://dico.developpez.com/html/3165-Langages-JNA-Java-Native-Access.php) permet de simplifier largement les appels aux fonctions natives.
 
-## Pour aller plus loin…
+## Pour aller plus loin
 
 Pour plus d'informations sur le sujet, vous pouvez consulter les liens suivants :
 
