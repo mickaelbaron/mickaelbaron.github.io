@@ -52,6 +52,9 @@ collections:
   data-nosql:
     output: true
     permalink: /data-nosql/:name
+  web:
+    output: true
+    permalink: /web/:name
   divers:
     output: true
     permalink: /divers/:name
@@ -91,6 +94,11 @@ defaults:
   - scope:
       path: ""
       type: "data-nosql"
+    values:
+      layout: "resource"
+  - scope:
+      path: ""
+      type: "web"
     values:
       layout: "resource"
   - scope:
