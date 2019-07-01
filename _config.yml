@@ -1,5 +1,5 @@
 # Site settings
-title: MickaelBARON
+title: mickael-baron.fr
 description: >- # this means to ignore newlines until "baseurl:"
   Blog de Mickael BARON basé sur le style https://github.com/YoussefRaafatNasry/portfolYOU
 baseurl: ""  # the subpath of your site, e.g. /blog
@@ -27,7 +27,7 @@ kramdown:
 author:
   name     : Mickael BARON
   image    : ./images/mbaron.jpg
-  email    : baron DOT mickael@ {{ de chez Google }}
+  email    : baron.mickael@gmail.com
   github   : mickaelbaron
   twitter  : mickaelbaron
   linkedin : mickaelbaron

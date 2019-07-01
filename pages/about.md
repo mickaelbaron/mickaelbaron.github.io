@@ -2,7 +2,7 @@
 layout: page
 title: À Propos
 permalink: /apropos/
-weight: 8
+weight: 10
 ---
 
 # **À Propos de moi**
@@ -16,6 +16,8 @@ Mes activités au sein du [LIAS] [ISAE-ENSMA] sont triples :
 * activité de valorisation des résultats de recherche du [LIAS] ;
 * activité de recherche au sein de l'équipe de recherce Ingénierie des Données et des Modèles ;
 * activité de contribution aux charges collectives du laboratoire et de l'établissement [ISAE-ENSMA].
+
+Ma [page professionnelle] au [LIAS] [ISAE-ENSMA] référençant toutes les publications scientifiques auxquelles j'ai participées.
 
 En parallèle à mes activités professionnelles, je suis également responsable sur [Developpez.com] de la rubrique Java (Java, Java Web, Eclipse, Netbeans, Spring et Android), l'une des plus importantes. [Developpez.com] c'est plus de 220 000 visites par jour, 2,5 millions de lecteurs distincts fréquentent au moins une fois par mois www.developpez.com, le forum d'entraide des professionnels de l'informatique est le plus actif dans son domaine avec plus de 5000 messages par jour et la plus grande équipe de rédaction IT Pro : plus de 1000 auteurs.
 
@@ -53,6 +55,12 @@ Le système de commentaire basé sur Twitter a été inspiré par ce [billet](ht
 
 Le générateur de tables des matières utilise le projet [jekyll-toc](https://github.com/allejo/jekyll-toc).
 
+[Java Icon] by [Icon Mafia] on [Iconscout].
+
+[page professionnelle]: https://www.lias-lab.fr/members/mickaelbaron
+[Iconscout]: https://iconscout.com
+[Icon Mafia]: https://iconscout.com/contributors/icon-mafia
+[Java Icon]: https://iconscout.com/icon/java-26
 [Youssef Raafat]: https://github.com/YoussefRaafatNasry
 [portfolYOU]: https://github.com/YoussefRaafatNasry/portfolYOU
 [Developpez.com]: http://www.reddit.com
