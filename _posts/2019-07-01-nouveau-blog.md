@@ -3,6 +3,7 @@ title: Nouveau blog Jekyll et GitHub Pages
 tags: [Divers]
 category: announcement
 description: Je viens de franchir le pas et j'ai décidé de migrer mon hébergé chez Blogger vers une autre plateforme basée sur du Jekyll et GitHub Pages.
+twitter: 1145741137686274049
 ---
 
 Je viens de franchir le pas et j'ai décidé de migrer mon [ancien blog](https://keulkeul.blogspot.com/) hébergé chez [Blogger](https://www.blogger.com) vers une autre plateforme basée sur du [Jekyll](https://jekyllrb.com/) et [GitHub Pages](https://pages.github.com/). Ce nouveau site personnel est porté par le domaine <https://mickael-baron.fr>.
