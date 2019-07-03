@@ -25,6 +25,15 @@ layout: page
 
       <i>Par <a href="/apropos">{{ site.author.name }}</a></i>
 
+      {% if page.tags != empty %}
+        <i>
+        {% for authorid in page.authors %}
+          {% assign author = site.authors[authorid] %}
+          - <a href="{{ author.website }}">{{ author.name }}</a>
+        {% endfor %}
+        </i>
+      {% endif %}
+
       <br>
 
       {% if page.tags != empty %}
