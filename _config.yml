@@ -11,8 +11,8 @@ github_username: mickaelbaron
 
 # Build settings
 markdown: kramdown
-# plugins:
-# - jekyll-feed
+plugins:
+ - jekyll-feed
 
 kramdown:
   input: GFM
