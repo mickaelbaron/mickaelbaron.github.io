@@ -48,12 +48,15 @@ La troisième période se situe après 2010 jusqu'à nos jours. Nous sommes pass
 Les frameworks JavaScript du marché sont les suivants (sans être exhaustifs) :
 
 * [Angular](https://angular.io/) ;
-* [React.js](https://angular.io/) ;
-* [Vue.js](https://vuejs.org/) ;
-* [Meteo.js](https://www.meteor.com/) ;
+* [Angular.js](https://angularjs.org/) ;
+* [Backbone.js](https://backbonejs.org/) ;
 * [Ember.js](https://www.emberjs.com/) ;
-* [Backbone.js](http://backbonejs.org/) ;
 * [Knockout](https://knockoutjs.com/).
+* [Meteor.js](https://www.meteor.com/) ;
+* [React.js](https://reactjs.org/) ;
+* [Vue.js](https://vuejs.org/) ;
+
+Aujourd'hui fin 2019, [Angular](https://angular.io/), [React.js](https://reactjs.org/) et [Vue.js](https://vuejs.org/) sont les frameworks web JavaScript qui ont réussi à s'imposer.
 
 Après analyse rapide des différents frameworks ci-dessus, quatre fonctionnalités que doit posséder un framework web JavaScript de nos jours ont été identifiées. Détaillons dans la suite ces quatre fonctionnalités.
 
@@ -242,13 +245,13 @@ Nous distinguons deux types d'outils : les **outils « classiques »** pour l
 
 ### Outils pour le développeur web
 
-* [Chrome](https://www.google.com/chrome/) ou [Firefox](https://www.mozilla.org/fr/firefox/) : comme nous développons une application web, un navigateur sera nécessaire ; 
+* [Chrome](https://www.google.com/chrome/) ou [Firefox](https://www.mozilla.org/fr/firefox/) : comme nous développons une application web, un navigateur sera nécessaire ;
 * [Visual Studio Code](https://code.visualstudio.com/) : un très bon éditeur de texte facilement modulable ;
-* [npm](https://www.npmjs.com/) : l'outil ultime pour le développement avec JavaScript ; 
-* [node.js](https://nodejs.org/en/) : le complément à npm pour fournir un serveur web ; 
-* [Java](http://jdk.java.net/) : le langage qui sera utilisé pour le développement de l'exemple concernant la couche service côté backend ; 
-* [Maven](https://maven.apache.org/) : pour faciliter la construction du projet Java ; 
-* [Docker et Docker Compose](https://www.docker.com/) : pour tester le déploiement de l'exemple. 
+* [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com) : l'outil ultime pour le développement avec JavaScript ;
+* [node.js](https://nodejs.org/en/) : le complément à npm pour fournir un serveur web ;
+* [Java](http://jdk.java.net/) : le langage qui sera utilisé pour le développement de l'exemple concernant la couche service côté backend ;
+* [Maven](https://maven.apache.org/) : pour faciliter la construction du projet Java ;
+* [Docker et Docker Compose](https://www.docker.com/) : pour tester le déploiement de l'exemple.
 
 Dans la liste ci-dessus, les trois derniers éléments (Java, Maven et Docker) ne sont pas obligatoires pour le développeur web. [Java](http://jdk.java.net/) et [Maven](https://maven.apache.org/) nous serviront pour la couche service web de l'exemple et [Docker et Docker Compose](https://www.docker.com/) seront utilisés pour le déploiement de ce même exemple.
 
