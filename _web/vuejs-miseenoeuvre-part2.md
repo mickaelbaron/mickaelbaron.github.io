@@ -37,8 +37,6 @@ Le plan est le suivant :
 
 Les codes source pour les exercices sont disponibles sur le dépôt Git suivant : [https://github.com/mickaelbaron/vuejs-polldle-tutorial-src](https://github.com/mickaelbaron/vuejs-polldle-tutorial-src) (pour récupérer le code, faire : `git clone <https://github.com/mickaelbaron/vuejs-polldle-tutorial-src>`).
 
-Pour réagir au contenu de cet article, un espace de dialogue vous est proposé sur le forum [forumdvp][1986996].
-
 ## Présentation de l'exemple : PollDLE
 
 L'exemple qui nous servira de fil rouge est appelé PollDLE pour *Poll* (Sondage) et la dernière partie de *Doodle* (un outil de planification très simple d'emploi). Il s'agira donc d'une application pour créer un sondage (un titre et des options), voter à un sondage (un choix possible) et afficher les résultats d'un sondage.

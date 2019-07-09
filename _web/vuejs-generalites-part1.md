@@ -29,8 +29,6 @@ Le plan est le suivant :
 * présentation des grandes lignes du framework web [Vue.js](https://vuejs.org/) ; 
 * présentation des prérequis logiciels pour développer avec [Vue.js](https://vuejs.org/). 
 
-Pour réagir au contenu de cet article, un espace de dialogue vous est proposé sur le forum [forumdvp][1986169].
-
 ## Un framework web JavaScript, c'est quoi ?
 
 Le développement d'applications web a connu trois évolutions majeures. Ces évolutions ont vu naître différentes technologies comme le montre la figure ci-dessous (source figure : [https://twitter.com/lofidewanto/...](https://twitter.com/lofidewanto/status/1128981965632364544)).
