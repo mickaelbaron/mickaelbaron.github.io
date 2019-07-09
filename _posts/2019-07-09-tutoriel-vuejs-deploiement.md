@@ -3,7 +3,7 @@ title: 'Tutoriel pour développer une application web avec Vue.js et Vue CLI : d
 tags: [Vue.js, Docker]
 category: technical
 description: Cette troisième partie s'intéresse aux problématiques de déploiement d'une application Vue.js en utilisant Docker pour créer des conteneurs.
-twitter: 
+twitter: 1148586483495972866
 ---
 
 Je viens de finaliser l'écriture d'un tutoriel consacré framework web JavaScript [Vue.js](https://vuejs.org/). Il sera publié en trois parties :

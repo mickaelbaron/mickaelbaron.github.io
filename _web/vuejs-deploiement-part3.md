@@ -8,7 +8,7 @@ category: Article
 date: 2019-07-09
 weight: 3
 toc: true
-twitter: 
+twitter: 1148586483495972866
 ---
 
 L'objectif de cet article en plusieurs parties est de vous présenter le framework web JavaScript [Vue.js](https://vuejs.org/) en se focalisant sur les principaux concepts au travers d'un exemple unique.
