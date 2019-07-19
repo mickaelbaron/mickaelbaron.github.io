@@ -2,6 +2,7 @@
 title: Liens pratiques de la semaine 29 (juillet 2019)
 tags: [Java,Docker]
 category: technological-watch
+twitter: 1152263767503364099
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 29 (juillet 2019).
