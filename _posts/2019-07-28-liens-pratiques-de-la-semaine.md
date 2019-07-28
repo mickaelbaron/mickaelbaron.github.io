@@ -2,6 +2,7 @@
 title: Liens pratiques de la semaine 30 (juillet 2019)
 tags: [Java]
 category: technological-watch
+twitter: 1155402252070375424
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 30 (juillet 2019).
@@ -21,8 +22,8 @@ Vous trouverez dans ce billet une sélection de liens pratiques autour des techn
 
 * Un [script](https://github.com/kud/my/blob/master/core/osx) pour macOS qui dévoile un ensemble de paramètres pour configurer son système, très pratique pour connaitre les possibles modifications à effectuer sur son système.
 * Si vous avez besoin d'accéder à des jeux de données, le site [Kaggle](https://www.kaggle.com/datasets) offre un dépôt intéressant de fichiers pour faire des expérimentations. Assurez-vous de bien respecter la licence d'utilisation.
-* Un [calendrier orginal](https://www.leslibraires.fr/livre/15538823-calendrier-mathematique-2020-une-histoire-d-a--abiteboul-truchet-presses-universitaires-de-grenoble) qui propose pour chaque journée 2020 une question autour du thème des algorithmes.
-* Une [série d'astuces](https://gist.github.com/MichaelDrogalis/08463ed82a4a04015eef03cb483cad26) pour utiliser efficacement Apache Kafka en production.
+* Un [calendrier orginal](https://www.leslibraires.fr/livre/15538823-calendrier-mathematique-2020-une-histoire-d-a--abiteboul-truchet-presses-universitaires-de-grenoble) qui propose pour chaque journée de la prochaine année 2020 une question autour du thème des algorithmes.
+* Une [série d'astuces](https://gist.github.com/MichaelDrogalis/08463ed82a4a04015eef03cb483cad26) pour utiliser efficacement [Apache Kafka](https://kafka.apache.org/) en production.
 
 ## Media de la semaine
 
