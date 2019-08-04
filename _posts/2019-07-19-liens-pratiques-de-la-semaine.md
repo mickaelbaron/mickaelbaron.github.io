@@ -31,6 +31,6 @@ Vous trouverez dans ce billet une sélection de liens pratiques autour des techn
 * Un [benchmark](https://www.jeffgeerling.com/blog/2019/raspberry-pi-microsd-card-performance-comparison-2019) intéressant sur les performances des cartes microSD sur Raspberry PI.
 * Un [article](https://hackernoon.com/understanding-kafka-with-factorio-74e8fc9bf181) qui permet de comprendre les concepts d'[Apache Kafka](https://kafka.apache.org/) via le jeux-video [Factorio](https://factorio.com/). [Factorio](https://factorio.com/), le jeu pour les ingénieurs gamers.
 
-## Gif de la semaine
+## Media de la semaine
 
 ![Three Armstrong](/images/gifofzweek/armstrongtriplet.jpg)
