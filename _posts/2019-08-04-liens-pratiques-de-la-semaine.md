@@ -2,7 +2,7 @@
 title: Liens pratiques de la semaine 31 (août 2019)
 tags: [Java, Vue.js]
 category: technological-watch
-twitter: 
+twitter: 1158338271992274944
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 31 (août 2019).
