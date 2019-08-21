@@ -1,6 +1,6 @@
 ---
 title: Introduction aux architectures microservices
-tags: [SOA, microservices]
+tags: [SOA, Microservices]
 image: /images/microservices.png
 description: Ce support de cours présente les architectures microservices.
 category: Cours

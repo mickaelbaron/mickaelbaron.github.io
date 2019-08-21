@@ -1,5 +1,5 @@
 ---
-title: Tomcat
+title: Introduction à Tomcat
 tags: [Java EE, Tomcat]
 direct_link: 
 image: /images/tomcat.jpg

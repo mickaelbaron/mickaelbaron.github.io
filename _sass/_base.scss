@@ -3,6 +3,20 @@ body {
     font-size: 15px;
 }
 
+.logo-cursor {
+	content:"_";
+	opacity: 0;
+	animation: cursor 1.5s infinite;
+}
+
+@keyframes cursor {
+	0% { opacity: 0; }
+	40% { opacity: 0; }
+	50% { opacity: 1; }
+	90% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
 .badge {
     font-weight: 500;
 }

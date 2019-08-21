@@ -1,6 +1,6 @@
 ---
 title: 'Nouveau support de cours disponible : mise en œuvre des architectures microservices'
-tags: [SOA, microservice, docker]
+tags: [SOA, Microservice, Docker]
 blogger_orig_url: https://keulkeul.blogspot.com/2016/02/nouveau-support-de-cours-disponible_16.html
 category: lectures
 description: Ce support de cours propose la seconde partie dédiée aux technologies pour la mise en œuvre de microservices.

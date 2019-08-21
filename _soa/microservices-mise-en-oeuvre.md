@@ -1,6 +1,6 @@
 ---
 title: Outils et bibliothèques pour la mise en œuvre d'architectures microservices
-tags: [SOA, microservices]
+tags: [SOA, Microservices]
 image: /images/java-docker.png
 description: Ce support de cours présente les architectures microservices.
 category: Cours

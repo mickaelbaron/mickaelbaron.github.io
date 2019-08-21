@@ -1,6 +1,6 @@
 ---
 title: 'Introduction à Apache Hadoop. Partie 3 : installation, supervision et performance d''un cluster multinœud avec Cloudera CDH 5'
-tags: [hadoop]
+tags: [Hadoop]
 blogger_orig_url: https://keulkeul.blogspot.com/2015/02/introduction-apache-hadoop-partie-3.html
 category: technical
 description: Un troisième article qui s'intéresse à l'installation, la supervision et la performance d'un cluster multinœud en utilisant la distribution CDH 5 fournie par Cloudera.

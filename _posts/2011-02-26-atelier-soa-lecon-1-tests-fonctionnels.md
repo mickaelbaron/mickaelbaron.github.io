@@ -1,6 +1,6 @@
 ---
 title: 'Atelier SOA - Leçon 1 : Tests fonctionnels de services web avec SOAP-UI'
-tags: [SOA]
+tags: [SOA, SoapUI]
 blogger_orig_url: https://keulkeul.blogspot.com/2011/02/atelier-soa-lecon-1-tests-fonctionnels.html
 category: technical
 description: Je viens de mettre en libre service la première leçon de l'atelier SOA. Le but de cette leçon est d'apprendre à inspecter et à invoquer un service web via l'outil SoapUI.

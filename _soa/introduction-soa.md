@@ -1,6 +1,6 @@
 ---
 title: Introduction aux Architectures Orientées Services (SOA)
-tags: [SOA, service web, SOAP, REST]
+tags: [SOA, Service web, SOAP, REST]
 image: /images/soa_intro.png
 description: Description de l'Architecture Orientée Service (SOA) en comparant avec les architectures monolithiques et enfin présentation des solutions technologiques pour la mise en oeuvre de ce type d'architecture logicielle.
 category: Cours

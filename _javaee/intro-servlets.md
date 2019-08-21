@@ -1,7 +1,6 @@
 ---
-title: Servlets
-tags: [Java EE, Servlets]
-direct_link: 
+title: Introduction aux Servlets
+tags: [Java EE, Servlet]
 image: /images/servlets.jpg
 description: Support de cours dédié aux Servlets.
 category: Cours

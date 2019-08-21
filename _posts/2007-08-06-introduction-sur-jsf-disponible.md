@@ -1,6 +1,6 @@
 ---
 title: Introduction sur JSF 1.2
-tags: [JavaEE, JSF]
+tags: [Java EE, JSF]
 blogger_orig_url: https://keulkeul.blogspot.com/2007/08/introduction-sur-jsf-disponible.html
 category: lectures
 ---

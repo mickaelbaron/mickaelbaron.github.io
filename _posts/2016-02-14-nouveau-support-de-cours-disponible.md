@@ -1,6 +1,6 @@
 ---
 title: 'Nouveau support de cours disponible : introduction aux architectures microservices'
-tags: [soa, microservice]
+tags: [SOA, Microservice]
 blogger_orig_url: https://keulkeul.blogspot.com/2016/02/nouveau-support-de-cours-disponible.html
 category: lectures
 description: Ce support de cours présente une introduction aux architectures microservices.

@@ -25,7 +25,7 @@ layout: page
 
       <i>Par <a href="/apropos">{{ site.author.name }}</a></i>
 
-      {% if page.tags != empty %}
+      {% if page.authors != empty %}
         <i>
         {% for authorid in page.authors %}
           {% assign author = site.authors[authorid] %}
@@ -36,12 +36,7 @@ layout: page
 
       <br>
 
-      {% if page.tags != empty %}
-      Tags:
-      {% for tag in page.tags %}
-      <span class="badge badge-pill text-primary border border-primary">{{ tag }}</span>
-      {% endfor %}
-      {% endif %}
+      {% include tags.html %}
 
     </p>
 

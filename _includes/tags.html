@@ -1,0 +1,8 @@
+{% if page.tags != empty %}
+Tags:
+{% for tag in page.tags %}
+<a class="text-decoration-none no-underline" href="{{ tag | slugify | prepend:'/tags#' | relative_url }}">
+  <span class="tag badge badge-pill text-primary border border-primary">{{ tag }}</span>
+</a>
+{% endfor %}
+{% endif %}

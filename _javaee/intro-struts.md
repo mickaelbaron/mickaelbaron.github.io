@@ -1,5 +1,5 @@
 ---
-title: Struts
+title: Introduction à Struts
 tags: [Java EE, Struts]
 direct_link: 
 image: /images/struts.jpg

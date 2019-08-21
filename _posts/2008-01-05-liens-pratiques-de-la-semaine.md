@@ -1,6 +1,6 @@
 ---
 title: Liens pratiques de la semaine 01 (Janvier 2008)
-tags: [Données]
+tags: [Divers]
 category: technological-watch
 blogger_orig_url: https://keulkeul.blogspot.com/2008/01/liens-pratiques-de-la-semaine.html
 description: Vous trouverez ici une sélection de liens pratiques autour des technologies Java qui m'ont particulièrement intéressées cette semaine 01 (janvier 2008).
