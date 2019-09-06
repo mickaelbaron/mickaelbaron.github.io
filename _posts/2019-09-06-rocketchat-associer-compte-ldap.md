@@ -3,6 +3,7 @@ title: J'ai besoin de... associer un compte utilisateur Rocket.chat à un LDAP
 tags: [Rocket.chat]
 description: Dans ce billet, j'explique comment créer un compte utilisateur sous Rocket.chat et comment l'associer à postériori à LDAP.
 category: technical
+twitter: 1169887857198022656
 ---
 
 Au niveau de la structure où je travaille et après une forte demande des utilisateurs de disposer d'un outil de discussions à la [Slack](https://slack.com), j'ai fait une analyse des solutions gratuites et open source de discussion pour voir ce que je pouvais mettre en place. Après une étude des différentes solutions du marché, je suis arrivé au choix d'utiliser l'application [Rocket.chat](https://rocket.chat/).
