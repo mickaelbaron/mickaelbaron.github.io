@@ -1,6 +1,6 @@
 ---
 title: Tutoriel sur le développement d'une application basée sur une architecture microservice avec Docker
-tags: [SOA, Microservice]
+tags: [SOA, Microservices]
 blogger_orig_url: https://keulkeul.blogspot.com/2016/03/tutoriel-sur-le-developpement-dune.html
 category: technical
 ---

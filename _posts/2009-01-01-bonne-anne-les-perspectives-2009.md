@@ -1,6 +1,6 @@
 ---
 title: Bonne année... les perspectives 2009
-tags: [Eclipse]
+tags: [Divers]
 blogger_orig_url: https://keulkeul.blogspot.com/2009/01/bonne-anne-les-perspectives-2009.html
 category: announcement
 ---
