@@ -3,7 +3,7 @@ title: J'ai besoin de... monter une image d'un disque virtuel (VDI) sur un syst�
 tags: [Xen]
 category: technical
 description: Dans ce billet, j’explique comment accéder à une image de disque virtuel (VDI) depuis un système hôte Xen en realisant un point de montage.
-twitter: 
+twitter: 1171067019158011904
 ---
 
 Depuis 2009, le système de virtualisation choisi au sein de la structure où je travaille est l'hyperviseur [Citrix Hypervisor](https://www.citrix.fr/downloads/citrix-hypervisor/) (anciennement XenServer depuis le passage à la 8.0) basé sur le projet open source [Xen](https://xenproject.org/). Nous exploitons la version XenServer 7.6 Free Edition sur cinq serveurs. Les machines virtuelles servent essentiellement pour réaliser des expérimentations sur des bases de données, l'hébergement d'applicatifs (les outils de la forge par exemple) et parfois pour l'enseignement. Du fait de la version Free Edition, de nombreuses fonctionnalités d'administration des machines virtuelles ne sont pas disponibles depuis le client par défaut XenCenter (application Windows uniquement). Pour pallier à ces limitations, il existe deux autres clients : [XenOrchestra](https://xen-orchestra.com) (application web) et les outils en ligne commande. Pour ces outils, il en existe deux principalement : [xl](https://wiki.xen.org/wiki/XL) (utilisé majoritairement par le projet open source [Xen](https://xenproject.org/) et [xe](https://xenproject.org/developers/teams/xen-api/) (utilisé par XenServer).
