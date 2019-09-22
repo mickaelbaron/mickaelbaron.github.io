@@ -3,6 +3,7 @@ title: Mes applications pour travailler sous MAC OS X
 tags: [Divers]
 blogger_orig_url: https://keulkeul.blogspot.com/2015/10/mes-applications-pour-travailler-sous.html
 category: technical
+twitter: 1175763600369209346
 ---
 
 Depuis quelques temps, je suis repassé à Mac OS X. Voici une liste des outils que j'utilise. Ce billet a été mis à jour le 22 septembre 2019.
