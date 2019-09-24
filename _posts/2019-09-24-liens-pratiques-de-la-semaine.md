@@ -2,7 +2,7 @@
 title: Liens pratiques de la semaine 39 (septembre 2019)
 tags: [Java, Eclipse, Vue.js]
 category: technological-watch
-twitter: 
+twitter: 1176476962270982144
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 39 (septembre 2019).
