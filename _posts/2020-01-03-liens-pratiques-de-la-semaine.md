@@ -1,10 +1,9 @@
 ---
 title: Liens pratiques de la semaine 01 (Janvier 2020)
-tags: [Java, Eclipse, JavaScript, Docker]
+tags: [Java, JavaScript, Docker]
 category: technological-watch
-twitter: 
+twitter: 1213205850749362177
 ---
-
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 01 (janvier 2020).
 
 ## Java
