@@ -2,7 +2,7 @@
 title: Liens pratiques de la semaine 14 (Avril 2020)
 tags: [Java, Docker]
 category: technological-watch
-twitter: 
+twitter: 1246821716426399744
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 14 (avril 2020) #prenezsoindevous
