@@ -3,6 +3,7 @@ title: Mise à jour des tutoriels sur Vue.js
 tags: [Vue.js, Java, Docker]
 category: technical
 description: Une mise à jour sur les tutoriels consacrés à Vue.js est disponible, venez découvrir les nouveautés que j'ai apportées pour cette révision 2020.
+twitter: 1278387487363215361
 ---
 Pour rappel, une série de trois tutoriels consacrés au framework web JavaScript [Vue.js](https://vuejs.org/) est disponible :
 
