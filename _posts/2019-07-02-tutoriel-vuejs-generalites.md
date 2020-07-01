@@ -20,6 +20,6 @@ Cette première partie se focalise sur les généralités de [Vue.js](https://vu
 
 Vous trouverez sur ce [lien](/web/vuejs-generalites-part1), le contenu de la première partie du tutoriel sur [Vue.js](https://vuejs.org/).
 
-Ce tutorial a été écrit ❤️. J'espère qu'il vous plaira et vous aidera à développer des applications web monopages (Single-Page Application) avec [Vue.js](https://vuejs.org/).
+Ce tutoriel a été écrit avec ❤️. J'espère qu'il vous plaira et vous aidera à développer des applications web monopages (Single-Page Application) avec [Vue.js](https://vuejs.org/).
 
 N'hésitez pas à laisser des commentaires sur le fil Twitter prévu à cet effet.

@@ -1,11 +1,11 @@
 ---
 title: 'Développer une application web avec Vue.js et Vue CLI, présentation des généralités (partie 1)'
-tags: [Java]
+tags: [Vue.js]
 direct_link:
 image: /images/vuejs.jpg
 description: Cette première partie s'intéresse à présenter les principaux concepts qu'un framework web JavaScript nouvelle génération doit proposer et comment ils ont été intégrés dans Vue.js.
 category: Article
-date: 2019-07-01
+date: 2020-06-29
 weight: 1
 toc: true
 twitter: 1145967402464808961
@@ -19,7 +19,7 @@ Les différentes parties de cet article sont détaillées ci-dessous :
 * [mise en œuvre des concepts de Vue.js](/web/vuejs-miseenoeuvre-part2) ;
 * déploiement d'une application web développée avec Vue.js.
 
-Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 3 de [Vue CLI](https://cli.vuejs.org/).
+Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/).
 
 Cette première partie s'intéresse donc à présenter les principaux concepts qu'un framework web JavaScript nouvelle génération doit proposer et comment ils ont été intégrés dans [Vue.js](https://vuejs.org/).
 
@@ -184,7 +184,7 @@ La notion de DOM virtuel a été popularisée par [React.js](https://angular.io/
 Vous trouverez ci-dessous quelques statistiques concernant les trois frameworks et bibliothèques les plus répandus. Le site [stackshare.io](https://stackshare.io/) a permis d'obtenir les informations pour la colonne *Emplois*.
 
 |  Framework  |  GitHub Stars  |  GitHub Forks  |  Emplois  |
-+============+=================+================+===========+
+| :---------: | -------------: | -------------: | --------: |
 |   Angular   |     46,316     |     12,168     |   4870    |
 |   React.js  |    124,921     |     22,701     |   9080    |
 |   Vue.js    |    131,609     |     18,786     |    548    |
@@ -287,9 +287,9 @@ Cette extension permet de visualiser et de naviguer à travers les différents c
 
 [Vue CLI](https://cli.vuejs.org/) est un outil en ligne de commande pour faciliter la construction, le test et le déploiement de son application web. C'est un utilitaire de développement qui se place au-dessus de nombreux outils (webpack par exemple) pour rendre plus accessible le développement web avec [Vue.js](https://vuejs.org/).
 
-La version 3 a été revue en profondeur avec :
+Depuis la version 3, [Vue CLI](https://cli.vuejs.org/) a été revu en profondeur avec :
 
-* absence de fichier de configuration webpack, adieu donc le répertoire *config* contenant plein de fichiers **.js* ;
+* absence de fichier de configuration webpack, suppression du répertoire *config* contenant des fichiers **.js* ;
 * intégration de plugins ;
 * ajout d'une interface web de configuration.
 
@@ -305,14 +305,10 @@ Pour s'assurer que tout a été correctement installé.
 ```console
 $ npm list -g --depth 0
 /usr/local/lib
-├── @vue/cli@3.8.2
-├── @vue/cli-service-global@3.8.0
-├── @vue/cli-init@3.8.0
-├── vue-cli@2.9.6
+├── @vue/cli@4.4.5
+├── @vue/cli-service-global@4.4.5
 └── ...
 ```
-
-> Il est possible d'utiliser Vue CLI version 3 pour la version 2 de Vue.js. À ce moment-là, vous devriez avoir en plus les packages suivants : *vue-cli@x.y.z* et *@vue/cli-init@3.5.1*.
 
 ## Conclusion et remerciements
 

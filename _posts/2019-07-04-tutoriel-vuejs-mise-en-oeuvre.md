@@ -31,6 +31,6 @@ Vous trouverez sur ce [lien](/web/vuejs-miseenoeuvre-part2) le contenu de cette 
 
 Le code source complet de l'exemple PollDLE est disponible à cette adresse : <https://github.com/mickaelbaron/vuejs-polldle-tutorial-src>.
 
-Ce tutorial a été écrit ❤️. J'espère qu'il vous plaira et vous aidera à développer des applications web monopages (Single-Page Application) avec [Vue.js](https://vuejs.org/).
+Ce tutoriel a été écrit avec ❤️. J'espère qu'il vous plaira et vous aidera à développer des applications web monopages (Single-Page Application) avec [Vue.js](https://vuejs.org/).
 
 N'hésitez pas à laisser des commentaires sur le fil Twitter prévu à cet effet.

@@ -1,6 +1,6 @@
 ---
 title: 'Développer une application web avec Vue.js et Vue CLI, déploiement avec Docker (partie 3)'
-tags: [Java, Docker]
+tags: [Vue.js, Docker]
 direct_link:
 image: /images/vuejsdockerjava.jpg
 description: Cette troisième partie s'intéresse aux problématiques de déploiement d'une application Vue.js en utilisant Docker pour créer des conteneurs.
@@ -19,7 +19,7 @@ Les différentes parties de cet article sont détaillées ci-dessous :
 * [mise en œuvre des concepts de Vue.js](/web/vuejs-miseenoeuvre-part2) ;
 * **déploiement d'une application web développée avec Vue.js**.
 
-Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 3 de [Vue CLI](https://cli.vuejs.org/).
+Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/).
 
 Cette troisième partie s'intéresse aux problématiques de déploiement d'une application [Vue.js](https://vuejs.org/) en utilisant massivement la brique technologique Docker pour créer des conteneurs.
 
@@ -76,16 +76,16 @@ La construction des binaires se fait par l'intermédiaire de [Maven](https://mav
 $ mvn clean package
 ...
 [INFO] ------------------------------------------------------------------------
-[INFO] Reactor Summary:
+[INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
 [INFO]
-[INFO] polldle-parent 0.3-SNAPSHOT ........................ SUCCESS [  0.124 s]
-[INFO] poddle-api ......................................... SUCCESS [  1.244 s]
-[INFO] polldle-server 0.3-SNAPSHOT ........................ SUCCESS [  6.273 s]
+[INFO] polldle-parent ..................................... SUCCESS [  0.127 s]
+[INFO] poddle-api ......................................... SUCCESS [  1.040 s]
+[INFO] polldle-server ..................................... SUCCESS [  5.746 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 7.811 s
-[INFO] Finished at: 2019-06-14T16:24:20+02:00
+[INFO] Total time:  7.028 s
+[INFO] Finished at: 2020-06-30T21:28:55+02:00
 [INFO] ------------------------------------------------------------------------
 ```
 
@@ -137,10 +137,9 @@ Comme vu dans la partie construction des binaires, les fichiers nécessaires à 
 ```console
 $ java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
 ...
-2019-06-14 17:34:12.162 INFO -- org.eclipse.jetty.server.handler.ContextHandler -- Started o.e.j.w.WebAppContext@7fd7a283{/,file:///private/var/folders/27/m3j8g4z54lgdbdlvrwc5_prr0000gn/T/kumuluzee-tmp-webapp15558546934995523069/,AVAILABLE}
-2019-06-14 17:34:12.188 INFO -- org.eclipse.jetty.server.AbstractConnector -- Started ServerConnector@6f5e16cf{HTTP/1.1,[http/1.1]}{0.0.0.0:9991}
-2019-06-14 17:34:12.188 INFO -- org.eclipse.jetty.server.Server -- Started @2464ms
-2019-06-14 17:34:12.188 INFO -- com.kumuluz.ee.EeApplication -- KumuluzEE started successfully
+2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.AbstractConnector -- Started ServerConnector@4c402120{HTTP/1.1, (http/1.1)}{0.0.0.0:9991}
+2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.Server -- Started @1932ms
+2020-06-30 21:29:53.508 INFO -- com.kumuluz.ee.EeApplication -- KumuluzEE started successfully
 ```
 
 L'ensemble des bibliothèques Java nécessaires à l'exécution du programme Java et le code compilé du projet sont passés au *classpath* de l'exécution. La classe principale (le point d'entrée de l'application Java) est celle fournie par [KumuluzEE](https://ee.kumuluz.com/) à savoir `com.kumuluz.ee.EeApplication`.
@@ -155,7 +154,7 @@ La création d'une image sous [Docker](https://www.docker.com/) passe par l'écr
 
 ```dockerfile
 # Build env
-FROM maven:3-jdk-8 AS build-java-stage
+FROM maven:3-jdk-11 AS build-java-stage
 LABEL maintainer="Mickael BARON"
 WORKDIR /polldle
 COPY polldle-api polldle-api
@@ -164,20 +163,20 @@ COPY pom.xml .
 RUN mvn -f pom.xml clean package
 
 # Run env
-FROM openjdk:8-jre-slim
+FROM adoptopenjdk/openjdk11:alpine-jre
 COPY --from=build-java-stage /polldle/polldle-server/target/classes /polldle/classes
 COPY --from=build-java-stage /polldle/polldle-server/target/dependency/*.jar /polldle/dependency/
 EXPOSE 9991
 ENTRYPOINT ["java", "-cp", "/polldle/classes:/polldle/dependency/*", "com.kumuluz.ee.EeApplication"]
 ```
 
-Ce fichier *Dockerfile* est décomposé en deux étapes de construction appelée multi*stage*. La première étape consiste à créer une image temporaire à partir du résultat de la compilation du composant serveur (Java) tandis que la seconde étape consiste à créer l'image finale qui servira pour l'exécution. Le résultat de la première étape servira pour construire la seconde étape. L'intérêt de décomposer en deux étapes est avant tout de pouvoir limiter la taille de l'image finale. En effet, pour la compilation, il est nécessaire de s'appuyer sur une image [Docker](https://www.docker.com/) avec JDK et Maven (`FROM maven:3-jdk-8 AS build-java-stage`). De nombreuses dépendances Java seront téléchargées, mais pas forcément utiles pour l'exécution (plugin Maven, dépendances Java pour les tests unitaires…).
+Ce fichier *Dockerfile* est décomposé en deux étapes de construction appelée multi*stage*. La première étape consiste à créer une image temporaire à partir du résultat de la compilation du composant serveur (Java) tandis que la seconde étape consiste à créer l'image finale qui servira pour l'exécution. Le résultat de la première étape servira pour construire la seconde étape. L'intérêt de décomposer en deux étapes est avant tout de pouvoir limiter la taille de l'image finale. En effet, pour la compilation, il est nécessaire de s'appuyer sur une image [Docker](https://www.docker.com/) avec JDK et Maven (`FROM maven:3-jdk-11 AS build-java-stage`). De nombreuses dépendances Java seront téléchargées, mais pas forcément utiles pour l'exécution (plugin Maven, dépendances Java pour les tests unitaires…).
 
 Détaillons le contenu de ce fichier *Dockerfile* qui propose deux étapes.
 
 **Étapes de compilation :**
 
-* `FROM maven:3-jdk-8 AS build-java-stage` : partir d'une image [Docker](https://www.docker.com/) Java pour la compilation, elle contient [Maven](https://maven.apache.org/) et [JDK](http://jdk.java.net/) ;
+* `FROM maven:3-jdk-11 AS build-java-stage` : partir d'une image [Docker](https://www.docker.com/) Java pour la compilation, elle contient [Maven](https://maven.apache.org/) et [JDK](http://jdk.java.net/) ;
 * `LABEL maintainer="Mickael BARON"` : préciser l'auteur du fichier ;
 * `WORKDIR /polldle` : fixer le répertoire de travail ;
 * `COPY polldle-api polldle-api` : copier le contenu du répertoire *polldle/polldle-backend/polldle-api* (contient l'API du projet) de l'hôte à la racine du répertoire courant du conteneur ;
@@ -187,7 +186,7 @@ Détaillons le contenu de ce fichier *Dockerfile* qui propose deux étapes.
 
 **Étapes d'exécution :**
 
-* `FROM openjdk:8-jre-slim` : partir d'une image [Docker](https://www.docker.com/) Java pour l'exécution. On s'appuie ici sur une version minimaliste de Java 8 ;
+* `FROM adoptopenjdk/openjdk11:alpine-jre` : partir d'une image [Docker](https://www.docker.com/) Java pour l'exécution. On s'appuie ici sur une version JRE de Java fournie par la distribution AdoptOpenJDK ;
 * `COPY --from=build-java-stage .../classes /polldle/classes` : copier le résultat de la compilation de la précédente étape vers le conteneur de la seconde étape ;
 * `COPY --from=build-java-stage .../dependency/*.jar /polldle/dependency/` : copier le contenu du répertoire des dépendances obtenu lors de la précédente étape vers le conteneur de la seconde étape ;
 * `EXPOSE 9991` : préciser que le port `9991` pourra être exposé. Cette instruction ne publie pas automatiquement ce port lors de la construction du conteneur. Il s'agit d'une simple documentation à utiliser quand vous souhaitez comprendre quels ports sont à exposer.
@@ -201,42 +200,42 @@ La construction de l'image du composant serveur (Java) se base sur le fichier *D
 
 ```console
 $ docker build --tag mickaelbaron/polldle-backend .
-Sending build context to Docker daemon  14.66MB
-Step 1/12 : FROM maven:3-jdk-8 AS build-java-stage
- ---> 744127042367
+Sending build context to Docker daemon  16.53MB
+Step 1/12 : FROM maven:3-jdk-11 AS build-java-stage
+ ---> 918519009705
 Step 2/12 : LABEL maintainer="Mickael BARON"
  ---> Using cache
- ---> 592524361e0f
+ ---> 3fafd8d7ffaf
 Step 3/12 : WORKDIR /polldle
  ---> Using cache
- ---> 5674b58c017f
+ ---> 8c77daa432e6
 Step 4/12 : COPY polldle-api polldle-api
  ---> Using cache
- ---> 3e7e81dfec53
+ ---> 9dfda02b9f5c
 Step 5/12 : COPY polldle-server polldle-server
  ---> Using cache
- ---> 0f587aec9d33
+ ---> fb55878a2bb5
 Step 6/12 : COPY pom.xml .
  ---> Using cache
- ---> 76bad6fd5b87
+ ---> a97354e88cac
 Step 7/12 : RUN mvn -f pom.xml clean package
  ---> Using cache
- ---> bb82e04d86e1
-Step 8/12 : FROM openjdk:8-jre-slim
- ---> 7c6b62cf60ee
+ ---> 7ea2e436ca8e
+Step 8/12 : FROM adoptopenjdk/openjdk11:alpine-jre
+ ---> e6a63aa27f97
 Step 9/12 : COPY --from=build-java-stage /polldle/polldle-server/target/classes /polldle/classes
  ---> Using cache
- ---> 7758407c0988
+ ---> 6fdf5002cca8
 Step 10/12 : COPY --from=build-java-stage /polldle/polldle-server/target/dependency/*.jar /polldle/dependency/
  ---> Using cache
- ---> 6b468cc03978
+ ---> 655ab9c47799
 Step 11/12 : EXPOSE 9991
  ---> Using cache
- ---> 21a4ac2e9d1f
+ ---> 677fda6a6431
 Step 12/12 : ENTRYPOINT ["java", "-cp", "/polldle/classes:/polldle/dependency/*", "com.kumuluz.ee.EeApplication"]
  ---> Using cache
- ---> a06e8fa7a757
-Successfully built a06e8fa7a757
+ ---> c976b72dafd3
+Successfully built c976b72dafd3
 Successfully tagged mickaelbaron/polldle-backend:latest
 ```
 
@@ -247,14 +246,14 @@ On remarque que le nombre d'étapes est identique au nombre de lignes contenues 
 ```console
 $ docker images
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
-mickaelbaron/polldle-backend   latest              a06e8fa7a757        2 days ago          182MB
+mickaelbaron/polldle-backend   latest              c976b72dafd3        2 seconds ago       165MB
 ```
 
-On constate clairement que l'image est d'une taille réduite (182MB). Cela est dû à l'utilisation du multi*stage* d'une part et à l'image [Docker](https://www.docker.com/) `openjdk:8-jre-slim` qui offre une empreinte de disque réduite.
+On constate clairement que l'image est d'une taille réduite (165MB). Cela est dû à l'utilisation du multi*stage* d'une part et à l'image [Docker](https://www.docker.com/) `adoptopenjdk/openjdk11:alpine-jre` qui offre une empreinte de disque réduite.
 
 #### Créer un conteneur du composant serveur (Java)
 
-Nous pouvons désormais créer un conteneur afin de tester l'image construite pour le composant serveur (Java). Bien entendu, il s'agit d'une première étape, car dans cette section, seul le composant serveur (Java) sera déployé par un conteneur. Le composant client (Vue.js) devra être démarré sans conteneur.
+Nous pouvons désormais créer un conteneur afin de tester l'image construite pour le composant serveur (Java). Bien entendu, il s'agit d'une première étape, car dans cette section, seul le composant serveur (Java) sera déployé par un conteneur. Le composant client ([Vue.js](https://vuejs.org/)) devra être démarré sans conteneur.
 
 * Se positionner dans le répertoire *polldle-vue* et créer un conteneur basé sur l'image [Docker](https://www.docker.com/) précédente.
 
@@ -273,7 +272,7 @@ CONTAINER ID        IMAGE                          COMMAND                  STAT
 2cc90d113638        mickaelbaron/polldle-backend   "java -cp /polldle/c…"   Up 52 seconds       0.0.0.0:9991->9991/tcp   backend
 ```
 
-* Toujours depuis le répertoire *polldle-vue*, démarrer l'exécution en mode développement de la couche client (Vue.js).
+* Toujours depuis le répertoire *polldle-vue*, démarrer l'exécution en mode développement de la couche client ([Vue.js](https://vuejs.org/)).
 
 ```console
 $ npm run serve
@@ -282,7 +281,7 @@ $ npm run serve
 
 ### Composant client (Vue.js)
 
-Le développement du composant client (Vue.js) a déjà été présenté dans le [deuxième article](/web/vuejs-miseenoeuvre-part2) de ce tutoriel.
+Le développement du composant client ([Vue.js](https://vuejs.org/)) a déjà été présenté dans le [deuxième article](/web/vuejs-miseenoeuvre-part2) de ce tutoriel.
 
 Pour le déploiement de ce composant, nous allons devoir changer l'adresse du composant serveur. En effet, l'adresse du composant serveur pour le développement `http://127.0.0.1:9991` est différente de celle pour le déploiement en production `/server`.
 
@@ -466,7 +465,7 @@ Le résultat de cette construction est disponible dans le répertoire *dist* où
 
 Toutes les bibliothèques (Bootstrap, Vue.js, Highcharts…) utilisées dans notre projet PollDLE sont regroupées et minifiées (réduites au strict minimum) dans les fichiers CSS et JavaScript.
 
-Pour s'assurer que la variable d'environnement a été utilisée dans le code, examinons le contenu du fichier *dist/js/app.f1a0f2ea.js*.
+Pour s'assurer que la variable d'environnement a été utilisée dans le code, examinons le contenu du fichier *dist/js/app.XYZ.js*.
 
 ```javascript
 ...var o=new Request("/server/polldles",{method:"POST",body:JSON.stringify(e),headers:{"Content-Type":"application/json"}})...
@@ -525,8 +524,8 @@ VUE_APP_SERVER_URL = http://localhost:9991
 * Installer les modules requis et construire les binaires pour notre projet [Vue.js](https://vuejs.org/).
 
 ```console
-npm install
-npm run build
+$ npm install
+$ npm run build
 ```
 
 * Si le conteneur du composant serveur (Java) est toujours en exécution (`$ docker ps`), vous pouvez passer à l'étape suivante, sinon, exécuter la ligne de commande suivante.
@@ -557,13 +556,13 @@ docker rm -f frontend
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-17* pour profiter des codes qui vont illustrer cette section.
 
-Nous avons vu comment configurer le code pour utiliser des variables d'environnement, produire les binaires pour le composant client (Vue.js) et déployer sur le serveur web [NGINX](https://www.nginx.com/).
+Nous avons vu comment configurer le code pour utiliser des variables d'environnement, produire les binaires pour le composant client ([Vue.js](https://vuejs.org/)) et déployer sur le serveur web [NGINX](https://www.nginx.com/).
 
 Tout comme le composant serveur (Java), les binaires du composant client seront produits lors de la création de l'image [Docker](https://www.docker.com/).
 
 Pour rappel, la création d'une image sous [Docker](https://www.docker.com/) passe par l'écriture d'un fichier *Dockerfile*.
 
-* Créer un fichier *Dockerfile* à la racine du dossier *polldle-vue-16* et le compléter par le code présenté ci-dessous.
+* Créer un fichier *Dockerfile* à la racine du dossier *polldle-vue-17* et le compléter par le code présenté ci-dessous.
 
 ```dockerfile
 # Build env
@@ -613,54 +612,54 @@ Détaillons le contenu de ce fichier *Dockerfile* qui propose deux étapes.
 
 #### Construction de l'image Docker du composant client (Vue.js)
 
-La construction de l'image [Docker](https://www.docker.com/) du composant client (Vue.js) se base sur le fichier *Dockerfile* défini précédemment.
+La construction de l'image [Docker](https://www.docker.com/) du composant client ([Vue.js](https://vuejs.org/)) se base sur le fichier *Dockerfile* défini précédemment.
 
-* Toujours depuis le répertoire *polldle/polldle-vue-17*, exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client (Vue.js).
+* Toujours depuis le répertoire *polldle/polldle-vue-17*, exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client ([Vue.js](https://vuejs.org/)).
 
 ```console
 docker build --tag mickaelbaron/polldle-vue .
-Sending build context to Docker daemon  538.6kB
+Sending build context to Docker daemon  57.34kB
 Step 1/14 : FROM node:lts-alpine as build-npm-stage
- ---> a298c79121d9
+ ---> 057fa4cc38c2
 Step 2/14 : LABEL maintainer="Mickael BARON"
  ---> Using cache
- ---> 37667248b486
+ ---> 91543748447a
 Step 3/14 : WORKDIR /polldle-vue
  ---> Using cache
- ---> 8d986de2d38c
+ ---> 5ea22eb50079
 Step 4/14 : COPY package*.json ./
  ---> Using cache
- ---> 6cf92051e506
+ ---> fa6f61549b13
 Step 5/14 : RUN npm install
  ---> Using cache
- ---> f6fe7bcd8fad
+ ---> 32e9f4fca085
 Step 6/14 : COPY public ./public
  ---> Using cache
- ---> 618f15130818
+ ---> e139a5f93f2b
 Step 7/14 : COPY src ./src
  ---> Using cache
- ---> e0d39ea9a4fb
+ ---> 4654c326d25d
 Step 8/14 : COPY .env.production ./
  ---> Using cache
- ---> eadf796ad323
+ ---> 8351a516d016
 Step 9/14 : RUN npm run build
  ---> Using cache
- ---> 1017bd88ba8a
+ ---> 2b589148ec8a
 Step 10/14 : FROM nginx:stable-alpine
- ---> ef04b00b089d
+ ---> ab94f84cc474
 Step 11/14 : COPY --from=build-npm-stage /polldle-vue/dist /usr/share/nginx/html
  ---> Using cache
- ---> 1ee59e34d30e
+ ---> 454d3333fb1a
 Step 12/14 : COPY nginx.conf /etc/nginx/conf.d/default.conf
  ---> Using cache
- ---> 3069b033be56
+ ---> 89ff6d70d7d2
 Step 13/14 : EXPOSE 80
  ---> Using cache
- ---> b55635e86b7d
+ ---> d0d44708c4c8
 Step 14/14 : ENTRYPOINT ["nginx", "-g", "daemon off;"]
  ---> Using cache
- ---> d3ffaf3dd01d
-Successfully built d3ffaf3dd01d
+ ---> f34078d6c901
+Successfully built f34078d6c901
 Successfully tagged mickaelbaron/polldle-vue:latest
 ```
 
@@ -669,15 +668,15 @@ Successfully tagged mickaelbaron/polldle-vue:latest
 ```console
 $ docker images
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
-mickaelbaron/polldle-backend   latest              a06e8fa7a757        2 days ago          182MB
-mickaelbaron/polldle-vue       latest              d3ffaf3dd01d        34 seconds ago      22.1MB
+mickaelbaron/polldle-backend   latest              c976b72dafd3        60 seconds ago      165MB
+mickaelbaron/polldle-vue       latest              f34078d6c901        34 seconds ago      23.2MB
 ```
 
 #### Créer un conteneur du composant client (Vue.js)
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-18* pour profiter des codes qui vont illustrer cette section.
 
-Nous pouvons désormais créer un conteneur afin de tester l'image [Docker](https://www.docker.com/) construite pour le composant client (Vue.js). Le composant serveur (Java) doit normalement toujours être disponible dans un conteneur.
+Nous pouvons désormais créer un conteneur afin de tester l'image [Docker](https://www.docker.com/) construite pour le composant client ([Vue.js](https://vuejs.org/)). Le composant serveur (Java) doit normalement toujours être disponible dans un conteneur.
 
 * Se positionner dans le répertoire *polldle-vue-18* et exécuter la ligne de commande suivante pour créer un conteneur basé sur l'image *mickaelbaron/polldle-vue*.
 
@@ -703,7 +702,7 @@ Malheureusement, si vous testez l'application PollDLE à l'adresse [http://local
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-rp-without_subpath* pour profiter des codes qui vont illustrer cette section.
 
-Le composant *reverse-proxy* est en charge de répondre aux sollicitations du client. Ainsi, si l'URL est de la forme [http://localhost/](http://localhost/), le *reverse-proxy* redirigera les requêtes vers le composant client (Vue.js) afin de télécharger le contenu statique développé avec [Vue.js](https://vuejs.org/). Au contraire, si l'URL est de la forme [http://localhost/server](http://localhost/server), le composant *reverse-proxy* redirigera les requêtes vers le composant serveur (Java) afin d'invoquer les services web REST développés avec Java.
+Le composant *reverse-proxy* est en charge de répondre aux sollicitations du client. Ainsi, si l'URL est de la forme [http://localhost/](http://localhost/), le *reverse-proxy* redirigera les requêtes vers le composant client ([Vue.js](https://vuejs.org/)) afin de télécharger le contenu statique développé avec [Vue.js](https://vuejs.org/). Au contraire, si l'URL est de la forme [http://localhost/server](http://localhost/server), le composant *reverse-proxy* redirigera les requêtes vers le composant serveur (Java) afin d'invoquer les services web REST développés avec Java.
 
 [NGINX](https://www.nginx.com/), déjà employé comme serveur web, sera également utilisé comme *Reverse-Proxy*.
 
@@ -733,7 +732,7 @@ server {
 }
 ```
 
-Deux configurations sont disponibles : celle pour accéder au composant server (Java) via `/server/` et celle pour accéder au composant client (Vue.js) via `/`. À noter que les requêtes sont redirigées vers les deux serveurs qui portent les noms respectifs de [http://backend:9991/](http://backend:9991/) et [http://frontend](http://frontend/). Nous verrons plus tard comment associer ces noms.
+Deux configurations sont disponibles : celle pour accéder au composant server (Java) via `/server/` et celle pour accéder au composant client ([Vue.js](https://vuejs.org/)) via `/`. À noter que les requêtes sont redirigées vers les deux serveurs qui portent les noms respectifs de [http://backend:9991/](http://backend:9991/) et [http://frontend](http://frontend/). Nous verrons plus tard comment associer ces noms.
 
 #### Dockerfile pour le composant reverse-proxy (NGINX)
 
@@ -786,16 +785,32 @@ Successfully tagged mickaelbaron/polldle-rp:latest
 ```console
 $ docker images
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
-mickaelbaron/polldle-rp        latest              f9f2abc08cea        13 minutes ago      20.4MB
-mickaelbaron/polldle-backend   latest              eed853aefdd4        23 hours ago        182MB
-mickaelbaron/polldle-vue       latest              c0e92868e9d5        24 hours ago        22.1MB
+mickaelbaron/polldle-rp        latest              0c244aebbac3        18 seconds ago      21.3MB
+mickaelbaron/polldle-backend   latest              c976b72dafd3        20 hours ago        165MB
+mickaelbaron/polldle-vue       latest              f34078d6c901        22 minutes ago      23.2MB
 ```
 
 #### Créer un conteneur du composant reverse-proxy (NGINX)
 
-> Nous supposons que les conteneurs associés aux composants serveur et client sont toujours existants. Si ce n'est pas le cas, nous vous invitons à les recréer.
+Comme les conteneurs [Docker](https://www.docker.com/) basés sur les images *mickaelbaron/polldle-vue* et *mickaelbaron/polldle-backend* exposent les ports `80` et `9991`, nous allons les recréer.
 
-* Créer un conteneur basé sur l'image [Docker](https://www.docker.com/) *mickaelbaron/polldle-rt*.
+* Exécuter la ligne de commande suivante pour supprimer les conteneurs en cours d'exécution.
+
+```console
+$ docker rm -f frontend
+$ docker rm -f backend
+```
+
+* Exécuter la ligne de commande suivante pour créer les conteneurs [Docker](https://www.docker.com/) basés sur les images *mickaelbaron/polldle-vue* et *mickaelbaron/polldle-backend*.
+
+```console
+$ docker run -d --name frontend mickaelbaron/polldle-vue
+a7891762c6b6960ff781dd30063f1111991711f3675e60ad140eef022e1c84e7
+$ docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 mickaelbaron/polldle-backend
+52702cfe48e5f84825fb241b74d18557140123c3a77e9178ea87d51e6217ac3f
+```
+
+* Créer ensuite un conteneur basé sur l'image [Docker](https://www.docker.com/) *mickaelbaron/polldle-rt*.
 
 ```console
 $ docker run -d --name rp -p 80:80 mickaelbaron/polldle-rp
@@ -849,17 +864,17 @@ docker run -d --name rp --network polldlenetwork -p 80:80 mickaelbaron/polldle-r
 
 ## Déploiement via un sous-chemin
 
-Le déploiement peut vouloir être réalisé au travers d'un sous-chemin de la forme [https://mycompany.com/polldle](https://mycompany.com/polldle). Cela implique que les URL d'accès aux composants client et serveur soient différentes. Cette modification n'est pas si anodine, puisque le code des composants *reverse-proxy* (NGINX) et client (Vue.js) devront être impactés. Plus précisément, il s'agira pour le composant *reverse-proxy* (NGINX) du fichier de configuration, et pour le composant client (Vue.js) d'une nouvelle URL pour accéder aux services web REST, de la configuration du routage et de l'accès aux ressources CSS et JavaScript.
+Le déploiement peut vouloir être réalisé au travers d'un sous-chemin de la forme [https://mycompany.com/polldle](https://mycompany.com/polldle). Cela implique que les URL d'accès aux composants client et serveur soient différentes. Cette modification n'est pas si anodine, puisque le code des composants *reverse-proxy* (NGINX) et client ([Vue.js](https://vuejs.org/)) devront être impactés. Plus précisément, il s'agira pour le composant *reverse-proxy* (NGINX) du fichier de configuration, et pour le composant client ([Vue.js](https://vuejs.org/)) d'une nouvelle URL pour accéder aux services web REST, de la configuration du routage et de l'accès aux ressources CSS et JavaScript.
 
 Le changement (avec ou sans sous-chemin) sera indiqué lors de la création des images [Docker](https://www.docker.com/). Ce changement pourrait se faire directement lors de l'exécution, mais je ne le traiterai pas dans ce tutoriel.
 
-Dans la suite de cette section, nous montrons une solution pour automatiser la construction des images [Docker](https://www.docker.com/) du composant *reverse-proxy* (NGINX) et du composant client (Vue.js).
+Dans la suite de cette section, nous montrons une solution pour automatiser la construction des images [Docker](https://www.docker.com/) du composant *reverse-proxy* (NGINX) et du composant client ([Vue.js](https://vuejs.org/)).
 
 ### Sous-chemin pour le composant client (Vue.js)
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-19* pour profiter des codes qui vont illustrer cette section.
 
-Au niveau du composant client (Vue.js), nous allons devoir renseigner :
+Au niveau du composant client ([Vue.js](https://vuejs.org/)), nous allons devoir renseigner :
 
 * une nouvelle URL pour accéder aux services web REST (variables d'environnement) ;
 * la configuration du routage (fichier *src/router/index.js*) ;
@@ -992,7 +1007,7 @@ La valeur donnée à `publicPath` est la valeur obtenue par la variable d'enviro
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-20* pour profiter des codes qui vont illustrer cette section.
 
-Pour rappel, voici les deux commandes pour construire les binaires du composant client (Vue.js) :
+Pour rappel, voici les deux commandes pour construire les binaires du composant client ([Vue.js](https://vuejs.org/)) :
 
 * sans sous-chemin : `$ npm run build` ;
 * avec sous-chemin : `$ npm run subpath`.
@@ -1029,7 +1044,7 @@ L'instruction `ARG script_name=build` permet de créer une variable `script_name
 
 #### Construction de l'image Docker du composant client (Vue.js) avec un sous-chemin
 
-* Depuis l'invite de commande, se positionner dans le répertoire *polldle/polldle-vue-20* et exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client (Vue.js).
+* Depuis l'invite de commande, se positionner dans le répertoire *polldle/polldle-vue-20* et exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client ([Vue.js](https://vuejs.org/)).
 
 ```console
 $ docker build --tag mickaelbaron/polldle-vue . --build-arg script_name=build
@@ -1108,7 +1123,7 @@ Pour changer le sous-chemin, vous devrez impacter les fichiers suivants :
 * *.env.subpath :* les clés `VUE_APP_SUBPATH` et `VUE_APP_SERVER_URL` ;
 * *subpath.conf :* modifier les valeurs dans `location`.
 
-Ensuite, reconstruire les images associées aux composants Client (Vue.js) et *reverse-proxy*.
+Ensuite, reconstruire les images associées aux composants Client ([Vue.js](https://vuejs.org/)) et *reverse-proxy*.
 
 ## Composer les images Docker
 
@@ -1173,7 +1188,7 @@ Dans l'hypothèse, où aucune image [Docker](https://www.docker.com/) n'a été 
 docker-compose up -d
 Creating network "polldle_polldlenetwork" with the default driver
 Building backend
-Step 1/12 : FROM maven:3-jdk-8 AS build-java-stage
+Step 1/12 : FROM maven:3-jdk-11 AS build-java-stage
 ...
 Step 12/12 : ENTRYPOINT ["java", "-cp", "/polldle/classes:/polldle/dependency/*", "com.kumuluz.ee.EeApplication"]
  ---> Running in d3dbb1a0a276
@@ -1216,13 +1231,13 @@ polldle_rp_1         nginx -g daemon off;             Up      0.0.0.0:80->80/tcp
 
 Cette troisième partie a présenté les problématiques de déploiement d'une application [Vue.js](https://vuejs.org/) en utilisant [Docker](https://www.docker.com/) pour la création de conteneurs.
 
-Pour le composant client (Vue.js) qui était au centre de cette étude, nous avons montré comment utiliser les variables d'environnement dans le code, comment configurer les paramètres globaux et comment utiliser un sous-chemin.
+Pour le composant client ([Vue.js](https://vuejs.org/)) qui était au centre de cette étude, nous avons montré comment utiliser les variables d'environnement dans le code, comment configurer les paramètres globaux et comment utiliser un sous-chemin.
 
 Pour [Docker](https://www.docker.com/), cette solution de conteneurisation a permis de rendre le développement plus proche de la production. La taille des images [Docker](https://www.docker.com/) construites a été optimisée via l'utilisation du multi*stage*.
 
 Cette troisième partie clôture également cette série consacrée à [Vue.js](https://vuejs.org/). De nombreux concepts n'ont pas été présentés, mais pourront faire l'objet de prochains tutoriels [Vuex](https://vuex.vuejs.org/) pour gérer l'état de l'application, [Vue-Native](https://vue-native.io/) pour la création d'applications natives à déployer sur le mobile et [WebComponents](https://www.webcomponents.org/) pour utiliser des WebComponents existants et pourquoi pas transformer des composants [Vue.js](https://vuejs.org/) en [WebComponents](https://www.webcomponents.org/).
 
-[Vue.js](https://vuejs.org/) est une constante évolution. Lors de l'écriture de cet article, nous utilisions la version 2 de [Vue.js](https://vuejs.org/) et la version 3 de [Vue CLI](https://cli.vuejs.org/). La version 3 de [Vue.js](https://vuejs.org/) est en cours d'élaboration et devrait sortir fin 2019. J’essaierai, dans la mesure du possible, d'adapter le code du projet PollDLE afin de tenir un cas d'étude à jour des avancées de [Vue.js](https://vuejs.org/).
+[Vue.js](https://vuejs.org/) est une constante évolution. Lors de l'écriture de cet article, nous utilisions la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/). La version 3 de [Vue.js](https://vuejs.org/) est en cours d'élaboration et devrait sortir en version officielle, fin 2020. J’essaierai, dans la mesure du possible, d'adapter le code du projet PollDLE afin de tenir un cas d'étude à jour des avancées de [Vue.js](https://vuejs.org/).
 
 Je tiens à remercier [Claude Leloup](https://www.developpez.net/forums/u124512/claudeleloup/) pour sa relecture orthographique.
 

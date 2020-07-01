@@ -1,11 +1,11 @@
 ---
 title: 'Développer une application web avec Vue.js et Vue CLI, mise en œuvre des concepts via un exemple (partie 2)'
-tags: [Java]
+tags: [Vue.js, Java]
 direct_link:
 image: /images/vuejs.jpg
 description: Cette deuxième partie présente les principaux concepts de Vue.js au travers d'un exemple complet appelé PollDLE.
 category: Article
-date: 2019-07-03
+date: 2020-06-29
 weight: 2
 toc: true
 authors: [diabatem]
@@ -20,7 +20,7 @@ Les différentes parties de cet article sont détaillées ci-dessous :
 * **mise en œuvre des concepts de Vue.js** ;
 * déploiement d'une application web développée avec Vue.js.
 
-Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 3 de [Vue CLI](https://cli.vuejs.org/).
+Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/).
 
 Cette deuxième partie présente les principaux concepts de [Vue.js](https://vuejs.org/) au travers d'un exemple.
 
@@ -101,31 +101,32 @@ $ vue info
 Environment Info:
 
   System:
-    OS: macOS 10.14.3
-    CPU: (8) x64 Intel(R) Core(TM) i7-4870HQ CPU @ 2.50GHz
+    OS: macOS 10.15.5
+    CPU: (12) x64 Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
   Binaries:
-    Node: 11.13.0 - /usr/local/bin/node
-    Yarn: Not Found
-    npm: 6.9.0 - /usr/local/bin/npm
+    Node: 14.2.0 - /usr/local/bin/node
+    Yarn: 1.22.4 - /usr/local/bin/yarn
+    npm: 6.14.4 - /usr/local/bin/npm
   Browsers:
-    Chrome: 73.0.3683.86
-    Firefox: 67.0
-    Safari: 12.0.3
+    Chrome: 83.0.4103.116
+    Edge: Not Found
+    Firefox: 77.0.1
+    Safari: 13.1.1
   npmGlobalPackages:
-    @vue/cli: 3.8.2
+    @vue/cli: 4.4.5
 ```
 
 * Nous allons créer notre premier projet avec **Vue CLI** en mode console. Depuis la racine du dossier *vuejs-polldle-tutorial-src* (obtenu en récupérant les codes source depuis le dépôt [https://github.com/mickaelbaron/vuejs-polldle-tutorial-src](https://github.com/mickaelbaron/vuejs-polldle-tutorial-src)), saisir la ligne de commande suivante : `$ vue create polldle-vue-00`. Une série de questions vous seront posées. 
 * Sélectionner le second élément afin de choisir manuellement le paramétrage.
 
 ```console
-Vue CLI v3.8.2
+Vue CLI v4.4.5
 ? Please pick a preset:
   default (babel, eslint)
 ❯ Manually select features
 ```
 
-* Sélectionner les plugins [Babel](https://babeljs.io/) (un compilateur JavaScript permettant d'utiliser des syntaxes récentes du langage qui seront traduites en JavaScript compréhensible par la plupart des versions des navigateurs) et [ESLint](https://eslint.org/) (un outil d'analyse statique du code JavaScript permettant de détecter des erreurs avant l'exécution et des problèmes de style). 
+* Sélectionner les plugins [Babel](https://babeljs.io/) (un compilateur JavaScript permettant d'utiliser des syntaxes récentes du langage qui seront traduites en JavaScript compréhensible par la plupart des versions des navigateurs) et **Linter / Formatter** (un outil d'analyse statique du code JavaScript permettant de détecter des erreurs avant l'exécution et des problèmes de style). 
 
 ```console
 ? Check the features needed for your project: (Press <space> to select, <a> to toggle all, <i> to invert selection)
@@ -140,7 +141,7 @@ Vue CLI v3.8.2
  ◯ E2E Testing
 ```
 
-* Pour [ESLint](https://eslint.org/), choisir le premier élément afin d'afficher la moindre erreur détectée. C'est assez contraignant au début (moindre espace en trop est une erreur), mais quel plaisir d'avoir un code propre qui respecte les conventions de codage. 
+* Pour l'option **Linter / Formatter**, choisir le premier élément afin d'afficher la moindre erreur détectée. C'est assez contraignant au début (moindre espace en trop est une erreur), mais quel plaisir d'avoir un code propre qui respecte les conventions de codage. Le **Linter** utilisé par défaut sera [ESLint](https://eslint.org/).
 
 ```console
 ? Pick a linter / formatter config:
@@ -150,7 +151,7 @@ Vue CLI v3.8.2
   ESLint + Prettier
 ```
 
-* Choisir le premier élément pour lancer Lint à chaque sauvegarde d'un fichier JavaScript.
+* Choisir le premier élément pour lancer le **Linter** à chaque sauvegarde d'un fichier JavaScript.
 
 ```console
 ? Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)
@@ -158,7 +159,7 @@ Vue CLI v3.8.2
  ◯ Lint and fix on commit
 ```
 
-* Choisir le second élément pour stocker les informations spécifiques de [Babel](https://babeljs.io/) et [ESLint](https://eslint.org/) dans le fichier *package.json*. À noter que même avec ce choix, un fichier *babel.config.js* sera quand même créé. 
+* Choisir le second élément pour stocker les informations spécifiques de [Babel](https://babeljs.io/) et [ESLint](https://eslint.org/) dans le fichier *package.json*. À noter que même avec ce choix, un fichier *babel.config.js* sera quand même créé.
 
 ```console
 ? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?
@@ -172,16 +173,24 @@ Vue CLI v3.8.2
 ? Save this as a preset for future projects? (y/N)
 ```
 
+* Choisir le gestionnaire de packages (**Yarn** ou **NPM**) à utiliser par défaut pour télécharger les dépendances. Cette option n'est disponible que si vous disposez de plus d'un gestionnaire de packages installé sur votre système. Ayant utilisé par la suite NPM, je vous demanderai de sélectionner le second choix.
+
+```console
+  Use Yarn
+❯ Use NPM
+```
+
 * La création de votre projet va se dérouler.
 
 ```console
+Vue CLI v4.4.5
 ✨  Creating project in /Users/baronm/vuejs-polldle-tutorial-src/polldle-vue-00.
-⚙  Installing CLI plugins. This might take a while...
+⚙️  Installing CLI plugins. This might take a while...
 
 ⸨       ░░░░░░░░░░░⸩ ⠇ diffTrees: sill install generateActionsToTake
 ```
 
-> La création de ce projet aurait pu être effectuée via **Vue UI** au travers d'une interface web. Les options sont les mêmes, seule l'interface est plus agréable. Nous montrerons par contre comment administrer notre projet avec **Vue UI**.
+> La création de ce projet aurait pu être effectuée via **Vue UI** au travers d'une interface web. Les options sont les mêmes, seule l'interface est plus agréable.
 
 ### Inventaire des fichiers générés
 
@@ -206,13 +215,13 @@ polldle-vue-00
     └── main.js
 ```
 
-> Pour les développeurs qui utilisaient **Vue CLI 2**, vous remarquerez la disparition du répertoire *config*. En effet, depuis **Vue CLI 3**, il n'y a plus de fichier de configuration. Pas d'inquiétude, vous pourrez toujours ajouter des informations de configuration. Nous en parlerons dans la partie 3 qui traite du déploiement.
+> Pour les développeurs qui utilisaient **Vue CLI 2**, vous remarquerez la disparition du répertoire *config*. En effet, depuis **Vue CLI 3**, il n'y a plus de fichier de configuration. Pas d'inquiétude, vous pourrez toujours ajouter des informations de configuration. Nous en parlerons dans la [partie 3](/web/vuejs-deploiement-part3) qui traite du déploiement.
 
 Le fichier *README.md* décrit les différentes commandes à utiliser avec **npm**. Nous y reviendrons dans la section suivante quand nous expliquerons comment tester le projet.
 
-Le fichier *babel.config.js* est un fichier de configuration pour l'outil [Babel](https://babeljs.io/).
+Le fichier *babel.config.js* est un fichier de configuration pour le transpileur [Babel](https://babeljs.io/). Ce dernier permet de générer du code JavaScript exécutable sur n'importe quel navigateur web. L'avantage est de pouvoir utiliser des versions récentes de JavaScript comme par exemple ES2015+.
 
-Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées sont utilisées pour décrire le projet : `name` et `version`. Des scripts **npm** sont définis pour tester, construire la version finale et vérifier la qualité du code. La clé `dependencies` sert à préciser les bibliothèques utilisées par le projet alors que la clé `devDependencies` sert à préciser les plugins utilisées pour le développement.
+Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées sont utilisées pour décrire le projet : `name` et `version`. Des scripts **npm** sont définis pour tester, construire la version finale et vérifier la qualité du code. La clé `dependencies` sert à préciser les bibliothèques utilisées par le projet alors que la clé `devDependencies` sert à préciser les bibliothèques utilisées pour le développement. Au niveau des numéros de version, le caractère `^` est utilisé. Il indique que **npm** est autorisé à mettre à jour le numéro de version de la bibliothèque par des versions mineures sans changer de version majeure (4.4.0 vers <4.4.0). On peut également trouver le caractère `~` dans certains cas. Il indique que **npm** est autorisé à mettre à jour le numéro de version sans changer de version mineure (4.4.0 <4.5.0).
 
 ```javascript
 {
@@ -226,14 +235,13 @@ Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées so
   },
   "dependencies": {
     ...
-    "npm": "^6.9.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "vue-template-compiler": "^2.6.11"
   }
   ... // Informations de configurations des plugins ESLint, PostCSS...
 }
@@ -288,7 +296,7 @@ Le fichier *App.vue* est le premier composant de votre application qui va conten
 
 #### Répertoire assets
 
-C'est dans ce répertoire que vous déposerez vos ressources (images, vidéos et fichiers).
+C'est dans ce répertoire que vous déposerez vos ressources (images, vidéos et fichiers à télécharger).
 
 #### Répertoire components
 
@@ -346,11 +354,9 @@ Le fichier *CreatePolldle.vue* concerne le composant décrivant l'écran de cré
 Le fichier *CreatePolldle.vue* contient le strict minimum et fait apparaitre la partie vue (localisée dans le contenu de la balise `<template>`) de la partie modèle (localisée dans le contenu de la balise `<script>`).
 
 ```html
-<template>
-</template>
+<template />
 
-<script>
-</script>
+<script />
 
 <style>
 ...
@@ -461,7 +467,7 @@ export default {
       buttonShown: false
     };
   },
-  ...
+  ... // code présenté ci-après
 }
 </script>
 ...
@@ -484,7 +490,7 @@ Des fonctions JavaScript peuvent être utilisées pour regrouper des fonctionnal
 <script>
 export default {
   name: "CreatePolldle",
-  ...
+  ... // code de la fonction data()
   methods: {
     removedPolldleOption(polldleOption) {
       let index = this.polldleOptions.indexOf(polldleOption);
@@ -581,7 +587,7 @@ La forme la plus basique pour réaliser un binding est une interpolation de text
 
 À chaque modification de la valeur de la propriété `question`, la moustache injectera la valeur de la propriété dans le DOM.
 
-Le résultat obtenu après le rendu de cette moustache est donné sur le code HTML suivant où `question` a pour valeur `Aimez-vous les frites ?`.
+Le résultat obtenu après le rendu de cette moustache est donné sur le code HTML suivant où `question` a pour valeur initiale `Aimez-vous les frites ?`.
 
 ```html
   ...
@@ -599,9 +605,9 @@ Le résultat obtenu après le rendu de cette moustache est donné sur le code HT
 
 ### Directives
 
-Les moustaches ne peuvent pas être utilisées à l'intérieur d'une balise HTML. Il faut donc passer par l'utilisation de directives qui utilisent le préfixe `v-`. Dès que l'expression adossée à la directive est modifiée, cette directive va effectuer les changements sur le DOM.
+**Les moustaches ne peuvent pas être utilisées à l'intérieur d'une balise HTML**. Il faut donc passer par l'utilisation de directives qui utilisent le préfixe `v-`. Dès que l'expression adossée à la directive est modifiée, cette directive va effectuer les changements sur le DOM.
 
-Dans cette section, nous allons étudier les directives suivantes : `v-text`, `v-on`, `v-bind`, `v-model` et `v-once`. Les directives `v-show`, `v-if`, `v-else`, `v-else-if`, `v-for` seront étudiées plus tard.
+Dans cette section, nous allons étudier les directives suivantes : `v-text`, `v-on`, `v-bind`, `v-model`, `v-once`, les directives conditionnelles `v-show`, `v-if`, `v-else`, `v-else-if` et la directive `v-for` pour le rendu de liste.
 
 #### Directive v-text
 
@@ -619,7 +625,7 @@ La directive `v-text` sert à mettre à jour le contenu textuel d'un élément. 
 ...
 ```
 
-Le résultat obtenu après le rendu de cette directive `v-text` est donné sur le code HTML suivant où `v-text="errorMessage"` permet d'injecter dans le corps de la balise `<div>` la valeur `Problem to create a new Polldle`.
+Le résultat obtenu après le rendu de cette directive `v-text` est donné sur le code HTML suivant où `v-text="errorMessage"` permet d'injecter dans le corps de la balise `<div>` la valeur initiale de la propriété `errorMessage` qui est `Problem to create a new Polldle`.
 
 ```html
 ...
@@ -633,7 +639,7 @@ Quand utiliser la directive `v-text` ou l'interpolation moustache ? Si le conte
 
 La directive `v-bind` permet de lier un attribut d'une balise à une expression. L'attribut est donné comme argument séparé par un deux-points après la directive `v-bind`. Les attributs `class` et `style` sont considérés naturellement.
 
-* Compléter le code du fichier *CreatePolldle.vue* en ajoutant la directive `v-bind` pour lier l'attribut `disabled` avec la fonction `isCreatePolldleDisabled()` (commentaire `<!-- Directive v-bind with isCreatePolldleDisabled() -->`).
+* Compléter le code du fichier *CreatePolldle.vue* en ajoutant la directive `v-bind` pour lier l'attribut `disabled` avec la méthode `isCreatePolldleDisabled()` (commentaire `<!-- Directive v-bind with isCreatePolldleDisabled() -->`).
 
 ```html
 <template>
@@ -760,9 +766,9 @@ Le code HTML obtenu après le rendu est le suivant. Nous constatons que la méca
 
 #### Directive v-on
 
-La directive `v-on` permet d'attacher un écouteur d'événements à un élément et de faire appel à une fonction dès lors qu'un événement est émis. Le type d'événement est donné comme argument séparé par un deux-points après la directive `v-on`.
+La directive `v-on` permet d'attacher un écouteur d'événements à un élément et de faire appel à une méthode dès lors qu'un événement est émis. Le type d'événement est donné comme argument séparé par un deux-points après la directive `v-on`.
 
-* Compléter le code du fichier *CreatePolldle.vue* en ajoutant la directive `v-on` pour lier les fonctions `addPolldleOption`, `clearAllPolldleOptions` et `createPolldle` aux écouteurs d'événements liés à la souris et au clavier (commentaires `<!-- Directive v-on with addPolldleOption -->`, `<!-- Directive v-on with clearAllPolldleOptions -->` et `<!-- Directive v-on with createPolldle -->`).
+* Compléter le code du fichier *CreatePolldle.vue* en ajoutant la directive `v-on` pour lier les méthodes `addPolldleOption`, `clearAllPolldleOptions` et `createPolldle` aux écouteurs d'événements liés à la souris et au clavier (commentaires `<!-- Directive v-on with addPolldleOption -->`, `<!-- Directive v-on with clearAllPolldleOptions -->` et `<!-- Directive v-on with createPolldle -->`).
 
 ```html
 <template>
@@ -809,7 +815,11 @@ La directive `v-on` permet d'attacher un écouteur d'événements à un élémen
 ...
 ```
 
-Du côté rendu HTML, l'abonnement aux événements n'est pas visible puisque ce traitement est effectué côté JavaScript.
+L'abonnement aux événements n'est pas visible depuis le code HTML puisque ce traitement est effectué côté JavaScript. Du côté du rendu HTML, les changements ne seront pas encore visibles. Il faudra attendre l'étude de la directive `v-for`. Cependant, nous pouvons en profiter pour montrer les états des valeurs des propriétés du composant `CreatePolldle` qui changent lors des interactions de l'utilisateur en utilisant l'extension pour les navigateurs web [Vue-DevTools](https://github.com/vuejs/vue-devtools).
+
+* Depuis votre navigateur, afficher la page web du projet, ouvrir l'outil du développeur web puis sélectionner l'onglet **Vue**. Depuis l'arbre des composants, sélectionner ensuite le composant `CreatePolldle`. Vous verrez sur la partie droite les différentes valeurs des propriétés du composant. Dans l'exemple montré sur la figure ci-dessous, nous avons créé trois options.
+
+![Utilisation de l'extension Vue-DevTools pour visualiser l'état du composant CreatePolldle](/images/vuejs-miseenoeuvre-part2/vue-devtools-createpolldle-state.png)
 
 Il est également possible de filtrer le type d'événement en indiquant des touches spécifiques de clavier ou des boutons de la souris. C'est le cas par exemple pour la validation d'une option de PollDLE qui doit être faite en pressant la touche *Enter* (`v-on:keypress.enter="addPolldleOption"`).
 
@@ -866,15 +876,455 @@ export default {
 ...
 ```
 
-Dans ce cas, la directive `v-once` prend tout son sens, car le rendu ne sera réalisé qu'une seule, même si la description change.
+Dans ce cas, la directive `v-once` prend tout son sens, car le rendu ne sera réalisé qu'une seule fois, même si la description change.
 
-## Propriétés calculées et observateurs
+#### Rendu conditionnel
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-03* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
+Nous allons dans cette section détailler les directives `v-show` et `v-if`. Ces directives permettent de créer ou pas le rendu d'un bloc.
+
+##### Directive v-if
+
+La directive `v-if` permet d'effectuer le rendu ou pas du bloc si l'expression associée à cette directive est vraie. Par ailleurs comme tout bloc de condition, `v-if` peut s'utiliser avec `v-else-if` (où une autre expression peut être évaluée) `v-else` pour le bloc par défaut si aucune expression n'est satisfaite.
+
+Nous donnons un exemple d'utilisation de `v-if` et de `v-else` dans le composant *ResultPolldle*.
+
+* Compléter la partie vue du fichier *ResultPolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-if ... -->` et `<!-- Directive v-else -->` par l'utilisation des directives `v-if` et `v-else`.
+
+```html
+<template>
+  <div class="container">
+    <!-- Directive v-if with !isErrorState() -->
+    <div v-if="!isErrorState()">
+      <h1>{% raw %}{{ question }}{% endraw %}</h1>
+      <div class="row">
+        <div class="col-8">
+        </div>
+        <div class="col-4">
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Directive v-if with isEmptyState() -->
+      <div v-if="isEmptyState()">
+        <h2>No vote at this moment, keep in touch. Results update in real-time.</h2>
+      </div>
+    </div>
+    <!-- Directive v-else -->
+    <div v-else class="error-message alert alert-danger" role="alert">{% raw %}{{ errorMessage }}{% endraw %}</div>
+  </div>
+</template>
+<script>
+...
+export default {
+  ...
+  methods: {
+    isEmptyState() {
+      return this.state === stateResult.EMPTY;
+    },
+
+    isErrorState() {
+      return this.state === stateResult.ERROR;
+    }
+  }
+}
+</script>
+```
+
+> **Avant-propos, vu que c'est la première fois que nous présentons ce composant** : les fonctions `isErrorState()` et `isEmptyState()` utilisées comme expression dans les directives conditionnelles `v-if` et `v-else` permettent d'accéder à la propriété `state`. La valeur de cette propriété est modifiée lors de l'appel au service web (voir plus tard). Si `state === stateResult.EMPTY` le service web a été invoqué, mais aucune donné n'est transmise. Si `state === stateResult.ERROR` l'invocation au service web a généré une erreur. Si le service web a été invoqué et contient des données alors `state === stateResult.RESULT`.
+
+Le premier rendu conditionnel est affiché s'il n'y a pas eu de problème lors du chargement des résultats du vote. Le deuxième rendu conditionnel est affiché s'il n'y a pas eu de problème et si le contenu retourné par le service web est vide. Enfin, le troisième rendu conditionnel (`v-else`) est lié au premier rendu conditionnel et affichera les erreurs causées par l'invocation du service web.
+
+Nous donnons ci-dessous, le rendu HTML dans le cas où l'invocation au service web a provoqué une erreur.
+
+```html
+...
+  <div class="container">
+    <div role="alert" class="error-message alert alert-danger">Problem to retrieve Polldle result.</div>
+  </div>
+...
+```
+
+Comme on peut le remarquer, le premier bloc lié à l'affichage des résultats ne sera pas créé. Seul le dernier bloc sera créé.
+
+##### Directive v-show
+
+La directive `v-show` a le même effet que la directive `v-if` (et sœurs) du point de vue visuel. Toutefois au niveau du code, le rendu d'un bloc avec `v-show` sera réalisé, mais l'affichage sera contrôlé par la propriété CSS `display`.
+
+* Compléter la partie vue du fichier *CreatePolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-show with buttonShown -->` et `<!-- Directive v-show with errorMessage -->` par une directive `v-show`.
+
+```html
+<template>
+...
+    <!-- Directive v-show with buttonShown -->
+    <div class="row" v-show="buttonShown">
+      <div class="col">
+        <button
+          type="button"
+          class="clear-button btn-lg btn-danger mx-auto d-block"
+          @click="clearAllPolldleOptions"
+        >Clear all PollDLE Options</button>
+      </div>
+    </div>
+    ...
+    <!-- Directive v-show with errorMessage -->
+    <div
+      v-show="errorMessage !== ''"
+      class="error-message alert alert-danger"
+      role="alert"
+      v-text="errorMessage"
+    ></div>
+...
+</template>
+```
+
+Le premier bloc correspond au bouton « Clear All PollDLE Options » qui ne sera visible que s'il existe des options de Polldle (propriété `buttonShown`). Pour le second bloc où la directive `v-show` est utilisée, nous utilisons une expression JavaScript qui vérifie si la propriété `errorMessage` est vide ou pas.
+
+Nous donnons ci-dessous le rendu HTML correspondant au premier bloc permettant de rendre visible ou pas le bouton « Clear All PollDLE Options ». Pour tester, changer la valeur de la propriété `buttonShown` de `false` à `true` et inversement.
+
+```html
+...
+  <div class="row" style="display: none;">
+    <div class="col">
+      <button type="button" class="clear-button btn-lg btn-danger mx-auto d-block">Clear all PollDLE Options</button>
+    </div>
+  </div>
+...
+```
+
+Dans cet état de valeur de propriétés où `butonShown` vaut faux, la directive `v-show` injectera la valeur de style `style="display: none;"`.
+
+##### Quand utiliser v-if ou v-show ?
+
+Les directives `v-if` et `v-show` permettent d'obtenir le même résultat visuellement, mais le code obtenu est différent. Si vous avez besoin d'effectuer des permutations fréquemment (visibles ou pas visibles) au cours de l'utilisation de votre composant, il est préférable d'utiliser `v-show`. La directive `v-if` est à utiliser de préférence lors de l'initialisation de votre composant et quand il y a peu de changements. Un changement de CSS (via la directive `v-show`) est toujours moins coûteux que de devoir créer de nouveaux blocs (via la directive `v-if`).
+
+#### Rendu de liste
+
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-04* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+
+Nous étudions dans cette section la directive `v-for` qui permet de réaliser plusieurs fois le rendu d'un élément (où s'applique la directive).
+
+La valeur de la directive `v-for` doit suivre la syntaxe `alias in expression` ou expression peut-être issue d'une donnée source de type **tableau** ou d'**objet** (via les propriétés de l'objet). `alias` permettra d'accéder à l'élément courant.
+
+Nous présentons ci-dessous les différentes syntaxes que vous pourrez retrouver en utilisant `v-for`.
+
+```html
+<div v-for="item in items">{% raw %}{{ item.text }}{% endraw %}</div> --> item est l'élément courant (yes)
+<div v-for="(item, index) in items"></div> --> item est l'élément courant (yes) et index l'indice de l'élément (0)
+<div v-for="(val, key) in object"></div> --> val est la valeur de la propriété (mickael) et key le nom de la propriété (prenom)
+<div v-for="(val, key, index) in object"></div> --> val est la valeur de la propriété (mickael), key le nom de la propriété (prenom) et index l'indice de la propriété (0)
+```
+
+* Compléter la partie vue du fichier *CreatePolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-for with polldleOptions -->` par l'utilisation de la directive `v-for`.
+
+```html
+...
+    <!-- PollDLE option -->
+    <!-- Directive v-for with polldleOptions -->
+    <div
+      class="row justify-content-center"
+      v-for="currentPolldleOption in polldleOptions"
+      :key="currentPolldleOption.text"
+    >
+      {% raw %}{{ currentPolldleOption.text }}{% endraw %}
+    </div>
+...
+```
+
+> Dans l'exemple complet, l'élément construit plusieurs fois sera relatif au composant *CreatePolldleOption*. Comme nous n'avons pas encore présenté la notion de composant de [Vue.js](https://vuejs.org/), nous nous limiterons à l'affichage du texte de l'option PollDLE.
+
+Nous donnons ci-dessous le rendu HTML lorsque `polldleOptions` contient deux options `Oui` et `Non`.
+
+```html
+...
+  <div class="row justify-content-center">
+    Oui
+  </div>
+  <div class="row justify-content-center">
+    Non
+  </div>
+```
+
+L'élément répété est celui où la directive `v-for` est appliquée, dans ce cas `<div class="row justify-content-center">`.
+
+## Composant avec Vue.js
+
+Cette section s'intéresse à la notion de composant. Nous verrons comment **développer** et **instancier** un composant. Nous étudierons les aspects liés au cycle de vie d'un composant. Nous terminerons par les différentes façons pour **communiquer** entre des composants.
+
+### Savoir développer un composant
+
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-05* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+
+Pour développer un composant avec [Vue.js](https://vuejs.org/), il existe plusieurs façons qui sont parfaitement résumées dans cet article : [https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.](https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.) Dans le périmètre de notre article, nous nous limiterons au développement du composant via l'utilisation d'un fichier portant l'extension *.vue*. Cette manière de développer est appelée composants monofichiers ou composants à fichier unique (*Single File Components* en anglais). Nous avions déjà évoqué dans la partie introductive de [Vue.js](https://vuejs.org/) la description d'un composant sous cette forme. Pour rappel, ce fichier avec l'extension *.vue* est décomposé en trois parties qui définissent :
+
+* un template constitué de balises HTML qui définit la structure du composant (balise `<template>`) ;
+* un code JavaScript qui détermine le comportement du composant (balise `<script>`) ;
+* des styles CSS qui définissent l’apparence du composant (balise `<style>`).
+* Créer un fichier *CreatePolldleOption.vue* relatif au composant *CreatePolldleOption* et recopier le code ci-dessous.
+
+```html
+<template >
+  <div class="polldle-option-input row justify-content-center no-gutters">
+    <div class="col col-auto">
+      <input
+        type="text"
+        class="form-control"
+        readonly
+      >
+    </div>
+    <div class="col col-auto">
+      <!-- Directive v-on with removePolldleOption -->
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        @click="removePolldleOption()"
+      >X</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "CreatePolldleOption",
+  data() {
+    return {
+      errorMessage: ""
+    };
+  },
+
+  methods: {
+    removePolldleOption() {
+    }
+  }
+};
+</script>
+
+<style>
+.polldle-option-input {
+  margin-bottom: 5px;
+}
+</style>
+```
+
+La propriété `name: "CreatePolldleOption"` permet de définir le nom du composant. Ce nom doit être généralement identique au nom donné au fichier. La convention de nommage recommandée peut-être **kebab-case** ou **PascalCase**. C'est cette dernière convention que nous utilisons. La convention de nommage **PascalCase** consiste à mettre en majuscule la première lettre de chaque mot. Dans le cas de cet exemple, le composant est identifié par `CreatePolldleOption` et le fichier contenant le code sera nommé *CreatePolldleOption.vue*.
+
+Quand un composant est développé via un monofichier, c'est à la charge de [Vue CLI](https://cli.vuejs.org/) et des outils annexes (Webpack par exemple avec [Vue Loader](https://vue-loader.vuejs.org/)) de transformer le code contenu dans ce fichier unique pour générer un code JavaScript compréhensible par le navigateur. Sans cet outillage, l'utilisation de fichiers portant l'extension *.vue* et avec une décomposition en trois parties n'aurait pas d'utilité.
+
+### Savoir instancier un composant
+
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-06* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+
+Précédemment, nous avons vu comment **développer** un composant, nous allons maintenant voir comment l'**instancier** au sein d'autres composants [Vue.js](https://vuejs.org/). À ce propos, deux types de composants sont à distinguer : les composants que vous avez développés (c'est le cas du composant *CreatePolldleOption*) et les composants externes (c'est le cas de la bibliothèque Highcharts via le composant [vue-highcharts](https://github.com/weizhenye/vue-highcharts)). Quelle que soit l'origine des composants, la manière de les utiliser au sein d'un composant reste identique.
+
+Pour instancier un composant, trois choses doivent être prises en compte :
+
+* l'importation du monofichier de description du composant ;
+* la déclaration locale ou globale ;
+* l'instanciation du composant.
+
+Nous prendrons comme exemple le composant *CreatePolldle* défini dans le fichier *CreatePolldle.vue*.
+
+#### Importation du monofichier de description du composant
+
+* Dans le code donné ci-dessous du fichier *CreatePolldle.vue*, remplacer le commentaire `// Import CreatePolldleOption component` en ajoutant la variable `CreatePolldleOption` qui permet de pointer sur le composant *CreatePolldleOption* défini dans le fichier *CreatePolldleOption.vue*.
+
+```javascript
+<template>
+...
+</template>
+<script>
+// Import CreatePolldleOption component
+import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
+...
+</script>
+...
+```
+
+> Le caractère `@` est utilisé par les outillages pour désigner le répertoire courant. Webpack remplacera ce caractère par le chemin courant du projet.
+
+#### Déclaration locale ou globale
+
+La déclaration locale précise qu'un composant importé n'est visible que par le composant qui en fait la demande. Au contraire, la déclaration globale précise qu'un composant importé est visible par tous les composants du projet. Il y a un risque de rendre globale la déclaration d'un composant. Cela alourdit le code produit et cela empêche d'avoir une visibilité explicite des dépendances entre les composants (qui utilise quoi).
+
+* Dans le code donné ci-dessous du fichier *CreatePolldle.vue*, remplacer le commentaire `// Add dependencies on CreatePolldleOption component` en ajoutant la propriété `components` pour exprimer que le composant *CreatePolldleOption* doit être déclaré.
+
+```javascript
+...
+<script>
+import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
+...
+export default {
+  name: "CreatePolldle",
+  // Add dependencies on CreatePolldleOption component
+  components: { CreatePolldleOption },
+  ...
+</script>
+...
+```
+
+> Pour déclarer globalement un composant, il est préférable de le faire depuis le fichier *main.js*. Malgré le fait que nous n'utilisons pas la déclaration globale dans notre projet, nous montrons à titre d'exemple la manière de faire. Dans le code ci-dessous, il faut d'une part importer le monofichier *CreatePolldleOption.vue* et d'autre part l'ajouter globalement à l'objet `Vue` comme ceci : `Vue.component('CreatePolldleOption', CreatePolldleOption)`.
+
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+
+require('./assets/polldle.css')
+
+import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
+
+Vue.config.productionTip = false
+Vue.component('CreatePolldleOption', CreatePolldleOption)
+
+window.bus = new Vue()
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+```
+
+#### Instanciation du composant
+
+La dernière étape consiste à utiliser le composant dans la partie template du monofichier. Le composant est vu comme une nouvelle balise dont le nom est identique à la variable utilisée lors de l'importation.
+
+> Il est à noter qu'un composant peut être instancié autant de fois que souhaité. Il n'y a pas de limite, excepté la mémoire utilisée par votre navigateur.
+
+* Compléter la partie template du fichier *CreatePolldle.vue* en remplaçant la balise de commentaire `<!-- Instance CreatePolldleOption component -->` par notre nouvelle balise `<CreatePolldleOption>`.
+
+```html
+<template>
+  ...
+  <div
+    class="row justify-content-center"
+    v-for="currentPolldleOption in polldleOptions"
+    :key="currentPolldleOption.text"
+  >
+    <!-- Instance CreatePolldleOption component -->
+    <CreatePolldleOption/>
+  </div>
+  ...
+</template>
+...
+```
+
+Le composant *CreatePolldleOption* sera créé autant de fois que précisé dans la boucle.
+
+Ci-dessous est présenté le rendu HTML du composant lorsque deux instances du composant *CreatePolldleOption* ont été créées.
+
+```html
+<div class="row justify-content-center">
+  <!-- Début du composant CreatePolldleOption -->
+  <div class="polldle-option-input row justify-content-center no-gutters">
+    <div class="col col-auto">
+      <input type="text" readonly="readonly" class="form-control">
+    </div>
+    <div class="col col-auto">
+      <button type="button" class="btn btn-outline-secondary">X</button>
+    </div>
+  </div>
+  <!-- Fin du composant CreatePolldleOption -->
+</div>
+<div class="row justify-content-center">
+  <!-- Début du composant CreatePolldleOption -->
+  <div class="polldle-option-input row justify-content-center no-gutters">
+    <div class="col col-auto">
+      <input type="text" readonly="readonly" class="form-control">
+    </div>
+    <div class="col col-auto">
+      <button type="button" class="btn btn-outline-secondary">X</button>
+    </div>
+  </div>
+  <!-- Fin du composant CreatePolldleOption -->
+</div>
+```
+
+Le contenu généré est conforme au composant *CreatePolldleOption*. Ce code n'est pas complet puisque les champs `input` ne sont pas renseignés. Nous aborderons cet aspect dans la section suivante dédiée à la communication entre des composants.
+
+#### Composant externe ou plugin
+
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-07* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+
+Au sens de composant externe, nous considérons une bibliothèque développée par un tiers et que l'on souhaite intégrer à notre projet. Au niveau de [Vue.js](https://vuejs.org/), ce type de composant est aussi appelé plugin. C'est le cas pour deux bibliothèques : la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) pour le rendu des résultats d'un Polldle et la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) et de sa version packagée [bootstrap-vue](https://bootstrap-vue.js.org/).
+
+> Pour transformer un composant en un plugin ou composant externe, il faut exposer une méthode `install`. Cela n'étant pas l'objectif de cet article, une indication est donnée dans la [documentation officielle](https://vuejs.org/v2/guide/plugins.html#Writing-a-Plugin) de [Vue.js](https://vuejs.org/).
+
+Quand vous souhaitez ajouter une bibliothèque dans votre projet, vous devez généralement ajouter des dépendances dans le fichier *package.json* puis instancier le composant souhaité dans votre code. Examinons ensemble l'ajout de la bibliothèque [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts).
+
+* Saisir la ligne commande suivante permettant d'ajouter la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) avec l'outil de dépendances **npm**. 
+
+```console
+$ npm install highcharts vue-highcharts
+...
++ vue-highcharts@0.1.0
++ highcharts@8.1.2
+added 2 packages from 2 contributors and audited 1266 packages in 5.272s
+...
+```
+
+> Pour trouver précisément le nom des bibliothèques à ajouter, il faut généralement se rendre sur le site web de la bibliothèque qui expliquera comment l'installer. Il n'existe qu'une bibliothèque JavaScript correspondant à [Highcharts](https://www.highcharts.com/), mais plusieurs variantes packagées développées pour [Vue.js](https://vuejs.org/).
+
+La commande précédente va également ajouter dans le fichier *package.json* deux entrées puis télécharger les bibliothèques dans le répertoire *node_modules*. Ci-dessous est présenté une partie du contenu du fichier *package.json*.
+
+```javascript
+{
+  ...
+  "dependencies": {
+    "bootstrap-vue": "^2.15.0",
+    "highcharts": "^8.1.2",
+    "vue": "^2.6.10",
+    "vue-highcharts": "^0.1.0"
+  },
+  ...
+}
+```
+
+Il faut ensuite ajouter le plugin dans le composant *ResultPolldle* décrit par le fichier *ResultPolldle.vue*.
+
+* Éditer le fichier *ResultPolldle.vue* en remplaçant les commentaires `// Import the VueHighcharts plugin` et `// Use the VueHighcharts plugin` par le code présenté ci-dessous.
+
+```javascript
+<template>
+</template>
+<script>
+// Import the VueHighcharts plugin
+import VueHighcharts from "vue-highcharts";
+
+import Vue from "vue";
+// Use the VueHighcharts plugin
+Vue.use(VueHighcharts);
+...
+</script>
+...
+<style>
+</style>
+```
+
+Le code `Vue.use(VueHighcharts)` permet d'utiliser le plugin de manière globale. Dans ce cas, tous les composants décrits par la bibliothèque [Highcharts](https://www.highcharts.com/) : *Highcharts*, *Highstock*, *Highmaps* et *HighchartsGantt* sont directement instanciables.
+
+* Éditer le fichier *ResultPolldle.vue* en remplaçant la balise de commentaire `<!-- Instance of highcharts component -->` par la balise `<highcharts>`.
+
+```html
+<template>
+...
+      <div class="row">
+        <div class="col-8">
+          <!-- Instance of highcharts component -->
+          <highcharts/>
+        </div>
+      </div>
+...
+</template>
+```
+
+Le code ajouté n'est pas complet, car il implique une communication entre le composant *ResultPolldle* et *highcharts*. Tout comme la communication entre les composants *CreatePolldle* et *CreatePolldleOption*, nous aborderons cet aspect dans la section suivante dédiée à la communication entre des composants.
+
+### Savoir écouter un composant : propriétés calculées et observateurs
+
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-08* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+
 Lors de changement des propriétés du modèle, on peut vouloir calculer de nouvelles propriétés (les propriétés calculées) ou déclencher des opérations coûteuses (les observateurs).
 
-### Propriétés calculées (computed)
+#### Propriétés calculées (computed)
 
 Il peut arriver que dans une interpolation ou une directive, l'expression transmise soit complexe ce qui peut alourdir la lisibilité de la partie vue. Par ailleurs, si cette expression est répétée, il devient nécessaire de regrouper le code (code dupliqué == bogue répété).
 
@@ -941,7 +1391,7 @@ La propriété calculée *listSize* est mise en cache et tant que les propriét�
 
 > Le résultat aurait été identique si nous avions utilisé une fonction déclarée dans la zone *methods*. Toutefois, à chaque rendu de la vue, l'expression de la fonction déclarée dans *methods* aurait été évaluée. Cette optimisation a son importance quand les expressions des propriétés calculées commencent à devenir complexes.
 
-### Observateurs (watch)
+#### Observateurs (watch)
 
 Lorsqu'une valeur de propriété du modèle est modifiée, on peut vouloir invoquer une fonction JavaScript (en mode asynchrone) ou modifier la valeur d'une propriété. [Vue.js](https://vuejs.org/) fournit un mécanisme appelé Observateurs qui pour chaque changement de valeur d'une propriété ciblée vous permet d'effectuer un traitement.
 
@@ -962,444 +1412,6 @@ Dans cet exemple, le nom de la fonction observateur prend le même nom que la pr
 
 > Dans ce cas précis, l'utilisation d'un observateur au lieu d'une propriété calculée est discutable. L'utilisation d'une propriété calculée pour obtenir la valeur de `buttonShown` aurait aussi fonctionné.
 
-## Rendu conditionnel
-
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-04* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
-
-Nous allons dans cette section revenir sur l'étude des directives ( Templating avec Vue.js) en détaillant les directives `v-show` et `v-if`. Ces directives permettent de créer ou pas le rendu d'un bloc.
-
-### Directive v-if
-
-La directive `v-if` permet d'effectuer le rendu ou pas du bloc si l'expression associée à cette directive est vraie. Par ailleurs comme tout bloc de condition, `v-if` peut s'utiliser avec `v-else-if` (où une autre expression peut être évaluée) `v-else` pour le bloc par défaut si aucune expression n'est satisfaite.
-
-Nous donnons un exemple d'utilisation de `v-if` et de `v-else` dans le composant *ResultPolldle*.
-
-* Compléter la partie vue du fichier *ResultPolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-if ... -->` et `<!-- Directive v-else -->` par l'utilisation des directives `v-if` et `v-else`.
-
-```html
-<template>
-  <div class="container">
-    <!-- Directive v-if with !isErrorState() -->
-    <div v-if="!isErrorState()">
-      <h1>{% raw %}{{ question }}{% endraw %}</h1>
-      <div class="row">
-        <div class="col-8">
-        </div>
-        <div class="col-4">
-          <div></div>
-        </div>
-      </div>
-
-      <!-- Directive v-if with isEmptyState() -->
-      <div v-if="isEmptyState()">
-        <h2>No vote at this moment, keep in touch. Results update in real-time.</h2>
-      </div>
-    </div>
-    <!-- Directive v-else -->
-    <div v-else class="error-message alert alert-danger" role="alert">{% raw %}{{ errorMessage }}{% endraw %}</div>
-  </div>
-</template>
-<script>
-...
-export default {
-  ...
-  methods: {
-    isEmptyState() {
-      return this.state === stateResult.EMPTY;
-    },
-
-    isErrorState() {
-      return this.state === stateResult.ERROR;
-    }
-  }
-}
-</script>
-```
-
-> **Avant-propos, vu que c'est la première fois que nous présentons ce composant** : les fonctions `isErrorState()` et `isEmptyState()` utilisées comme expression dans les directives conditionnelles `v-if` et `v-else` permettent d'accéder à la propriété `state`. La valeur de cette propriété est modifiée lors de l'appel au service web (voir plus tard). Si `state === stateResult.EMPTY` le service web a été invoqué, mais aucune donné n'est transmise. Si `state === stateResult.ERROR` l'invocation au service web a généré une erreur. Si le service web a été invoqué et contient des données alors `state === stateResult.RESULT`.
-
-Le premier rendu conditionnel est affiché s'il n'y a pas eu de problème lors du chargement des résultats du vote. Le deuxième rendu conditionnel est affiché s'il n'y a pas eu de problème et si le contenu retourné par le service web est vide. Enfin, le troisième rendu conditionnel (`v-else`) est lié au premier rendu conditionnel et affichera les erreurs causées par l'invocation du service web.
-
-Nous donnons ci-dessous, le rendu HTML dans le cas où l'invocation au service web a provoqué une erreur.
-
-```html
-...
-  <div class="container">
-    <div role="alert" class="error-message alert alert-danger">Problem to retrieve Polldle result.</div>
-  </div>
-...
-```
-
-Comme on peut le remarquer, le premier bloc lié à l'affichage des résultats ne sera pas créé. Seul le dernier bloc sera créé.
-
-### Directive v-show
-
-La directive `v-show` a le même effet que la directive `v-if` (et sœurs) du point de vue visuel. Toutefois au niveau du code, le rendu d'un bloc avec `v-show` sera réalisé, mais l'affichage sera contrôlé par la propriété CSS `display`.
-
-* Compléter la partie vue du fichier *CreatePolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-show with buttonShown -->` et `<!-- Directive v-show with errorMessage -->` par une directive `v-show`.
-
-```html
-<template>
-...
-    <!-- Directive v-show with buttonShown -->
-    <div class="row" v-show="buttonShown">
-      <div class="col">
-        <button
-          type="button"
-          class="clear-button btn-lg btn-danger mx-auto d-block"
-          @click="clearAllPolldleOptions"
-        >Clear all PollDLE Options</button>
-      </div>
-    </div>
-    ...
-    <!-- Directive v-show with errorMessage -->
-    <div
-      v-show="errorMessage !== ''"
-      class="error-message alert alert-danger"
-      role="alert"
-      v-text="errorMessage"
-    ></div>
-...
-</template>
-```
-
-Le premier bloc correspond au bouton « Clear All PollDLE Options » qui ne sera visible que s'il existe des options de Polldle. Pour rappel, la valeur de la propriété `buttonShown` est modifiée par l'intermédiaire d'un observateur sur la propriété `polldleOptions`. Pour le second bloc où la directive `v-show` est utilisée, nous utilisons une expression JavaScript qui vérifie si la propriété `errorMessage` est vide ou pas.
-
-Nous donnons ci-dessous le rendu HTML correspondant au premier bloc permettant de rendre visible ou pas le bouton « Clear All PollDLE Options ».
-
-```html
-...
-  <div class="row" style="display: none;">
-    <div class="col">
-      <button type="button" class="clear-button btn-lg btn-danger mx-auto d-block">Clear all PollDLE Options</button>
-    </div>
-  </div>
-...
-```
-
-Dans cet état de valeur de propriétés où `butonShown` vaut faux, la directive `v-show` injectera la valeur de style `style="display: none;"`.
-
-### Quand utiliser v-if ou v-show ?
-
-Les directives `v-if` et `v-show` permettent d'obtenir le même résultat visuellement, mais le code obtenu est différent. Si vous avez besoin d'effectuer des permutations fréquemment (visibles ou pas visibles) au cours de l'utilisation de votre composant, il est préférable d'utiliser `v-show`. La directive `v-if` est à utiliser de préférence lors de l'initialisation de votre composant et quand il y a peu de changements. Un changement de CSS (via la directive `v-show`) est toujours moins coûteux que de devoir créer de nouveaux blocs (via la directive `v-if`).
-
-## Rendu de liste
-
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-05* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
-
-Nous étudions dans cette section la directive `v-for` qui permet de réaliser plusieurs fois le rendu d'un élément (où s'applique la directive).
-
-La valeur de la directive `v-for` doit suivre la syntaxe `alias in expression` ou expression peut-être issue d'une donnée source de type **tableau** ou d'**objet** (via les propriétés de l'objet). `alias` permettra d'accéder à l'élément courant.
-
-Nous présentons ci-dessous les différentes syntaxes que vous pourrez retrouver en utilisant `v-for`.
-
-```html
-<div v-for="item in items">{% raw %}{{ item.text }}{% endraw %}</div> --> item est l'élément courant (yes)
-<div v-for="(item, index) in items"></div> --> item est l'élément courant (yes) et index l'indice de l'élément (0)
-<div v-for="(val, key) in object"></div> --> val est la valeur de la propriété (mickael) et key le nom de la propriété (prenom)
-<div v-for="(val, key, index) in object"></div> --> val est la valeur de la propriété (mickael), key le nom de la propriété (prenom) et index l'indice de la propriété (0)
-```
-
-* Compléter la partie vue du fichier *CreatePolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-for with polldleOptions -->` par l'utilisation de la directive `v-for`.
-
-```html
-...
-    <!-- PollDLE option -->
-    <!-- Directive v-for with polldleOptions -->
-    <div
-      class="row justify-content-center"
-      v-for="currentPolldleOption in polldleOptions"
-      :key="currentPolldleOption.text"
-    >
-      {% raw %}{{ currentPolldleOption.text }}{% endraw %}
-    </div>
-...
-```
-
-> Dans l'exemple complet, l'élément construit plusieurs fois sera relatif au composant *CreatePolldleOption*. Comme nous n'avons pas encore présenté la notion de composant de [Vue.js](https://vuejs.org/), nous nous limiterons à l'affichage du texte de l'option PollDLE.
-
-Nous donnons ci-dessous le rendu HTML lorsque `polldleOptions` contient deux options `Oui` et `Non`.
-
-```html
-...
-  <div class="row justify-content-center">
-    Oui
-  </div>
-  <div class="row justify-content-center">
-    Non
-  </div>
-```
-
-L'élément répété est celui où la directive `v-for` est appliquée, dans ce cas `<div class="row justify-content-center">`.
-
-## Composant avec Vue.js
-
-Cette section s'intéresse à la notion de composant. Nous verrons comment **développer** et **instancier** un composant. Nous étudierons les aspects liés au cycle de vie d'un composant. Nous terminerons par les différentes façons pour **communiquer** entre des composants.
-
-### Savoir développer un composant
-
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-06* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
-
-Pour développer un composant avec [Vue.js](https://vuejs.org/), il existe plusieurs façons qui sont parfaitement résumées dans cet article : [https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.](https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.) Dans le périmètre de notre article, nous nous limiterons au développement du composant via l'utilisation d'un fichier portant l'extension *.vue*. Cette manière de développer est appelée composants monofichiers ou composants à fichier unique (*Single File Components* en anglais). Nous avions déjà évoqué dans la partie introductive de [Vue.js](https://vuejs.org/) la description d'un composant sous cette forme. Pour rappel, ce fichier avec l'extension *.vue* est décomposé en trois parties qui définissent :
-
-* un template constitué de balises HTML qui définit la structure du composant (balise `<template>`) ;
-* un code JavaScript qui détermine le comportement du composant (balise `<script>`) ;
-* des styles CSS qui définissent l’apparence du composant (balise `<style>`).
-* Créer un fichier *CreatePolldleOption.vue* relatif au composant *CreatePolldleOption* et recopier le code ci-dessous.
-
-```html
-<template >
-  <div class="polldle-option-input row justify-content-center no-gutters">
-    <div class="col col-auto">
-      <input
-        type="text"
-        class="form-control"
-        readonly
-      >
-    </div>
-    <div class="col col-auto">
-      <!-- Directive v-on with removePolldleOption -->
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        @click="removePolldleOption(polldleOption)"
-      >X</button>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: "CreatePolldleOption",
-  data() {
-    return {
-      errorMessage: ""
-    };
-  },
-
-  methods: {
-    removePolldleOption(polldleOption) {
-    }
-  }
-};
-</script>
-
-<style>
-.polldle-option-input {
-  margin-bottom: 5px;
-}
-</style>
-```
-
-La propriété `name: "CreatePolldleOption"` permet de définir le nom du composant. Ce nom doit être généralement identique au nom donné au fichier. La convention de nommage recommandée peut-être **kebab-case** ou **PascalCase**. C'est cette dernière convention que nous utilisons. La convention de nommage **PascalCase** consiste à mettre en majuscule la première lettre de chaque mot. Dans le cas de cet exemple, le composant est identifié par `CreatePolldleOption` et le fichier contenant le code sera nommé *CreatePolldleOption.vue*.
-
-Quand un composant est développé via un monofichier, c'est à la charge de [Vue CLI](https://cli.vuejs.org/) et des outils annexes (Webpack par exemple avec [Vue Loader](https://vue-loader.vuejs.org/)) de transformer le code contenu dans ce fichier unique pour générer un code JavaScript compréhensible par le navigateur. Sans cet outillage, l'utilisation de fichiers portant l'extension *.vue* et avec une décomposition en trois parties n'aurait pas d'utilité.
-
-### Savoir instancier un composant
-
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-07* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
-
-Précédemment, nous avons vu comment **développer** un composant, nous allons maintenant voir comment l'**instancier** au sein d'autres composants [Vue.js](https://vuejs.org/). À ce propos, deux types de composants sont à distinguer : les composants que vous avez développés (c'est le cas du composant *CreatePolldleOption*) et les composants externes (c'est le cas de la bibliothèque Highcharts via le composant [vue-highcharts](https://github.com/weizhenye/vue-highcharts)). Quelle que soit l'origine des composants, la manière de les utiliser au sein d'un composant reste identique.
-
-Pour instancier un composant, trois choses doivent être prises en compte :
-
-* l'importation du monofichier de description du composant ;
-* la déclaration locale ou globale ;
-* l'instanciation du composant.
-
-Nous prendrons comme exemple le composant *CreatePolldle* défini dans le fichier *CreatePolldle.vue*.
-
-#### Importation du monofichier de description du composant
-
-* Dans le code donné ci-dessous du fichier *CreatePolldle.vue*, remplacer le commentaire `// Import CreatePolldleOption component` en ajoutant la variable `CreatePolldleOption` qui permet de pointer sur le composant *CreatePolldleOption* défini dans le fichier *CreatePolldleOption.vue*.
-
-```javascript
-<template>
-...
-</template>
-<script>
-// Import CreatePolldleOption component
-import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
-...
-</script>
-...
-```
-
-> Le caractère `@` est utilisé par les outillages pour désigner le répertoire courant. Webpack remplacera ce caractère par le chemin courant du projet.
-
-#### Déclaration locale ou globale
-
-La déclaration locale précise qu'un composant importé n'est visible que par le composant qui en fait la demande. Au contraire, la déclaration globale précise qu'un composant importé est visible par tous les composants du projet. Il y a un risque de rendre globale la déclaration d'un composant. Cela alourdit le code produit et donc téléchargé premièrement et cela empêche d'avoir une visibilité des dépendances entre les composants (qui utilise quoi).
-
-* Dans le code donné ci-dessous du fichier *CreatePolldle.vue*, remplacer le commentaire `// Add dependencies on CreatePolldleOption component` en ajoutant la propriété `components` pour exprimer que le composant *CreatePolldleOption* doit être déclaré.
-
-```javascript
-...
-<script>
-import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
-...
-export default {
-  name: "CreatePolldle",
-  // Add dependencies on CreatePolldleOption component
-  components: { CreatePolldleOption },
-  ...
-</script>
-...
-```
-
-> Pour déclarer globalement un composant, il est préférable de le faire depuis le fichier *main.js*. Malgré le fait que nous n'utilisons pas la déclaration globale dans notre projet, nous montrons à titre d'exemple la manière de faire. Dans le code ci-dessous, il faut d'une part importer le monofichier *CreatePolldleOption.vue* et d'autre part l'ajout globalement à Vue `Vue.component('CreatePolldleOption', CreatePolldleOption)`.
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-
-require('./assets/polldle.css')
-
-import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
-
-Vue.config.productionTip = false
-Vue.component('CreatePolldleOption', CreatePolldleOption)
-
-window.bus = new Vue()
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
-```
-
-#### Instanciation du composant
-
-La dernière étape consiste à utiliser le composant dans la partie template du monofichier. Le composant est vu comme une nouvelle balise dont le nom est identique à la variable utilisée lors de l'importation.
-
-> Il est à noter qu'un composant peut être instancié autant de fois que souhaité. Il n'y a pas de limite, excepté la mémoire utilisée par votre navigateur.
-
-* Compléter la partie template du fichier *CreatePolldle.vue* en remplaçant la balise de commentaire `<!-- Instance CreatePolldleOption component -->` par notre nouvelle balise `<CreatePolldleOption>`.
-
-```html
-<template>
-  ...
-  <div
-      class="row justify-content-center"
-      v-for="currentPolldleOption in polldleOptions"
-      :key="currentPolldleOption.text"
-    ><!-- Instance CreatePolldleOption component -->
-    <CreatePolldleOption/></div>
-</template>
-...
-```
-
-Le composant *CreatePolldleOption* sera créé autant de fois que précisé dans la boucle.
-
-Ci-dessous est présenté le rendu HTML du composant lorsque deux instances du composant *CreatePolldleOption* ont été créées.
-
-```html
-<div class="row justify-content-center">
-  <!-- Début du composant CreatePolldleOption -->
-  <div class="polldle-option-input row justify-content-center no-gutters">
-    <div class="col col-auto">
-      <input type="text" readonly="readonly" class="form-control">
-    </div>
-    <div class="col col-auto">
-      <button type="button" class="btn btn-outline-secondary">X</button>
-    </div>
-  </div>
-  <!-- Fin du composant CreatePolldleOption -->
-</div>
-<div class="row justify-content-center">
-  <!-- Début du composant CreatePolldleOption -->
-  <div class="polldle-option-input row justify-content-center no-gutters">
-    <div class="col col-auto">
-      <input type="text" readonly="readonly" class="form-control">
-    </div>
-    <div class="col col-auto">
-      <button type="button" class="btn btn-outline-secondary">X</button>
-    </div>
-  </div>
-  <!-- Fin du composant CreatePolldleOption -->
-</div>
-```
-
-Le contenu généré est conforme au composant *CreatePolldleOption*. Ce code n'est pas parfait puisque les champs `input` ne sont pas renseignés. Nous aborderons cet aspect dans la section suivante dédiée à la communication entre des composants.
-
-#### Composant externe ou plugin
-
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-08* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
-
-Au sens de composant externe, nous considérons une bibliothèque développée par un tiers et que l'on souhaite intégrer à notre projet. Au niveau de [Vue.js](https://vuejs.org/), ce type de composant est aussi appelé plugin. C'est le cas pour deux bibliothèques : la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) pour le rendu des résultats d'un Polldle et la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) et de sa version packagée [bootstrap-vue](https://bootstrap-vue.js.org/).
-
-> Pour transformer un composant en un plugin ou composant externe, il faut exposer une méthode `install`. Cela n'étant pas l'objectif de cet article, une indication est donnée dans la [documentation officielle](https://vuejs.org/v2/guide/plugins.html#Writing-a-Plugin) de [Vue.js](https://vuejs.org/).
-
-Quand vous souhaitez ajouter une bibliothèque dans votre projet, vous devez généralement ajouter des dépendances dans le fichier *package.json* puis instancier le composant souhaité dans votre code. Examinons ensemble l'ajout de la bibliothèque [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts).
-
-* Saisir la ligne commande suivante permettant d'ajouter la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) avec l'outil de dépendances **npm**. 
-
-```console
-$ npm install highcharts vue-highcharts
-...
-+ vue-highcharts@0.1.0
-+ highcharts@7.1.1
-updated 2 packages and audited 35784 packages in 8.137s
-...
-```
-
-> Pour trouver précisément le nom des bibliothèques à ajouter, il faut généralement se rendre sur le site web de la bibliothèque qui expliquera comment installer. En effet, il n'existe qu'une bibliothèque JavaScript correspondant à [Highcharts](https://www.highcharts.com/), mais plusieurs variantes packagées développées pour [Vue.js](https://vuejs.org/).
-
-Cette commande va ajouter dans le fichier *package.json* deux entrées puis télécharger les bibliothèques dans le répertoire *node_modules*. Ci-dessous est présenté une partie du contenu du fichier *package.json*.
-
-```javascript
-{
-  ...
-  "dependencies": {
-    "bootstrap-vue": "^2.0.0-rc.16",
-    "highcharts": "^7.1.1",
-    "npm": "^6.9.0",
-    "vue": "^2.5.17",
-    "vue-highcharts": "^0.1.0"
-  },
-  ...
-}
-```
-
-Il faut ensuite ajouter le plugin dans le composant *ResultPolldle* décrit par le fichier *ResultPolldle.vue*.
-
-* Éditer le fichier *ResultPolldle.vue* en remplaçant les commentaires `// Import the VueHighcharts plugin` et `// Use the VueHighcharts plugin` par le code présenté ci-dessous.
-
-```javascript
-<template>
-</template>
-<script>
-// Import the VueHighcharts plugin
-import VueHighcharts from "vue-highcharts";
-
-import Vue from "vue";
-// Use the VueHighcharts plugin
-Vue.use(VueHighcharts);
-...
-</script>
-...
-<style>
-</style>
-```
-
-Le code `Vue.use(VueHighcharts)` permet d'utiliser le plugin de manière globale. Dans ce cas, tous les composants décrits par la bibliothèque [Highcharts](https://www.highcharts.com/) : *Highcharts*, *Highstock*, *Highmaps* et *HighchartsGantt* sont directement instanciables.
-
-* Éditer le fichier *ResultPolldle.vue* en remplaçant la balise de commentaire `<!-- Instance of highcharts component -->` par la balise `<highcharts>`.
-
-```html
-<template>
-...
-      <div class="row">
-        <div class="col-8">
-          <!-- Instance of highcharts component -->
-          <highcharts/>
-        </div>
-      </div>
-...
-</template>
-```
-
-Le code ajouté n'est pas parfait, car il implique une communication entre le composant *ResultPolldle* et *highcharts*. Tout comme la communication entre les composants *CreatePolldle* et *CreatePolldleOption*, nous aborderons cet aspect dans la section suivante dédiée à la communication entre des composants.
-
 ### Cycle de vie
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-09* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
@@ -1416,12 +1428,12 @@ Huit *hooks* sont disponibles : `beforeCreate`, `created`, `beforeMount`, `moun
 
 Le *hook* `created` sera exécuté à la création du composant et toutes les propriétés de ce composant (celles qui sont dans `data()`) sont initialisées et associées au système réactif. Il en est de même pour les événements que nous aborderons dans la section suivante. Le code défini dans ce *hook* pourra donc accéder aux propriétés du composant. Toutefois, à cette étape, le rendu du *template* et le DOM virtuel ne sont pas encore effectués. Vous ne devrez donc pas effectuer de modification sur le rendu du composant lors d'un *hook* `created`.
 
-Nous utiliserons le *hook* `created` dans trois composants :
+Nous utiliserons le *hook* `created` dans deux composants :
 
 * *VotePolldle* : initialisation des données via l'appel à un service web (utilisation de la bibliothèque JavaScript *Axios*) ;
-* *ResultPolldle* : initialisation du Server-Sent Event pour faire du *push* serveur et récupérer le flux des mises à jour des votes.
+* *ResultPolldle* : initialisation du SSE (*Server-Sent Event*) pour faire du *push* serveur et récupérer le flux des mises à jour des votes.
 
-Comme nous n'avons pas vu les appels à un service web (via la bibliothèque JavaScript *Axios*), nous allons focaliser notre présentation du *hook* `created` sur le code du composant *ResultPolldle*.
+Comme nous n'avons pas vu les appels à un service web (via la bibliothèque JavaScript *Axios*), nous allons focaliser notre présentation du *hook* `created` sur le code du composant *ResultPolldle* sans forcément le détailler.
 
 * Éditer le fichier *ResultPolldle.vue* en remplaçant le commentaire `// Use created hook to initialize EventSource object` par le code présenté dans le *hook* `created`.
 
@@ -1485,9 +1497,9 @@ export default {
 </script>
 ```
 
-Le code présent dans le *hook* `created` permet d'initialiser un objet `EventSource` utilisé pour faire du Server-Sent Event. La première partie initialise l'objet `EventSource`. La deuxième partie traite les nouvelles données envoyées par le serveur et transforme les données pour les proposer au modèle du composant *Highcharts*. La troisième partie est une fonction qui s'occupera de traiter les erreurs. On s'aperçoit dans ce code que seules les propriétés du composant sont impactées ce qui est cohérent à l'utilité du scope du *hook* `created`.
+Le code présent dans le *hook* `created` permet d'initialiser un objet `EventSource` utilisé pour faire du *Server-Sent Event*. La première partie initialise l'objet `EventSource`. La deuxième partie traite les nouvelles données envoyées par le serveur et transforme les données pour les proposer au modèle du composant *Highcharts*. La troisième partie est une fonction qui s'occupera de traiter les erreurs. On aperçoit dans ce code que seules les propriétés du composant sont impactées ce qui est cohérent à l'utilité du scope du *hook* `created`.
 
-> Si vous désirez des informations supplémentaires sur Server-Sent Event, une technique pour faire du push serveur via une communication unidirectionnelle, nous vous recommandons deux supports de cours : [Streaming HTTP : savoir communiquer via des flux](https://speakerdeck.com/mickaelbaron/streaming-http-savoir-communiquer-via-des-flux) et [Streaming HTTP : mise en œuvre avec le langage Java](https://speakerdeck.com/mickaelbaron/streaming-http-mise-en-oeuvre-avec-le-langage-java).
+> Si vous désirez des informations supplémentaires sur <i>Server-Sent Event</i>, une technique pour faire du push serveur via une communication unidirectionnelle, nous vous recommandons deux supports de cours : [Streaming HTTP : savoir communiquer via des flux](https://speakerdeck.com/mickaelbaron/streaming-http-savoir-communiquer-via-des-flux) et [Streaming HTTP : mise en œuvre avec le langage Java](https://speakerdeck.com/mickaelbaron/streaming-http-mise-en-oeuvre-avec-le-langage-java).
 
 #### Hook mounted
 
@@ -1516,14 +1528,12 @@ export default {
 Lors de l'exécution du *hook* `mounted`, le résultat suivant sera affiché dans la console du développeur.
 
 ```console
-PollDLEVoting done simply in real-timeAdd your PollDLE optionsClear all PollDLE OptionsCreate PollDLESummary of your PollDLE
-      The question is:
-      Number of PollDLE options: 0
+PollDLEVoting done simply in real-timeAdd your PollDLE optionsClear all PollDLE OptionsCreate PollDLESummary of your PollDLE  The question is:  Number of PollDLE options: 0
 ```
 
 ### Savoir communiquer avec un composant
 
-Précédemment, nous avons vu comment créer une instance d'un composant. Toutefois, nous ne nous'étions pas intéressés à expliquer comment transmettre des informations vers le composant créé ou comment ce composant pouvait également communiquer avec d'autres composants. Trois techniques de communication avec un composant seront étudiées :
+Précédemment, nous avons vu comment créer une instance d'un composant. Toutefois, nous ne nous étions pas intéressés à expliquer comment transmettre des informations vers le composant créé ou comment ce composant pouvait également communiquer avec d'autres composants. Trois techniques de communication avec un composant seront étudiées :
 
 * en communication directe via l'utilisation de la référence d'un composant ;
 * en transmettant des propriétés à un composant lors de son instanciation ;
@@ -1533,7 +1543,7 @@ Précédemment, nous avons vu comment créer une instance d'un composant. Toutef
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-10* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
-La communication directe via la référence d'un composant est unidirectionnelle (composant parent vers le composant enfant). Elle permet à un composant parent d'accéder à un composant enfant via sa référence. L'inverse ne sera pas possible. Cette solution amène à un couplage fort entre les composants. En effet, cela suppose d'avoir accès à la référence du composant et de s'assurer que lors de l'utilisation de ce composant celui-ci est toujours existant. Si ce n'est plus le cas, il faudra s'assurer de mettre à jour la référence.
+La communication directe via la référence d'un composant est unidirectionnelle (composant parent vers le composant enfant). Elle permet à un composant parent d'accéder à un composant enfant via sa référence. L'inverse ne sera pas possible. Cette solution amène à un couplage fort entre les composants. En effet, cela suppose d'avoir accès à la référence du composant et de s'assurer que lors de l'utilisation de ce composant celui-ci est toujours existant. Si ce n'est plus le cas, il faudra s'assurer de mettre à jour la référence à manipuler.
 
 Bien que cette solution ne soit pas la plus avantageuse, elle permet d'accéder à des éléments du composant non disponibles par le système réactif. Dans le cas de notre exemple, la communication par référence est utilisée dans le composant *ResultPolldle* pour accéder directement à la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) via le plugin [vue-highcharts](https://github.com/weizhenye/vue-highcharts). En effet, depuis le composant de la bibliothèque JavaScript certaines caractéristiques ne sont pas accessibles.
 
@@ -1836,16 +1846,16 @@ L'objectif de cette section est de montrer comment compiler et exécuter le code
 $ mvn clean package
 ...
 [INFO] ------------------------------------------------------------------------
-[INFO] Reactor Summary:
+[INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
 [INFO]
-[INFO] polldle-parent 0.3-SNAPSHOT ........................ SUCCESS [  0.124 s]
-[INFO] poddle-api ......................................... SUCCESS [  1.244 s]
-[INFO] polldle-server 0.3-SNAPSHOT ........................ SUCCESS [  6.273 s]
+[INFO] polldle-parent ..................................... SUCCESS [  0.127 s]
+[INFO] poddle-api ......................................... SUCCESS [  1.040 s]
+[INFO] polldle-server ..................................... SUCCESS [  5.746 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 7.811 s
-[INFO] Finished at: 2019-06-14T16:24:20+02:00
+[INFO] Total time:  7.028 s
+[INFO] Finished at: 2020-06-30T21:28:55+02:00
 [INFO] ------------------------------------------------------------------------
 ```
 
@@ -1861,9 +1871,10 @@ export KUMULUZEE_SERVER_HTTP_PORT=9991
 
 ```console
 $ java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
-2019-06-14 16:36:12.766 INFO -- org.eclipse.jetty.server.AbstractConnector -- Started ServerConnector@6f5e16cf{HTTP/1.1,[http/1.1]}{0.0.0.0:9991}
-2019-06-14 16:36:12.766 INFO -- org.eclipse.jetty.server.Server -- Started @2221ms
-2019-06-14 16:36:12.766 INFO -- com.kumuluz.ee.EeApplication -- KumuluzEE started successfully
+...
+2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.AbstractConnector -- Started ServerConnector@4c402120{HTTP/1.1, (http/1.1)}{0.0.0.0:9991}
+2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.Server -- Started @1932ms
+2020-06-30 21:29:53.508 INFO -- com.kumuluz.ee.EeApplication -- KumuluzEE started successfully
 ```
 
 Les services web REST sont désormais disponibles à cette adresse [http://0.0.0.0:9991](http://0.0.0.0:9991/).
@@ -1890,6 +1901,7 @@ export default {
         }
       });
 
+      // Call REST web service with fetch API
       var request = new Request("http://127.0.0.1:9991" + "/polldles", {
         method: "POST",
         body: JSON.stringify(polldleObject),
@@ -1898,7 +1910,6 @@ export default {
         }
       })
 
-      // Call REST web service with fetch API
       fetch(request).then(response => {
         if (response.ok) {
           return response.json();
@@ -1920,7 +1931,7 @@ export default {
 ...
 ```
 
-Lors de la création d'un objet `Request` nous précisons, l'URL du serveur (qui sera remplacée par une variable d'environnement dans la partie 3), que la méthode HTTP utilisée sera du `POST`, que le corps est l'objet `polldleObject` et que le contenu sera au format JSON. Une première promesse retourne l'objet de la réponse si la requête envoyée au serveur s'est correctement déroulée. Une seconde promesse effectue le traitement de l'objet réponse, pour l'instant l'affichage de l'identifiant du Polldle. Dans la section routage, nous modifierons le traitement de la réponse pour rendre visible le composant *VotePolldle*.
+Lors de la création d'un objet `Request`, nous précisons, l'URL du serveur (qui sera remplacée par une variable d'environnement dans la partie 3), que la méthode HTTP utilisée sera du `POST`, que le corps est l'objet `polldleObject` et que le contenu sera au format JSON. Une première promesse retourne l'objet de la réponse si la requête envoyée au serveur s'est correctement déroulée. Une seconde promesse effectue le traitement de l'objet réponse, pour l'instant l'affichage de l'identifiant du Polldle. Dans la section routage, nous modifierons le traitement de la réponse pour rendre visible le composant *VotePolldle*.
 
 > Une documentation exhaustive sur l'API Fetch est disponible à cette adresse : [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
@@ -2094,6 +2105,7 @@ import router from './router'
 
 require('./assets/polldle.css')
 
+// Import Bootstrap library
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -2222,7 +2234,7 @@ Le même code est obtenu que pour le composant *CreatePolldle.vue*. À noter que
 
 ## Conclusion et remerciements
 
-Cette deuxième partie a présenté les principaux concepts de [Vue.js](https://vuejs.org/) au travers d'un exemple complet *PollDLE*.
+Cette deuxième partie a présenté les principaux concepts de [Vue.js](https://vuejs.org/) au travers d'un exemple complet *PollDLE*. 
 
 Dans la partie suivante, nous nous intéresserons à la problématique de déploiement d'une application [Vue.js](https://vuejs.org/) via l'utilisation de [Docker](https://www.docker.com/).
 
@@ -2230,6 +2242,8 @@ Nous tenons à remercier [Claude Leloup](https://www.developpez.net/forums/u1245
 
 ## Ressources
 
+* [Découvrez ou approfondissez votre connaissance de Vue 3](https://ninja-squad.fr/projects#Vue) : un livre avec des exercices régulièrement mis à jour.
+* [Introduction au framework Vue.js par l'exemple](https://tahe.developpez.com/tutoriels-cours/vuejs/) : un TP complet sur Vue.js proposé par Serge Tahé.
 * [Vue.js Tutorials From The Official Vue Docs](https://scrimba.com/playlist/pXKqta) : des tutoriels basés sur des exemples de la documentation officielle. 
 * [The Vue.js Cheat Sheet](https://flaviocopes.com/vue-cheat-sheet/) : un aide mémoire sur [Vue.js](https://vuejs.org/). 
 * [Create & Publish Web Components With Vue CLI 3](https://vuejsdevelopers.com/2018/05/21/vue-js-web-component/) : pour publier un composant [Vue.js](https://vuejs.org/) comme un Web Components. 
