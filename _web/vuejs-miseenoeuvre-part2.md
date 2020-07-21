@@ -997,7 +997,11 @@ Dans cet état de valeur de propriétés où `butonShown` vaut faux, la directiv
 
 ##### Quand utiliser v-if ou v-show ?
 
-Les directives `v-if` et `v-show` permettent d'obtenir le même résultat visuellement, mais le code obtenu est différent. Si vous avez besoin d'effectuer des permutations fréquemment (visibles ou pas visibles) au cours de l'utilisation de votre composant, il est préférable d'utiliser `v-show`. La directive `v-if` est à utiliser de préférence lors de l'initialisation de votre composant et quand il y a peu de changements. Un changement de CSS (via la directive `v-show`) est toujours moins coûteux que de devoir créer de nouveaux blocs (via la directive `v-if`).
+Les directives `v-if` et `v-show` permettent d'obtenir le même résultat visuellement, mais les rendus HTML sont différents.
+
+Si vous avez besoin d'effectuer des permutations fréquemment (visibles ou pas visibles) au cours de l'utilisation de votre composant, il est préférable d'utiliser `v-show`. La directive `v-if` est à utiliser de préférence lors de l'initialisation de votre composant et quand il y a peu de changements. Un changement de CSS (via la directive `v-show`) est toujours moins coûteux que de devoir créer de nouveaux blocs (via la directive `v-if`).
+
+Il faut aussi noter que la directive `v-show` réalise le rendu HTML quoi qu'il arrive, ce qui n'est pas le cas pour la directive `v-if`. Il faut dont prêter attention aux propriétés manipulées dans le rendu qui pourraient ne pas être initialisées. Par conséquent, si vous devez traiter des propriétés qui ne sont pas encore initialisées et qui le seront quand l'affichage devra être visible, il est préférable d'utiliser la directive `v-if`, dans le cas contraire utiliser la directive `v-show`.
 
 #### Rendu de liste
 

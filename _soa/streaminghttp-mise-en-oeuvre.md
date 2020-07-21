@@ -1,6 +1,6 @@
 ---
 title: Développez des WebSocket et des SSE avec Java, Tyrus et JAX-RS
-tags: [SOA, Web Socket, SSE, JAX-RS]
+tags: [SOA, WebSocket, SSE, JAX-RS, Tyrus]
 image: /images/java_ws-vs-sse.png
 description: Présentation des bibliothèques Tyrus (JSR 356) et JAX-RS pour développer en Java la partie serveur et cliente de WebSocket et de Server-Sent Event (SSE).
 category: Cours
