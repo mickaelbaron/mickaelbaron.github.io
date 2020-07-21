@@ -11,7 +11,7 @@ Je vous propose une série d'exercices pour apprendre à concevoir et développe
 * Server-Sent Event (SSE) pour la communication monodirectionelle entre la couche serveur et la couche cliente ;
 * Service web REST pour une communication de la couche cliente vers la couche serveur.
 
-Nous utiliserons le langage Java et les bibliothèques Tyrus pour le développement des WebSocket et JAX-RS pour le développeur de Server-Sent Event.
+Nous utiliserons le langage Java, les bibliothèques Tyrus pour le développement des WebSocket et JAX-RS pour le développeur de Server-Sent Event.
 
 L'étude de cas utilisée est une application appelée « Spell What Royal ». C'est une application de type jeu dont l'objectif est de deviner un texte à partir d'une image. Une image est ainsi présentée au joueur et celui-ci doit saisir, dans un temps donné, un texte. Si le texte correspond à la valeur demandée, le joueur marque un point.
 
