@@ -2,6 +2,7 @@
 title: Tutoriel sur le développement de WebSocket et de Server-Sent Event avec le langage Java
 tags: [WebSocket, SSE, Java]
 category: technical
+twitter: 1285627641601691649
 ---
 
 Je vous propose une série d'exercices pour apprendre à concevoir et développer une application en utilisant des technologies de Streaming HTTP :
@@ -16,7 +17,7 @@ L'étude de cas utilisée est une application appelée « Spell What Royal ». C
 
 ![Splash screen du jeu Spell What Royal](/images/spr-logo.jpg)
 
-Le texte et les codes pour les exercices sont disponibles sur le dépôt Git suivant : https://github.com/mickaelbaron/streaminghttp-tutorial (pour récupérer le code faire : `$ git clone https://github.com/mickaelbaron/streaminghttp-tutorial`).
+Le texte et les codes pour les exercices sont disponibles sur le dépôt Git suivant : <https://github.com/mickaelbaron/streaminghttp-tutorial> (pour récupérer le code faire : `$ git clone https://github.com/mickaelbaron/streaminghttp-tutorial`).
 
 La solution de tous les exercices est disponible sur la branche solution : `$ git checkout solution`.
 
