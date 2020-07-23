@@ -1014,13 +1014,13 @@ La valeur de la directive `v-for` doit suivre la syntaxe `alias in expression` o
 Nous présentons ci-dessous les différentes syntaxes que vous pourrez retrouver en utilisant `v-for` en fonction du type de source (**tableau** ou **objet**).
 
 ```html
-<!-- La source items est un tableau. items: [ { text: 'text1' }, { text: 'text2'} ] -->
+<!-- La source items est un tableau. items: [ { text: 'yes' }, { text: 'no'} ... ] -->
 <div v-for="item in items">{% raw %}{{ item.text }}{% endraw %}</div> --> item est l'élément courant (yes)
 <div v-for="(item, index) in items"></div> --> item est l'élément courant (yes) et index l'indice de l'élément (0)
 
-<!-- La source object est un objet. object: { prenom: 'mickael', familyname: 'baron' } -->
-<div v-for="(val, key) in object"></div> --> val est la valeur de la propriété (mickael) et key le nom de la propriété (prenom)
-<div v-for="(val, key, index) in object"></div> --> val est la valeur de la propriété (mickael), key le nom de la propriété (prenom) et index l'indice de la propriété (0)
+<!-- La source object est un objet. object: { firstname: 'mickael', familyname: 'baron' ... } -->
+<div v-for="(val, key) in object"></div> --> val est la valeur de la propriété (mickael) et key le nom de la propriété (firstname)
+<div v-for="(val, key, index) in object"></div> --> val est la valeur de la propriété (mickael), key le nom de la propriété (firstname) et index l'indice de la propriété (0)
 ```
 
 * Compléter la partie vue du fichier *CreatePolldle.vue* en remplaçant les balises de commentaire `<!-- Directive v-for with polldleOptions -->` par l'utilisation de la directive `v-for`.
