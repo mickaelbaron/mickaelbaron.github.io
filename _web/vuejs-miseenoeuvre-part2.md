@@ -18,7 +18,7 @@ Les différentes parties de cet article sont détaillées ci-dessous :
 
 * [généralités sur les frameworks web JavaScript et présentation de Vue.js](/web/vuejs-generalites-part1) ;
 * **mise en œuvre des concepts de Vue.js** ;
-* déploiement d'une application web développée avec Vue.js.
+* [déploiement d'une application web développée avec Vue.js](/web/vuejs-deploiement-part3).
 
 Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/).
 
@@ -882,7 +882,7 @@ Dans ce cas, la directive `v-once` prend tout son sens, car le rendu ne sera ré
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-03* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
-Nous allons dans cette section détailler les directives `v-show` et `v-if`. Ces directives permettent de créer ou pas le rendu d'un bloc.
+Nous allons dans cette section détailler les directives `v-show` et `v-if`. Ces directives permettent d'afficher ou de masquer du contenu HTML soit par une simple permutation basée sur du CSS (`v-show`) soit par un contrôle du rend (`v-if`).
 
 ##### Directive v-if
 

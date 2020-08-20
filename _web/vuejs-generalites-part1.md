@@ -15,9 +15,9 @@ L'objectif de cet article en plusieurs parties est de vous présenter le framewo
 
 Les différentes parties de cet article sont détaillées ci-dessous :
 
-* **Généralités sur les frameworks web JavaScript et présentation de Vue.js** ;
+* **généralités sur les frameworks web JavaScript et présentation de Vue.js** ;
 * [mise en œuvre des concepts de Vue.js](/web/vuejs-miseenoeuvre-part2) ;
-* déploiement d'une application web développée avec Vue.js.
+* [déploiement d'une application web développée avec Vue.js](/web/vuejs-deploiement-part3).
 
 Lors de l'écriture de l'article, nous avons utilisé la version 2 de [Vue.js](https://vuejs.org/) et la version 4 de [Vue CLI](https://cli.vuejs.org/).
 
