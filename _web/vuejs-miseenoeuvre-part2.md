@@ -116,7 +116,12 @@ Environment Info:
     @vue/cli: 4.4.5
 ```
 
-* Nous allons créer notre premier projet avec **Vue CLI** en mode console. Depuis la racine du dossier *vuejs-polldle-tutorial-src* (obtenu en récupérant les codes source depuis le dépôt [https://github.com/mickaelbaron/vuejs-polldle-tutorial-src](https://github.com/mickaelbaron/vuejs-polldle-tutorial-src)), saisir la ligne de commande suivante : `$ vue create polldle-vue-00`. Une série de questions vous seront posées. 
+* Nous allons créer notre premier projet avec **Vue CLI** en mode console. Depuis la racine du dossier *vuejs-polldle-tutorial-src* (obtenu en récupérant les codes source depuis le dépôt [https://github.com/mickaelbaron/vuejs-polldle-tutorial-src](https://github.com/mickaelbaron/vuejs-polldle-tutorial-src)), saisir la ligne de commande suivante, une série de questions vous seront posées. 
+
+```console
+$ vue create polldle-vue-00
+```
+
 * Sélectionner le second élément afin de choisir manuellement le paramétrage.
 
 ```console
