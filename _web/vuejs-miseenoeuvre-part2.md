@@ -1188,8 +1188,6 @@ import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
 Vue.config.productionTip = false
 Vue.component('CreatePolldleOption', CreatePolldleOption)
 
-window.bus = new Vue()
-
 new Vue({
   render: h => h(App)
 }).$mount('#app')
@@ -1730,21 +1728,21 @@ Dans le code montré ci-dessus, pour chaque instance nouvellement créée du com
 
 > Depuis le composant *ResultPolldle*, il y a aussi une transmission de propriétés vers le composant *highcharts* en utilisant le code suivant : `<highcharts :options="options" ref="highcharts"/>`. Via` :options="options"`, l'objet `options` qui contient la configuration du graphique et les données est transmis via des propriétés.
 
-#### Via le bus d'événements
+#### Via les événements personnalisés
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-12* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
-Une communication par bus d'événements amène à un faible couplage entre un composant parent et un composant enfant. Ce type de communication est à choisir dans le cas où vous souhaitez que votre composant enfant puisse communiquer avec le composant parent. Bien entendu, la communication du composant parent vers le composant enfant pourrait également être effectuée via ce type de communication.
+Une communication par événements personnalisés (_Custom Event_) amène à un faible couplage entre un composant parent et un composant enfant. Ce type de communication est à choisir dans le cas où vous souhaitez que votre composant enfant puisse communiquer avec le composant parent.
 
-La mise en place de ce type de communication est assez classique. Il y a d'abord la phase de création d'événements avec sa transmission vers le bus d'événements. Il y a ensuite la phase d'écouteur qui consiste à réagir (appeler un code particulier) suivant des événements reçus via le bus d'événements. Un événement est constitué d'un identifiant (une chaîne de caractères) et de paramètres (cardinalité zéro ou plusieurs).
+La mise en place de ce type de communication est assez classique. Il y a d'abord la phase de création d'événements avec sa transmission vers le composant parent. Il y a ensuite la phase d'écouteur qui consiste à réagir (appeler un code particulier) suivant l'événement personnalisé reçu. Un événement personnalisé est constitué d'un identifiant (une chaîne de caractères) et de paramètres (cardinalité zéro ou plusieurs).
 
-Dans notre exemple, le composant *CreatePolldleOption* va envoyer un événement `removedPolldleOption` par le bus d'événements lorsque l'utilisateur souhaite supprimer une option (icône de la poubelle). L'abonnement à l'événement `removedPolldleOption` est réalisé dans le composant parent *CreatePolldle*. Le traitement à la réception de cet événement consistera à retirer depuis le tableau `polldleOptions` l'élément correspondant à la bonne option. Pour rappel, c'est dans le composant *CreatePolldle* que sont stockés les objets relatifs aux options d'un Polldle.
+Dans notre exemple, le composant *CreatePolldleOption* va envoyer un événement `removedPolldleOption` au composant parent *CreatePolldle* lorsque l'utilisateur souhaite supprimer une option (icône de la poubelle). L'abonnement à l'événement `removedPolldleOption` est réalisé dans le composant parent *CreatePolldle*. Le traitement à la réception de cet événement consistera à retirer depuis le tableau `polldleOptions` l'élément correspondant à la bonne option. Pour rappel, c'est dans le composant *CreatePolldle* que sont stockés les objets relatifs aux options d'un Polldle.
 
-##### Création d'événements et transmission dans le bus d'événements
+##### Création d'événements personnalisés et transmission
 
-Comme précisé dans la section parente, un événement est composé d'une chaîne de caractères et de paramètres. Les paramètres peuvent être de types différents. La transmission de l'événement dans le bus d'événements se fera via la propriété d'instance `this.$emit`.
+Comme précisé dans la section précédente, un événement est composé d'une chaîne de caractères et de paramètres. Les paramètres peuvent être de types différents. La transmission de l'événement se fera via la propriété d'instance `this.$emit`.
 
-> Il est à noter que chaque composant à une instance spécifique de bus d'événements. Si vous souhaitez utiliser un bus d'événements commun à tous les composants vous pouvez le déclarer comme cela `window.bus.$emit`. Toutefois, il serait préférable de passer par un système global comme [Vuex](https://vuex.vuejs.org/).
+> Il est à noter que chaque composant enfant à une relation avec son composant parent pour la transmission d'événement personnalisé via la propriété d'instance `this.$emit`. Si vous souhaitez communiquer avec n'importe quel composant (pas forcément un composant parent), vous pourriez utiliser un bus d'événement à partir de `window.bus.$emit`. Toutefois, il serait préférable de passer par un système global de gestion d'état comme [Vuex](https://vuex.vuejs.org/). Nous reparlerons de l'utilisation d'un gestionnaire d'état dans un prochain tutoriel.
 
 * Éditer le code du composant *CreatePolldleOption* en remplaçant le commentaire `// Trigger an event on the current instance` par le code suivant.
 
@@ -1768,9 +1766,9 @@ Le code ci-dessus déclenche l'événement `removed-polldle-option` sur l’inst
 
 > Du fait que le nom de l'événement sera utilisé dans le DOM et que les majuscules seront transformées en minuscules, il est d'usage d'utiliser la convention de nommage **kebab-case** pour l'écriture des événements.
 
-##### Abonnement à un événement depuis le bus d'événements
+##### Abonnement à un événement
 
-Puisque le déclenchement de l'événement se fait sur l'instance du composant *CreatePolldleOption* (via l'instance du bus), il faut que l'abonnement s'effectue sur cette même instance. Nous allons donc utiliser la directive `v-on` dont le nom de l'événement est celui que nous avons déclenché.
+Puisque le déclenchement de l'événement se fait sur l'instance du composant *CreatePolldleOption*, il faut que l'abonnement s'effectue sur cette même instance. Nous allons donc utiliser la directive `v-on` dont le nom de l'événement est celui que nous avons déclenché.
 
 * Éditer le code du composant *CreatePolldle* en remplaçant le commentaire `<!-- Listening the removed-polldle-option event -->` par le code suivant.
 
