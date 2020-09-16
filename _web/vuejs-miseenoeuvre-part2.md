@@ -41,7 +41,7 @@ Les codes source pour les exercices sont disponibles sur le dépôt Git suivant�
 
 L'exemple qui nous servira de fil rouge est appelé PollDLE pour *Poll* (Sondage) et la dernière partie de *Doodle* (un outil de planification très simple d'emploi). Il s'agira donc d'une application pour créer un sondage (un titre et des options), voter à un sondage (un choix possible) et afficher les résultats d'un sondage.
 
-La couche client (*front-end*) sera réalisée avec [Vue.js](https://vuejs.org/) et Bootstrap pour le CSS tandis que la couche serveur (*back-end*) est écrite en Java. Pour cette dernière partie, nous ne détaillerons pas sa mise en place, elle est déjà codée. Elle s'appuie sur la spécification [MicroProfile](https://microprofile.io/) en utilisant les composants JAX-RS et CDI et en s'appuyant sur l'implémentation fournie par [KumuluzEE](https://ee.kumuluz.com/).
+La couche client (*front-end*) sera réalisée avec [Vue.js](https://vuejs.org/) et [Bootstrap](https://getbootstrap.com/) pour le CSS tandis que la couche serveur (*back-end*) est écrite en Java. Pour cette dernière partie, nous ne détaillerons pas sa mise en place, elle est déjà codée. Elle s'appuie sur la spécification [MicroProfile](https://microprofile.io/) en utilisant les composants JAX-RS et CDI et en s'appuyant sur l'implémentation fournie par [KumuluzEE](https://ee.kumuluz.com/).
 
 Concernant la partie graphique, il y aura trois écrans pour la création, le vote et la consultation d'un sondage.
 
@@ -254,25 +254,33 @@ Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées so
 
 Le répertoire *node_modules* contient l'ensemble des modules nécessaires pour la construction du projet. Ce répertoire est obtenu automatiquement en exécutant le script `$ npm install`. L'outil **npm** se base alors sur le fichier *package.json* pour télécharger les modules directs et transitifs. Par comparaison, c'est très ressemblant à Maven de l'univers Java où *pom.xml* correspond au fichier *package.json*.
 
-Le répertoire *public* est utilisé pour stocker les fichiers statiques HTML. Le fichier *index.html* est le point d'entrée de votre application (voir ci-dessous). Il sera souvent identique à tous les projets [Vue.js](https://vuejs.org/). Excepté le titre, vous n'aurez rien à modifier manuellement. Tout le code qui vous allez développer sera injecté dans `<div id="app"></div>`.
+Le répertoire *public* est utilisé pour stocker les fichiers statiques HTML. Le fichier *index.html* est le point d'entrée de votre application (voir ci-dessous). Tout le code qui vous allez développer sera injecté dans `<div id="app"></div>`.
+
+* De façon à intégrer la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) à toute l'application, ajouter le lien CDN après la balise de titre.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>polldle-vue</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but polldle-vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Polldle UI Vue.JS</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>
 ```
 
@@ -430,29 +438,6 @@ Le fichier *CreatePolldle.vue* contient le strict minimum et fait apparaitre la 
 ```
 
 Vous remarquerez pour ceux qui utilisent la bibliothèque [Bootstrap](https://getbootstrap.com/) les styles spécifiques tels `row` et `col`. À ce niveau, il s'agit d'une interface graphique développée en HTML des plus classiques.
-
-Pour inclure la bibliothèque [Bootstrap](https://getbootstrap.com/) au projet (c'est-à-dire déclarer son contenu CSS dans la balise `<style>`), il est nécessaire d'impacter le fichier *main.js*.
-
-* Compléter le fichier *main.js* en remplaçant le commentaire `// Import Bootstrap library` par le code ci-dessous.
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-
-require('./assets/polldle.css')
-
-// Import Bootstrap library
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
-```
-
-Cette importation aura comme objectif d'ajouter de manière globale, c'est-à-dire visible dans tout le projet PollDLE, la bibliothèque [Bootstrap](https://getbootstrap.com/).
 
 * Compléter le début de la partie modèle `script`, en ajoutant le code JavaScript suivant correspondant aux propriétés du modèle.
 
@@ -1254,7 +1239,7 @@ Le contenu généré est conforme au composant *CreatePolldleOption*. Ce code n'
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-07* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
-Au sens de composant externe, nous considérons une bibliothèque développée par un tiers et que l'on souhaite intégrer à notre projet. Au niveau de [Vue.js](https://vuejs.org/), ce type de composant est aussi appelé plugin. C'est le cas pour deux bibliothèques : la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) pour le rendu des résultats d'un Polldle et la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) et de sa version packagée [bootstrap-vue](https://bootstrap-vue.js.org/).
+Au sens de composant externe, nous considérons une bibliothèque développée par un tiers et que l'on souhaite intégrer à notre projet. Au niveau de [Vue.js](https://vuejs.org/), ce type de composant est aussi appelé plugin. C'est le cas pour la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) pour le rendu des résultats d'un Polldle.
 
 > Pour transformer un composant en un plugin ou composant externe, il faut exposer une méthode `install`. Cela n'étant pas l'objectif de cet article, une indication est donnée dans la [documentation officielle](https://vuejs.org/v2/guide/plugins.html#Writing-a-Plugin) de [Vue.js](https://vuejs.org/).
 
@@ -1279,7 +1264,6 @@ La commande précédente va également ajouter dans le fichier *package.json* de
 {
   ...
   "dependencies": {
-    "bootstrap-vue": "^2.15.0",
     "highcharts": "^8.1.2",
     "vue": "^2.6.10",
     "vue-highcharts": "^0.1.0"
@@ -2114,10 +2098,6 @@ import App from './App.vue'
 import router from './router'
 
 require('./assets/polldle.css')
-
-// Import Bootstrap library
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 

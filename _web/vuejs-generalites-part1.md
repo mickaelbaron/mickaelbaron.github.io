@@ -60,7 +60,7 @@ Après analyse rapide des différents frameworks ci-dessus, quatre fonctionnalit
 
 ### Liaison entre le modèle et la vue : binding
 
-La plupart des frameworks web JavaScript implémentent le modèle d'architecture MVVM (pour *Movel-View-ViewModel*) qui est une déclinaison du très populaire modèle d'architecture MVC (*Model-View-Controler*). Sur le modèle d'architecture MVVM, la partie contrôleur a été supprimée afin de rapprocher les parties vue et modèle. Ainsi, la nouvelle partie *ViewModel* permet de consommer les éléments du modèle et de les afficher dans la partie vue et inversement (mettre à jour le modèle à partir de la vue). C'est donc dans la partie *ViewModel* que cette notion de *binding* se retrouve.
+La plupart des frameworks web JavaScript implémentent le modèle d'architecture MVVM (pour *Model-View-ViewModel*) qui est une déclinaison du très populaire modèle d'architecture MVC (*Model-View-Controler*). Sur le modèle d'architecture MVVM, la partie contrôleur a été supprimée afin de rapprocher les parties vue et modèle. Ainsi, la nouvelle partie *ViewModel* permet de consommer les éléments du modèle et de les afficher dans la partie vue et inversement (mettre à jour le modèle à partir de la vue). C'est donc dans la partie *ViewModel* que cette notion de *binding* se retrouve.
 
 Pour résumer le *binding*, il s'agit d'un mécanisme qui permet de lier des objets de manière dynamique. Si deux objets `obj1` et `obj2` sont liés par un *binding*, le fait de modifier `obj1` va automatiquement modifier `obj2` et inversement.
 
@@ -75,7 +75,7 @@ Deux types d'informations supplémentaires sont disponibles pour le développeur
 La première concerne les **interpolations** qui se présentent sous la forme d'une notation *mustache* `{% raw %}{{ }}{% endraw %}`. À l'intérieur de cette notation moustache, une expression qui peut-être du texte, des propriétés du modèle et même des expressions JavaScript. Dans l'exemple ci-dessous, `question` désigne une propriété du modèle.
 
 ```html
-{% raw %}{{ }}{% endraw %}
+{% raw %}{{ question }}{% endraw %}
 ```
 
 La seconde concerne les **directives** qui sont des attributs supplémentaires aux balises HTML. Dans le code ci-dessous, les directives `v-model` et `@keypress.enter` sont présentées.
