@@ -5,7 +5,8 @@ direct_link:
 image: /images/vuejs.jpg
 description: Cette première partie s'intéresse à présenter les principaux concepts qu'un framework web JavaScript nouvelle génération doit proposer et comment ils ont été intégrés dans Vue.js.
 category: Article
-date: 2020-06-29
+date: 2019-07-02
+update: 2020-06-30
 weight: 1
 toc: true
 twitter: 1145967402464808961

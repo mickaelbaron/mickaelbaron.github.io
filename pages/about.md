@@ -1,13 +1,15 @@
 ---
-layout: page
+layout: page1c
 title: À Propos
 permalink: /apropos/
 weight: 10
 ---
 
-# **À Propos de moi**
+# **Bonjour 👋👋👋 Bienvenue sur mon blog ...**
 
-Bonjour je suis **{{ site.author.name }}**, Ingénieur de Recherche en Informatique au [LIAS] (statutaire) depuis 2008 qui est un laboratoire hébergé au sein de l'école d'ingénieur [ISAE-ENSMA] situé sur le site du Futuroscope, France.
+Je suis **{{ site.author.name }}**, je fais de la recherche 🕵 en informatique 💻, je crée des outils 🛠 et j'écris des tutoriels 📄. 
+
+Je travaille à l'école d'ingénieur [ISAE-ENSMA] située sur le site du Futuroscope (France) comme Ingénieur de Recherche en Informatique et je suis membre du laboratoire [LIAS] dans l'équipe Ingénierie des Données et des moDèles [IDD].
 
 Diplômé d'un doctorat en informatique de l'[Université de Poitiers] en 2003, deux années en ATER à l'[Université de Poitiers], j'ai fait ensuite un an en post-doctorat à l'[INRIA Rocquencourt] dans le projet [MERLIN] pour la conception et le développement d'outils autour du domaine de l'Interaction Homme-Machine. J'ai également une expérience professionnelle dans le développement logiciels acquise pendant deux années au sein d'une entreprise de services du numérique.
 
@@ -17,7 +19,7 @@ Mes activités au sein du [LIAS] [ISAE-ENSMA] sont triples :
 * activité de recherche au sein de l'équipe de recherce Ingénierie des Données et des Modèles du [LIAS] ;
 * activité de contribution aux charges collectives du laboratoire et de l'établissement [ISAE-ENSMA].
 
-Ma [page professionnelle] au [LIAS] [ISAE-ENSMA] référençant toutes les publications scientifiques auxquelles j'ai participées.
+Ma [page professionnelle] au [LIAS] [ISAE-ENSMA] référence toutes les publications scientifiques auxquelles j'ai participées.
 
 En parallèle à mes activités professionnelles, je suis également responsable sur [Developpez.com] de la rubrique Java (Java, Java Web, Eclipse, Netbeans, Spring et Android), l'une des plus importantes de [Developpez.com]. [Developpez.com] c'est plus de 220 000 visites par jour, 2,5 millions de lecteurs distincts fréquentent au moins une fois par mois www.developpez.com, le forum d'entraide des professionnels de l'informatique est le plus actif dans son domaine avec plus de 5000 messages par jour et la plus grande équipe de rédaction IT Pro : plus de 1000 auteurs.
 
@@ -71,3 +73,4 @@ Le générateur de tables des matières utilise le projet [jekyll-toc](https://g
 [MERLIN]: https://www.inria.fr/equipes/merlin
 [SpeakerDeck]: https://speakerdeck.com/mickaelbaron
 [Github]: https://github.com/mickaelbaron
+[IDD]: https://www.lias-lab.fr/teams/data-engineering

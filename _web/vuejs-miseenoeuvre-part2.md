@@ -5,7 +5,8 @@ direct_link:
 image: /images/vuejs.jpg
 description: Cette deuxième partie présente les principaux concepts de Vue.js au travers d'un exemple complet appelé PollDLE.
 category: Article
-date: 2020-06-29
+date: 2019-07-04
+update: 2020-09-16
 weight: 2
 toc: true
 authors: [diabatem]

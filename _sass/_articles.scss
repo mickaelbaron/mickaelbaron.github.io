@@ -21,6 +21,10 @@
 
 .article {
 
+    p {
+        text-align: justify;
+    }
+
     .tag:hover {
         background-color: $primary;
         color: white !important;

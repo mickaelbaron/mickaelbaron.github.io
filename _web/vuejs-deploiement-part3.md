@@ -6,6 +6,7 @@ image: /images/vuejsdockerjava.jpg
 description: Cette troisième partie s'intéresse aux problématiques de déploiement d'une application Vue.js en utilisant Docker pour créer des conteneurs.
 category: Article
 date: 2019-07-09
+update: 2020-07-20
 weight: 3
 toc: true
 twitter: 1148586483495972866

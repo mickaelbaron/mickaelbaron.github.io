@@ -1,70 +1,65 @@
 ---
-layout: page
+layout: page2c
 ---
 
-<div class="row">
-  <div class="col-md-9">
-    <h1><b> {{ page.title }} </b></h1>
+<h1><b> {{ page.title }} </b></h1>
 
-    <p class="article-metadata text-muted">
-      {{ page.date | date_to_long_string }}
+<p class="article-metadata text-muted">
+  {{ page.date | date_to_long_string }}
+  {% if page.update %}
+  - <i>mise à jour le {{ page.update | date_to_long_string }}</i>
+  {% endif %}
+  {% if page.category == "Article" %}
+  - <b>
+    {% assign words = content | number_of_words %}
 
-      {% if page.category == "Article" %}
-      - <b>
-        {% assign words = content | number_of_words %}
-
-        {% if words < 360 %}
-        less than 1 min read time
-        {% else %}
-        {{ words | divided_by:180 }} mins read time
-        {% endif %}
-        {% endif %}
-      </b>
-
-      <br>
-
-      <i>Par <a href="/apropos">{{ site.author.name }}</a></i>
-
-      {% if page.authors != empty %}
-        <i>
-        {% for authorid in page.authors %}
-          {% assign author = site.authors[authorid] %}
-          - <a href="{{ author.website }}">{{ author.name }}</a>
-        {% endfor %}
-        </i>
-      {% endif %}
-
-      <br>
-
-      {% include tags.html %}
-
-    </p>
-
-    {% if page.deprecated == true %}
-    <div class="alert alert-warning" role="alert">
-      Cette ressource est notée comme <strong>« Deprecated »</strong>. L'auteur tient donc à vous informer qu'il ne vous
-      recommande pas de vous appuyer sur le support de cours car soit il n'est plus à jour soit la technologie présentée
-      n'est plus utilisée.
-    </div>
+    {% if words < 360 %}
+    less than 1 min de lecture
+    {% else %}
+    {{ words | divided_by:180 }} mins de lecture
     {% endif %}
-
-    {% if page.toc == true %}
-      {% include toc.html html=content h_max=2 %}
     {% endif %}
-    
-    {{ content }}
+  </b>
 
-    <footer>
-      Cet article est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
-      Ou quelque chose d'obscur ? Améliorer cet article à partir du dépôt
-      <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
-    </footer>
+  <br>
 
-    {% if page.twitter %}
-      {% include twitter-box.html %}
-    {% endif %}
-  </div>
-  <div class="col-md-3 mt-5">
-    {% include rightside.html %}
-  </div>
+  <i>Par <a href="/apropos">{{ site.author.name }}</a></i>
+
+  {% if page.authors != empty %}
+  <i>
+    {% for authorid in page.authors %}
+    {% assign author = site.authors[authorid] %}
+    - <a href="{{ author.website }}">{{ author.name }}</a>
+    {% endfor %}
+  </i>
+  {% endif %}
+
+  <br>
+
+  {% include tags.html %}
+
+</p>
+
+{% if page.deprecated == true %}
+<div class="alert alert-warning" role="alert">
+  Cette ressource est notée comme <strong>« Deprecated »</strong>. L'auteur tient donc à vous informer qu'il ne vous
+  recommande pas de vous appuyer sur le support de cours car soit il n'est plus à jour soit la technologie présentée
+  n'est plus utilisée.
 </div>
+{% endif %}
+
+{% if page.toc == true %}
+{% include toc.html html=content h_max=2 %}
+{% endif %}
+
+{{ content }}
+
+<footer>
+  Cet article est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
+  Ou quelque chose d'obscur ? Améliorer cet article à partir du dépôt
+  <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
+</footer>
+
+{% if page.twitter %}
+{% include twitter-box.html %}
+{% endif %}

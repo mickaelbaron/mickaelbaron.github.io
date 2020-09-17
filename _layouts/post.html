@@ -1,49 +1,41 @@
 ---
-layout: page
+layout: page2c
 ---
 
-<div class="row">
-  <div class="col-md-9">
-    <h1><b>{{ page.title }}</b></h1>
+<h1><b>{{ page.title }}</b></h1>
 
-    <p class="article-metadata text-muted">
-      {{ page.date | date_to_long_string }} -
-      <b>
-        {% assign words = content | number_of_words %}
-        {% if words < 360 %}
-        less than 1 min read time
-        {% else %}
-        {{ words | divided_by:180 }} mins read time
-        {% endif %}
-      </b>
-
-      <br>
-
-      {% include tags.html %}
-
-    </p>
-
-    {{ content }}
-
-    {% if page.blogger_orig_url %}
-    <div class="alert alert-warning" role="alert">
-      Ce billet est issu de mon ancien blog, retrouver le billet initial à cette adresse : <a
-        href="{{page.blogger_orig_url}}" target="_blank">{{page.title}}</a>.
-    </div>
+<p class="article-metadata text-muted">
+  {{ page.date | date_to_long_string }} -
+  <b>
+    {% assign words = content | number_of_words %}
+    {% if words < 360 %}
+    less than 1 min read time
+    {% else %}
+    {{ words | divided_by:180 }} mins read time
     {% endif %}
+  </b>
 
-    <footer>
-      Ce billet est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
-      Ou quelque chose d'obscur ? Améliorer ce billet à partir du dépôt
-      <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
-    </footer>
+  <br>
 
-    {% if page.twitter %}
-      {% include twitter-box.html %}
-    {% endif %}
+  {% include tags.html %}
 
-  </div>
-  <div class="col-md-3 mt-5">
-    {% include rightside.html %}
-  </div>
+</p>
+
+{{ content }}
+
+{% if page.blogger_orig_url %}
+<div class="alert alert-warning" role="alert">
+  Ce billet est issu de mon ancien blog, retrouver le billet initial à cette adresse : <a
+    href="{{page.blogger_orig_url}}" target="_blank">{{page.title}}</a>.
 </div>
+{% endif %}
+
+<footer>
+  Ce billet est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
+  Ou quelque chose d'obscur ? Améliorer ce billet à partir du dépôt
+  <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
+</footer>
+
+{% if page.twitter %}
+{% include twitter-box.html %}
+{% endif %}
