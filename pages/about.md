@@ -9,14 +9,14 @@ weight: 10
 
 Je suis **{{ site.author.name }}**, je fais de la recherche 🕵 en informatique 💻, je crée des outils 🛠 et j'écris des tutoriels 📄. 
 
-Je travaille à l'école d'ingénieur [ISAE-ENSMA] située sur le site du Futuroscope (France) comme Ingénieur de Recherche en Informatique et je suis membre du laboratoire [LIAS] dans l'équipe Ingénierie des Données et des moDèles [IDD].
+Je travaille à l'école d'ingénieur [ISAE-ENSMA] située sur le site du Futuroscope (France) comme Ingénieur de Recherche en Informatique et, dans ce cadre je suis membre du laboratoire [LIAS] dans l'équipe Ingénierie des Données et des moDèles [IDD].
 
 Diplômé d'un doctorat en informatique de l'[Université de Poitiers] en 2003, deux années en ATER à l'[Université de Poitiers], j'ai fait ensuite un an en post-doctorat à l'[INRIA Rocquencourt] dans le projet [MERLIN] pour la conception et le développement d'outils autour du domaine de l'Interaction Homme-Machine. J'ai également une expérience professionnelle dans le développement logiciels acquise pendant deux années au sein d'une entreprise de services du numérique.
 
 Mes activités au sein du [LIAS] [ISAE-ENSMA] sont triples :
 
-* activité de valorisation des résultats de recherche du [LIAS] ;
 * activité de recherche au sein de l'équipe de recherce Ingénierie des Données et des Modèles du [LIAS] ;
+* activité de valorisation des résultats de recherche du [LIAS] ;
 * activité de contribution aux charges collectives du laboratoire et de l'établissement [ISAE-ENSMA].
 
 Ma [page professionnelle] au [LIAS] [ISAE-ENSMA] référence toutes les publications scientifiques auxquelles j'ai participées.
