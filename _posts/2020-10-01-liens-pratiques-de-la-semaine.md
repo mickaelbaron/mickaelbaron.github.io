@@ -2,7 +2,7 @@
 title: Liens pratiques de la semaine 40 (Octobre 2020)
 tags: [Java, Git, Docker, Vue.js]
 category: technological-watch
-twitter: 
+twitter: 1311706141211140099
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies Java et autres qui m'ont particulièrement intéressées cette semaine 40 (octobre 2020) #prenezsoindevous 😷.
