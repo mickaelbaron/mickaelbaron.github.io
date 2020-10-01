@@ -255,7 +255,7 @@ Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées so
 
 Le répertoire *node_modules* contient l'ensemble des modules nécessaires pour la construction du projet. Ce répertoire est obtenu automatiquement en exécutant le script `$ npm install`. L'outil **npm** se base alors sur le fichier *package.json* pour télécharger les modules directs et transitifs. Par comparaison, c'est très ressemblant à Maven de l'univers Java où *pom.xml* correspond au fichier *package.json*.
 
-Le répertoire *public* est utilisé pour stocker les fichiers statiques HTML. Le fichier *index.html* est le point d'entrée de votre application (voir ci-dessous). Tout le code qui vous allez développer sera injecté dans `<div id="app"></div>`.
+Le répertoire *public* est utilisé pour stocker les fichiers statiques HTML. Le fichier *index.html* est le point d'entrée de votre application (voir ci-dessous). Tout le code que vous allez développer sera injecté dans `<div id="app"></div>`.
 
 * De façon à intégrer la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) à toute l'application, ajouter le lien CDN après la balise de titre.
 
