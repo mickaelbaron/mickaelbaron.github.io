@@ -21,4 +21,4 @@ Dans une quatrième partie Docker Compose sera présenté pour expliquer comment
 
 Enfin, dans une cinquième partie, NGINX sera présenté pour expliquer comment répartir la charge et réaliser un proxy inverse.
 
-{% include slides.html type="speakerdeck" id="d01ee40706f34300b4d29f37beea4e6b" %}
+{% include slides.html type="speakerdeck" id="81fcfd703105450eb9a8d2451b2e6012" %}
