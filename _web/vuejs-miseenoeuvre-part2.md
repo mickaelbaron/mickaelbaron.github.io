@@ -1588,11 +1588,11 @@ Il sera donc possible d'accéder à l'instance de ce composant via la variable `
 
 La propriété observée `data` est modifiée à chaque fois qu'un vote est effectué (utilisation de Server-Sent Event depuis le *hook* `created`). L'accès au composant se fait de cette manière. L'accès à la propriété d'instance se fait avec `this.$refs` puis l'accès à la référence du composant est obtenu par `this.$refs.highcharts`. Le code présenté ensuite permet d'accéder à l'instance `chart` et de lui impacter des modifications (mise à jour de la partie modèle).
 
-#### Via les propriétés
+#### Via les Props
 
 > Nous vous invitons à vous positionner dans le répertoire *polldle-vue-11* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
 
-La communication par propriétés consiste à transmettre des données d'un composant parent à un composant enfant. Ce type de communication est unidirectionnelle (composant parent vers le composant enfant). La communication par propriétés impose d'une part que du côté du composant enfant soit déclarées les propriétés à recevoir et d'autre part que les valeurs des propriétés soient transmises lors de l'instanciation du composant.
+La communication par **props** (qui sont des propriétés) consiste à transmettre des données d'un composant parent à un composant enfant. Ce type de communication est unidirectionnelle (composant parent vers le composant enfant). La communication par **props** impose d'une part que du côté du composant enfant soit déclarées les propriétés à recevoir (section `props`) et d'autre part que les valeurs des propriétés soient transmises lors de l'instanciation du composant.
 
 Dans notre exemple, nous allons construire des instances du composant *CreatePolldleOption* utilisées pour afficher les différentes options de notre Polldle. La valeur de chaque option de notre Polldle, éditée depuis un champ de texte, sera transmise depuis le composant *CreatePolldle* lors de la création des instances *CreatePolldleOption*.
 
@@ -1619,7 +1619,7 @@ export default {
 </scrip>
 ```
 
-Cela permet de déclarer que le composant *CreatePolldleOption* doit (attribut `required`) accepter une propriété de type `Object` qui s'appelle `polldleOption`.
+Cela permet de déclarer que le composant *CreatePolldleOption* doit (attribut `required`) accepter une **prop** (propriété) de type `Object` qui s'appelle `polldleOption`.
 
 Une version simplifiée est fournie à titre d'exemple ci-dessous.
 
@@ -1696,7 +1696,7 @@ Dans le code montré ci-dessus, pour chaque instance nouvellement créée du com
 ...
 ```
 
-> Si nous avions souhaité utiliser le mode de transmission statique (en gros une valeur excepté un tableau et un objet), il faudrait avant tout impacter le composant *CreatePolldleOption* afin de déclarer la propriété pour qu'elle soit une chaîne de caractères et non un objet. Le code correspondant à la transmission de cette chaîne de caractères aurait ressemblé à cela.
+> Si nous avions souhaité utiliser le mode de transmission statique (en gros une valeur chaîne de caractères excepté un tableau, un objet, un nombre ou un booléen), il faudrait avant tout impacter le composant *CreatePolldleOption* afin de déclarer la propriété pour qu'elle soit une chaîne de caractères et non un objet. Le code correspondant à la transmission de cette chaîne de caractères aurait ressemblé à cela.
 
 ```html
 <template>
@@ -1711,7 +1711,7 @@ Dans le code montré ci-dessus, pour chaque instance nouvellement créée du com
 ...
 ```
 
-> Depuis le composant *ResultPolldle*, il y a aussi une transmission de propriétés vers le composant *highcharts* en utilisant le code suivant : `<highcharts :options="options" ref="highcharts"/>`. Via` :options="options"`, l'objet `options` qui contient la configuration du graphique et les données est transmis via des propriétés.
+> Depuis le composant *ResultPolldle*, il y a aussi une communication par **props** vers le composant *highcharts* en utilisant le code suivant : `<highcharts :options="options" ref="highcharts"/>`. Via` :options="options"`, l'objet `options` qui contient la configuration du graphique et les données est transmis via des propriétés.
 
 #### Via les événements personnalisés
 
