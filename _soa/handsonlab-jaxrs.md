@@ -1,5 +1,5 @@
 ---
-title: Développement de services web REST avec JAX-WS, Maven et Eclipse
+title: Développement de services web REST avec JAX-RS, Maven et Eclipse
 tags: [Service web, REST, JAX-RS]
 direct_link: https://github.com/mickaelbaron/jaxrs-tutorial
 image: /images/handsonlab-jaxrs.jpg
