@@ -5,7 +5,7 @@ direct_link:
 image: /slides/web/introduction-web-composants/images/frontendstack.png
 description: Cette introduction présente les bases du développement web et détaille les fonctionnalités qu'un framework web JavaScript orientés composant doit fournir. 
 category: Cours
-date: 2020-12-01
+date: 2020-12-06
 weight: 1
 ---
 
