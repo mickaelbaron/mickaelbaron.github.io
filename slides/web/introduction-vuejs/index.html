@@ -1,0 +1,2502 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Développement web avec Vue.js</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/white.min.css" id="theme">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css"
+		id="highlight-theme">
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<style>
+		/* Double colonnes */
+		.container-flex {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-content: flex-start;
+			align-items: center;
+		}
+
+		.col-1 {
+			flex: 1;
+		}
+
+		.col-2 {
+			flex: 2;
+		}
+
+		/* Placer des petites images à côté du texte */
+		.wrapper-icon .icon {
+			position: relative;
+			margin: 0 10px 0 0;
+			width: 25px;
+			height: 25px;
+		}
+
+		/* Arondir les images */
+		.roundedImage {
+			-moz-border-radius: 15px;
+			-webkit-border-radius: 15px;
+			-khtml-border-radius: 15px;
+			border-radius: 15px;
+			box-shadow: 0px 0px 10px #343434;
+		}
+
+		/* Pour les éléments des démos */
+		.elementContainer {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: center;
+		}
+
+		.elementContainer>* {
+			margin: 10px;
+		}
+
+		/* The browser window */
+		.web-container {
+			border: 3px solid #d0d0d0;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		/* Container for columns and the top "toolbar" */
+		.web-row {
+			padding-bottom: 15px;
+			background: #e0e0e0;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+
+		/* Create three unequal columns that floats next to each other */
+		.web-column {
+			float: left;
+		}
+
+		.web-left {
+			width: 20%;
+		}
+
+		.web-middle {
+			width: 70%;
+		}
+
+		/* Clear floats after the columns */
+		.web-row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		/* Three dots */
+		.web-dot {
+			margin-top: 4px;
+			height: 12px;
+			width: 12px;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+		}
+
+		/* Style the input field */
+		.web-input {
+			width: 100%;
+			border-radius: 3px;
+			border: none;
+			background-color: white;
+			margin-top: -8px;
+			height: 25px;
+			color: #666;
+			padding: 5px;
+		}
+
+		/* Page content */
+		.web-content {
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Page de garde -->
+			<section>
+				<img width="35%" src="images/vuejs.svg" />
+
+				<h3>Développement web avec Vue.js</h3>
+				<p>Mickaël BARON - Version 12-2020</p>
+				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
+						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
+				<div class="wrapper-icon">
+					<a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+							src="images/twitter.svg" />@mickaelbaron</a>
+					<a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+							src="images/web.svg" />mickael-baron.fr</a>
+				</div>
+			</section>
+
+			<!-- Licence d'utilisation -->
+			<section>
+				<h3>Licence d'utilisation</h3>
+
+				<p><b>Creative Commons</b></p>
+				<p>Contrat Paternité</p>
+				<p>Partage des Conditions Initiales à l'Identique</p>
+				<p>2.0 France</p>
+				<p><img width="50%" src="images/by-sa.svg" /></p>
+				<a href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
+			</section>
+
+			<!-- Qui suis-je ? -->
+			<section>
+				<section>
+					<h3>Qui suis-je ?</h3>
+
+					<img width="25%" class="roundedImage" src="images/mbaron.jpg" />
+					<div class="wrapper-icon">
+						<p><a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+									src="images/twitter.svg" />@mickaelbaron</a></p>
+						<p><a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+									src="images/web.svg" />mickael-baron.fr</a></p>
+						<p><a target="_blank" href="https://github.com/mickaelbaron"><img class="icon"
+									src="images/github.svg" />mickaelbaron</a></p>
+					</div>
+				</section>
+				<section>
+					<h3>Ingénieur de Recherche ☀️</h3>
+
+					<div class="container-flex">
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:200%">
+								<li>Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées et des
+									mo<b>D</b>èles
+									(IDD)</li>
+								<li>Valorisation des plateformes logicielles</li>
+								<li>« Coach technique » auprès des usagés</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/isae_ensma.svg" />
+							<img width="65%" src="images/lias.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/LIAS_LAB"><img class="icon"
+											src="images/twitter.svg" />@LIAS_LAB</a></p>
+								<p><a target="_blank" href="https://www.lias-lab.fr"><img class="icon"
+											src="images/web.svg" />www.lias-lab.fr</a></p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Responsable communauté 🌑</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<img width="100%" src="images/developpezcom.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/javaDeveloppez"><img class="icon"
+											src="images/twitter.svg" />@javaDeveloppez</a></p>
+								<p><a target="_blank" href="https://java.developpez.com"><img class="icon"
+											src="images/web.svg" />java.developpez.com</a></p>
+
+							</div>
+						</div>
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:150%">
+								<li>Rubriques : Java, Java Web, Android, Eclipse, Spring et Netbeans</li>
+								<li>Rédacteurs de tutoriels</li>
+								<li>Chiffres</li>
+								<ul>
+									<li>4 M de visiteurs</li>
+									<li>12 M pages vues/mois</li>
+									<li>7500 membres</li>
+									<li>2000 forums</li>
+								</ul>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+			</section>
+
+			<!-- Plan -->
+			<section>
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/vuejs.svg">
+					<h3>Objectif du cours Vue.js (45 min)</h3>
+
+					<ul style="line-height:200%">
+						<li>Modèle et vue</li>
+						<li>Templating (interpolation et directives)</li>
+						<li>Composants (créer et instancier)</li>
+						<li><b>Communiquer entre les composants</b></li>
+						<li>Structure d'un projet Vue.js</li>
+						<li>Routage</li>
+						<li>Outils pour Vue.js</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Disclaimer 🧎🏻‍♂️</h3>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p>Pas le temps ⏳ de tout traiter</p>
+							<ul style="line-height:165%">
+								<li><s>Appeler des services web</s></li>
+								<li><s>Tester</s></li>
+								<li><s>Déployer</s></li>
+							</ul>
+							<p>Expérimentation via des exercices</p>
+							<p><b>Prérequis minimum</b></p>
+							<ul>
+								<li>Langages à balises (XML, HTML)</li>
+								<li>Notions élémentaires JavaScript</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="100%" src="images/vuejsvsreact.jpeg" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Supported version -->
+			<section data-background-size="60%" data-background-opacity="0.5" data-background-image="images/vuejs.svg">
+				<h3>Version supportée dans ce cours</h3>
+
+				<p style="color: #34495e" class="r-fit-text">2.x</p>
+			</section>
+
+			<!-- Historique -->
+			<section>
+				<section>
+					<h3>Historique</h3>
+
+					<div style="text-align: left;">
+						<p>Origine</p>
+						<ul>
+							<li>Projet open source</li>
+							<li><i>Evan You</i>, ancien Google, a travaillé sur Angular</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/vuejs/vue">/vuejs/vue</a>
+								<iframe
+									src="https://ghbtns.com/github-btn.html?user=vuejs&repo=vue&type=star&count=true&size=large"
+									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+							<li>Léger : ~ moins de 30 KB min + gzip (V2)</li>
+							<li>Version actuelle : 3</li>
+							</li>
+						</ul>
+						<p>Historique des versions</p>
+					</div>
+					<img class="r-stretch" src="images/versionshistory.png" />
+				</section>
+				<section>
+					<h3>Popularité</h3>
+
+					<img class="r-stretch" src="images/popularity3.png" />
+
+					<p>Source : <a href="https://2019.stateofjs.com/front-end-frameworks/">stateofjs.com</a></p>
+				</section>
+				<section>
+					<h3>Qui utilise Vue.js ?</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<img src="images/logo-baidu.png" />
+						</div>
+						<div class="col-1">
+							<img width="30%" src="images/logo-xiaomi.png" />
+						</div>
+						<div class="col-1">
+							<img src="images/logo-engie.png" />
+						</div>
+					</div>
+					<div class="container-flex">
+						<div class="col-1">
+							<img src="images/logo-gitlab.png" />
+						</div>
+						<div class="col-1">
+							<img width="55%" src="images/logo-expedia.png" />
+						</div>
+						<div class="col-1">
+							<img src="images/logo-alibaba.png" />
+						</div>
+					</div>
+					<div class="container-flex">
+						<div class="col-1">
+							<img src="images/logo-nintendo.png" />
+						</div>
+						<div class="col-1">
+							<img src="images/logo-sainsburys.png" />
+						</div>
+						<div class="col-1">
+							<img src="images/logo-veolia.png" />
+						</div>
+					</div>
+					<p>Source : <a href="https://slides.com/akryum/vue2-introduction#/7/6">vue2-introduction</a></p>
+				</section>
+			</section>
+
+			<!-- HelloWorld -->
+			<section>
+				<section>
+					<h3>HelloWorld en Vue.js</h3>
+
+					<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="3-6|8-9|11-16">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;helloworld&quot;&gt;
+      &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
+      &lt;p&gt;{{ value }}&lt;/p&gt;
+    &lt;/div&gt;
+	
+    &lt;!-- Chargement de la bibliothèque --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;/&gt;
+	
+    &lt;script&gt;
+      new Vue({
+        el: '#helloworld',
+        data: { value: 'HelloWorld' }
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+				</section>
+				<section>
+					<h3>HelloWorld en Vue.js</h3>
+
+					<div class="web-container">
+						<div class="web-row">
+							<div class="web-column web-left">
+								<span class="web-dot" style="background:#ED594A;"></span>
+								<span class="web-dot" style="background:#FDD800;"></span>
+								<span class="web-dot" style="background:#5AC05A;"></span>
+							</div>
+							<div class="web-column web-middle">
+								<input class="web-input" value="https://mickael-baron.fr">
+							</div>
+						</div>
+
+						<div style="height: 500px">
+							<div id="helloworld">
+								<input v-model="value" type="text" />
+								<p>{{value}}</p>
+							</div>
+						</div>
+						<script>
+							new Vue({
+								el: '#helloworld',
+								data: {
+									value: 'HelloWorld'
+								}
+							});
+						</script>
+					</div>
+				</section>
+			</section>
+
+			<!-- Versatile -->
+			<section>
+				<section>
+					<h3>Versatile</h3>
+
+					<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> peut être utilisée de différentes façons
+					</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><u>Bibliothèque</u></p>
+							<img width="75%" src="images/vuejslibrary.png" />
+							<p>Votre code intègre <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
+						</div>
+						<div class="col-1">
+							<p><u>Framework</u></p>
+
+							<img width="72%" src="images/vuejsframework.png" />
+							<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> intègre votre code</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Vue.js comme bibliothèque</h3>
+
+					<div style="text-align: left;">
+						<p>Quand ?</p>
+						<ul>
+							<li>Petits projets</li>
+							<li>Dans un code existant (formulaire)</li>
+						</ul>
+
+						<p>Comment ?</p>
+						<pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;</code></pre>
+
+						<p>Avec quoi ?</p>
+						<ul>
+							<li>Aucun outil supplémentaire (utilisable maintenant)</li>
+						</ul>
+
+						<p>Exemples</p>
+						<ul>
+							<li><a href="#/5">HelloWorld</a> et dans les transparents de ce cours</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Vue.js comme framework</h3>
+
+					<div class="container-flex" style="text-align:left;">
+						<div class="col-2">
+							<p>Quand ?</p>
+							<ul>
+								<li>Projets importants</li>
+								<li>Single-Page-Application (SPA)</li>
+							</ul>
+
+							<p>Comment ?</p>
+							<ul>
+								<li>Fichier Single-File-Component</li>
+							</ul>
+
+							<p>Avec quoi ?</p>
+							<ul>
+								<li>Des outils : npm, Vue-CLI...</li>
+							</ul>
+							<pre><code>$ npm install vue
+$ npm install -g @vue/cli</code></pre>
+						</div>
+						<div class="col-1">
+							<img src="images/vue-single-file-component.png" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Fonctionnement modèle et la vue -->
+			<section>
+				<section>
+					<h3>Modèle et vue</h3>
+
+					<p>Inspiration du modèle d'architecture <b>MVVM</b> </br>
+						<b>M</b>odel-<b>V</b>iew-<b>V</b>iew<b>M</b>odel</p>
+
+					<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> correspond à la partie
+						<b>V</b>iew<b>M</b>odel</p>
+					<img style="margin:0px" width="85%" src="images/mvvm.png" />
+				</section>
+				<section>
+					<h3>Modèle et vue</h3>
+
+					<p>HelloWorld et le modèle d'architecture <b>MVVM</b></p>
+
+					<img width="100%" src="images/mvvm-helloworld.png" />
+
+					<p>Différents concepts clés de <a href="https://vuejs.org/" target="_blank">Vue.js</a> étudiés dans
+						la suite</p>
+					<ul>
+						<li>Interpolation : <code>{{ value }}</code></li>
+						<li>Directive : <code>v-model="value"</code></li>
+						<li>Données réactives : <code>data</code></li>
+						<li>Chaque <strong>MVVM</strong> est un composant</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- Templating -->
+			<section>
+				<section>
+					<h3>Templating avec Vue.js</h3>
+
+					<p>Comment réaliser le databinding ?</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><u>Interpolation</u></p>
+
+							<img width="100%" src="images/vuejsinterpolation.png" />
+						</div>
+						<div class="col-1">
+							<p><u>Directive</u></p>
+
+							<img width="100%" src="images/vuejsdirective.png" />
+						</div>
+					</div>
+				</section>
+				<section data-background-size="65%" data-background-opacity="0.2"
+					data-background-image="images/mustache.png">
+					<h3>Interpolation Vue.js</h3>
+
+					<p>Liaison unidirectionnelle : modèle ➡️ vue</p>
+
+					<div style="text-align: left;">
+						<p>Utilisation de la notation moustache : <code>{{ ... }}</code></p>
+						<b>Exemples d'interpolation</b></p>
+
+						<pre><code data-noescape data-trim data-line-numbers>{{ myProperty }}
+{{ number + 1 }}
+{{ ok ? 'OUI' : 'NON' }}
+{{ message.split('').reverse().join('') }}</code></pre>
+						<p><b>Limites</b></p>
+						<ul>
+							<li>N'interpètre pas du HTML (voir <code>v-html</code>)</li>
+							<li>Inutilisable dans des attributs HTML (voir <code>v-bind</code>)</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Directives Vue.js</h3>
+
+					<p>Attributs HTML spécifiques à <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<ul>
+								<li><code>v-model</code></li>
+								<li><code>v-bind</code></li>
+								<li>Directives conditionnelles</li>
+								<ul>
+									<li><code>v-if</code></li>
+									<li><code>v-else</code></li>
+									<li><code>v-else-if</code></li>
+									<li><code>v-show</code></li>
+								</ul>
+							</ul>
+							<ul>
+						</div>
+						<div class="col-1">
+							<ul>
+								<li><code>v-for</code></li>
+								<li><code>v-on</code></li>
+								<li><code>v-html</code></li>
+								<li><code>v-text</code></li>
+								<li><code>v-cloak</code></li>
+								<li><code>v-pre</code></li>
+								<li><code>v-once</code></li>
+							</ul>
+						</div>
+					</div>
+					<p>Étudions ces <u>directives</u> par l'exemple</p>
+				</section>
+				<section>
+					<h3>Directive : v-model</h3>
+
+					<p>Liaison bidirectionnelle (modèle ↔️ vue) pour composants
+						<code>&lt;input&gt; &lt;select&gt; &lt;textarea&gt;</code></p>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="2-3|11">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot;/&gt;
+ &lt;textarea v-model="value"/&gt;
+ &lt;p&gt;{{value}}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { 
+   value: 'HelloWorld'
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" disabled value="https://mickael-baron.fr">
+									</div>
+								</div>
+
+								<div style="height: 200px">
+									<div id="app-vmodel">
+										<div class="elementContainer">
+											<input v-model="value" type="text" />
+											<textarea v-model="value"></textarea>
+										</div>
+										<p>{{value}}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-vmodel',
+										data: {
+											value: 'HelloWorld'
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Directive : v-bind</h3>
+
+					<p>Liaison unidirectionnelle (modèle ➡️ vue) utilisable dans des <u>attributs HTML</u> (ex. :
+						<code>value</code>, <code>disabled</code>) </p>
+
+					<p style="text-align: left;">Syntaxe 👉 <code>v-bind:attribute...</code><br>
+						Syntaxe simplifiée 👉 <code>:attribute...</code></p>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code data-noescape data-trim data-line-numbers="3-4">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; /&gt;
+ &lt;input v-bind:value=&quot;value&quot; /&gt;
+ &lt;input :value=&quot;value&quot; /&gt;
+ &lt;p&gt;{{value}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: 'HelloWorld' }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 210px">
+									<div class="elementContainer" id="app-vbind">
+										<input v-model="value" type="text" />
+										<input v-bind:value="value" />
+										<input :value="value" />
+										<p>{{value}}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-vbind',
+										data: {
+											value: 'HelloWorld'
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-background-size="100%" data-background-opacity="0.2"
+					data-background-image="images/vuejscondition.png">
+					<h3>Directives conditionnelles</h3>
+
+					<p><u>Cacher</u> ou <u>afficher</u> un élément HTML</p>
+
+					<div style="text-align: left;">
+						<p><code>v-if, v-else et v-else-if</code></p>
+
+						<ul>
+							<li>Effectuer un rendu d'un élément</li>
+							<li><code>v-else</code> et <code>v-else</code> <u>obligatoirement</u> après
+								<code>v-if</code></li>
+						</ul>
+
+						<p><code>v-show</code></p>
+						<ul>
+							<li>Masquer un élément via la propriété CSS <code>display</code></li>
+						</ul>
+
+						<p>Comment choisir entre <code>v-show</code> et <code>v-if</code> ?</p>
+						<ul>
+							<li>Permutations fréquentes 👉 <code>v-show</code></li>
+						</ul>
+					</div>
+
+				</section>
+				<section>
+					<h3>Directives conditionnelles</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="6,8,9">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;show&quot;&gt;
+   Afficher Vue.js
+ &lt;/input&gt;
+
+ &lt;img v-show=&quot;show&quot; src=&quot;vue.svg&quot;/&gt;
+
+ &lt;img v-if=&quot;show&quot; src=&quot;vue.svg&quot;/&gt;
+ &lt;img v-else src=&quot;mbaron.jpg&quot;/&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { 
+   show: false 
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 450px">
+									<div class="elementContainer" id="app-cond">
+										<input v-model="visible" type="checkbox">Afficher Vue.js</input>
+										<img height="100px" v-show="visible" src="images/lias.png" />
+										<img height="140px" v-if="visible" src="images/vuejs.svg" />
+										<img height="250px" v-else src="images/mbaron.jpg" />
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-cond',
+										data: {
+											visible: true
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+
+				</section>
+				<section>
+					<h3>Directive : v-for</h3>
+
+					<p>Effectuer <u>plusieurs fois</u> le rendu d'une liste d'éléments</p>
+
+					<div style="text-align: left;">
+						<p><b>Tableau (items)</b></p>
+						<pre><code>v-for="(item, index) in items"</code></pre>
+						</li>
+						<ul>
+							<li>item : élément courant (ex. : <code>rouge</code>)</li>
+							<li>index : position (ex. : <code>1</code>)</li>
+						</ul>
+
+						<p><b>Objet (object)</b></p>
+						<pre><code>v-for="(value, name, index) in object"</code></pre>
+						</li>
+						<ul>
+							<li>value : valeur de la propriété (ex. : <code>mickaël</code>)</li>
+							<li>name : nom de la propriété (ex. : <code>firstname</code>)</li>
+							<li>index : position de la propriété (ex. : <code>0</code>)</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Directive : v-for</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-4,6-8">&lt;div id=&quot;app&quot;&gt;
+ &lt;p v-for=&quot;(val,index) in tab&quot;&gt;
+  {{val + &quot;,&quot; + index}}
+ &lt;/p&gt;
+
+ &lt;p v-for=&quot;(val,name,index) in obj&quot;&gt;
+  {{val + &quot;,&quot; + name + &quot;,&quot; + index}}
+ &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: {
+   tab: ['rouge', 'bleu', 'blanc'],
+   obj: { p1: 'val1', p2: 'val2', 
+          p3: 'val3'
+        }
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 400px">
+									<div class="elementContainer" id="app-vfor">
+										<p style="margin:5px" v-for="(val, index) in tab">
+											{{ val+","+index }}
+										</p>
+										<p style="margin:5px" v-for="(val, name, index) in obj">
+											{{ val + "," + name + "," + index }}
+										</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-vfor',
+										data: {
+											tab: ['rouge', 'bleu', 'blanc'],
+											obj: { p1: 'val1', p2: 'val2', p3: 'val3' }
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-background-size="50%" data-background-opacity="0.1"
+					data-background-image="images/click.png">
+					<h3>Directive : v-on</h3>
+
+					<p>Écouter les événements de la partie <code>View</code> pour éxécuter vos traitements</p>
+
+					<div style="text-align: left;">
+						<p>Syntaxe 👉 <code>v-on:event=...</code><br>
+							Syntaxe simplifiée 👉 <code>@event=...</code></p>
+
+						<p><b>Modificateurs d'événements</b></p>
+						<ul>
+							<li><code>.stop</code> : un évènement stoppé</li>
+							<li><code>.prevent</code> : rechargement page stoppé</li>
+							<li><code>.left</code> : uniquement bouton gauche de la souris</li>
+							<li><code>.once</code> : une seule fois</li>
+							<li>...</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Directive : v-on</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7">&lt;div id=&quot;app&quot;&gt;
+ &lt;button @click=&quot;increase&quot;&gt;
+  Augmenter
+ &lt;/button&gt;
+ &lt;button @click.once=&quot;decrease&quot;&gt;
+  Diminuer
+ &lt;/button&gt;
+ &lt;p&gt;{{ value }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: 0 },
+  methods: {
+   increase() { this.value++; },
+   decrease() { this.value--; }
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div class="elementContainer" id="app-von">
+										<button @click="increase">Augmenter</button>
+										<button @click.once="decrease">Diminuer</button>
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-von',
+										data: {
+											value: 0
+										},
+										methods: {
+											increase() {
+												this.value++;
+											},
+											decrease() {
+												this.value--;
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Autres directives</h3>
+
+					<div style="text-align: left;">
+						<p><code>v-html</code> : interprète du contenu HTML</p>
+						<p><code>v-text</code> : identique à l'interpolation de texte <code>{{ }}</code></p>
+						<p><code>v-once</code> : effectue le rendu une seule fois</p>
+						<p><code>v-cloak</code> : bloque l'affichage tant que la compilation <a
+								href="https://vuejs.org/" target="_blank">Vue.js</a> n'est pas terminée</p>
+						<p><code>v-pre</code> : n'effectue pas de compilation, texte brute</p>
+						<p><code>v-???</code> : possibilité de créer ses propres directives personnalisées : <a
+								href="https://vuejs.org/v2/guide/custom-directive.html">en savoir plus</a></p>
+					</div>
+				</section>
+				<section>
+					<h3>Autres directives</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="2,4,6,9">&lt;div id=&quot;app&quot;&gt;
+ &lt;div v-html=&quot;html&quot;&gt;&lt;/div&gt;
+
+ &lt;div v-text=&quot;html&quot;&gt;&lt;/div&gt;
+ 
+ &lt;div v-once&gt;{{value}}&lt;/div&gt;
+ &lt;input v-model=&quot;value&quot; /&gt;
+ 
+ &lt;div v-pre&gt;{{value}}&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: {
+   html: '&lt;b&gt;HelloWorld&lt;/b&gt;',
+   value: 'HelloWorld'
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 350px">
+									<div class="elementContainer" id="app-directives">
+										<div v-html="html"></div>
+										<div v-text="html"></div>
+										<div v-once>{{value}}</div>
+										<input v-model="value" />
+										<div v-pre>{{value}}</div>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-directives',
+										data: {
+											html: '<b>HelloWorld</b>',
+											value: 'HelloWorld'
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Composant -->
+			<section>
+				<section data-background-size="100%" data-background-opacity="0.2"
+					data-background-image="images/componentlego.jpg">
+					<h3>Composant</h3>
+
+					<p>Mise en place d'un composant ?</p>
+
+					<ol>
+						<li>Savoir développer un composant ?<br><b>Single-File-Component</b></li>
+						<li>Savoir instancier un composant ?<br><b>Balise personnalisée</b></li>
+						<li>Savoir écouter un composant ?<br><b>Propriétés calculées et observateurs</b></li>
+						<li>Savoir contrôler un composant ?<br><b>Cycle de vie</b></li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>Développer un composant ?</h3>
+
+					<p>Deux manières de développer des composants</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>À la volée</b></p>
+							<img width="75%" src="images/library-component.png" />
+						</div>
+						<div class="col-1">
+							<p><b>Single-File-Component</b></p>
+							<img width="78%" src="images/vue-single-file-component.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Développer un composant ?</h3>
+
+					<p style="margin:0px">Fichier Single-File-Component via format .vue</p>
+
+					<div class="container-flex">
+						<div style="text-align: left" class="col-1">
+							<p><b>Template : View</b></p>
+							<ul>
+								<li>HTML</li>
+								<li>Interpolation et directive</li>
+							</ul>
+							<p><b>Script : ViewModel</b></p>
+							<ul>
+								<li>JavaScript</li>
+								<li>Lien avec le Modèle</li>
+							</ul>
+							<p><b>Style</b></p>
+							<ul>
+								<li>CSS localisé</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="100%" src="images/vue-single-file-component.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Instancier un composant ?</h3>
+
+					<p>Trois étapes à réaliser depuis un fichier .vue</p>
+
+					<div style="text-align: left;">
+						<p>① Importation (dans la partie <code>script</code>)</p>
+						<pre><code>import YourComponent from "@/components/yourcomponent.vue";</code></pre>
+						<p>② Déclaration (dans le composant courant)</p>
+						<pre><code>components: {
+ YourComponent
+ ...
+}</code></pre>
+						<p>③ Instanciation (dans la partie <code>View</code>)</p>
+						<pre><code>&lt;YourComponent/&gt;</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3>Instancier un composant ?</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="10|16|3">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock/&gt;
+  &lt;input v-model=&quot;value&quot; /&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() {
+   return { value: &quot;HelloWorld&quot; };
+  },
+  components: { Clock }
+ };
+&lt;/script&gt;
+
+&lt;style/&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 200px">
+									<div class="elementContainer" id="app-instance">
+										<clock></clock>
+										<input v-model="value" />
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									let Clock = {
+										template: `<div>{{ value }}</div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+										}
+									}
+									new Vue({
+										el: '#app-instance',
+										data: {
+											value: 'HelloWorld'
+										},
+										components: {
+											'clock': Clock
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/computed.png">
+					<h3>Ecouter composant : calculée</h3>
+					<div style="text-align: left;">
+						<p><b>Problématiques</b></p>
+						<ul>
+							<li>Expressions complexes dans la partie <code>View</code></li>
+							<li>Expressions utilisées plusieurs fois</li>
+						</ul>
+						<p><b>Propriété calculée (computed)</b></p>
+						<ul>
+							<li>Dépendances vers autres propriétés (option <code>data</code>)</li>
+						</ul>
+						<p><b>Syntaxe</b></p>
+						<pre><code data-noescape data-trim data-line-numbers>computed: {
+ yourProperty() {
+  // Votre code qui dépend d'autres propriétés du composant
+ }
+}</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Ecouter composant : calculée</h3>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="13-17">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot;/&gt;
+ &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;p&gt;Longueur {{ messageLength }}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { 
+   value: &quot;HelloWorld&quot; 
+  },
+  computed: {
+   messageLength() {
+    return this.value.length;
+   }
+  }
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 225px">
+									<div class="elementContainer" id="app-computed">
+										<input v-model="value" type="text" />
+										<p>{{ value }}</p>
+										<p>Longueur : {{ messageLength }}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-computed',
+										data: {
+											value: "HelloWorld"
+										},
+										computed: {
+											messageLength() {
+												return this.value.length;
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Ecouter composant : calculée</h3>
+
+					<p>Possibilité de faire des mutateurs calculés (<code>v-model</code>)</p>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="9-17">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;compValue&quot; /&gt;
+ &lt;p&gt;{{ compValue }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: &quot;HelloWorld&quot; },
+  computed: {
+   computedValue: {
+    get() { return this.value; },
+    set(newValue) {
+     if (newValue.length &lt;= 10) {
+      this.value = newValue;
+     }
+    }
+ }}});
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div class="elementContainer" id="app-computed-setter">
+										<input v-model="valuebis" type="text" />
+										<p>{{ valuebis }}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-computed-setter',
+										data: {
+											value: "HelloWorld"
+										},
+										computed: {
+											valuebis: {
+												get() {
+													return this.value;
+												},
+												set(newValue) {
+													if (newValue.length <= 10) {
+														this.value = newValue;
+													}
+												}
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+
+				</section>
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/observateur.png">
+					<h3>Ecouter composant : observateur</h3>
+					<div style="text-align: left;">
+						<p><b>Problématique</b></p>
+						<ul>
+							<li>Invoquer une fonction à chaque nouvelle valeur d'une propriété</li>
+						</ul>
+						<p><b>Observateur (watcher)</b></p>
+						<ul>
+							<li>Cible une propriété</li>
+						</ul>
+						<p><b>Syntaxe</b></p>
+						<pre><code data-noescape data-trim data-line-numbers>watch: {
+ property(val) { // val = nouvelle valeur de property
+  // Votre code
+ }
+}</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Ecouter composant : observateur</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="11-18">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
+ &lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  data: {
+   value: &quot;HelloWorld&quot;,
+   message: &quot;Parfait&quot;
+  },
+  watch: {
+   value(current) {
+    if (current.length &gt; 10) {
+     this.message = &quot;Trop grand&quot;
+    } else {
+     this.message = &quot;Parfait&quot;
+    }
+   }}
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 125px">
+									<div class="elementContainer" id="app-watch">
+										<input v-model="value" type="text" />
+										<p>{{ message }}</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-watch',
+										data: {
+											value: "HelloWorld",
+											message: "Parfait"
+										},
+										watch: {
+											value(current) {
+												if (current.length > 10) {
+													this.message = "Trop grand"
+												} else {
+													this.message = "Parfait"
+												}
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Cycle de vie d'un composant</h3>
+
+					<div class="container-flex">
+						<div style="text-align: left" class="col-1">
+							<p>Des étapes intermédiaires</p>
+							<ul>
+								<li><code>beforeCreate</code></li>
+								<li><code>created</code></li>
+								<li><code>mounted</code></li>
+								<li><code>updated</code></li>
+								<li>...</li>
+							</ul>
+							<p>Intercepter par du code</p>
+							<ul>
+								<li>Ex : invoquer service web : <code>created</code></li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="55%" src="images/lifecyclevuejs.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Cycle de vie d'un composant</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 570px;" data-noescape data-trim data-line-numbers="10-18">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
+ &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;p&gt;👇 Display the console&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: &quot;HelloWorld&quot;	},
+  create() {
+   display(&quot;create &quot; + this.value)
+  },
+  mounted() {
+   display(&quot;mounted &quot; + this.value)
+  },
+  updated() {
+   display(&quot;updated &quot; + this.value)
+  },
+  ...
+ });
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 300px">
+									<div class="elementContainer" id="app-lifecycle">
+										<input v-model="value" type="text" />
+										<p>{{ value }}</p>
+										<p>👇 Display the console</p>
+									</div>
+								</div>
+								<script>
+									new Vue({
+										el: '#app-lifecycle',
+										data: {
+											value: "HelloWorld"
+										},
+										beforeCreate() {
+											console.log("beforeCreate " + this.value);
+										},
+										created() {
+											console.log("created " + this.value)
+										},
+										beforeMounted() {
+											console.log("beforeMounted " + this.value)
+										},
+										mounted() {
+											console.log("mounted " + this.value)
+										},
+										beforeUpdate() {
+											console.log("beforeUpdate " + this.value)
+										},
+										updated() {
+											console.log("updated " + this.value)
+										},
+										beforeDestroy() {
+											console.log("beforeDestroy " + this.value)
+										},
+										destroyed() {
+											console.log("destroyed " + this.value)
+										}
+
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-background-size="75%" data-background-opacity="0.2"
+					data-background-image="images/summary.jpg">
+					<h3>Résumé Contenu d'un composant</h3>
+					<p>Différents options disponibles pour vos composants</p>
+					<div style="text-align: left;">
+						<ul style="line-height:180%">
+							<li><code>data</code> : binding View et Model</li>
+							<li><code>computed</code> : propriétés calculées</li>
+							<li><code>watch</code> : propriétés observées</li>
+							<li><code>lifecycle</code> : intercepteurs</li>
+							<li><code>methods</code> : vos « fonctions » JavaScript</li>
+							<li><code>components</code> : composants externes</li>
+							<li><i>À suivre dans la partie communication : <code>props</code></i></li>
+						</ul>
+					</div>
+				</section>
+			</section>
+
+			<!-- Communication entre composant -->
+			<section>
+				<section data-background-size="68%" data-background-opacity="0.2"
+					data-background-image="images/componenttree.png">
+					<h3>Communiquer entre les composants</h3>
+
+					<div>
+						<p>Composant parent ➡️ composants enfants ?</p>
+						<p>Composant enfant ➡️ composant parent ?</p>
+						<p>À tous les composants ?</p>
+						<p>Communication par référence ?</p>
+						<p>Communication via un gestionnaire d'états ?</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>Props</h3>
+
+					<p>Permet une communication Parent ➡️ Enfant</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe</b></p>
+							<ul>
+								<li><b>Enfant :</b> déclarer des <b>Props</b> ~ Propriétés (dans option
+									<code>props</code>)
+								</li>
+								<li><b>Parent :</b> transmettre des valeurs depuis la balise personnalisée</li>
+							</ul>
+							<p><b>Valeurs</b></p>
+							<ul>
+								<li>Statique</li>
+								<li>Dynamique via directive <code>v-bind</code></li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="55%" src="images/communicationpropscustomevent.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Props (Enfant)</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=9-11|2>&lt;template&gt;
+ &lt;div&gt;{{ value }} {{ message }}&lt;/div&gt;
+&lt;/template&gt;
+					
+&lt;script&gt;
+ export default {
+  name: &quot;clock&quot;,
+   data() { return { value: &quot;&quot; } },
+   props: {
+    message: String
+   },
+   created() {
+    setInterval(() =&gt; { this.computeClock(); }, 1000);
+   },
+   methods: {
+    computeClock() {
+     this.value = new Date().toLocaleTimeString();
+    }
+   }
+ }
+&lt;/script&gt;</code></pre>
+				</section>
+				<section>
+					<h3>Props (Parent)</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock v-bind:message=&quot;value&quot;/&gt;
+  &lt;input v-model=&quot;value&quot; /&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() {
+   return { 
+    value: &quot;HelloWorld&quot; 
+   };
+  },
+  components: { Clock }
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 250px">
+									<div class="elementContainer" id="app-props">
+										<clock :message="value"></clock>
+										<input v-model="value" />
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									let Clock2 = {
+										template: `<div>{{ value }} {{ message }}</div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										props: {
+											message: String
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+										}
+									}
+									new Vue({
+										el: '#app-props',
+										data: {
+											value: 'HelloWorld'
+										},
+										components: {
+											'clock': Clock2
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h3>Evénéments personnalisés</h3>
+
+					<p>Permet une communication Enfant ➡️ Parent</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe</b></p>
+							<ul>
+								<li><b>Enfant :</b> émettre un événement <code>$emit</code>
+								</li>
+								<li><b>Parent :</b> écouter les événements via directive <code>v:on</code></li>
+							</ul>
+							<p><b>Événement</b></p>
+							<ul>
+								<li>nom d'identification</li>
+								<li>objet de transfert</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="55%" src="images/communicationpropscustomevent.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Evénéments personnalisés : Enfant</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=16>&lt;template&gt;
+ &lt;div&gt;
+  &lt;button v-on:click=&quot;saveClock&quot;&gt;{{value}}&lt;/button&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { value: &quot;&quot; } },
+  created() { ... },
+  methods: {
+   computeClock() {
+    this.value = new Date().toLocaleTimeString();
+   }
+   saveClock() {
+    this.$emit(&quot;save-clock&quot;, this.value);
+   }
+  }
+ }
+&lt;/script&gt;</code></pre>
+				</section>
+
+				<section>
+					<h3>Evénéments personnalisés : Parent</h3>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="4|16-18">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock 
+   @save-clock=&quot;saveClock($event)&quot;/&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() { ... },
+  components: { Clock },
+  methods: {
+   saveClock(currentClock) {
+    this.value = currentClock;
+   }
+  }
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div id="app-customevent">
+										<clock v-on:save-clock="saveClock($event)"></clock>
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									let Clock3 = {
+										template: `<div><button v-on:click="saveClock">{{value}}</button></div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											saveClock() {
+												this.$emit("save-clock", this.value);
+											}
+										}
+									}
+									new Vue({
+										el: '#app-customevent',
+										data: {
+											value: ''
+										},
+										components: {
+											'clock': Clock3
+										},
+										methods: {
+											saveClock(currentClock) {
+												this.value = currentClock;
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Bus d'événements</h3>
+
+					<p style="margin: 0px;">Permet une communication à tous les composants</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe</b></p>
+							<ul>
+								<li>Créer une instance <code>Vue</code></li>
+								<pre><code>import Vue from 'vue';
+export const EB = new Vue();</code></pre>
+								<li>Émettre un événement : <code>$emit</code></li>
+								<li>S'abonner à un événement : <code>$on</code></li>
+								<li>Supprimer abonnement : <code>$off</code></li>
+							</ul>
+							<p><b>Problème de performance</b></p>
+							<ul>
+								<li>Si oubli suppression abonnement</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="50%" src="images/eventbus.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Bus d'événements : émetteur</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=8|16>&lt;template&gt;
+ &lt;div&gt;
+  &lt;button v-on:click=&quot;saveClock&quot;&gt;{{value}}&lt;/button&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import EB from './event-bus.js';
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { value: &quot;&quot; } },
+  created() { ... },
+  methods: {
+   computeClock() { ... }
+   saveClock() {
+    EB.$emit(&quot;save-clock&quot;, this.value);
+   }
+  }
+ }
+&lt;/script&gt;</code></pre>
+				</section>
+
+				<section>
+					<h3>Bus d'événements : récepteur</h3>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="9|16-18">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock @save-clock=&quot;saveClock&quot;/&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import EB from './event-bus.js';
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() { ... },
+  components: { Clock },
+  mounted() {
+   EB.$on('save-clock', (val) => {
+    this.value = val;
+   });
+  },
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div id="app-eventbus">
+										<clock v-on:save-clock="saveClock($event)"></clock>
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									const EventBus = new Vue();
+
+									let Clock4 = {
+										template: `<div><button v-on:click="saveClock">{{value}}</button></div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											saveClock() {
+												EventBus.$emit('save-clock', this.value);
+											}
+										}
+									}
+									new Vue({
+										el: '#app-eventbus',
+										data: {
+											value: ''
+										},
+										components: {
+											'clock': Clock4
+										},
+										mounted() {
+											EventBus.$on('save-clock', (payLoad) => {
+												this.value = payLoad;
+											});
+										},
+										methods: {
+											saveClock(currentClock) {
+												this.value = currentClock;
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<p style="margin: 0px;">Partager un modèle de stockage par référence</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe (solution DIY)</b></p>
+							<ul>
+								<li>Créer un modèle de stockage</li>
+								<pre><code>export const Store = {
+ state: {
+  // Objet JavaScript
+ }
+}</code></pre>
+								<li>Utiliser des mutateurs calculés</li>
+							</ul>
+							<p><b>Aller plus loin</b></p>
+							<ul>
+								<li>Utiliser <a href="https://vuex.vuejs.org/">Vuex</a></li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="50%" src="images/statemanagement.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10-15>&lt;template&gt;
+ &lt;div&gt;{{ clockValue }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import Store from './store.js';
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { sm: Store.state } },
+  computed: {
+   clockValue: {
+    set(value) { this.sm.clockValue = value; },
+    get() { return this.sm.clockValue; }
+   }
+  },
+  ...
+ }
+&lt;/script&gt;</code></pre>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="8|15-19">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock&gt;&lt;Clock/&gt;
+  &lt;p&gt;{{ clockValue }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+ import Store from './store.js';
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  data() { 
+   return { sm: tore.state } 
+  },
+  components: { Clock },
+  computed: { 
+   clockValue: {
+    get() { 
+     return this.sm.clockValue; 
+  }}},
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div class="elementContainer" id="app-statemanager">
+										<clock></clock>
+										<p>{{ clockValue }}</p>
+									</div>
+								</div>
+								<script>
+									const store = {
+										state: {
+											clockValue: ''
+										}
+									}
+
+									let Clock5 = {
+										template: `<div>{{clockValue}}</div>`,
+										data() {
+											return {
+												storeState: store.state
+											}
+										},
+										computed: {
+											clockValue: {
+												set(value) {
+													this.storeState.clockValue = value;
+												},
+												get() {
+													return this.storeState.clockValue;
+												}
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.clockValue = new Date().toLocaleTimeString();
+											}
+										}
+									}
+									new Vue({
+										el: '#app-statemanager',
+										data: {
+											storeState: store.state
+										},
+										components: {
+											'clock': Clock5
+										},
+										computed: {
+											clockValue: {
+												get() {
+													return this.storeState.clockValue;
+												}
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h3>Référence directe</h3>
+
+					<p style="margin: 0px;">Accéder à un composant par référence</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe (parent ➡️ enfants)</b></p>
+							<ul>
+								<li>Définir nom référence via <code>ref</code></li>
+								<li>Appeler via <code>$refs.myref</code></li>
+							</ul>
+
+							<p><b>Principe (enfant ➡️ parent)</b></p>
+							<ul>
+								<li>Appeler via <code>$parent</code></li>
+							</ul>
+
+							<p><b>Problème</b></p>
+							<ul>
+								<li>Couplage fort</li>
+								<li>Si le composant n'existe plus ?</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="60%" src="images/componentreference.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Référence directe</h3>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 600px;" data-noescape data-trim data-line-numbers="3|17">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock ref=&quot;refClock&quot;&gt;&lt;Clock/&gt;
+  &lt;button @click=&quot;save()&quot;&gt;
+   Save&lt;/button&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  data() { 
+   return { value: 'Empty' } 
+  },
+  methods: {
+   save() {
+    this.value = 
+     this.$refs.refClock.getClock();
+   }
+  }
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 200px">
+									<div class="elementContainer" id="app-ref">
+										<clock ref="refClock"></clock>
+										<button @click="save()">Save</button>
+										<p>{{ value }}</p>
+									</div>
+								</div>
+								<script>
+									let Clock6 = {
+										template: `<div>{{value}}</div>`,
+										data() {
+											return {
+												value: ''
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											getClock() {
+												return this.value;
+											}
+										}
+									}
+									new Vue({
+										el: '#app-ref',
+										data() {
+											return {
+												value: 'Not Initialized'
+											}
+										},
+										components: {
+											'clock': Clock6
+										},
+										methods: {
+											save() {
+												this.value = this.$refs.refClock.getClock();
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Résumé</h3>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Technique</th>
+								<th>Usage</th>
+								<th>Avis</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Props</td>
+								<td>Parent ➡️ Enfant</td>
+								<td>👍</td>
+							</tr>
+							<tr>
+								<td>Événement personnalisé</td>
+								<td>Enfant ➡️ Parent</td>
+								<td>👍</td>
+							</tr>
+							<tr>
+								<td>Bus événement</td>
+								<td>Globalité</td>
+								<td>👎</td>
+							</tr>
+							<tr>
+								<td>Gestionnaire états</td>
+								<td>Globalité</td>
+								<td>👍</td>
+							</tr>
+							<tr>
+								<td>Référence</td>
+								<td>Parent ↔️ Enfant</td>
+								<td>👎👎</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</section>
+
+			<!-- Project structure -->
+			<section>
+				<h3>Structure d'un projet Vue.js</h3>
+
+				<img width="80%" src="images/todo.png" />
+			</section>
+
+			<!-- Routage -->
+			<section>
+				<h3>Routage</h3>
+
+				<img width="80%" src="images/todo.png" />
+			</section>
+
+			<!-- Outils -->
+			<section>
+				<section>
+					<h3>Outils pour Vue.JS</h3>
+
+					<img width="80%" src="images/vuejstools.jpg" />
+
+					<p>Outils pour le développeur</p>
+				</section>
+
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/vscode.svg">
+					<h3>Visual Studio Code</h3>
+
+					<div style="text-align: left;">
+						<p><b>Plugin <a href="https://github.com/vuejs/vetur" target="_blank">Vetur</a></b></p>
+						<ul style="line-height:200%">
+							<li>Vérification de la syntaxe</li>
+							<li>Complétion de code avec IntelliSense</li>
+							<li>Formattage</li>
+							<li>Extraits de codes prêts à l'emploi (snippets)</li>
+						</ul>
+						<p><b>Plugin <a href="https://github.com/vuejs/eslint-plugin-vue"
+									target="_blank">Linting</a></b></p>
+						<ul style="line-height:200%">
+							<li>Vérification de la qualité de votre code <a href="https://vuejs.org/"
+									target="_blank">Vue.js</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h3>Vue DevTools</h3>
+
+					<div style="text-align: left;">
+						<p><a href="https://github.com/vuejs/vue-devtools" target="_blank">Vue DevTools</a> permet
+							d'introspecter votre application <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+							depuis le navigateur</p>
+						<p><b>Installation</b></p>
+						<ul>
+							<li>Dans votre navigateur : <a target="_blank"
+									href="https://chrome.google.com/webstore/detail/vuejs-devtools/">Chrome</a>, <a
+									target="_blank"
+									href="https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/">Firefox</a></li>
+							<li><a
+									href="https://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md">Application
+									standalone</a></li>
+						</ul>
+					</div>
+					<img width="50%" src="images/vuejsdevtools.png" />
+				</section>
+				<section>
+					<h3>Vue CLI</h3>
+
+					<p>Outil pour créer des projets Vue.js avec le format .vue</p>
+
+					<div style="text-align: left;">
+						<p><b>Installation</b></p>
+						<pre><code>$ npm install -g @vue/cli @vue/cli-service-global</code></pre>
+
+						<p><b>Création projet</b></p>
+						<pre><code>$ vue create hello-world</code></pre>
+
+						<p><b>Exécution pour tester</b></p>
+						<pre><code>$ npm run serve</code></pre>
+
+						<p><b>Exécution pour déployer</b></p>
+						<pre><code>$ npm run build</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3>Vue CLI UI</h3>
+
+					<p>Passer par une interface graphique : <code>$ vue ui</code></p>
+
+					<img width="75%" src="images/vuecliui.png" />
+				</section>
+
+				<section>
+					<h3>Les bibliothèques Vue.js</h3>
+
+					<div style="text-align: left;">
+						<p><a href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site statique</p>
+						<p><a href="https://vuex.vuejs.org/">Vuex</a> : gestionnaire d'états</p>
+						<p><a href="https://nuxtjs.org/">Nuxt.js</a> : framework du framework Vue.js</p>
+						<ul>
+							<li>Génération de site statiques (SSG)</li>
+							<li>Rendu côté serveur (SSR)</li>
+						</ul>
+						<p><a href="https://vue-native.io/">Vue Native</a> : framework pour le développement
+							d'application mobile</p>
+						<p><a href="https://nativescript-vue.org" />NativeScript Vue</a> : un autre framework pour le
+							développement d'application mobile</p>
+					</div>
+				</section>
+			</section>
+
+			<!-- Go further -->
+			<section data-background-size="100%" data-background-opacity="0.2"
+				data-background-image="images/gofurther.jpg">
+				<h3>Allez plus loin</h3>
+
+				<ul>
+					<li><a href="https://vuejs.org/v2/guide/">vuejs.org/v2/guide</a></li>
+					<li><a href="https://github.com/vuejs/awesome-vue">github.com/vuejs/awesome-vue</a></li>
+					<li><a
+							href="https://flaviocopes.com/vue-developer-roadmap/">flaviocopes.com/vue-developer-roadmap</a>
+					</li>
+					<li><a
+							href="https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf">www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf</a>
+					</li>
+					<li><a href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
+				</ul>
+			</section>
+
+			<!-- Kahoot -->
+			<section>
+				<img width="90%" src="images/kahoot.svg" />
+			</section>
+
+			<!-- Pratical -->
+			<section>
+				<h3>Place aux travaux pratiques</h3>
+
+				<div class="wrapper-icon">
+					<p>Disponibles sur Github <img class="icon" src="images/github.svg" /> : <a
+							href="https://github.com/mickaelbaron">github.com/mickaelbaron</a></p>
+				</div>
+
+				<div class="container-flex">
+					<div class="col-1">
+						<p><b>Intégration dans un existant</b></p>
+						<ul style="line-height:150%">
+							<li>Déclaration</li>
+							<li>Interpolation</li>
+							<li>Directives</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/mickaelbaron/vuejs-form-tutorial">/vuejs-form-tutorial</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-1">
+						<p><b>Single Page Application (SPA)</b></p>
+						<ul style="line-height:150%">
+							<li>Coder composant</li>
+							<li>Vue CLI</li>
+							<li>Communication</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/mickaelbaron/vuejs-spa-tutorial">/vuejs-spa-tutorial</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			autoPlayMedia: true,
+			touch: false,
+			slideNumber: 'c/t',
+			showNotes: false,
+			plugins: [RevealHighlight]
+		});
+	</script>
+</body>
+
+</html>

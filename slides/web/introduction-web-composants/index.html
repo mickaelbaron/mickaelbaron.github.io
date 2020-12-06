@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="author" content="Mickael BARON">
+
+	<title>Développement web avec des composants</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/white.min.css" id="theme">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css"
+		id="highlight-theme">
+
+	<style>
+		.container-flex {
+			display: flex;
+		}
+
+		.col-1 {
+			flex: 1;
+		}
+
+		.col-2 {
+			flex: 2;
+		}
+
+		.wrapper-icon .icon {
+			position: relative;
+			margin: 0 10px 0 0;
+			width: 25px;
+			height: 25px;
+		}
+
+		.roundedImage {
+			-moz-border-radius: 15px;
+			-webkit-border-radius: 15px;
+			-khtml-border-radius: 15px;
+			border-radius: 15px;
+			box-shadow: 0px 0px 10px #343434;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Page de garde -->
+			<section>
+				<img width="45%" src="images/frontendstack.png" />
+
+				<h3>Développement web avec des composants</h3>
+				<p>Mickaël BARON - Version 12-2020</p>
+				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
+						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
+				<div class="wrapper-icon">
+					<a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+							src="images/twitter.svg" />@mickaelbaron</a>
+					<a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+							src="images/web.svg" />mickael-baron.fr</a>
+				</div>
+			</section>
+
+			<!-- Licence d'utilisation -->
+			<section>
+				<h3>Licence d'utilisation</h3>
+
+				<p><b>Creative Commons</b></p>
+				<p>Contrat Paternité</p>
+				<p>Partage des Conditions Initiales à l'Identique</p>
+				<p>2.0 France</p>
+				<p><img width="50%" src="images/by-sa.svg" /></p>
+				<a href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
+			</section>
+
+			<!-- Qui suis-je ? -->
+			<section>
+				<section>
+					<h3>Qui suis-je ?</h3>
+
+					<img width="25%" class="roundedImage" src="images/mbaron.jpg" />
+					<div class="wrapper-icon">
+						<p><a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+									src="images/twitter.svg" />@mickaelbaron</a></p>
+						<p><a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+									src="images/web.svg" />mickael-baron.fr</a></p>
+						<p><a target="_blank" href="https://github.com/mickaelbaron"><img class="icon"
+									src="images/github.svg" />mickaelbaron</a></p>
+					</div>
+				</section>
+				<section>
+					<h3>Ingénieur de Recherche ☀️</h3>
+
+					<div class="container-flex">
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:200%">
+								<li>Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées et des mo<b>D</b>èles
+									(IDD)</li>
+								<li>Valorisation des plateformes logicielles</li>
+								<li>« Coach technique » auprès des usagés</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/isae_ensma.svg" />
+							<img width="65%" src="images/lias.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/LIAS_LAB"><img class="icon"
+											src="images/twitter.svg" />@LIAS_LAB</a></p>
+								<p><a target="_blank" href="https://www.lias-lab.fr"><img class="icon"
+											src="images/web.svg" />www.lias-lab.fr</a></p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Responsable communauté 🌑</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<img width="100%" src="images/developpezcom.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/javaDeveloppez"><img class="icon"
+											src="images/twitter.svg" />@javaDeveloppez</a></p>
+								<p><a target="_blank" href="https://java.developpez.com"><img class="icon"
+											src="images/web.svg" />java.developpez.com</a></p>
+
+							</div>
+						</div>
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:150%">
+								<li>Rubriques : Java, Java Web, Android, Eclipse, Spring et Netbeans</li>
+								<li>Rédacteurs de tutoriels</li>
+								<li>Chiffres</li>
+								<ul>
+									<li>4 M de visiteurs</li>
+									<li>12 M pages vues/mois</li>
+									<li>7500 membres</li>
+									<li>2000 forums</li>
+								</ul>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+			</section>
+
+			<!-- Plan -->
+			<section>
+				<section>
+					<h3>Objectif de ce cours (45 min)</h3>
+
+					<ul style="line-height:175%">
+						<li>Rappel des bases du développement web</li>
+						<ul>
+							<li>HTML, CSS, JavaScript</li>
+						</ul>
+						<li>Historique du développement web</li>
+						<ul>
+							<li>Du web statique au web des composants</li>
+						</ul>
+						<li>Mécanismes d'un framework web JS par composant</li>
+						<ul>
+							<li><b>Binding</b>, <b>Templating</b>, <b>Routage</b>, <b>Composant</b></li>
+						</ul>
+						<li>Framworks JavaScript web du marché</li>
+						<li>Outils du développeur web</li>
+					</ul>
+				</section>
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/vuejs.svg">
+					<h3>Objectif du cours Vue.js (45 min)</h3>
+
+					<ul style="line-height:200%">
+						<li>Modèle et vue</li>
+						<li>Templating (interpolation et directives)</li>
+						<li>Composants (créer et instancier)</li>
+						<li><b>Communiquer entre les composants</b></li>
+						<li>Structure d'un projet Vue.js</li>
+						<li>Routage</li>
+						<li>Outils pour Vue.js</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Mise en œuvre : travaux pratiques</h3>
+
+					<div class="wrapper-icon">
+						<p>Disponibles sur Github <img class="icon" src="images/github.svg" /> : <a
+								href="https://github.com/mickaelbaron">github.com/mickaelbaron</a></p>
+					</div>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>Intégration dans un existant</b></p>
+							<ul style="line-height:150%">
+								<li>Déclaration</li>
+								<li>Interpolation</li>
+								<li>Directives</li>
+								<li class="wrapper-icon">
+									<img class="icon" src="images/github.svg" /> <a target="_blank"
+										href="https://github.com/mickaelbaron/vuejs-form-tutorial">/vuejs-form-tutorial</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<p><b>Single Page Application (SPA)</b></p>
+							<ul style="line-height:150%">
+								<li>Coder composant</li>
+								<li>Vue CLI</li>
+								<li>Communication</li>
+								<li class="wrapper-icon">
+									<img class="icon" src="images/github.svg" /> <a target="_blank"
+										href="https://github.com/mickaelbaron/vuejs-spa-tutorial">/vuejs-spa-tutorial</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Disclaimer 🧎🏻‍♂️</h3>
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p>Je ne vous garantis pas d'être un expert en ...</p>
+							<ul style="line-height:165%">
+								<li>conception graphique web</li>
+								<li>développement web</li>
+							</ul>
+							<p>Pas le temps ⏳ de tout traiter</p>
+							<p><b>Prérequis minimums</b></p>
+							<ul>
+								<li>Langages à balises (XML, HTML)</li>
+								<li>Principe Client/Serveur</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<video width="100%" data-autoplay src="images/devvsdesigner.mp4"></video>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Les bases du développement Web -->
+			<section>
+				<section>
+					<h3>Les bases du développement web</h3>
+					<img width="60%" src="images/htmlcssjs2.jpg" />
+				</section>
+				<section>
+					<h3>Le langage à balises HTML</h3>
+
+					<p>Permet de définir la <u>structure</u> et le <u>contenu</u></p>
+
+					<pre><code data-noescape data-trim data-line-numbers="2-6|7-13"><script type="text/template"><html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Informations générales sur le document -->
+  <meta charset="utf-8" />
+  <title>Le titre de la page</title>
+</head>
+<body>
+  <!-- Contenu principal du document -->
+  <p>Le contenu de la page</p>
+  <ul>
+    <li>Élément 1</li>
+  </ul>
+</body>
+</html></script></code></pre>
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p>Permet de définir le <u>style</u></p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>Sans feuille de style CSS</b></p>
+							<img width="100%" src="images/withoutcss.png" />
+						</div>
+						<div class="col-1">
+							<p><b>Avec feuille de style CSS</b></p>
+							<img width="100%" src="images/withcss.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p>Anatomie d'une <u>règle</u> CSS</p>
+
+					<img width="60%" src="images/cssrule.svg" />
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p>Différents <u>types</u> de sélecteurs CSS</p>
+
+					<pre><code data-noescape data-trim data-line-numbers="1-4|5-8|9-12|13"><script type="text/template">/* Sélecteurs de type */
+p {
+  color:blue;
+}
+/* Sélecteurs de classe */
+.myclass {
+  color: gray;
+}					
+/* Sélecteurs d'identifiant */
+#myid {
+  color: red;
+}
+... /* Sélecteurs universels et d'attribut */
+</script></code></pre>
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p><u>Cibler</u> les contenus HTML</p>
+
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code data-noescape data-trim data-line-numbers><script type="text/template">
+<body>
+  <!-- Sélecteur de type -->
+  <p>Le contenu de la page</p>
+
+  <!-- Sélecteur de classe -->
+  <p class="myclass">
+    Contenu de page
+  </p>
+		
+  <!-- Sélecteur d'identifiant -->
+  <p id="myid">
+    Contenu de page
+  </p>
+</body></script></code></pre>
+						</div>
+						<div class="col-1">
+							<img width="60%" src="images/cssselectorsrender.png" />
+						</div>
+					</div>
+
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p><u>Référencer</u> feuille de style CSS dans page HTML</p>
+					<div class="container-flex">
+						<div class="col-1">
+							<p>Dans un fichier séparé 👍</p>
+							<pre><code data-noescape data-trim data-line-numbers><script type="text/template"><head>
+  ...
+  <link 
+    href="mycss.css" 
+    rel="stylesheet" 
+    type="text/css"/>
+</head></script></code></pre>
+						</div>
+						<div class="col-1">
+							<p>Dans le fichier HTML </p>
+							<pre><code data-noescape data-trim data-line-numbers><script type="text/template"><head>
+  ...
+  <style> 
+    p {
+      color:blue;
+    }
+    .myclass {
+      color: gray;
+    }
+    #myid {
+      color: red;
+    }
+  </style>
+</head></script></code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Les feuilles de style CSS</h3>
+
+					<p>Possibilité d'utiliser un <u>framework CSS</u> clé en main</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<b>Skeleton</b>
+							<a target="_blank" href="http://getskeleton.com/"><img width="55%"
+									src="images/skeletoncss.jpg" /></a>
+							<iframe
+								src="https://ghbtns.com/github-btn.html?user=dhg&repo=Skeleton&type=star&count=true&size=large"
+								frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+						</div>
+						<div class="col-1">
+							<b>Bootstrap</b>
+							<a target="_blank" href="http://getskeleton.com/"><img width="55%"
+									src="images/bootstrap.svg" /></a>
+							<iframe
+								src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large"
+								frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+						</div>
+						<div class="col-1">
+							<b>Materialize</b>
+							<a target="_blank" href="https://materializecss.com/"><img width="55%"
+									src="images/materialize.svg" /></a>
+							<iframe
+								src="https://ghbtns.com/github-btn.html?user=Dogfalo&repo=materialize&type=star&count=true&size=large"
+								frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+						</div>
+					</div>
+					<div class="wrapper-icon">Une liste non exhaustive <a target="_blank"
+							href="https://github.com/troxler/awesome-css-frameworks"><img class="icon"
+								src="images/github.svg" />awesome-css-frameworks</a>
+					</div>
+					<ul>
+						<li>👍 : prototypage rapide</li>
+						<li>👎 : impression d'interfaces web uniformes</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Le langage JavaScript (JS)</h3>
+
+					<p>Permet de définir le <u>comportement</u></p>
+
+					<pre><code data-noescape data-trim data-line-numbers="1-2|4-13"><script type="text/template">// Définition d'une constante.
+const NEW_VALUE = 'Le contenu change';
+
+// Une fonction nommée est définie.
+function myFunction() {
+  // Récupération de l'élément <p>.
+  let myParagraph = document.querySelector('p');
+  // Modification du contenu de l'élément <p>.
+  myParagraph.textContent = NEW_VALUE;
+    
+  // Affichage d'un message sur la console.
+  console.log("Message sur la console");
+}</script></code></pre>
+
+				</section>
+				<section>
+					<h3>Le langage JavaScript (JS)</h3>
+
+					<p><u>Implémentation</u> de la spécification <b>ECMAScript</b> (ES)</p>
+
+					<p style="text-align: left;"><b>Détail des versions majeures</b></p>
+
+					<ul>
+						<li>
+							ES5 (2009) supportée par tous les navigateurs
+						</li>
+						<li>
+							ES6 (2015) enrichie de nouvelles fonctionnalités, mais supportée que par les navigateurs
+							récents
+						</li>
+						<li>
+							ES2015+ désigne [ 2015 ; 2020 ]
+						</li>
+					</ul>
+
+					<p>
+						Un navigateur supporte-il ECMAScript ? <a
+							href="https://caniuse.com/?search=ECMAScript">caniuse.com</a>
+					</p>
+					<img width="55%" src="images/browser.png" />
+
+				</section>
+				<section>
+					<h3>Le langage JavaScript (JS)</h3>
+
+					<p>Trois fonctionnalités ES6 à connaître</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><code>let</code> : variable avec scope block</p>
+							<pre><code data-noescape data-trim><script type="text/template">
+function fn () {
+  let x = 0
+  if (true) {
+    let x = 1
+  }
+}
+</script></code></pre>
+						</div>
+						<div class="col-1">
+							<p><code>const</code> : constante</p>
+							<pre><code data-noescape data-trim><script type="text/template">const a = 1</script></code></pre>
+						</div>
+						<div class="col-1">
+							<p><code>arrow</code> : fonction anonyme</p>
+							<pre><code data-noescape data-trim><script type="text/template">setTimeout(() => {
+  ···
+})</script></code></pre>
+						</div>
+					</div>
+
+					<p>Récapitulatif des améliorations de ES6 : <a target="_blank"
+							href="https://devhints.io/es6">devhints.io/es6</a></p>
+				</section>
+				<section>
+					<h3>Le langage JavaScript (JS)</h3>
+
+					<p><u>Référencer</u> un code JavaScript dans une page HMTL</p>
+					<div class="container-flex">
+						<div class="col-1">
+							<p>Dans un fichier séparé 👍</p>
+							<pre><code data-line-numbers>&lt;body&gt;
+  ...
+  &lt;script 
+    src=&quot;myscript.js&quot;&gt;
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<p>Dans le fichier HTML </p>
+							<pre><code data-line-numbers>&lt;body&gt;
+  ...
+  &lt;script&gt; 
+    const NEW_VALUE = ...;
+    ...
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+						</div>
+					</div>
+					<p style="text-align: left;">Codes JavaScript à la fin du document HTML ?</p>
+					<ul>
+						<li>Ne pas bloquer le chargement de la page HTML</li>
+					</ul>
+				</section>
+				<section data-background-size="50%" data-background-opacity="0.2"
+					data-background-image="images/typescript.svg">
+					<h3>TypeScript, c'est quoi 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Open source et développé par Microsoft depuis 2012 : <a target="_blank"
+								href="www.typescriptlang.org">www.typescriptlang.org</a></p>
+						<ul>
+							<li>Multiparadigme : <b>fonctionnel</b> et <b>objet</b></li>
+							<li>Fortement typé</li>
+							<li>Surensemble syntaxique strict de JavaScript (un code JavaScript et un code TypeScript
+								valide)</li>
+							<li>Outils de traduction vers JavaScript (transpilateur)</li>
+						</ul>
+
+						<p><b>Adoption qui explose depuis 2016</b></p>
+						<ul>
+							<li>Support des principaux framework web</li>
+							<li>Facile à apprendre pour un dév. Java</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+
+			<!-- Historique des bibliothèques -->
+			<section>
+				<section>
+					<h3>Historique des bibliothèques web</h3>
+					<img width="100%" src="images/webframeworkhistory.jpg" />
+					<p>Développement d'applications web a connu <u>trois évolutions majeures</u></p>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : jusqu'à 2005</h3>
+
+					<p style="text-align: left;">Éléments de cette période à retenir</p>
+					<ul>
+						<li>Interfaces web <u>statiques</u> et orientées <u>formulaires</u></li>
+						<li>Traitements exclusivement serveur (PHP, Servlet...)</li>
+						<li>Faible débit Internet : modem RTC 56K ☎️</li>
+					</ul>
+
+					<div>
+						<p style="text-align:left">Le principal <u>fait marquant</u> : les navigateurs web</p>
+
+						<img style="margin: 0px 50px 75px 0px ;width: 35%;" src="images/internetexplorer1996.png" />
+						<img style="margin: 0px 0px 0px 50px ;width: 35%;" src="images/netscape1994.png" />
+					</div>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : jusqu'à 2005</h3>
+
+					<img style="margin: 0;width: 45%;" src="images/lemonde2005.png" />
+
+					<p>Le site du <a target="_blank"
+							href="https://web.archive.org/web/19961019022423/http://www.lemonde.fr/">lemonde.fr</a> en
+						1996</p>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : 2005 - 2010</h3>
+
+					<p style="text-align: left;">Éléments de cette période à retenir</p>
+					<ul>
+						<li>Interfaces web plus dynamiques (AJAX)</li>
+						<li>Plus de vérifications côté « client »</li>
+						<li>Nouveaux navigateurs web respectueux du W3C</li>
+						<ul>
+							<img style="display: block;margin-left: auto;margin-right: auto;width: 35%;"
+								src="images/firefoxsafarichromeopera.jpg" />
+						</ul>
+						<li>Augmentation débit Internet : ADSL</li>
+					</ul>
+
+					<div>
+						<p style="text-align:left">Le principal <u>fait marquant</u> : JQuery</p>
+
+						<img style="margin: 0px 0px 0px 0px ;width: 35%;" src="images/jquery.png" />
+					</div>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : 2005 - 2010</h3>
+
+					<img width="42%" src="images/lemonde2005-2010.png" />
+
+					<p>Le site du <a target="_blank"
+							href="https://web.archive.org/web/20060808075159/http://www.lemonde.fr/">lemonde.fr</a> en
+						2006</p>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : depuis 2010</h3>
+
+					<p style="text-align: left;">Éléments de cette période à retenir</p>
+					<ul>
+						<li>Prise en compte des spécificités des mobiles 📱 via le <b>Responsible Design</b></li>
+						<li>Sites web deviennent des Applications : <b>Single Page Application</b> (SPA)</li>
+						<li>Approche de développement par composants</li>
+					</ul>
+
+					<div>
+						<p style="text-align:left">Le principal <u>fait marquant</u> : HTML5</p>
+
+						<img style="margin: 0px 0px 0px 0px ;width: 30%;" src="images/stronghtml5.jpg" />
+					</div>
+				</section>
+				<section>
+					<h3>Single Page Application (SPA) 🧐</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>Multi Page Application</b></p>
+							<img width="75%" src="images/mpalifecycle.png" />
+						</div>
+						<div class="col-1">
+							<p><b>Single Page Application</b></p>
+							<img width="75%" src="images/spalifecycle.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Evolution Dev. web : depuis 2010</h3>
+
+					<img width="42%" src="images/lemonde2010.png" />
+
+					<p>Le site du <a target="_blank"
+							href="https://web.archive.org/web/20201001085932/lemonde.fr">lemonde.fr</a> en
+						2020</p>
+				</section>
+			</section>
+
+			<!-- Quatre Fonctionnalités -->
+			<section>
+				<section>
+					<h3>Vers une approche du développement web par composants</h3>
+
+					<img width="52%" src="images/componentlego.jpg" />
+
+					<p>Les <u>quatre fonctionnalités</u> qu'un framework web JavaScript <b>moderne</b> doit proposer</p>
+				</section>
+				<section>
+					<h3>Bibliothèque et Framework ?</h3>
+
+					<p><u>Bibliothèque</u> (Library 🇬🇧) est <u>différent</u> de <u>Framework</u></p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>Bibliothèque</b></p>
+							<img style="margin: 0 ;width: 35%;" src="images/library.png" />
+							<div>
+								<ul>
+									<li>Une API est exposée</li>
+									<li>Votre code <b>intègre</b> les bibliothèques</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-1">
+							<p><b>Framework</b></p>
+							<img style="margin: 0 ;width: 35%;" src="images/framework.png" />
+							<div>
+								<ul>
+									<li>Cadre d'utilisation imposé (cycle de vie)</li>
+									<li>Le framework <b>intégre</b> votre code</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Modèle Architecture MVVM</h3>
+
+					<p>Model-View-ViewModel pour les frameworks web</p>
+
+					<img style="margin: 0 ;width: 80%;" src="images/mvvm.png" />
+
+					<div>
+						<ul>
+							<li><b>Model</b> contient les données à afficher</li>
+							<li><b>View</b> représente l'affichage (❷ templates)</li>
+							<li><b>ViewModel</b> contrôle l'affichage</li>
+						</ul>
+						<p>La liaison <b>View</b>/<b>ViewModel</b> se fait par ❶ Data Binding</p>
+						<p>Chaque ❸ composant respecte MVVM</p>
+						<p>La visibilité d'un composant se fait par ❹ routage</p>
+					</div>
+				</section>
+				<section>
+					<h3>❶ Data Binding</h3>
+
+					<div>
+						<p>Mécanisme de <u>notification</u> entre le <u>modèle</u> et la <u>vue</u></p>
+
+						<p><b>Liaison unidirectionnelle</b> (one-way data binding 🇬🇧)</p>
+						<ul>
+							<li>Si le modèle est modifié, la vue est mise à jour</li>
+						</ul>
+						<p><b>Liaison bidirectionnelle</b> (two-way data binding 🇬🇧)</p>
+						<ul>
+							<li>Si le modèle est modifié, la vue est mise à jour</li>
+							<li>Si la vue est modifiée, le modèle est mis à jour</li>
+						</ul>
+
+						<p><b>ViewModel</b> consomme les éléments du modèle et les affiche dans la vue et inversement
+						</p>
+					</div>
+				</section>
+				<section data-background-size="65%" data-background-opacity="0.2"
+					data-background-image="images/mustache.png">
+					<h3>❷ Templating</h3>
+
+					<p>Enrichir la vue pour le support du Data Binding</p>
+
+
+					<div style="text-align: left;">
+						<p><b>Interpolation (notation Moustache)</b></p>
+						<ul>
+							<li>Pour les liaisons unidirectionnelles</li>
+						</ul>
+						<pre><code data-noescape><script type="text/template"><span>Message: {{ msg }}</span></script></code></pre>
+
+						<p><b>Directives</b></p>
+						<ul>
+							<li>Pour les liaisons bidirectionnelles</li>
+							<li>Attributs spécifiques au framework : if, for, on...</li>
+						</ul>
+						<pre><code data-noescape><script type="text/template"><p v-if="seen">Maintenant vous me voyez</p></script></code></pre>
+					</div>
+					<p>Peut gérer du texte, des variables, du code JavaScript</p>
+
+				</section>
+
+				<section data-background-size="65%" data-background-opacity="0.2"
+					data-background-image="images/componentlego.jpg">
+
+					<h3>❸ Composant</h3>
+
+					<p>Pouvoir créer des composants <u>réutilisables</u> au sein de l'application ou entre applications
+					</p>
+					<div>
+						<p>Comprendre le <u>cycle de vie</u> d'un composant</p>
+						<ul>
+							<li>Etat <b>Created</b></li>
+							<li>Etat <b>Mounted</b> (rendu HTML effectué)</li>
+							<li>Etat <b>Destroyed</b></li>
+						</ul>
+					</div>
+
+					<p><u>Arbre de relations</u> père-fils (communication)</p>
+					<ul>
+						<li>Savoir communiquer du parent vers les enfants</li>
+						<li>Savoir communiquer d'un enfant vers le parent</li>
+						<li>Savoir communiquer entre composants</li>
+					</ul>
+				</section>
+				<section data-background-size="65%" data-background-opacity="0.2"
+					data-background-image="images/webcomponent.svg">
+					<h3>Web Component, futur standard ?</h3>
+
+					<p>Initiative proposée par Google : <a target="_blank"
+							href="https://www.webcomponents.org/">webcomponents.org</a></p>
+					<p>Standards pour créer et réutiliser des composants</p>
+
+					<ul>
+						<li><a target="_blank" href="https://w3c.github.io/webcomponents/spec/shadow/">Shadow Dom</a> :
+							isolation de DOM (arbre HTML)</li>
+						<li><a target="_blank"
+								href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element/">HTML
+								Templates</a> : enrichissement de la vue</li>
+						<li><a target="_blank" href="https://html.spec.whatwg.org/multipage/custom-elements.html">Custom
+								elements</a> : créer ses propres balises</li>
+						<li><a target="_blank" href="https://w3c.github.io/webcomponents/spec/imports/">HTML imports</a>
+							: mécanisme de réutilisation</li>
+					</ul>
+
+					<p>Peu implémentée par les navigateurs, extensions</p>
+
+					<ul>
+						<li><a target="_blank" href="https://github.com/webcomponents/polyfills">Polyfill
+								WebComponents</a></li>
+						<li><a target="_blank" href="https://www.polymer-project.org/">Polymer</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>❹ Routage</h3>
+
+					<p><u>Simuler</u> plusieurs pages web différentes dans une SPA</p>
+					<p>Quand un utilisateur visite une page, un code détermine ce qui doit se passer</p>
+
+					<pre><code data-noescape><script type="text/template">routes: [
+  { path: '/export', component: Export },
+  { path: '/', component: Common }
+]</script></code></pre>
+
+					<div style="text-align: left;">
+						<p><b>Mise en œuvre</b>
+						<p>
+						<ol>
+							<li>Intercepter les changements dans l'URL (chemins <code>/export</code> et paramètres
+								<code>?param=value</code>)</li>
+							<li>Exploiter l'historique de navigation</li>
+						</ol>
+					</div>
+				</section>
+			</section>
+
+			<!-- Frameworks JavaScript -->
+			<section>
+				<section>
+					<h3>Frameworks JS pour le développement web par composants</h3>
+
+					<img width="100%" src="images/vuejsreactangular.png" />
+
+					<p>Les <u>trois frameworks JavaScript</u> les plus utilisés</p>
+				</section>
+				<section>
+					<h3>Quels frameworks JS choisir ?</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><a target="_blank" href="https://angular.io/">Angular 👀</a></p>
+							<img width="65%" src="images/angular.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://backbonejs.org/">Backbone</a></p>
+							<img width="65%" src="images/backbone.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://emberjs.com/">Ember</a></p>
+							<img width="65%" src="images/ember.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://knockoutjs.com/">Knockout</a></p>
+							<img width="65%" src="images/knockout.svg" />
+
+						</div>
+					</div>
+					<div class="container-flex">
+						<div class="col-1">
+							<p><a target="_blank" href="https://www.meteor.com/">Meteor</a></p>
+							<img width="65%" src="images/meteor.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://mithril.js.org/">Mithril</a></p>
+							<img width="65%" src="images/mithril.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://reactjs.org/">React 👀</a></p>
+							<img width="65%" src="images/react.svg" />
+						</div>
+						<div class="col-1">
+							<p><a target="_blank" href="https://vuejs.org/">Vue 👀</a></p>
+							<img width="65%" src="images/vuejs.svg" />
+						</div>
+					</div>
+				</section>
+				<section data-background-size="65%" data-background-opacity="0.2"
+					data-background-image="images/angular.svg">
+					<h3>Angular : le tout-en-un</h3>
+
+					<div style="text-align: left;">
+						<p>Origine (2016)</p>
+						<ul>
+							<li>Google</i>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/angular/angular">/angular/angular</a>
+								<iframe
+									src="https://ghbtns.com/github-btn.html?user=angular&repo=angular&type=star&count=true&size=large"
+									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+							</li>
+						</ul>
+
+						<p>Points marquants</p>
+						<ul>
+							<li>✌️ versions <s>Angular.js (2009)</s> et Angular (2016)</li>
+							<li>Solution « <b>tout-en-un</b> »</li>
+							<li>TypeScript exclusivement</li>
+						</ul>
+						<p>Utilisé par : Microsoft (Office), Youtube, GMail...</p>
+						<p><b>À choisir</b> pour créer une nouvelle application</p>
+					</div>
+				</section>
+				<section data-background-size="90%" data-background-opacity="0.2"
+					data-background-image="images/react.svg">
+					<h3>React : le performant</h3>
+
+					<div style="text-align: left;">
+						<p>Origine (2013)</p>
+						<ul>
+							<li>Facebook</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/facebook/react">/facebook/react</a>
+								<iframe
+									src="https://ghbtns.com/github-btn.html?user=facebook&repo=react&type=star&count=true&size=large"
+									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+							</li>
+						</ul>
+
+						<p>Points marquants</p>
+						<ul>
+							<li>Pionier</li>
+							<li>Plus une <u>bibliothèque</u> qu'un framework</li>
+							<li>Bibliothèques externes obligatoires : routage...</li>
+						</ul>
+						<p>Utilisé par : Facebook, Uber, Airbnb, Netflix...</p>
+						<p><b>À choisir</b> pour créer des composants individuels</p>
+					</div>
+				</section>
+				<section data-background-size="60%" data-background-opacity="0.2"
+					data-background-image="images/vuejs.svg">
+					<h3>Vue.js 🖖 : l'outsider libre</h3>
+
+					<div style="text-align: left;">
+						<p>Origine (2014)</p>
+						<ul>
+							<li>Evan You ancien Google a travaillé sur Angular</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="images/github.svg" /> <a target="_blank"
+									href="https://github.com/vuejs/vue">/vuejs/vue</a>
+								<iframe
+									src="https://ghbtns.com/github-btn.html?user=vuejs&repo=vue&type=star&count=true&size=large"
+									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+							</li>
+						</ul>
+
+						<p>Points marquants</p>
+						<ul>
+							<li>Pas lié à une grosse société</li>
+							<li>Plus une <u>bibliothèque</u> qu'un framework (React)</li>
+							<li>Intégration progressive</li>
+						</ul>
+						<p>Utilisé par : Gitlab, Alibaba...</p>
+						<p><b>À choisir</b> pour transformer un site web existant</p>
+					</div>
+				</section>
+				<section data-background-size="100%" data-background-opacity="0.3"
+					data-background-image="images/vuejsbestworld.png">
+					<h3>Pourquoi j'ai choisi Vue.js 🖖</h3>
+
+					<div style="text-align: left;">
+						<ol>
+							<li><b>Libre</b> : pas dépendant d'une société</li>
+							<li><b>Contrainte professionnelle</b> : utilisation au <a target="_blank"
+									href="https://www.lias-lab.fr">LIAS</a></li>
+							<li><b>Facilité</b> : le meilleur de Angular et React</li>
+							<li><b>Documentation</b> : <a href="https://vuejs.org/v2/guide/">vuejs.org</a></li>
+							<li><b>Progressif</b> : du site web à l'application</li>
+						</ol>
+
+						<p>Liens pour se faire une idée 🧐</p>
+						<ul>
+							<li><a target="_blank" href="https://vuejs.org/v2/guide/comparison.html">Comparatif sur les
+									fonctionnalités </a>
+								entre Vue.js et les frameworks du marché</li>
+							<li><a target="_blank"
+									href="https://www.stefankrause.net/js-frameworks-benchmark8/table.html">Comparatif
+									sur les performances</a>
+								entre Vue.js et les frameworks du marché</li>
+						</ul>
+					</div>
+					<p>
+				</section>
+				<section>
+					<h3>Métaphore de l'auto-école</h3>
+
+					<p>Le marché de l'emploi cible Angular ou React 😱</p>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p>Code = Concepts Web</p>
+							<ul>
+								<li>Standards W3C</li>
+								<li>Liaison dynamique</li>
+								<li>Templating</li>
+								<li>Routage</li>
+								<li>Composant</li>
+							</ul>
+							<img width="60%" src="images/panneau.png" />
+						</div>
+						<div class="col-1">
+							<p>Conduite = Développement</p>
+							<ul>
+								<li>Coder un composant</li>
+								<li>Communiquer</li>
+								<li>Manipuler les outils</li>
+								<li>Tester</li>
+								<li>Déployer</li>
+							</ul>
+							<img width="80%" src="images/vuejscar.png" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Outils du web -->
+			<section>
+				<section>
+					<h3>Outils du développeur web</h3>
+
+					<img width="75%" src="images/frontendtools.png" />
+
+					<p>Comment s'y retrouver 🧐</p>
+				</section>
+				<section>
+					<h3>Un transpilateur, c'est quoi 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Génèrateur de <u>code source</u> depuis un autre <u>code source</u> dont les langages ont le
+							<u>même niveau</u> d'abstraction</p>
+						<p>Ne pas confondre avec <b>compilateur</b> (langage haut niveau vers bas niveau)</p>
+						<p>Outil : <a target="_blank" href="https://babeljs.io/">Babel.js</a></p>
+						<ul>
+							<li>JavaScript ES5 depuis ES6+</li>
+						</ul>
+					</div>
+					<img width="45%" src="images/babel.svg" />
+				</section>
+				<section data-background-size="100%" data-background-opacity="0.2"
+					data-background-image="images/linter.jpg">
+					<h3>Un Linter, c'est quoi 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Analyseur statique de code qui permet de relever</p>
+						<ul>
+							<li>Erreurs de syntaxe</li>
+							<li>Bugs</li>
+							<li>Problèmes de forme ...</li>
+						</ul>
+						<p>Amélioration de votre code pour le rendre <u>présentable</u></p>
+						<p>Outil : <a target="_blank" href="https://eslint.org/">ESLint</a></p>
+						<ul>
+							<li>Intégration transparente dans les éditeurs de code</li>
+						</ul>
+					</div>
+					<img width="18%" src="images/eslint.svg" />
+				</section>
+				<section data-background-size="100%" data-background-opacity="0.2"
+					data-background-image="images/css-minifying.jpg">
+					<h3>Minifier, c'est quoi 🧐</h3>
+
+					<div>
+						<div style="text-align: left;">
+							<p>Réducteur de <u>taille de code</u> pour limiter le volume à télécharger depuis le serveur
+							</p>
+							<ul>
+								<li>Supprime les espaces</li>
+								<li>Renomme les variables</li>
+								<li>Efface les commentaires</li>
+							</ul>
+						</div>
+						<div class="container-flex">
+							<div class="col-1">
+								<p>Non minifié</p>
+								<pre><code data-noescape><script type="text/template">function double(nombre) {
+  return nombre * 2;
+}</script></code></pre>
+							</div>
+							<div class="col-1">
+								<p>Minifié</p>
+								<pre><code data-noescape><script type="text/template">function double(n){return 2*n}</script></code></pre>
+							</div>
+						</div>
+						<p style="text-align: left;">Outils : <a target="_blank"
+								href="https://github.com/mishoo/UglifyJS">UglifyJS</a>, <a target="_blank"
+								href="https://github.com/matthiasmullie/minify">Minify</a></p>
+				</section>
+				<section>
+					<h3>Éditeur de code, c'est quoi 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Éditeur de texte fournissant des outils pour améliorer la productivité du développeur</p>
+						<ul>
+							<li>Gestionnaire de fichier (onglet, écran séparé)</li>
+							<li>Racourcis clavier</li>
+							<li>Extensible via des <b>plugins</b></li>
+						</ul>
+
+						<p>Outils : <a target="_blank" href="https://code.visualstudio.com/">VSCode</a>, <a
+								target="_blank" href="https://atom.io/">Atom</a>, <a target="_blank"
+								href="https://www.jetbrains.com/webstorm/">WebStorm</a>, <a target="_blank"
+								href="https://www.sublimetext.com/">Sublime Text</a> ...</p>
+					</div>
+					<img width="22%" src="images/vscode.svg" />
+					<img width="22%" src="images/atom.svg" />
+					<img width="22%" src="images/webstorm.svg" />
+					<img width="22%" src="images/sublime-text.svg" />
+				</section>
+				<section>
+					<h3>Gestionnaire de paquet 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Outil pour <b>automatiser</b> l'<u>installation</u>, la <u>mise à jour</u> et la
+							<u>suppression</u> de bibliothèques tierces</p>
+						<ul>
+							<li>Fichier de description (ex : package.json)</li>
+							<li>Dépôts distants</li>
+						</ul>
+						<p>Outils : <a target="_blank" href="https://www.npmjs.com/">npm</a>, <a target="_blank"
+								href="https://yarnpkg.com/">yarn</a>, <a target="_blank"
+								href="https://bower.io/">bower</a>...</p>
+					</div>
+					<img width="22%" src="images/npm.svg" />
+					<img width="22%" src="images/yarn.svg" />
+					<img width="22%" src="images/bower.svg" />
+				</section>
+				<section>
+					<h3>Construction automatique 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Outil pour réaliser des tâches automatiques</p>
+						<ul>
+							<li>Exécuter des scripts personnalisés</li>
+							<li>Exercuter des tests</li>
+							<li>Générer le code final : transpilateur, linter, minifier...</li>
+						</ul>
+						<p>Outils : <a target="_blank" href="https://webpack.js.org/">Webpack</a>, <a target="_blank"
+								href="https://gruntjs.com/">Grunt</a>, <a target="_blank"
+								href="https://gulpjs.com/">Gulp</a>, <a target="_blank"
+								href="https://parceljs.org/">Parcel</a>, <a target="_blank"
+								href="https://rollupjs.org">Rollup.js</a>...</p>
+					</div>
+					<img width="18%" src="images/webpack.png" />
+					<img width="18%" src="images/grunt.png" />
+					<img width="10%" src="images/gulp.svg" />
+					<img width="18%" src="images/parcel.png" />
+					<img width="18%" src="images/rollup.jpg" />
+				</section>
+				<section>
+					<h3>CLI, c'est quoi 🧐</h3>
+
+					<div style="text-align: left;">
+						<p>Outils de type <b>C</b>ommand <b>L</b>ine <b>I</b>nterface proposés par les frameworks
+							JavaScript</p>
+						<ul>
+							<li>Générer un nouveau projet</li>
+							<li>Tester son développement</li>
+							<li>Configurer son projet</li>
+							<li>Générer la version finale</li>
+						</ul>
+						<p>S'appuie sur les outils de construction automatique (génère fichiers config.)</p>
+						<p>Outils : <a href="https://cli.vuejs.org/">Vue CLI</a>, <a target="_blank"
+								href="https://github.com/facebook/create-react-app">Create-React-App</a>, <a
+								target="_blank" href="https://cli.angular.io/">Angular CLI</a></p>
+					</div>
+				</section>
+			</section>
+
+			<!-- Kahoot -->
+			<section>
+				<img width="90%" src="images/kahoot.svg" />
+			</section>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			autoPlayMedia: true,
+			touch: false,
+			slideNumber: 'c/t',
+			showNotes: false,
+			plugins: [RevealHighlight]
+		});
+	</script>
+</body>
+
+</html>

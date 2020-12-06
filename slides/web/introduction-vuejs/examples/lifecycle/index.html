@@ -1,0 +1,45 @@
+<html>
+
+<body>
+    <div id="lifecycle">
+        <input v-model="value" type="text" />
+        <p>{{value}}</p>
+        <p>Display the console</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        new Vue({
+            el: '#lifecycle',
+            data: {
+                value: 'HelloWorld'
+            },
+            beforeCreate() {
+                console.log("beforeCreate " + this.value);
+            },
+            created() {
+                console.log("created " + this.value)
+            },
+            beforeMounted() {
+                console.log("beforeMounted " + this.value)
+            },
+            mounted() {
+                console.log("mounted " + this.value)
+            },
+            beforeUpdate() {
+                console.log("beforeUpdate " + this.value)
+            },
+            updated() {
+                console.log("updated " + this.value)
+            },
+            beforeDestroy() {
+                console.log("beforeDestroy " + this.value)
+            },
+            destroyed() {
+                console.log("destroyed " + this.value)
+            }
+        });
+    </script>
+</body>
+
+</html>

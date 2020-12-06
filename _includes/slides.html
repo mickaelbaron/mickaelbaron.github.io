@@ -1,8 +1,15 @@
 <div>
   {% if include.type == "speakerdeck" %}
-    <script async class="speakerdeck-embed" data-id="{{ include.id }}" data-ratio="1.41436464088398" src="//speakerdeck.com/assets/embed.js"></script>
+  <script async class="speakerdeck-embed" data-id="{{ include.id }}" data-ratio="1.41436464088398"
+    src="//speakerdeck.com/assets/embed.js"></script>
   {% elsif include.type == "slideshare" %}
-    <center><iframe src="//www.slideshare.net/slideshow/embed_code/key/{{ include.id }}" width="795" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </center>
+  <center><iframe src="//www.slideshare.net/slideshow/embed_code/key/{{ include.id }}" width="795" height="600"
+      frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
+      style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+  </center>
+  {% elsif include.type == "revealjs" %}
+  <center><iframe src="/slides/{{ include.path }}" style="width: 90%; height: 500px; border: 0">
+      <p>Your browser does not support iframes.</p>
+    </iframe></center>
   {% endif %}
 </div>
-

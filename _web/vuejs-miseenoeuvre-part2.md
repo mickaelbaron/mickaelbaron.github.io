@@ -7,7 +7,7 @@ description: Cette deuxième partie présente les principaux concepts de Vue.js 
 category: Article
 date: 2019-07-04
 update: 2020-09-16
-weight: 2
+weight: 4
 toc: true
 authors: [diabatem]
 twitter: 1146667460445331456
