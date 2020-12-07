@@ -13,7 +13,7 @@ Ce support de cours est une introduction au développement web avec des composan
 
 Les transparents au format non intégré : [introduction-dev-web-composants](/slides/web/introduction-dev-web-composants)
 
-La version PDF qui nécessite un rendu via votre navigateur (attention le rendu peut dépendre des caprises de votre navigateur) : <a target="_blank" href="/slides/web/introduction-dev-web-composants?print-pdf">introduction-vuejs</a>
+La version PDF qui nécessite un rendu via votre navigateur (attention le rendu peut dépendre des caprises de votre navigateur) : <a target="_blank" href="/slides/web/introduction-dev-web-composants?print-pdf">introduction-dev-web-composants.pdf</a>
 
 Les exemples utilisés dans ce support de cours : [exemples](https://github.com/mickaelbaron/mickaelbaron.github.io/tree/master/slides/web/introduction-web-composants/examples)
 

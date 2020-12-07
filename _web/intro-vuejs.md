@@ -13,7 +13,7 @@ Ce support de cours est une introduction au framework web JavaScript <a target="
 
 Les transparents au format non intégré : [introduction-vuejs](/slides/web/introduction-vuejs)
 
-La version PDF qui nécessite un rendu via votre navigateur (attention le rendu peut dépendre des caprises de votre navigateur) : <a target="_blank" href="/slides/web/introduction-vuejs?print-pdf">introduction-vuejs</a>
+La version PDF qui nécessite un rendu via votre navigateur (attention le rendu peut dépendre des caprises de votre navigateur) : <a target="_blank" href="/slides/web/introduction-vuejs?print-pdf">introduction-vuejs.pdf</a>
 
 Les exemples utilisés dans ce support de cours : [exemples](https://github.com/mickaelbaron/mickaelbaron.github.io/tree/master/slides/web/introduction-vuejs/examples)
 
