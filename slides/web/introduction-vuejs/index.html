@@ -157,7 +157,8 @@
 				<p>Partage des Conditions Initiales à l'Identique</p>
 				<p>2.0 France</p>
 				<p><img width="50%" src="images/by-sa.svg" /></p>
-				<a href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
+				<a target="_blank"
+					href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
 			</section>
 
 			<!-- Qui suis-je ? -->
@@ -275,10 +276,10 @@
 			</section>
 
 			<!-- Supported version -->
-			<section data-background-size="60%" data-background-opacity="0.5" data-background-image="images/vuejs.svg">
+			<section data-background-size="50%" data-background-opacity="0.5" data-background-image="images/vuejs.svg">
 				<h3>Version supportée dans ce cours</h3>
 
-				<p style="color: #34495e" class="r-fit-text">2.x</p>
+				<p style="color: #34495e;font-size: 450px;" >2.x</p>
 			</section>
 
 			<!-- Historique -->
@@ -310,7 +311,8 @@
 
 					<img class="r-stretch" src="images/popularity3.png" />
 
-					<p>Source : <a href="https://2019.stateofjs.com/front-end-frameworks/">stateofjs.com</a></p>
+					<p>Source : <a target="_blank"
+							href="https://2019.stateofjs.com/front-end-frameworks/">stateofjs.com</a></p>
 				</section>
 				<section>
 					<h3>Qui utilise Vue.js ?</h3>
@@ -348,7 +350,8 @@
 							<img src="images/logo-veolia.png" />
 						</div>
 					</div>
-					<p>Source : <a href="https://slides.com/akryum/vue2-introduction#/7/6">vue2-introduction</a></p>
+					<p>Source : <a target="_blank"
+							href="https://slides.com/akryum/vue2-introduction#/7/6">vue2-introduction</a></p>
 				</section>
 			</section>
 
@@ -495,7 +498,7 @@ $ npm install -g @vue/cli</code></pre>
 
 					<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> correspond à la partie
 						<b>V</b>iew<b>M</b>odel</p>
-					<img style="margin:0px" width="85%" src="images/mvvm.png" />
+					<img style="margin:0px" width="75%" src="images/mvvm.png" />
 				</section>
 				<section>
 					<h3>Modèle et vue</h3>
@@ -973,7 +976,8 @@ $ npm install -g @vue/cli</code></pre>
 								href="https://vuejs.org/" target="_blank">Vue.js</a> n'est pas terminée</p>
 						<p><code>v-pre</code> : n'effectue pas de compilation, texte brute</p>
 						<p><code>v-???</code> : possibilité de créer ses propres directives personnalisées : <a
-								href="https://vuejs.org/v2/guide/custom-directive.html">en savoir plus</a></p>
+								target="_blank" href="https://vuejs.org/v2/guide/custom-directive.html">en savoir
+								plus</a></p>
 					</div>
 				</section>
 				<section>
@@ -1063,11 +1067,11 @@ $ npm install -g @vue/cli</code></pre>
 					<div class="container-flex">
 						<div class="col-1">
 							<p><b>À la volée</b></p>
-							<img width="75%" src="images/library-component.png" />
+							<img width="65%" src="images/library-component.png" />
 						</div>
 						<div class="col-1">
 							<p><b>Single-File-Component</b></p>
-							<img width="78%" src="images/vue-single-file-component.png" />
+							<img width="68%" src="images/vue-single-file-component.png" />
 						</div>
 					</div>
 				</section>
@@ -1094,7 +1098,7 @@ $ npm install -g @vue/cli</code></pre>
 							</ul>
 						</div>
 						<div class="col-1">
-							<img width="100%" src="images/vue-single-file-component.png" />
+							<img width="90%" src="images/vue-single-file-component.png" />
 						</div>
 					</div>
 				</section>
@@ -1455,7 +1459,7 @@ $ npm install -g @vue/cli</code></pre>
 							</ul>
 						</div>
 						<div class="col-1">
-							<img width="55%" src="images/lifecyclevuejs.png" />
+							<img width="50%" src="images/lifecyclevuejs.png" />
 						</div>
 					</div>
 				</section>
@@ -2012,7 +2016,7 @@ export const EB = new Vue();</code></pre>
 							</ul>
 							<p><b>Aller plus loin</b></p>
 							<ul>
-								<li>Utiliser <a href="https://vuex.vuejs.org/">Vuex</a></li>
+								<li>Utiliser <a target="_blank" href="https://vuex.vuejs.org/">Vuex</a></li>
 							</ul>
 						</div>
 						<div class="col-1">
@@ -2181,7 +2185,7 @@ export const EB = new Vue();</code></pre>
 					<h3>Référence directe</h3>
 					<div class="container-flex">
 						<div class="col-2">
-							<pre><code style="max-height: 600px;" data-noescape data-trim data-line-numbers="3|17">&lt;template&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|17">&lt;template&gt;
  &lt;div&gt;
   &lt;Clock ref=&quot;refClock&quot;&gt;&lt;Clock/&gt;
   &lt;button @click=&quot;save()&quot;&gt;
@@ -2193,14 +2197,12 @@ export const EB = new Vue();</code></pre>
  import Clock from &quot;@/Clock.vue&quot;;
  export default {
   data() { 
-   return { value: 'Empty' } 
-  },
+   return { value: 'Empty' }},
   methods: {
    save() {
     this.value = 
      this.$refs.refClock.getClock();
-   }
-  }
+  }}
  };
 &lt;/script&gt;</code></pre>
 						</div>
@@ -2315,14 +2317,14 @@ export const EB = new Vue();</code></pre>
 			<section>
 				<h3>Structure d'un projet Vue.js</h3>
 
-				<img width="80%" src="images/todo.png" />
+				<img width="70%" src="images/todo.png" />
 			</section>
 
 			<!-- Routage -->
 			<section>
 				<h3>Routage</h3>
 
-				<img width="80%" src="images/todo.png" />
+				<img width="70%" src="images/todo.png" />
 			</section>
 
 			<!-- Outils -->
@@ -2330,7 +2332,7 @@ export const EB = new Vue();</code></pre>
 				<section>
 					<h3>Outils pour Vue.JS</h3>
 
-					<img width="80%" src="images/vuejstools.jpg" />
+					<img width="75%" src="images/vuejstools.jpg" />
 
 					<p>Outils pour le développeur</p>
 				</section>
@@ -2369,12 +2371,12 @@ export const EB = new Vue();</code></pre>
 									href="https://chrome.google.com/webstore/detail/vuejs-devtools/">Chrome</a>, <a
 									target="_blank"
 									href="https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/">Firefox</a></li>
-							<li><a
+							<li><a target="_blank"
 									href="https://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md">Application
 									standalone</a></li>
 						</ul>
 					</div>
-					<img width="50%" src="images/vuejsdevtools.png" />
+					<img width="45%" src="images/vuejsdevtools.png" />
 				</section>
 				<section>
 					<h3>Vue CLI</h3>
@@ -2401,23 +2403,26 @@ export const EB = new Vue();</code></pre>
 
 					<p>Passer par une interface graphique : <code>$ vue ui</code></p>
 
-					<img width="75%" src="images/vuecliui.png" />
+					<img width="70%" src="images/vuecliui.png" />
 				</section>
 
 				<section>
 					<h3>Les bibliothèques Vue.js</h3>
 
 					<div style="text-align: left;">
-						<p><a href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site statique</p>
-						<p><a href="https://vuex.vuejs.org/">Vuex</a> : gestionnaire d'états</p>
-						<p><a href="https://nuxtjs.org/">Nuxt.js</a> : framework du framework Vue.js</p>
+						<p><a target="_blank" href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site
+							statique</p>
+						<p><a target="_blank" href="https://vuex.vuejs.org/">Vuex</a> : gestionnaire d'états</p>
+						<p><a target="_blank" href="https://nuxtjs.org/">Nuxt.js</a> : framework du framework Vue.js</p>
 						<ul>
 							<li>Génération de site statiques (SSG)</li>
 							<li>Rendu côté serveur (SSR)</li>
 						</ul>
-						<p><a href="https://vue-native.io/">Vue Native</a> : framework pour le développement
+						<p><a target="_blank" href="https://vue-native.io/">Vue Native</a> : framework pour le
+							développement
 							d'application mobile</p>
-						<p><a href="https://nativescript-vue.org" />NativeScript Vue</a> : un autre framework pour le
+						<p><a target="_blank" href="https://nativescript-vue.org" />NativeScript Vue</a> : un autre
+							framework pour le
 							développement d'application mobile</p>
 					</div>
 				</section>
@@ -2429,16 +2434,18 @@ export const EB = new Vue();</code></pre>
 				<h3>Allez plus loin</h3>
 
 				<ul>
-					<li><a href="https://vuejs.org/v2/guide/">vuejs.org/v2/guide</a></li>
-					<li><a href="https://github.com/vuejs/awesome-vue">github.com/vuejs/awesome-vue</a></li>
-					<li><a
+					<li><a target="_blank" href="https://vuejs.org/v2/guide/">vuejs.org/v2/guide</a></li>
+					<li><a target="_blank" href="https://github.com/vuejs/awesome-vue">github.com/vuejs/awesome-vue</a>
+					</li>
+					<li><a target="_blank"
 							href="https://flaviocopes.com/vue-developer-roadmap/">flaviocopes.com/vue-developer-roadmap</a>
 					</li>
-					<li><a href="https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/">7 Ways to Define a Component Template</a></li>
-					<li><a
+					<li><a target="_blank" href="https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/">7 Ways to Define a
+							Component Template</a></li>
+					<li><a target="_blank" 
 							href="https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf">www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf</a>
 					</li>
-					<li><a href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
+					<li><a target="_blank" href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
 				</ul>
 			</section>
 
@@ -2452,7 +2459,7 @@ export const EB = new Vue();</code></pre>
 				<h3>Place aux travaux pratiques</h3>
 
 				<div class="wrapper-icon">
-					<p>Disponibles sur Github <img class="icon" src="images/github.svg" /> : <a
+					<p>Disponibles sur Github <img class="icon" src="images/github.svg" /> : <a target="_blank" 
 							href="https://github.com/mickaelbaron">github.com/mickaelbaron</a></p>
 				</div>
 
