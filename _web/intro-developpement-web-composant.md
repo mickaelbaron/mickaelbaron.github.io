@@ -7,6 +7,7 @@ description: Cette introduction présente les bases du développement web et dé
 category: Cours
 date: 2020-12-06
 weight: 1
+twitter: 1336330816033460224
 ---
 
 Ce support de cours est une introduction au développement web avec des composants. Il présente les bases du développement web et détaille les fonctionnalités qu'un framework web JavaScript orientés composant doit fournir. Nous présentons ensuite les principaux frameworks web JavaScript du marché.
