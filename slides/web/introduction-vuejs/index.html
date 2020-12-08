@@ -744,7 +744,7 @@ $ npm install -g @vue/cli</code></pre>
    Afficher Vue.js
  &lt;/input&gt;
 
- &lt;img v-show=&quot;show&quot; src=&quot;vue.svg&quot;/&gt;
+ &lt;img v-show=&quot;show&quot; src=&quot;lias.png&quot;/&gt;
 
  &lt;img v-if=&quot;show&quot; src=&quot;vue.svg&quot;/&gt;
  &lt;img v-else src=&quot;mbaron.jpg&quot;/&gt;
@@ -754,7 +754,7 @@ $ npm install -g @vue/cli</code></pre>
  new Vue({
   el: '#app',
   data: { 
-   show: false 
+   show: true 
   }
  });
 &lt;/script&gt;</code></pre>
@@ -906,7 +906,7 @@ $ npm install -g @vue/cli</code></pre>
 					<div class="container-flex">
 						<div class="col-2">
 							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7">&lt;div id=&quot;app&quot;&gt;
- &lt;button @click=&quot;increase&quot;&gt;
+ &lt;button v-on:click=&quot;increase&quot;&gt;
   Augmenter
  &lt;/button&gt;
  &lt;button @click.once=&quot;decrease&quot;&gt;
@@ -1477,7 +1477,7 @@ $ npm install -g @vue/cli</code></pre>
  new Vue({
   el: '#app',
   data: { value: &quot;HelloWorld&quot;	},
-  create() {
+  created() {
    display(&quot;create &quot; + this.value)
   },
   mounted() {
@@ -1725,7 +1725,7 @@ $ npm install -g @vue/cli</code></pre>
 							<ul>
 								<li><b>Enfant :</b> émettre un événement <code>$emit</code>
 								</li>
-								<li><b>Parent :</b> écouter les événements via directive <code>v:on</code></li>
+								<li><b>Parent :</b> écouter les événements via directive <code>v-on</code></li>
 							</ul>
 							<p><b>Événement</b></p>
 							<ul>
@@ -2407,7 +2407,7 @@ export const EB = new Vue();</code></pre>
 				</section>
 
 				<section>
-					<h3>Les bibliothèques Vue.js</h3>
+					<h3>Bibliothèques / Frameworks</h3>
 
 					<div style="text-align: left;">
 						<p><a target="_blank" href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site

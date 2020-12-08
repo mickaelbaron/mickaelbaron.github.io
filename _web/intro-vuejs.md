@@ -2,7 +2,7 @@
 title: 'Introduction au développement Web avec Vue.js'
 tags: [Web]
 direct_link:
-image: /images/vuejs.jpg
+image: /images/vuejs_mozaic.png
 description: Cette introduction présente les principaux concepts de Vue.js et se focalise ensuite sur les différentes techniques pour communiquer entre des composants.
 category: Cours
 date: 2020-12-06
