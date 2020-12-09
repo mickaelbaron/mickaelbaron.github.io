@@ -7,6 +7,7 @@ description: Cette introduction présente les principaux concepts de Vue.js et s
 category: Cours
 date: 2020-12-06
 weight: 2
+twitter: 1336569904137457664
 ---
 
 Ce support de cours est une introduction au framework web JavaScript <a target="_blank" href="https://vuejs.org/">Vue.js</a>. Il présente les principaux concepts de <a target="_blank" href="https://vuejs.org/">Vue.js</a> et se focalise ensuite sur les différentes techniques pour communiquer entre des composants.
