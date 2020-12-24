@@ -30,7 +30,7 @@ Les supports de cours utilisent [Reveal.js](https://revealjs.com/) pour l'écrit
 
 **Et la suite ?**
 
-La version supportée de [Vue.js](https://vuejs.org/) dans toutes mes réalisations est la version 2. La version 3 qui s'annonce prometeuse n'est sortie que tardivement (septembre 2020). Je prendrai un peu de temps pour faire évoluer toutes mes ressources vers cette version 3. Comme les principaux concepts principaux sont toujours là, le temps de migration ne devrait pas être trop long.
+La version supportée de [Vue.js](https://vuejs.org/) dans toutes mes réalisations est la version 2. La version 3 qui s'annonce prometteuse n'est sortie que tardivement (septembre 2020). Je prendrai un peu de temps pour faire évoluer toutes mes ressources vers cette version 3. Comme les principaux concepts principaux sont toujours là, le temps de migration ne devrait pas être trop long.
 
 Je prépare un support de cours et un tutoriel sur le développement d'applications mobiles basées sur [Vue.js](https://vuejs.org/). L'idée est de faire un état de l'art pour comprendre toutes les technologies du marché (Vue-Native, Nativescript, PWA...).
 
