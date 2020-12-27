@@ -1291,8 +1291,8 @@ $ npm install -g @vue/cli</code></pre>
 					<div class="container-flex">
 						<div class="col-2">
 							<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="9-17">&lt;div id=&quot;app&quot;&gt;
- &lt;input v-model=&quot;compValue&quot; /&gt;
- &lt;p&gt;{{ compValue }}&lt;/p&gt;
+ &lt;input v-model=&quot;computedValue&quot; /&gt;
+ &lt;p&gt;{{ computedValue }}&lt;/p&gt;
 &lt;/div&gt;
 &lt;script&gt;
  new Vue({
@@ -1550,7 +1550,7 @@ $ npm install -g @vue/cli</code></pre>
 				<section data-background-size="75%" data-background-opacity="0.2"
 					data-background-image="images/summary.jpg">
 					<h3>Résumé Contenu d'un composant</h3>
-					<p>Différents options disponibles pour vos composants</p>
+					<p>Différentes options disponibles pour vos composants</p>
 					<div style="text-align: left;">
 						<ul style="line-height:180%">
 							<li><code>data</code> : binding View et Model</li>
@@ -2253,7 +2253,7 @@ export const EB = new Vue();</code></pre>
 										el: '#app-ref',
 										data() {
 											return {
-												value: 'Not Initialized'
+												value: 'Empty'
 											}
 										},
 										components: {
