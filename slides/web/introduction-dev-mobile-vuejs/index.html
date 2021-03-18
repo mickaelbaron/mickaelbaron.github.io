@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Développement web avec Vue.js</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/white.min.css" id="theme">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css"
+		id="highlight-theme">
+
+	<style>
+		/* Double colonnes */
+		.container-flex {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-content: flex-start;
+			align-items: center;
+		}
+
+		.col-1 {
+			flex: 1;
+		}
+
+		.col-2 {
+			flex: 2;
+		}
+
+		.col-3 {
+			flex: 3;
+		}
+
+		/* Placer des petites images à côté du texte */
+		.wrapper-icon .icon {
+			position: relative;
+			margin: 0 10px 0 0;
+			width: 25px;
+			height: 25px;
+		}
+
+		/* Arondir les images */
+		.roundedImage {
+			-moz-border-radius: 15px;
+			-webkit-border-radius: 15px;
+			-khtml-border-radius: 15px;
+			border-radius: 15px;
+			box-shadow: 0px 0px 10px #343434;
+		}
+
+		/* Pour les éléments des démos */
+		.elementContainer {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: center;
+		}
+
+		.elementContainer>* {
+			margin: 10px;
+		}
+
+		/* The browser window */
+		.web-container {
+			border: 3px solid #d0d0d0;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		/* Container for columns and the top "toolbar" */
+		.web-row {
+			padding-bottom: 15px;
+			background: #e0e0e0;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+
+		/* Create three unequal columns that floats next to each other */
+		.web-column {
+			float: left;
+		}
+
+		.web-left {
+			width: 20%;
+		}
+
+		.web-middle {
+			width: 70%;
+		}
+
+		/* Clear floats after the columns */
+		.web-row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		/* Three dots */
+		.web-dot {
+			margin-top: 4px;
+			height: 12px;
+			width: 12px;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+		}
+
+		/* Style the input field */
+		.web-input {
+			width: 100%;
+			border-radius: 3px;
+			border: none;
+			background-color: white;
+			margin-top: -8px;
+			height: 25px;
+			color: #666;
+			padding: 5px;
+		}
+
+		/* Page content */
+		.web-content {
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Page de garde -->
+			<section>
+				<img width="35%" src="images/nativevspwavshybrid.png" />
+
+				<h3>Introduction au développement mobile orienté web</h3>
+				<h4>Application à Vue.js</h4>
+				<p>Mickaël BARON - Version 02-2021</p>
+				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
+						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
+				<div class="wrapper-icon">
+					<a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+							src="/images/slides/twitter.svg" />@mickaelbaron</a>
+					<a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+							src="/images/slides/web.svg" />mickael-baron.fr</a>
+				</div>
+			</section>
+
+			<!-- Licence d'utilisation -->
+			<section>
+				<h3>Licence d'utilisation</h3>
+
+				<p><b>Creative Commons</b></p>
+				<p>Contrat Paternité</p>
+				<p>Partage des Conditions Initiales à l'Identique</p>
+				<p>2.0 France</p>
+				<p><img width="50%" src="/images/slides/by-sa.svg" /></p>
+				<a target="_blank"
+					href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
+			</section>
+
+			<!-- Qui suis-je ? -->
+			<section>
+				<section>
+					<h3>Qui suis-je ?</h3>
+
+					<img width="25%" class="roundedImage" src="/images/slides/mbaron.jpg" />
+					<div class="wrapper-icon">
+						<p><a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
+									src="/images/slides/twitter.svg" />@mickaelbaron</a></p>
+						<p><a target="_blank" href="https://mickael-baron.fr"><img class="icon"
+									src="/images/slides/web.svg" />mickael-baron.fr</a></p>
+						<p><a target="_blank" href="https://github.com/mickaelbaron"><img class="icon"
+									src="/images/slides/github.svg" />mickaelbaron</a></p>
+					</div>
+				</section>
+				<section>
+					<h3>Ingénieur de Recherche ☀️</h3>
+
+					<div class="container-flex">
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:200%">
+								<li>Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées et des
+									mo<b>D</b>èles
+									(IDD)</li>
+								<li>Valorisation des plateformes logicielles</li>
+								<li>« Coach technique » auprès des usagés</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="/images/slides/isae_ensma.svg" />
+							<img width="65%" src="/images/slides/lias.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/LIAS_LAB"><img class="icon"
+											src="/images/slides/twitter.svg" />@LIAS_LAB</a></p>
+								<p><a target="_blank" href="https://www.lias-lab.fr"><img class="icon"
+											src="/images/slides/web.svg" />www.lias-lab.fr</a></p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Responsable communauté 🌑</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<img width="100%" src="/images/slides/developpezcom.png" />
+							<div class="wrapper-icon">
+								<p><a target="_blank" href="https://twitter.com/javaDeveloppez"><img class="icon"
+											src="/images/slides/twitter.svg" />@javaDeveloppez</a></p>
+								<p><a target="_blank" href="https://java.developpez.com"><img class="icon"
+											src="/images/slides/web.svg" />java.developpez.com</a></p>
+
+							</div>
+						</div>
+						<div class="col-1" style="text-align: left;">
+							<ul style="line-height:150%">
+								<li>Rubriques : Java, Java Web, Android, Eclipse, Spring et Netbeans</li>
+								<li>Rédacteurs de tutoriels</li>
+								<li>Chiffres</li>
+								<ul>
+									<li>4 M de visiteurs</li>
+									<li>12 M pages vues/mois</li>
+									<li>7500 membres</li>
+									<li>2000 forums</li>
+								</ul>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+			</section>
+
+			<!-- Plan -->
+			<section>
+				<section data-background-size="25%" data-background-opacity="0.2"
+					data-background-image="images/hybridnativevuejs.png">
+					<h3>Objectif du cours (30 min)</h3>
+
+					<ul style="line-height:150%">
+						<li>Développer une application mobile ?</li>
+						<ul>
+							<li>Basée sur une application web</li>
+							<li>Progressive Web App</li>
+							<li>Native</li>
+							<li>Hybride</li>
+						</ul>
+						<li>Développer une application mobile avec Vue.js ?</li>
+						<ul>
+							<li>NativeScript-Vue (Hybride native)</li>
+							<li>PWA</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Disclaimer 🧎🏻‍♂️</h3>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p>Pas le temps ⏳ de tout traiter</p>
+							<ul style="line-height:165%">
+								<li><s>PWA</s></li>
+								<li><s>Tester</s></li>
+								<li><s>Déployer</s></li>
+							</ul>
+							<p>Expérimentation via des exercices</p>
+							<p><b>Prérequis minimum</b></p>
+							<ul>
+								<li>Développement web avec Vue.js</li>
+								<li>Notions élémentaires JavaScript</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="100%" src="images/devmobile.jpeg" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Parts de marché -->
+			<section>
+				<h3>Systèmes d'exploitation pour smartphones</h3>
+
+				<img width="55%" src="images/partmarche.png" />
+			</section>
+
+			<!-- Solutions -->
+			<section>
+				<section>
+					<h3>Solutions pour développement d'applications mobiles</h3>
+
+					<img width="75%" src="images/solutionsdevmobiles.png" />
+				</section>
+
+				<!-- Web App -->
+				<section>
+					<h3>App. mobile basée sur une app web</h3>
+
+					<div class="container-flex">
+						<div class="col-3" style="text-align: left;">
+							<ul style="line-height:175%">
+								<li>Accessible sur un <b>navigateur web</b></li>
+								<li><u>Pas d'adaptation</u> du code</li>
+								<li>Fonctionne sur toutes les plateformes (Android et iOS) et les types de matériel</li>
+								<li>Utilisation de CSS pour s'adapter à la taille de l'écran mobile (<b>Responsive
+										Design</b>)</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/schema_appweb.png" />
+						</div>
+					</div>
+				</section>
+
+				<!-- PWA -->
+				<section>
+					<h3>Progressive Web App</h3>
+
+					<div class="container-flex">
+						<div class="col-3" style="text-align: left;">
+							<ul style="line-height:160%">
+								<li>Initiée par Google en 2015</li>
+								<li>Lien : <a
+										href="https://web.dev/progressive-web-apps">web.dev/progressive-web-apps</a>
+								</li>
+								<li><u>Peu d'adaptation</u> du code</li>
+								<li>Fonctionnalités fournies</li>
+								<ul>
+									<li>Créer <b>raccourci sur l'écran d'accueil</b></li>
+									<li>Recevoir des <b>notifications push</b></li>
+									<li>Accéder aux fonctionnalités du téléphone (caméra, micro...)</li>
+									<li>Gérer le mode <b>hors-ligne</b></li>
+								</ul>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/schema_pwa.png" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Progressive Web App</h3>
+					<p>Annuaire : <a href="https://appsco.pe">appsco.pe</a></p>
+					<div class="container-flex">
+						<div class="col-1">
+							<img width="100%" src="images/pwalequipe.png" />
+							<p>L'Equipe</p>
+						</div>
+						<div class="col-2">
+							<img width="100%" src="images/pwapinterest.png" />
+							<p>Pinterest</p>
+						</div>
+						<div class="col-2">
+							<img width="100%" src="images/pwatwitterlite.png" />
+							<p>Twitter Lite</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Native -->
+				<section>
+					<h3>Solution Native</h3>
+
+					<div class="container-flex">
+						<div class="col-3" style="text-align: left;">
+							<ul style="line-height:160%">
+								<li>Solution poussée par Google et Apple</li>
+								<li>Nécessite l'installation d'un SDK pour développer</li>
+								<ul>
+									<li>Android avec Android Studio</li>
+									<li>iOS avec XCode (obligatoirement macOS</li>
+								</ul>
+								<li>Code <b>différent</b> selon la plateforme</li>
+								<li>Utilisation des composants natifs</li>
+								<li>Nécessite un <b>Store</b> pour déployer</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/schema_native.png" />
+						</div>
+					</div>
+				</section>
+
+				<!-- Hybrid -->
+				<section>
+					<h3>Solution Hybride</h3>
+
+					<div class="container-flex">
+						<div class="col-3" style="text-align: left;">
+							<ul style="line-height:160%">
+								<li>Code dans un conteneur natif</li>
+								<li>Code identique à toutes les plateformes</li>
+								<li>Nécessite l'installation d'un SDK</li>
+								<li>Utilisation de <b>plugins</b> pour accéder aux API natives (caméra, micro...)</li>
+								<li>Deux familles de solutions</li>
+								<ul>
+									<li>Hybride avec WebView</li>
+									<li>Hybride native</li>
+								</ul>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="65%" src="images/schema_hybrid.png" />
+						</div>
+					</div>
+				</section>
+
+				<!-- Hybrid in details -->
+				<section>
+					<h3>Hybride avec et sans WebView</h3>
+
+					<div class="container-flex">
+						<div class="col-1">
+							<p><b>Hybride avec WebView</b></p>
+							<ul style="line-height:150%">
+								<li>WebView = composant natif pour afficher du contenu web</li>
+								<li>Code exécuté comme une page HTML</li>
+								<li>Possibilité d'utiliser n'importe quel framework web</li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<p><b>Hybride Native</b></p>
+							<ul style="line-height:150%">
+								<li>Transformation de la partie UI en code natif</li>
+								<li>Utilisation de bridges asynchrones</li>
+								<ul>
+									<li>JavaScriptCore</li>
+									<li>V8</li>
+								</ul>
+								<li>Nécessite d'utiliser une bibliothèque spécifique</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Hybrid in details -->
+				<section>
+					<h3>Bilan des différentes solutions</h3>
+					<div style="font-size: 35px;">
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Web</th>
+									<th>PWA</th>
+									<th style="text-align: center;">Hybride WebView</th>
+									<th style="text-align: center;">Hybride Native</th>
+									<th>Native</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><b>Déploiement</b></td>
+									<td>URL</td>
+									<td>URL</td>
+									<td>Store</td>
+									<td>Store</td>
+									<td>Store</td>
+								</tr>
+								<tr>
+									<td><b>Installation</b></td>
+									<td>Non</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+								</tr>
+								<tr>
+									<td><b>Hors-Ligne</b></td>
+									<td>Non</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+								</tr>
+								<tr>
+									<td><b>Notification</b></td>
+									<td>Non</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+									<td>Oui</td>
+								</tr>
+								<tr>
+									<td><b>Accès API Natives</b></td>
+									<td>Non</td>
+									<td>Limité</td>
+									<td>Complet</td>
+									<td>Complet</td>
+									<td>Complet</td>
+								</tr>
+								<tr>
+									<td><b>Composant</b></td>
+									<td>HTML</td>
+									<td>HTML</td>
+									<td>HTML</td>
+									<td>Natif</td>
+									<td>Natif</td>
+								</tr>
+								<tr>
+									<td><b>Performance</b></td>
+									<td>-</td>
+									<td>-</td>
+									<td>+</td>
+									<td>++</td>
+									<td>+++</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<!-- Hybrid in details -->
+				<section>
+					<h3>Définir vos besoins ?</h3>
+					<div style="font-size: 25px;">
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Web</th>
+									<th>PWA</th>
+									<th style="text-align: center;">Hybride</th>
+									<th>Native</th>
+								</tr>
+								<tr>
+									<td>Développer uniquement du code web</td>
+									<td>X</td>
+									<td>X</td>
+									<td>X</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Développer en Java, Kotlin ou Swift</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>X</td>
+								</tr>
+								<tr>
+									<td>Ne pas installer SDK Android ou iOS</td>
+									<td>X</td>
+									<td>X</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Avoir un code identique sur Android ou iOS</td>
+									<td>X</td>
+									<td>X</td>
+									<td>X</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Utiliser des APIs natives (caméra...)</td>
+									<td></td>
+									<td>X</td>
+									<td>X</td>
+									<td>X</td>
+								</tr>
+								<tr>
+									<td>Ne pas déployer dans un store</td>
+									<td>X</td>
+									<td>X</td>
+									<td>X</td>
+									<td>Android</td>
+								</tr>
+								<tr>
+									<td>Développer un site web classique</td>
+									<td>X</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Développer des jeux-vidéos AAA</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>X</td>
+								</tr>
+								<tr>
+									<td>Développer un site web marchand</td>
+									<td></td>
+									<td>X</td>
+									<td>X</td>
+									<td>X</td>
+								</tr>
+								<tr>
+									<td>Développer une station sol pour Drone</td>
+									<td></td>
+									<td></td>
+									<td>X</td>
+									<td>X</td>
+								</tr>
+								<tr>
+									<td>À compléter...</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</thead>
+						</table>
+				</section>
+			</section>
+
+			<section>
+				<h3>Application mobile avec Vue.js</h3>
+
+				<img width="85%" src="images/schema_devmobile_vuejs.png" />
+			</section>
+			<section>
+				<h3>Solution PWA avec Vue.js</h3>
+
+				<img width="70%" src="/images/slides/todo.png" />
+			</section>
+			<section>
+				<section>
+					<h3>Solution Hybride avec Vue.js</h3>
+					<ul style="line-height:135%">
+						<li>Solution hybride avec WebView</li>
+						<ul>
+							<li>Toutes les frameworks (<a href="https://cordova.apache.org/">Cordova</a>, <a
+									href="https://ionicframework.com/">Ionic</a>...) devraient supporter <a
+									href="https://vuejs.org/" target="_blank">Vue.js</a></li>
+						</ul>
+						<li>Solution hybride native</li>
+						<ul>
+							<li><b>NativeScript</b></li>
+							<ul>
+								<li><a href="https://nativescript.org">nativescript.org</a></li>
+								<li><a href="https://angular.io/" target="_blank">Angular</a> et <a
+										href="https://vuejs.org/" target="_blank">Vue.js</a> (<a
+										href="https://nativescript-vue.org">nativescript-vue.org</a>)</li>
+							</ul>
+							<li><b>Vue Native</b></li>
+							<ul>
+								<li><a href="https://vue-native.io">vue-native.io</a></li>
+								<li>Wrapper de <a href="https://reactnative.dev/">React Native</a></li>
+							</ul>
+						</ul>
+					</ul>
+
+				</section>
+				<section>
+					<h3>Application mobile avec Vue.js</h3>
+					<p>Exemple avec <a href="https://nativescript-vue.org/">NativeScript-Vue</a></p>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 500px;font-size: 0.7em" data-noescape data-trim>&lt;template&gt;
+  &lt;StackLayout&gt;
+    &lt;Button text=&quot;Take Picture&quot; @tap=&quot;takePicture&quot; /&gt;
+    &lt;Image :src=&quot;image&quot; stretch=&quot;aspectFit&quot; /&gt;
+  &lt;/StackLayout&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  var camera = require(&quot;@nativescript/camera&quot;);
+  export default {
+    data() { return { image: null }; },
+    methods: {
+      takePicture() {
+        // Code pour prendre une capture en utilisant
+        // le plugin @nativescript/camera.
+      },
+    },
+  };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<img width="85%" src="images/takepicture.png" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Go further -->
+			<section data-background-size="90%" data-background-opacity="0.2"
+				data-background-image="/images/slides/gofurther.jpg">
+				<h3>Allez plus loin</h3>
+
+				<ul>
+					<li><a href="https://vuejs.org/">vuejs.org</a></li>
+					<li><a href="https://web.dev/progressive-web-apps/">web.dev/progressive-web-apps</a></li>
+					<li><a href="https://appsco.pe/">appsco.pe</a></li>
+					<li><a href="https://ionicframework.com/">ionicframework.com</a></li>
+					<li><a href="https://cordova.apache.org/">cordova.apache.org</a></li>
+					<li><a href="https://vue-native.io/">vue-native.io</a></li>
+					<li><a href="https://nativescript-vue.org/">nativescript-vue.org</a></li>
+					<li><a target="_blank" href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
+				</ul>
+			</section>
+
+			<!-- Kahoot -->
+			<section>
+				<img width="90%" src="/images/slides/kahoot.svg" />
+			</section>
+
+
+			<!-- Pratical -->
+			<section>
+				<h3>Place aux travaux pratiques</h3>
+
+				<div class="wrapper-icon">
+					<p>Disponibles sur Github <img class="icon" src="/images/slides/github.svg" /> : <a target="_blank"
+							href="https://github.com/mickaelbaron">github.com/mickaelbaron</a></p>
+				</div>
+
+				<div class="container-flex">
+					<div class="col-1">
+						<p><b>Progressive Web App (PWA)</b></p>
+						<ul style="line-height:150%;font-size: 35px;">
+							<li>Mode hors-ligne</li>
+							<li>Notification</li>
+							<li>API Natives</li>
+							<li>Écran d'accueil</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="/images/slides/github.svg" /> <a target="_blank"
+									href="https://github.com/mickaelbaron/vuejs-pwa-tutorial">/vuejs-pwa-tutorial</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-1">
+						<p><b>Hybride native (NativeScript-Vue)</b></p>
+						<ul style="line-height:150%;font-size: 35px;">
+							<li>Installation SDK</li>
+							<li>VueDevTools</li>
+							<li>API natives</li>
+							<li>Services Rest + WebSocket</li>
+							<li class="wrapper-icon">
+								<img class="icon" src="/images/slides/github.svg" /> <a target="_blank"
+									href="https://github.com/mickaelbaron/vuejs-nativescript-tutorial">/vuejs-nativescript-tutorial</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			autoPlayMedia: true,
+			touch: false,
+			slideNumber: 'c/t',
+			showNotes: false,
+			plugins: [RevealHighlight]
+		});
+	</script>
+</body>
+
+</html>
