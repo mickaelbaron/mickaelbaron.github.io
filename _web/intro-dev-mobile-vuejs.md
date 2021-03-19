@@ -1,8 +1,8 @@
 ---
 title: 'Introduction au développement mobile orienté web avec Vue.js'
-tags: [Web]
+tags: [Web, Mobile]
 direct_link:
-image: /images/vuejsmobile.jpg
+image: /images/mobilesolutionsvuejs.jpg
 description: Cette introduction présente les principales solutions pour développer une application mobile et se focalise ensuite sur le développement d'application mobile via les solutions PWA et NativeScript en utilisant Vue.js.
 category: Cours
 date: 2021-03-18
