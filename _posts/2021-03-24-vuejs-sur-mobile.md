@@ -3,6 +3,7 @@ title: Vue.js sur le mobile
 tags: [Vue.js, mobile]
 category: technical
 description: Savoir développer des applications mobiles avec Vue.js et NativeScript
+twitter: 1374350204225392648
 ---
 
 Je mets à disposition mes supports d'enseignement que j'ai utilisés pour ma participation à un cours sur le développement d'applications mobiles. Ce cours était destiné aux élèves ingénieurs de dernières années de l'ISAE-ENSMA qui suivent l'option Informatique. L'objectif du cours était de montrer comment développer une application mobile basée sur un code web via des solutions hybrides et PWA (Progressive Web App).  
