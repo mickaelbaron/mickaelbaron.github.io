@@ -2,7 +2,8 @@
 title: Installer le SDK Android depuis la ligne de commande
 tags: [mobile]
 category: technical
-description: Un billet qui explique comment installer le SDK Android depuis la ligne de commande (CLI) sans passer par l'installation de Android Studio
+description: Un billet qui explique comment installer le SDK Android depuis la ligne de commande (CLI) sans passer par l'installation d'Android Studio
+twitter: 1397590601168736257
 ---
 
 Ce billet montrent comment installer le SDK [Android](https://www.android.com) sans passer par [Android Studio](https://developer.android.com/studio). Nous utiliserons les outils en ligne de commande nommés « Command Line Tools » qui fournissent l'outil **sdkmanager** pour télécharger la bonne version du SDK. 
