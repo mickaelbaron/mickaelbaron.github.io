@@ -37,22 +37,22 @@ import asyncio
 from jsonrpc_websocket import Server
 
 async def routine():
-    async with aiohttp.ClientSession() as client:
-        server = Server('ws://XO_SERVER_IP/api/', client)
+  async with aiohttp.ClientSession() as client:
+    server = Server('ws://XO_SERVER_IP/api/', client)
 
-        await server.ws_connect()
+    await server.ws_connect()
 
-        # No signIn required
-        methodsInfoResult = await server.system.getMethodsInfo()
-        print('\n'.join([str(e) for e in methodsInfoResult.keys()]))
+    # No signIn required
+    methodsInfoResult = await server.system.getMethodsInfo()
+    print('\n'.join([str(e) for e in methodsInfoResult.keys()]))
 
-        # signIn required
-        result = await server.session.signIn(username='YOUR_LOGIN', password='YOUR_PASSWORD') # email attribute is working in place of username
-        result = await server.xo.getAllObjects(filter={"type": "VIF"}, limit=10)
+    # signIn required
+    result = await server.session.signIn(username='YOUR_LOGIN', password='YOUR_PASSWORD')
+    result = await server.xo.getAllObjects(filter={"type": "VIF"}, limit=10)
 
-        print('[')
-        print(', \n'.join([str(json.dumps(e, indent=4)) for e in result.values()]))
-        print(']')
+    print('[')
+    print(', \n'.join([str(json.dumps(e, indent=4)) for e in result.values()]))
+    print(']')
 
 asyncio.get_event_loop().run_until_complete(routine())
 ```
@@ -66,52 +66,52 @@ Sous Java, il n'existe pas de bibliothèque prête à l'emploi pour gérer [JSON
 ```java
 public class XOServerClient {
 
-	private static CountDownLatch messageLatch;
+  private static CountDownLatch messageLatch;
 
-	public static void main(String[] args) {
-		try {			
-			final ClientEndpointConfig cec = ClientEndpointConfig.Builder.create().build();
-			ClientManager client = ClientManager.createClient();
-			Session currentSession = client.connectToServer(new Endpoint() {
-				@Override
-				public void onOpen(Session session, EndpointConfig config) {
-					session.addMessageHandler(new MessageHandler.Whole<String>() {
+  public static void main(String[] args) {
+    try {      
+      final ClientEndpointConfig cec = ClientEndpointConfig.Builder.create().build();
+      ClientManager client = ClientManager.createClient();
+      Session currentSession = client.connectToServer(new Endpoint() {
+        @Override
+        public void onOpen(Session session, EndpointConfig config) {
+          session.addMessageHandler(new MessageHandler.Whole<String>() {
 
-						@Override
-						public void onMessage(String message) {
-							System.out.println("Received message: " + message);
-							messageLatch.countDown();
-						}
-					});
-				}
-			}, cec, new URI("ws://XO_SERVER_IP/api/"));
-			
-			messageLatch = new CountDownLatch(1);
-			JsonRpc getMethodsInfo = new JsonRpc();
-			getMethodsInfo.setMethod("system.getMethodsInfo");	
-			currentSession.getBasicRemote().sendText(new JSONObject(getMethodsInfo).toString());
-			messageLatch.await();
-			
-			messageLatch = new CountDownLatch(1);
-			JsonRpc signIn = new JsonRpc();
-			signIn.setMethod("session.signIn");
-			signIn.getParams().put("username", "YOUR_LOGIN");
-			signIn.getParams().put("password", "YOUR_PASSWORD");
-			currentSession.getBasicRemote().sendText(new JSONObject(signIn).toString());
-			messageLatch.await();
+            @Override
+            public void onMessage(String message) {
+              System.out.println("Received message: " + message);
+              messageLatch.countDown();
+            }
+          });
+        }
+      }, cec, new URI("ws://XO_SERVER_IP/api/"));
+      
+      messageLatch = new CountDownLatch(1);
+      JsonRpc getMethodsInfo = new JsonRpc();
+      getMethodsInfo.setMethod("system.getMethodsInfo");  
+      currentSession.getBasicRemote().sendText(new JSONObject(getMethodsInfo).toString());
+      messageLatch.await();
+      
+      messageLatch = new CountDownLatch(1);
+      JsonRpc signIn = new JsonRpc();
+      signIn.setMethod("session.signIn");
+      signIn.getParams().put("username", "YOUR_LOGIN");
+      signIn.getParams().put("password", "YOUR_PASSWORD");
+      currentSession.getBasicRemote().sendText(new JSONObject(signIn).toString());
+      messageLatch.await();
 
-			messageLatch = new CountDownLatch(1);
-			JsonRpc getAllObjects = new JsonRpc();
-			getAllObjects.setMethod("xo.getAllObjects");
-			getAllObjects.getParams().put("limit", 10);
-			getAllObjects.getParams().put("filter", Map.of("type", "VIF"));
-			currentSession.getBasicRemote().sendText(new JSONObject(getAllObjects).toString());
-			messageLatch.await();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+      messageLatch = new CountDownLatch(1);
+      JsonRpc getAllObjects = new JsonRpc();
+      getAllObjects.setMethod("xo.getAllObjects");
+      getAllObjects.getParams().put("limit", 10);
+      getAllObjects.getParams().put("filter", Map.of("type", "VIF"));
+      currentSession.getBasicRemote().sendText(new JSONObject(getAllObjects).toString());
+      messageLatch.await();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -121,11 +121,11 @@ Le code de la classe `JsonRpc` qui permet d'encapsuler la construction de l'obje
 
 ```java
 public class JsonRpc {
-	
-	private Long id = 0L;
-	private String jsonrpc = "2.0";
-	private String method;
-	private Map<String, Object> params = new HashMap<String, Object>();
+  
+  private Long id = 0L;
+  private String jsonrpc = "2.0";
+  private String method;
+  private Map<String, Object> params = new HashMap<String, Object>();
 
   ... Get and Set
 }
@@ -135,56 +135,56 @@ Enfin, le fichier de description Maven _pom.xml_ pour identifier clairement les 
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.mickaelbaron</groupId>
-	<artifactId>ws-jsonrpc-xoserver</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.mickaelbaron</groupId>
+  <artifactId>ws-jsonrpc-xoserver</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
 
-	<properties>
-		<websocket.version>1.1</websocket.version>
-		<tyrus.version>1.15</tyrus.version>
-		<jackson-databind.version>2.12.1</jackson-databind.version>
-		<json.version>20210307</json.version>
+  <properties>
+    <websocket.version>1.1</websocket.version>
+    <tyrus.version>1.15</tyrus.version>
+    <jackson-databind.version>2.12.1</jackson-databind.version>
+    <json.version>20210307</json.version>
 
-		<maven.compiler.version>3.1</maven.compiler.version>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
-		<maven.dependency.version>3.1.1</maven.dependency.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.glassfish.tyrus</groupId>
-			<artifactId>tyrus-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.tyrus</groupId>
-			<artifactId>tyrus-container-grizzly-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>${json.version}</version>
-		</dependency>
-	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.glassfish.tyrus.bundles</groupId>
-				<artifactId>tyrus-bundles</artifactId>
-				<version>${tyrus.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson-databind.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <maven.compiler.version>3.1</maven.compiler.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.dependency.version>3.1.1</maven.dependency.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.glassfish.tyrus</groupId>
+      <artifactId>tyrus-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.tyrus</groupId>
+      <artifactId>tyrus-container-grizzly-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>${json.version}</version>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.glassfish.tyrus.bundles</groupId>
+        <artifactId>tyrus-bundles</artifactId>
+        <version>${tyrus.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-databind.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
 ```
 
-Clairement, le programme Python est plus minimaliste, mais c'est compréhensible car 1) une bibliothèque encapsule le redondance de certains codes et 2) des structures de langages facilitent le développement (vivie les list comprehension).
+Clairement, le programme Python est plus minimaliste, mais c'est compréhensible car 1) une bibliothèque encapsule le redondance de certains codes et 2) des structures de langages facilitent le développement (vive les _list comprehensions_).
