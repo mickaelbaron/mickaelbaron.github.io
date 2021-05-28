@@ -3,6 +3,7 @@ title: J'ai besoin de... communiquer en Python et Java vers XO-Server en passant
 tags: [Xen]
 category: technical
 description: Dans ce billet j'explique comment communiquer en Python et Java vers XO-Server, le backend de Xen Orchestra
+twitter: 1398330862387744769
 ---
 
 Dans un précédent [billet](/blog/2019/09/09/xen-point-montage-dom0), j'expliquais que j'utilisais l'hyperviseur [Xen](https://xenproject.org/) dans la structure où je travaille. Depuis quelques mois, nous avons fait évoluer cette solution [Xen](https://xenproject.org/) pour migrer de [Citrix Hypervisor](https://www.citrix.fr/downloads/citrix-hypervisor/) vers [XCP-NG](https://xcp-ng.org/). C'est le même hyperviseur [Xen](https://xenproject.org/), mais la solution [XCP-NG](https://xcp-ng.org/) est plus ouverte et offre des fonctionnalités intéressantes comme l'augmentation du nombre de serveurs par Pool (de 3 pour [Citrix Hypervisor](https://www.citrix.fr/downloads/citrix-hypervisor/) à 16 pour [XCP-NG](https://xcp-ng.org/)) et la gestion de [cloud-init](https://cloud-init.io/). 
