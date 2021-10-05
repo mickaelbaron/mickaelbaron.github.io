@@ -1,6 +1,6 @@
 ---
 title: Vue.js sur le mobile
-tags: [Vue.js, mobile]
+tags: [Vue.js, Mobile]
 category: technical
 description: Savoir développer des applications mobiles avec Vue.js et NativeScript, un billet qui permet de résumer les supports d'enseignement que j'ai utilisés pour ma participation à un cours sur le développement d'applications mobiles
 twitter: 1374350204225392648
