@@ -2,6 +2,7 @@
 title: Liens pratiques de la semaine 40 (Octobre 2021)
 tags: [Kubernetes, JavaScript]
 category: technological-watch
+twitter: 1445359901820297226
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies qui m'ont particulièrement intéressées cette semaine 40 (octobre 2021)

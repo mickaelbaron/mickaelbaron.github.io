@@ -16,6 +16,6 @@ Les transparents au format non intégré : [introduction-dev-web-composants](/sl
 
 La version PDF qui nécessite un rendu via votre navigateur (attention le rendu peut dépendre des caprises de votre navigateur) : <a target="_blank" href="/slides/web/introduction-dev-web-composants?print-pdf">introduction-dev-web-composants.pdf</a>
 
-Les exemples utilisés dans ce support de cours : [exemples](https://github.com/mickaelbaron/mickaelbaron.github.io/tree/master/slides/web/introduction-web-composants/examples)
+Les exemples utilisés dans ce support de cours : [exemples](https://github.com/mickaelbaron/mickaelbaron.github.io/tree/master/slides/web/introduction-dev-web-composants/examples)
 
 {% include slides.html type="revealjs" path="web/introduction-dev-web-composants/" %}
