@@ -16,9 +16,9 @@ L'objectif de cette troisième série d'exercices est d'apprendre à construire 
 
 La grande majorité du code contenu dans les microservices vous sera donnée comme support. En effet, ces exercices se focaliseront principalement sur les problématiques de déploiement.
 
-L'adresse du tutoriel est : [https://github.com/mickaelbaron/javamicroservices-tutorial](https://github.com/mickaelbaron/javamicroservices-tutorial).
+L'adresse du tutoriel est : [https://github.com/mickaelbaron/javamicroservices-docker-tutorial](https://github.com/mickaelbaron/javamicroservices-docker-tutorial).
 
-Les codes pour les exercices sont disponibles sur le dépôt Git suivant : https://github.com/mickaelbaron/javamicroservices-tutorial (pour récupérer le code faire : `$ git clone https://github.com/mickaelbaron/javamicroservices-tutorial`).
+Les codes pour les exercices sont disponibles sur le dépôt Git suivant : https://github.com/mickaelbaron/javamicroservices-docker-tutorial (pour récupérer le code faire : `$ git clone https://github.com/mickaelbaron/javamicroservices-docker-tutorial`).
 
 La solution de tous les exercices est disponible sur la branche solution : `$ git checkout solution`.
 

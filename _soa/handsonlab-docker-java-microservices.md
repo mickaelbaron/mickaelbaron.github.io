@@ -1,7 +1,7 @@
 ---
-title: Microservices avec le langage Java
+title: Microservices avec Docker - Développement avec le langage Java
 tags: [Service web, Microservices, Docker, Java]
-direct_link: https://github.com/mickaelbaron/javamicroservices-tutorial
+direct_link: https://github.com/mickaelbaron/javamicroservices-docker-tutorial
 image: /images/javamicroservices.png
 description: Apprendre à développer une application basée sur une architecture microservices avec Docker et le langage Java.
 category: Atelier
