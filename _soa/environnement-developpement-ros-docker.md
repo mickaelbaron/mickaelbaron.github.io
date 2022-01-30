@@ -6,7 +6,7 @@ image: /images/ros_logo.jpg
 description: Ce tutoriel s'intéresse à présenter ROS (Robot Operating System) et à décrire comment proposer à un développeur un environnement de développement prêt à l'emploi quel que soit le système d'exploitation utilisé pour le développement et pour le déploiement.
 category: Article
 date: 2018-05-28
-weight: 13
+weight: 18
 toc: true
 ---
 

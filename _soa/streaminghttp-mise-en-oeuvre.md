@@ -6,7 +6,7 @@ description: Présentation des bibliothèques Tyrus (JSR 356) et JAX-RS pour dé
 category: Cours
 date: 2019-02-19
 update: 2020-01-15
-weight: 15
+weight: 11
 twitter : 1233455129539551233
 ---
 

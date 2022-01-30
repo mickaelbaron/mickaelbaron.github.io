@@ -6,7 +6,7 @@ description: Introduction au style d'architecture web REST (REpresentational Sta
 category: Cours
 date: 2012-03-22
 update: 2019-01-01
-weight: 6
+weight: 7
 twitter: 50988412118904832
 ---
 

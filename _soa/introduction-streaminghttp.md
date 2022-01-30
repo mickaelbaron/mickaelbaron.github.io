@@ -6,7 +6,7 @@ description: Présentation des technologies HTTP pour savoir communiquer via des
 category: Cours
 date: 2019-02-19
 update: 2020-01-15
-weight: 14
+weight: 10
 twitter: 1233454979375095811
 ---
 

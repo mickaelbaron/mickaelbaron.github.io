@@ -1,24 +1,20 @@
 ---
-title: Outils et bibliothèques pour la mise en œuvre d'architectures microservices
-tags: [SOA, Microservices]
+title: Mise en œuvre d'architectures microservices avec Java et Docker
+tags: [SOA, Microservices, Docker]
 image: /images/java-docker.png
-description: Ce support de cours présente les architectures microservices.
+description: Présentation des solutions basées sur Java et les conteneurs pour mettre en œuvre des architectures microservices.
 category: Cours
 date: 2016-03-04
 update: 2019-01-03
-weight: 11
+weight: 14
 ---
 
-Ce support de cours présente des outils et bibliothèques pour la mise en œuvre d'architectures Microservices. Tout au long de la présentation une étude de cas sera déroulée pour illustrer les différents usages des outils et bibliothèques présentés.
+Ce support de cours présente la mise en œuvre d'architectures Microservices avec Java et [Docker](https://www.docker.com/). Tout au long de la présentation une étude de cas sera déroulée pour illustrer les différents usages des outils et bibliothèques présentés.
 
-Ainsi, dans une première partie KumuluzEE sera présentée pour la partie codage de Microservices avec le langage Java et la spécification MicroProfile.
+Ainsi, dans une première partie la bibliothèque [KumuluzEE](https://ee.kumuluz.com/) est présentée pour la partie codage de Microservices avec le langage Java et la spécification [MicroProfile](https://microprofile.io/).
 
-Par la suite, Docker sera présenté pour montrer comment isoler un Microservice.
+Dans une deuxième partie, [Docker](https://www.docker.com/) est présenté pour montrer comment isoler un Microservice.
 
-Dans une troisième partie RabbitMQ sera présenté pour montrer comment réaliser une communication asynchrone entre des Microservices.
-
-Dans une quatrième partie Docker Compose sera présenté pour expliquer comment composer des Microservices.
-
-Enfin, dans une cinquième partie, NGINX sera présenté pour expliquer comment répartir la charge et réaliser un proxy inverse.
+Enfin dans une troisième partie, [Docker Compose]([Docker](https://www.docker.com/)) est présenté pour expliquer comment composer des Microservices.
 
 {% include slides.html type="speakerdeck" id="81fcfd703105450eb9a8d2451b2e6012" %}
