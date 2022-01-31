@@ -15,13 +15,13 @@ Diplômé d'un doctorat en informatique de l'[Université de Poitiers] en 2003, 
 
 Mes activités au sein du [LIAS] [ISAE-ENSMA] sont triples :
 
-* activité de recherche au sein de l'équipe de recherce Ingénierie des Données et des Modèles du [LIAS] ;
+* activité de recherche au sein de l'équipe de recherche Ingénierie des Données et des Modèles du [LIAS] ;
 * activité de valorisation des résultats de recherche du [LIAS] ;
 * activité de contribution aux charges collectives du laboratoire et de l'établissement [ISAE-ENSMA].
 
 Ma [page professionnelle] au [LIAS] [ISAE-ENSMA] référence toutes les publications scientifiques auxquelles j'ai participées.
 
-En parallèle à mes activités professionnelles, je suis également responsable sur [Developpez.com] de la rubrique Java (Java, Java Web, Eclipse, Netbeans, Spring et Android), l'une des plus importantes de [Developpez.com]. [Developpez.com] c'est plus de 220 000 visites par jour, 2,5 millions de lecteurs distincts fréquentent au moins une fois par mois www.developpez.com, le forum d'entraide des professionnels de l'informatique est le plus actif dans son domaine avec plus de 5000 messages par jour et la plus grande équipe de rédaction IT Pro : plus de 1000 auteurs.
+De la période 2011 à fin 2021, j'étais responsable sur [Developpez.com] des rubriques Java (Java, Java Web, Eclipse, Netbeans, Spring, Android et Kotlin), les plus importantes de [Developpez.com]. [Developpez.com] c'est plus de 220 000 visites par jour, 2,5 millions de lecteurs distincts fréquentent au moins une fois par mois www.developpez.com, le forum d'entraide des professionnels de l'informatique est le plus actif dans son domaine avec plus de 5000 messages par jour et la plus grande équipe de rédaction IT Pro : plus de 1000 auteurs.
 
 ## Mon blog
 
@@ -32,7 +32,7 @@ Vous trouverez sur ce blog :
 * des *articles* : réflexion plus longue sur un sujet particulier ;
 * des *ateliers* : ensemble d'exercices hébergés sur [Github].
 
-Toutes ces ressources de mon blog relatent de mon activité de veille technologique concernant essentiellement les technologies Java que j'ai rédigés pendant les différentes années professionnelles et que je continue d'étoffer depuis que je suis Ingénieur de Recherche en Informatique au sein du laboratoire d'informatique du [LIAS].
+Toutes ces ressources de mon blog relatent de mon activité de veille technologique que j'ai menée pendant les différentes années professionnelles et que je continue depuis que je suis Ingénieur de Recherche en Informatique au sein du laboratoire d'informatique du [LIAS].
 
 Vous ne trouverez pas sur ce blog (et mes médias sociaux) :
 
@@ -65,7 +65,7 @@ Le générateur de tables des matières utilise le projet [jekyll-toc](https://g
 [Java Icon]: https://iconscout.com/icon/java-26
 [Youssef Raafat]: https://github.com/YoussefRaafatNasry
 [portfolYOU]: https://github.com/YoussefRaafatNasry/portfolYOU
-[Developpez.com]: http://www.reddit.com
+[Developpez.com]: https://www.developpez.com
 [LIAS]: https://www.lias-lab.fr
 [ISAE-ENSMA]: https://www.ensma.fr
 [Université de Poitiers]: https://www.univ-poitiers.fr/
