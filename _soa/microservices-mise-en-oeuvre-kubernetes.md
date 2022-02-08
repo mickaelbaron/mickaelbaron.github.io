@@ -6,6 +6,7 @@ description: Présentaation des principaux concepts de l'orchestrateur Kubernete
 category: Cours
 date: 2022-01-30
 weight: 16
+twitter: 1490989239500439554
 ---
 
 Ce support de cours présente l'orchestrateur Kubernetes (K8s). Après une présentation rapide de la problématique adressée par Kubernetes, nous commencerons par décrire l'architecture d'un cluster Kubernetes et des différentes distributions disponibles pour mettre en place un cluster K8s. 
