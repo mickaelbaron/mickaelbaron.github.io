@@ -6,7 +6,7 @@ baseurl: ""  # the subpath of your site, e.g. /blog
 url: https://mickael-baron.fr 
 repo: https://github.com/mickaelbaron/mickaelbaron.github.io
 repository: https://github.com/mickaelbaron/mickaelbaron.github.io
-aboutme: Je suis Mickaël BARON Ingénieur de Recherche en Informatique 💻 au <a target="_blank" href="https://twitter.com/LIAS_LAB">@LIAS_LAB</a> le jour 🌞<br>Responsable de zones &#35;Java sur <a target="_blank" href="https://twitter.com/javaDeveloppez">@javaDeveloppez</a> la nuit 🌚<br>❤️ &#35;Java &#35;Docker &#35;VueJS &#35;Eclipse &#35;Services &#35;WebSemantic
+aboutme: Je suis Mickaël BARON Ingénieur de Recherche en Informatique 💻 au <a target="_blank" href="https://twitter.com/LIAS_LAB">@LIAS_LAB</a> le jour 🌞<br>Veilleur Technologique la nuit 🌚<br>❤️ &#35;Java &#35;Container &#35;VueJS &#35;Services &#35;WebSemantic
 github_username: mickaelbaron
 
 # Build settings
