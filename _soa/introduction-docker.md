@@ -5,6 +5,7 @@ image: /images/baleinebleue.png
 description: Introduction à Docker, une plateforme qui permet d'empaqueter une application et ses dépendances dans un conteneur.
 category: Cours
 date: 2022-02-22
+twitter: 1496064060131053576
 weight: 18
 ---
 
