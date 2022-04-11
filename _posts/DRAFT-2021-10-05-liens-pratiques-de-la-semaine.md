@@ -16,6 +16,10 @@ Vous trouverez dans ce billet une sélection de liens pratiques autour des techn
 
 ## Python
 
+## ML et DL
+
+* https://gricad-gitlab.univ-grenoble-alpes.fr/talks/fidle
+
 ## Machines virtuelles et conteneurs
 
 * https://blog.flant.com/small-local-kubernetes-comparison/
@@ -23,7 +27,16 @@ Vous trouverez dans ce billet une sélection de liens pratiques autour des techn
 
 ## Divers
 
+* https://github.com/PingoUPB/PINGOWebApp
+
 ## Media de la semaine
 
 ![LinuxTools](/images/gifofzweek/workaround.jpg)
 
+- https://github.com/dwarvesf/hidden
+- https://github.com/gao-sun/eul
+- https://objective-see.com/products/lulu.html
+- https://github.com/Xpra-org/xpra
+- https://codeberg.org/hjacobs/kube-ops-view
+- https://www.redhat.com/sysadmin/building-container-namespaces
+- https://github.com/catdad/canvas-confetti

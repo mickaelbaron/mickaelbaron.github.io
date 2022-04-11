@@ -5,18 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Développement web avec Vue.js 3</title>
+	<title>Développement web avec Vue.js</title>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
-	<!-- Theme utilisée pour la mise au format du code -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/white.min.css" id="theme">
+	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css"
 		id="highlight-theme">
 
-	<!-- Référence à Vue.js 3 -->
-	<script src="https://unpkg.com/vue@3"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<style>
 		/* Double colonnes */
 		.container-flex {
@@ -66,7 +65,7 @@
 			margin: 10px;
 		}
 
-		/* La fausse fenêtre du navigateur */
+		/* The browser window */
 		.web-container {
 			border: 3px solid #d0d0d0;
 			border-top-left-radius: 10px;
@@ -127,10 +126,6 @@
 		.web-content {
 			height: 500px;
 		}
-
-		.legend {
-			font-size:10px
-		}
 	</style>
 </head>
 
@@ -142,7 +137,7 @@
 				<img width="35%" src="/images/slides/vuejs.svg" />
 
 				<h3>Développement web avec Vue.js</h3>
-				<p>Mickaël BARON - Version 05-2022</p>
+				<p>Mickaël BARON - Version 12-2020</p>
 				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
 						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
 				<div class="wrapper-icon">
@@ -248,9 +243,10 @@
 						<li>Modèle et vue</li>
 						<li>Templating (interpolation et directives)</li>
 						<li>Composants (créer et instancier)</li>
-						<li>Communiquer entre composants</li>
+						<li><b>Communiquer entre les composants</b></li>
+						<li>Structure d'un projet Vue.js</li>
 						<li>Routage</li>
-						<li>Outils pour <a href="https://vuejs.org/" target="_blank">Vue.js</a></li>
+						<li>Outils pour Vue.js</li>
 					</ul>
 				</section>
 
@@ -277,36 +273,13 @@
 						</div>
 					</div>
 				</section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-				data-background-image="/images/slides/github.svg">
-					<h3>Exemples du cours</h3>
-					
-					<p><a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples">github.com/mickaelbaron/vuejs-examples</a></p>
-				</section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-				data-background-image="/images/slides/vuejs.svg">
-					<h3>Evolution du cours</h3>
-					<div style="text-align: left;">
-						<p>Version 2022</p>
-						<ul>
-							<li>Support <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3.x</li>
-							<li>Passage à API Composition</li>
-							<li>Ajout des exemples sur <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples">Github</a></li>
-						</ul>
-						<p>Version 2020</p>
-						<ul>
-							<li>Version intiale</li>
-							<li>Support <a href="https://vuejs.org/" target="_blank">Vue.js</a> 2.x</li>
-						</ul>
-					</div>
-				</section>
 			</section>
 
-			<!-- Version supportée -->
-			<section data-background-size="50%" data-background-opacity="0.5|8" data-background-image="/images/slides/vuejs.svg">
+			<!-- Supported version -->
+			<section data-background-size="50%" data-background-opacity="0.5" data-background-image="/images/slides/vuejs.svg">
 				<h3>Version supportée dans ce cours</h3>
 
-				<p style="color: #34495e;font-size: 450px;">3.x</p>
+				<p style="color: #34495e;font-size: 450px;">2.x</p>
 			</section>
 
 			<!-- Historique -->
@@ -324,12 +297,14 @@
 									href="https://github.com/vuejs/vue">/vuejs/vue</a>
 								<iframe
 									src="https://ghbtns.com/github-btn.html?user=vuejs&repo=vue&type=star&count=true&size=large"
-									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe></li>
-							<li>Léger : ~ moins de 33 KB min (minifiée + gzip)</li> 
+									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+							<li>Léger : ~ moins de 30 KB min + gzip (V2)</li>
+							<li>Version actuelle : 3</li>
+							</li>
 						</ul>
-						<p>Historique des versions : version actuelle 3</p>
+						<p>Historique des versions</p>
 					</div>
-					<img class="r-stretch" src="images/versionshistoryv3.png" />
+					<img class="r-stretch" src="images/versionshistory.png" />
 				</section>
 				<section>
 					<h3>Popularité</h3>
@@ -378,29 +353,6 @@
 					<p>Source : <a target="_blank"
 							href="https://slides.com/akryum/vue2-introduction#/7/6">vue2-introduction</a></p>
 				</section>
-				<section>
-					<h3>Où trouver de la documentation ?</h3>
-
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p>Mon site </p>
-							<ul>
-								<li><a href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
-								<li>3 x (cours, articles et tutoriaux)</li>
-							</ul>
-							<p>Le site de référence</p>
-							<ul>
-								<li>Portail : <a href="https://vuejs.org">vuejs.org</a></li>
-								<li>Documentation : <a href="https://vuejs.org/guide">vuejs.org/guide</a></li>
-								<li>Tutoriel : <a href="https://vuejs.org/tutorial">vuejs.org/tutorial</a></li>
-								<li>Exemples : <a href="https://vuejs.org/examples">vuejs.org/examples</a></li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="100%" src="/images/slides/vuejs.svg" />
-						</div>
-					</div>
-				</section>
 			</section>
 
 			<!-- HelloWorld -->
@@ -408,25 +360,24 @@
 				<section>
 					<h3>HelloWorld en Vue.js</h3>
 
-					<pre style="font-size: 0.5em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="1-2|4-7|9-18">&lt;!-- Chargement de la bibliothèque --&gt;
-&lt;script src=&quot;https://unpkg.com/vue@3&quot;/&gt;
-						
-&lt;div id=&quot;helloworld&quot;&gt;
- &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt; 
- &lt;p&gt;{{ value }}&lt;/p&gt;
-&lt;/div&gt;
+					<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="3-6|8-9|11-16">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;helloworld&quot;&gt;
+      &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
+      &lt;p&gt;{{ value }}&lt;/p&gt;
+    &lt;/div&gt;
 	
-&lt;script&gt;
- const { createApp, ref } = Vue
-
- createApp({
-  setup () {
-   const value = ref('Helloworld')
-
-   return { value }
- }}).mount('#helloworld');
-&lt;/script&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3-sfc">helloworldv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3">helloworldv3</a> (version sans outil)</p>
+    &lt;!-- Chargement de la bibliothèque --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;/&gt;
+	
+    &lt;script&gt;
+      new Vue({
+        el: '#helloworld',
+        data: { value: 'HelloWorld' }
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 				</section>
 				<section>
 					<h3>HelloWorld en Vue.js</h3>
@@ -439,7 +390,7 @@
 								<span class="web-dot" style="background:#5AC05A;"></span>
 							</div>
 							<div class="web-column web-middle">
-								<input disabled="disabled" class="web-input" value="https://mickael-baron.fr">
+								<input class="web-input" value="https://mickael-baron.fr">
 							</div>
 						</div>
 
@@ -449,6 +400,14 @@
 								<p>{{value}}</p>
 							</div>
 						</div>
+						<script>
+							new Vue({
+								el: '#helloworld',
+								data: {
+									value: 'HelloWorld'
+								}
+							});
+						</script>
 					</div>
 				</section>
 			</section>
@@ -458,7 +417,8 @@
 				<section>
 					<h3>Versatile</h3>
 
-					<p>Deux utilisations différentes</p>
+					<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> peut être utilisée de différentes façons
+					</p>
 
 					<div class="container-flex">
 						<div class="col-1">
@@ -474,8 +434,7 @@
 						</div>
 					</div>
 				</section>
-				<section data-background-size="85%" data-background-opacity="0.1"
-				data-background-image="images/vuejslibrary.png">
+				<section>
 					<h3>Vue.js comme bibliothèque</h3>
 
 					<div style="text-align: left;">
@@ -486,7 +445,7 @@
 						</ul>
 
 						<p>Comment ?</p>
-						<pre><code>&lt;script src="https://unpkg.com/vue@3"&gt;</code></pre>
+						<pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;</code></pre>
 
 						<p>Avec quoi ?</p>
 						<ul>
@@ -495,12 +454,11 @@
 
 						<p>Exemples</p>
 						<ul>
-							<li><a href="#/6">HelloWorld</a> et dans les transparents de ce cours</li>
+							<li><a href="#/5">HelloWorld</a> et dans les transparents de ce cours</li>
 						</ul>
 					</div>
 				</section>
-				<section data-background-size="85%" data-background-opacity="0.1"
-				data-background-image="images/vuejsframework.png">
+				<section>
 					<h3>Vue.js comme framework</h3>
 
 					<div class="container-flex" style="text-align:left;">
@@ -518,77 +476,14 @@
 
 							<p>Avec quoi ?</p>
 							<ul>
-								<li>Des outils : <a target="_blank" href="https://www.npmjs.com/">npm</a> et <a target="_blank" href="https://vitejs.dev/">Vite</a></li>
+								<li>Des outils : npm, Vue-CLI...</li>
 							</ul>
-							<pre><code>$ npm init vue@latest</code></pre>
+							<pre><code>$ npm install vue
+$ npm install -g @vue/cli</code></pre>
 						</div>
 						<div class="col-1">
-							<img src="images/vue-single-file-componentv3.png" />
+							<img src="images/vue-single-file-component.png" />
 						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Versatile</h3>
-
-					<p>Pour chaque utilisation une écriture différente basée sur l'API Composition</p>
-
-					<div class="container-flex">
-						<div class="col-1">
-							<p><u>Bibliothèque</u></p>
-								<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
- &lt;body&gt;
-  &lt;script src="https://unpkg.com/vue@3"&gt;&lt;/script&gt;
-  &lt;div id="helloworld"&gt;
-   &lt;input v-model="value" type="text" /&gt;
-   &lt;p>{{ value }}&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;script&gt;
-   const { createApp, ref } = Vue
-   createApp({
-    setup() {
-     const value = ref('HelloWorld')
-     return { value }
-    }
-   }).mount('#helloworld');
-  &lt;/script&gt;
- &lt;body&gt;
-&lt;html&gt;</code></pre>
-						</div>
-						<div class="col-1">
-							<p><u>Framework</u></p>
-								<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
- import { ref } from 'vue'
-  
- const value = ref('HelloWorld')
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;div id="helloworld"&gt;
-  &lt;input v-model="value" type="text" /&gt;
-  &lt;p&gt;{{ value }}&lt;/p&gt;
- &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;style&gt;
-#helloworld {
- text-align: center;
- text-decoration: underline;
-}
-&lt;/style&gt;</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Versatile : attention</h3>
-					<div style="text-align: left;">
-						<p>L'évolution de <a href="https://vuejs.org/" target="_blank">Vue.js</a> a introduit différentes écritures pour développer un composant</p>
-						<ul>
-							<li>API Options (depuis <a href="https://vuejs.org/" target="_blank">Vue.js</a> 1 et 2)</li>
-							<li>API Composition (depuis <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3)</li>
-						</ul>
-						<p>Les différentes API (Options et Composition) peuvent cohabiter</p>
-						<p>Pour éviter de s'y perdre nous utiliserons l'<strong>API Composition</strong></p>
 					</div>
 				</section>
 			</section>
@@ -612,216 +507,16 @@
 
 					<p>HelloWorld et le modèle d'architecture <b>MVVM</b></p>
 
-					<img width="100%" src="images/mvvm-helloworldv3.png" />
+					<img width="100%" src="images/mvvm-helloworld.png" />
 
 					<p>Différents concepts clés de <a href="https://vuejs.org/" target="_blank">Vue.js</a> étudiés dans
 						la suite</p>
 					<ul>
 						<li>Interpolation : <code>{{ value }}</code></li>
 						<li>Directive : <code>v-model="value"</code></li>
-						<li>Propriétés réactives : <code>value</code></li>
+						<li>Données réactives : <code>data</code></li>
 						<li>Chaque <strong>MVVM</strong> est un composant</li>
 					</ul>
-				</section>
-				<section>
-					<h3>Propriétés réactives</h3>
-					<div style="text-align: left;">
-						<p>La vue est rafraichie à chaque fois que les propriétés du composant changent</p>
-						<p>Utilisation de <strong>propriétés reactives</strong> qui peuvent notifier la vue de changements</p>
-						<p>Deux mots clés disponibles fournies par <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-						<ul>
-							<li><code>ref</code> : pour les valeurs primitives</li>
-							<li><code>reactive</code> : pour les objets</li>
-						</ul>
-						<p>Nécessite d'<strong>importer</strong> ces mots clés pour les utiliser</p>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : ref</h3>
-					
-					<div style="text-align: left;">
-						<p>Quand ?</p>
-						<ul>
-							<li>Propriétés avec des valeurs primitives</li>
-						</ul>
-						<p>Comment déclarer ?</p>
-						<pre><code class="language-javascript">const property = ref('Helloworld')</code></pre>
-						<p>Comment accéder ou modifier ?</p>
-						<ul>
-							<li>C'est la <strong>valeur</strong> (<code>value</code>) de la référence qui est modifiée ou obtenue</li>
-							<li>Utilisation de <code>property.value</code></li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : ref</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
- &lt;input v-model="myprop" type="text" /&gt;
- &lt;p&gt;{{myprop}}&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
- // Importation du mot clé ref
- const { createApp, ref } = Vue
-
- createApp({
-  setup() {
-   const myprop = ref('HelloWorld')
-   // Lecture de la valeur de myprop
-   console.log(myprop.value)
-   // Modification de la valeur de myprop
-   myprop.value = "HelloWorld2"
-   return { myprop }
-  }
- }).mount('#app');
-&lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/indexref.html">indexref.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
-
-								<div style="height: 200px">
-									<div id="app-ref">
-										<input v-model="value" type="text" />
-        								<p>{{value}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
-
-					<div style="text-align: left;">
-						<p>Quand ?</p>
-						<ul>
-							<li>Propriétés de type objet</li>
-						</ul>
-						<p>Comment déclarer ?</p>
-						<pre><code class="language-javascript">const property = reactive({ value: 'Helloworld' })</code></pre>
-						<p>Comment <code>reactive</code> fonctionne ?</p>
-						<ul>
-							<li>Création d'un proxy sur l'objet</li>
-							<li>Pas besoin d'utiliser <code>.value</code></li>
-							<li><code>toRef</code> et <code>toRefs</code> pour transformer en ref</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.42em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
- &lt;input v-model="data.myprop" type="text" /&gt;
- &lt;p&gt;{{data.myprop}}&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
- // Importation du mot clé reactive
- const { createApp, reactive } = Vue
-
- createApp({
-  setup() {
-   const data = reactive({ myprop: 'HelloWorld' })
-   // Lecture de la propriété myprop de data
-   console.log(data.myprop)
-   // Modification de la propriété myprop de data
-   data.myprop = "HelloWorld2"
-   return { data }
-  }
- }).mount('#app');
-&lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/indexreactive.html">indexreactive.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
-
-								<div style="height: 200px">
-									<div id="app-reactive">
-										<input v-model="data.myprop" type="text" />
-        								<p>{{data.myprop}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
-					<p>Une seule propriété réactive avec <code>toRefs</code></p>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.42em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="14-18|9-10|2-5">&lt;div id="app"&gt;
- &lt;input v-model="myprop1" type="text" /&gt;
- &lt;p&gt;{{myprop1}}&lt;/p&gt;
- &lt;input v-model="myprop2" type="text" /&gt;
- &lt;p&gt;{{myprop2}}&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
- // Importation du mot clé toRefs
- const { createApp, reactive, toRefs } = Vue
-
- createApp({
-  setup() {
-   const data = reactive({ 
-    myprop1: 'HelloWorld1', 
-    myprop2: 'HelloWorld2' })
-
-   return { ...toRefs(data) }
-  } 
-}).mount('#app');
-&lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/indexreactivetorefs.html">indexreactivetorefs.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
-
-								<div style="height: 300px">
-									<div id="app-reactivetorefs">
-										<input v-model="myprop1" type="text" />
-        								<p>{{myprop1}}</p>
-										<input v-model="myprop2" type="text" />
-        								<p>{{myprop2}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
 				</section>
 			</section>
 
@@ -855,7 +550,7 @@
 						<p>Utilisation de la notation moustache : <code>{{ ... }}</code></p>
 						<b>Exemples d'interpolation</b></p>
 
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>{{ myProperty }}
+						<pre><code data-noescape data-trim data-line-numbers>{{ myProperty }}
 {{ number + 1 }}
 {{ ok ? 'OUI' : 'NON' }}
 {{ message.split('').reverse().join('') }}</code></pre>
@@ -909,21 +604,20 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="2-3|10-11">&lt;div id=&quot;app&quot;&gt;
+							<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="2-3|11">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;value&quot;/&gt;
  &lt;textarea v-model="value"/&gt;
  &lt;p&gt;{{value}}&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
- createApp({
-  setup() {
-   const value = ref('Helloworld')
-   return { value } 
+ new Vue({
+  el: '#app',
+  data: { 
+   value: 'HelloWorld'
   }
- }).mount('#app')
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/vmodel.html">vmodel.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -947,6 +641,14 @@
 										<p>{{value}}</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-vmodel',
+										data: {
+											value: 'HelloWorld'
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -963,20 +665,18 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.4em"><code class="language-html" data-noescape data-trim data-line-numbers="3-4|10-11">&lt;div id=&quot;app&quot;&gt;
+							<pre><code data-noescape data-trim data-line-numbers="3-4">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;value&quot; /&gt;
  &lt;input v-bind:value=&quot;value&quot; /&gt;
  &lt;input :value=&quot;value&quot; /&gt;
  &lt;p&gt;{{value}}&lt;/p&gt;
 &lt;/div&gt;
 &lt;script&gt;
- createApp({
-  setup() {
-   const value = ref('Helloworld')
-   return { value } 
- }}).mount('#app')
+ new Vue({
+  el: '#app',
+  data: { value: 'HelloWorld' }
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/vbind.html">vbind.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -999,6 +699,14 @@
 										<p>{{value}}</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-vbind',
+										data: {
+											value: 'HelloWorld'
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1036,7 +744,7 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="6,8,9|15-16">&lt;div id=&quot;app&quot;&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="6,8,9">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;show&quot;&gt;
    Afficher Vue.js
  &lt;/input&gt;
@@ -1048,14 +756,13 @@
 &lt;/div&gt;
 
 &lt;script&gt;
- createApp({
-  setup() {
-   const show = ref(true)
-   return { show } 
+ new Vue({
+  el: '#app',
+  data: { 
+   show: true 
   }
- }).mount('#app')
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/vifvshow.html">vifvshow.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1072,12 +779,20 @@
 
 								<div style="height: 450px">
 									<div class="elementContainer" id="app-cond">
-										<input v-model="show" type="checkbox">Afficher Vue.js</input>
-										<img style="height:100px" v-show="show" src="/images/slides/lias.png" />
-										<img style="height:140px" v-if="show" src="/images/slides/vuejs.svg" />
-										<img style="height:250px" v-else src="/images/slides/mbaron.jpg" />
+										<input v-model="visible" type="checkbox">Afficher Vue.js</input>
+										<img height="100px" v-show="visible" src="/images/slides/lias.png" />
+										<img height="140px" v-if="visible" src="/images/slides/vuejs.svg" />
+										<img height="250px" v-else src="/images/slides/mbaron.jpg" />
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-cond',
+										data: {
+											visible: true
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1103,6 +818,7 @@
 						<ul>
 							<li>value : valeur de la propriété (ex. : <code>mickaël</code>)</li>
 							<li>name : nom de la propriété (ex. : <code>firstname</code>)</li>
+							<li>index : position de la propriété (ex. : <code>0</code>)</li>
 						</ul>
 					</div>
 				</section>
@@ -1111,7 +827,7 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-4,6-8|14-16">&lt;div id=&quot;app&quot;&gt;
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-4,6-8">&lt;div id=&quot;app&quot;&gt;
  &lt;p v-for=&quot;(val,index) in tab&quot;&gt;
   {{val + &quot;,&quot; + index}}
  &lt;/p&gt;
@@ -1122,15 +838,16 @@
 &lt;/div&gt;
 
 &lt;script&gt;
- createApp({
-  setup() {
-   const tab = ref(['rouge','bleu'...])
-   const obj = ref({p1:'val1',p2:'val2'...})
-   return { tab, obj }
+ new Vue({
+  el: '#app',
+  data: {
+   tab: ['rouge', 'bleu', 'blanc'],
+   obj: { p1: 'val1', p2: 'val2', 
+          p3: 'val3'
+        }
   }
- }).mount('#app')
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/vfor.html">vfor.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1155,6 +872,15 @@
 										</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-vfor',
+										data: {
+											tab: ['rouge', 'bleu', 'blanc'],
+											obj: { p1: 'val1', p2: 'val2', p3: 'val3' }
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1184,7 +910,7 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7|13-20">&lt;div id=&quot;app&quot;&gt;
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7">&lt;div id=&quot;app&quot;&gt;
  &lt;button v-on:click=&quot;increase&quot;&gt;
   Augmenter
  &lt;/button&gt;
@@ -1194,20 +920,15 @@
  &lt;p&gt;{{ value }}&lt;/p&gt;
 &lt;/div&gt;
 &lt;script&gt;
- createApp({
-  setup() {
-   const value = ref(0)
-   function increase() {
-    value.value++;
-   }
-   function decrease() {
-    value.value--;
-   }
-   return { value, increase, decrease }
+ new Vue({
+  el: '#app',
+  data: { value: 0 },
+  methods: {
+   increase() { this.value++; },
+   decrease() { this.value--; }
   }
- }).mount('#app')
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/von.html">von.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1229,6 +950,22 @@
 										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-von',
+										data: {
+											value: 0
+										},
+										methods: {
+											increase() {
+												this.value++;
+											},
+											decrease() {
+												this.value--;
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1253,7 +990,7 @@
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="2,4,6,9|15-18">&lt;div id=&quot;app&quot;&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="2,4,6,9">&lt;div id=&quot;app&quot;&gt;
  &lt;div v-html=&quot;html&quot;&gt;&lt;/div&gt;
 
  &lt;div v-text=&quot;html&quot;&gt;&lt;/div&gt;
@@ -1265,16 +1002,14 @@
 &lt;/div&gt;
 
 &lt;script&gt;
- createApp({
-  setup() {
-   const html = ref('&lt;b&gt;HelloWorld&lt;/b&gt;')
-   const value = ref('HelloWorld')
-
-   return { html, value }
+ new Vue({
+  el: '#app',
+  data: {
+   html: '&lt;b&gt;HelloWorld&lt;/b&gt;',
+   value: 'HelloWorld'
   }
- }).mount('#app-directives');
+ });
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/directives/vhtmltextoncepre.html">vhtmltextoncepre.html</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1298,6 +1033,15 @@
 										<div v-pre>{{value}}</div>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-directives',
+										data: {
+											html: '<b>HelloWorld</b>',
+											value: 'HelloWorld'
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1327,48 +1071,12 @@
 
 					<div class="container-flex">
 						<div class="col-1">
-							<p><u>Bibliothèque</u></p>
-							<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
- &lt;body&gt;
-  &lt;script src="https://unpkg.com/vue@3"&gt;&lt;/script&gt;
-  &lt;div id="helloworld"&gt;
-   &lt;input v-model="value" type="text" /&gt;
-   &lt;p>{{ value }}&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;script&gt;
-   const { createApp, ref } = Vue
-   createApp({
-    setup() {
-     const value = ref('HelloWorld')
-     return { value }
-    }
-   }).mount('#helloworld');
-  &lt;/script&gt;
- &lt;body&gt;
-&lt;html&gt;</code></pre>
+							<p><b>À la volée</b></p>
+							<img width="65%" src="images/library-component.png" />
 						</div>
 						<div class="col-1">
-							<p><u>Framework</u></p>
-							<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
- import { ref } from 'vue'
-  
- const value = ref('HelloWorld')
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;div id="helloworld"&gt;
-  &lt;input v-model="value" type="text" /&gt;
-  &lt;p&gt;{{ value }}&lt;/p&gt;
- &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;style&gt;
-#helloworld {
- text-align: center;
- text-decoration: underline;
-}
-&lt;/style&gt;</code></pre>
+							<p><b>Single-File-Component</b></p>
+							<img width="68%" src="images/vue-single-file-component.png" />
 						</div>
 					</div>
 				</section>
@@ -1379,15 +1087,15 @@
 
 					<div class="container-flex">
 						<div style="text-align: left" class="col-1">
-							<p><b>Script : ViewModel</b></p>
-							<ul>
-								<li>JavaScript</li>
-								<li>Lien avec le Modèle</li>
-							</ul>
 							<p><b>Template : View</b></p>
 							<ul>
 								<li>HTML</li>
 								<li>Interpolation et directive</li>
+							</ul>
+							<p><b>Script : ViewModel</b></p>
+							<ul>
+								<li>JavaScript</li>
+								<li>Lien avec le Modèle</li>
 							</ul>
 							<p><b>Style</b></p>
 							<ul>
@@ -1395,25 +1103,7 @@
 							</ul>
 						</div>
 						<div class="col-1">
-							<pre style="font-size: 0.39em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
- import { ref } from 'vue'
-  
- const value = ref('HelloWorld')
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;div id="helloworld"&gt;
-  &lt;input v-model="value" type="text" /&gt;
-  &lt;p&gt;{{ value }}&lt;/p&gt;
- &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;style&gt;
-#helloworld {
- text-align: center;
- text-decoration: underline;
-}
-&lt;/style&gt;</code></pre>
+							<img width="90%" src="images/vue-single-file-component.png" />
 						</div>
 					</div>
 				</section>
@@ -1421,16 +1111,18 @@
 				<section>
 					<h3>Instancier un composant ?</h3>
 
-					<p>Deux étapes à réaliser depuis un fichier .vue</p>
+					<p>Trois étapes à réaliser depuis un fichier .vue</p>
 
 					<div style="text-align: left;">
 						<p>① Importation (dans la partie <code>script</code>)</p>
-						<pre><code class="language-javascript">import YourComponent1 from "@/components/yourcomponent1.vue"
-import YourComponent2 from "@/components/yourcomponent2.vue"
-...</code></pre>
-						<p>② Instanciation (dans la partie <code>template</code>)</p>
-						<pre><code class="language-javascript">&lt;YourComponent1&gt;&lt;/YourComponent1&gt;
-&lt;YourComponent2&gt;&lt;/YourComponent2&gt;</code></pre>
+						<pre><code>import YourComponent from "@/components/yourcomponent.vue";</code></pre>
+						<p>② Déclaration (dans le composant courant)</p>
+						<pre><code>components: {
+ YourComponent
+ ...
+}</code></pre>
+						<p>③ Instanciation (dans la partie <code>View</code>)</p>
+						<pre><code>&lt;YourComponent/&gt;</code></pre>
 					</div>
 				</section>
 
@@ -1439,22 +1131,26 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
- import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
-
- const value = ref("HelloWorld")
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;Clock&gt;&lt;/Clock&gt;
-
- &lt;input v-model="value" type="text" /&gt; 
- &lt;p&gt;{{ value }}&lt;/p&gt;
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="10|16|3">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock/&gt;
+  &lt;input v-model=&quot;value&quot; /&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
 
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() {
+   return { value: &quot;HelloWorld&quot; };
+  },
+  components: { Clock }
+ };
+&lt;/script&gt;
+
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3-sfc">customelementv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3">customelementv3</a> (version sans outil)</p>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1476,6 +1172,36 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									let Clock = {
+										template: `<div>{{ value }}</div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+										}
+									}
+									new Vue({
+										el: '#app-instance',
+										data: {
+											value: 'HelloWorld'
+										},
+										components: {
+											'clock': Clock
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1492,37 +1218,39 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 						</ul>
 						<p><b>Propriété calculée (computed)</b></p>
 						<ul>
-							<li>Dépendances vers autres propriétés réactives</li>
+							<li>Dépendances vers autres propriétés (option <code>data</code>)</li>
 						</ul>
 						<p><b>Syntaxe</b></p>
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>const yourProperty = computed(() => {
+						<pre><code data-noescape data-trim data-line-numbers>computed: {
+ yourProperty() {
   // Votre code qui dépend d'autres propriétés du composant
  }
-)</code></pre>
+}</code></pre>
 					</div>
 				</section>
 				<section>
 					<h3>Ecouter composant : calculée</h3>
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="5-7|13">&lt;script setup&gt;
- import { ref, computed } from 'vue'
-
- const value = ref('HelloWorld')
- const messageLength = computed(() =&gt; {
-  return value.value.length
- })
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;input v-model="value" type="text"/&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="13-17">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot;/&gt;
  &lt;p&gt;{{ value }}&lt;/p&gt;
  &lt;p&gt;Longueur {{ messageLength }}&lt;/p&gt;
-&lt;/template&gt;
+&lt;/div&gt;
 
-&lt;style/&gt;
-</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3-sfc">computedv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3">computedv3</a> (version sans outil)</p>
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { 
+   value: &quot;HelloWorld&quot; 
+  },
+  computed: {
+   messageLength() {
+    return this.value.length;
+   }
+  }
+ });
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1544,6 +1272,19 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 										<p>Longueur : {{ messageLength }}</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-computed',
+										data: {
+											value: "HelloWorld"
+										},
+										computed: {
+											messageLength() {
+												return this.value.length;
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1554,26 +1295,24 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 					<p>Possibilité de faire des mutateurs calculés (<code>v-model</code>)</p>
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="4-13|17">&lt;script setup&gt;
- import { ref, computed } from 'vue'
- const value = ref('HelloWorld')
- const writableValue = computed({
-  get() {
-   return value.value;
-  },
-  set(newValue) {
-   if (newValue.length &lt;= 10) {
-    value.value = newValue;
-   }
-  }
- })
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;input v-model="writableValue" /&gt;
- &lt;p&gt;{{ value }}&lt;/p&gt;
-&lt;/template&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3-sfc">computedwritablev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3">computedwritablev3</a> (version sans outil)</p>
+							<pre><code style="max-height: 500px;" data-noescape data-trim data-line-numbers="9-17">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;computedValue&quot; /&gt;
+ &lt;p&gt;{{ computedValue }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: &quot;HelloWorld&quot; },
+  computed: {
+   computedValue: {
+    get() { return this.value; },
+    set(newValue) {
+     if (newValue.length &lt;= 10) {
+      this.value = newValue;
+     }
+    }
+ }}});
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1590,10 +1329,30 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 								<div style="height: 150px">
 									<div class="elementContainer" id="app-computed-setter">
-										<input v-model="writableValue" type="text" />
-										<p>{{ value }}</p>
+										<input v-model="valuebis" type="text" />
+										<p>{{ valuebis }}</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-computed-setter',
+										data: {
+											value: "HelloWorld"
+										},
+										computed: {
+											valuebis: {
+												get() {
+													return this.value;
+												},
+												set(newValue) {
+													if (newValue.length <= 10) {
+														this.value = newValue;
+													}
+												}
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1605,17 +1364,18 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 					<div style="text-align: left;">
 						<p><b>Problématique</b></p>
 						<ul>
-							<li>Invoquer une fonction lors d'un changement de valeur d'une propriété</li>
+							<li>Invoquer une fonction à chaque nouvelle valeur d'une propriété</li>
 						</ul>
-						<p><b>Observateur (watch et watchEffect)</b></p>
+						<p><b>Observateur (watcher)</b></p>
 						<ul>
-							<li>Cible une propriété (watch)</li>
-							<li>Cible plusieurs propriétés (watchEffect)</li>
+							<li>Cible une propriété</li>
 						</ul>
 						<p><b>Syntaxe</b></p>
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>watch(value, (newValue, oldValue) => {
- // Votre code
-})</code></pre>
+						<pre><code data-noescape data-trim data-line-numbers>watch: {
+ property(val) { // val = nouvelle valeur de property
+  // Votre code
+ }
+}</code></pre>
 					</div>
 				</section>
 				<section>
@@ -1623,27 +1383,26 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-13|17-18">&lt;script setup&gt;
- import { ref, watch } from 'vue'
-
- const value = ref('')
- const message = ref('Parfait')
-
- watch(value, (newValue, oldValue) =&gt; {
-  if (oldValue.length &gt; 10) {
-   message.value = "Trop Grand"
-  } else {
-   message.value = "Parfait"
-  }
- })
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;input v-model="value" type="text" /&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="11-18">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
  &lt;p&gt;{{ message }}&lt;/p&gt;
-&lt;/template&gt;
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3-sfc">watchv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3">watchv3</a> (version sans outil)</p>
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  data: {
+   value: &quot;HelloWorld&quot;,
+   message: &quot;Parfait&quot;
+  },
+  watch: {
+   value(current) {
+    if (current.length &gt; 10) {
+     this.message = &quot;Trop grand&quot;
+    } else {
+     this.message = &quot;Parfait&quot;
+    }
+   }}
+ });
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1664,60 +1423,24 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 										<p>{{ message }}</p>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Ecouter composant : observateur</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-11|16-19">&lt;script setup&gt;
- import { ref, watchEffect } from 'vue'
-
- const val1 = ref('')
- const val2 = ref('')
- const text = ref('')
- const stop = watchEffect(() =&gt; 
-  text.value = val1.value + " " + val2.value
- )
-
- function stopWatch() { stop() }
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;div id="app"&gt;
-    &lt;input v-model="val1" type="text" /&gt;
-    &lt;input v-model="val2" type="text" /&gt;
-    &lt;p&gt;{{ text }}&lt;/p&gt;
-    &lt;button @click="stopWatch()"&gt;Stop&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3-sfc">watcheffectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3">watcheffectv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
-
-								<div style="height: 250px">
-									<div class="elementContainer" id="app-watcheffect">
-										<input v-model="val1" type="text" />
-										<input v-model="val2" type="text" />
-										<p>{{ text }}</p>
-										<button @click="stopWatch()">Stop</button>
-									</div>
-								</div>
+								<script>
+									new Vue({
+										el: '#app-watch',
+										data: {
+											value: "HelloWorld",
+											message: "Parfait"
+										},
+										watch: {
+											value(current) {
+												if (current.length > 10) {
+													this.message = "Trop grand"
+												} else {
+													this.message = "Parfait"
+												}
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1727,35 +1450,22 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 					<div class="container-flex">
 						<div style="text-align: left" class="col-1">
+							<p>Des étapes intermédiaires</p>
 							<ul>
 								<li><code>beforeCreate</code></li>
 								<li><code>created</code></li>
-								<li><code>beforeMount</code></li>
 								<li><code>mounted</code></li>
-								<li><code>beforeUpdate</code></li>
 								<li><code>updated</code></li>
-								<li><code>beforeUmount</code></li>
-								<li><code>Umounted</code></li>
+								<li>...</li>
+							</ul>
+							<p>Intercepter par du code</p>
+							<ul>
+								<li>Ex : invoquer service web : <code>created</code></li>
 							</ul>
 						</div>
 						<div class="col-1">
-							<img width="70%" src="images/lifecyclevuejsv3.png" />
+							<img width="50%" src="images/lifecyclevuejs.png" />
 						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Cycle de vie d'un composant</h3>
-
-					<div style="text-align: left;">
-						<p>Comment déclencher du code à certaines étapes ?</p>
-						<p>Utilisation de fonctions Hook (avant/après)</p>
-							<ul>
-								<li><code>setup</code> : création</li>
-								<li><code>onBeforeMount/onMounted</code> : ajout dans le DOM</li>
-								<li><code>onBeforeUpdate/onUpdated</code> : modification (propriété, DOM)</li>
-								<li><code>onBeforeUmount/onUmounted</code> : desctruction</li>
-								<li><code>onErrorCaptured</code> : capture des erreurs</li>
-							</ul>
 					</div>
 				</section>
 				<section>
@@ -1763,32 +1473,27 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.40em"><code style="max-height: 570px;" data-noescape data-trim data-line-numbers="4-14">&lt;script setup&gt;
- import { createApp,ref,onBeforeMount... } from 'vue'
-
- display("before Create")
- const value = ref('HelloWorld')
-
- onBeforeMount(() =&gt; {
-  display("Before Mount: " + value.value)
- })
- onMounted(() =&gt; {
-  display("Mounted: " + value.value)
- })
-
- display("after Created: " + value.value)
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;div id="app"&gt;
-    &lt;input v-model="value" type="text" /&gt;
-    &lt;p&gt;{{ value }}&lt;/p&gt;
-    &lt;p&gt;Afficher la console&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3-sfc">lifecyclev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3">lifecyclev3</a> (version sans outil)</p>
+							<pre><code style="max-height: 570px;" data-noescape data-trim data-line-numbers="10-18">&lt;div id=&quot;app&quot;&gt;
+ &lt;input v-model=&quot;value&quot; type=&quot;text&quot; /&gt;
+ &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;p&gt;👇 Display the console&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+ new Vue({
+  el: '#app',
+  data: { value: &quot;HelloWorld&quot;	},
+  created() {
+   display(&quot;create &quot; + this.value)
+  },
+  mounted() {
+   display(&quot;mounted &quot; + this.value)
+  },
+  updated() {
+   display(&quot;updated &quot; + this.value)
+  },
+  ...
+ });
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1810,6 +1515,39 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 										<p>👇 Display the console</p>
 									</div>
 								</div>
+								<script>
+									new Vue({
+										el: '#app-lifecycle',
+										data: {
+											value: "HelloWorld"
+										},
+										beforeCreate() {
+											console.log("beforeCreate " + this.value);
+										},
+										created() {
+											console.log("created " + this.value)
+										},
+										beforeMounted() {
+											console.log("beforeMounted " + this.value)
+										},
+										mounted() {
+											console.log("mounted " + this.value)
+										},
+										beforeUpdate() {
+											console.log("beforeUpdate " + this.value)
+										},
+										updated() {
+											console.log("updated " + this.value)
+										},
+										beforeDestroy() {
+											console.log("beforeDestroy " + this.value)
+										},
+										destroyed() {
+											console.log("destroyed " + this.value)
+										}
+
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -1817,15 +1555,15 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 				<section data-background-size="75%" data-background-opacity="0.2"
 					data-background-image="images/summary.jpg">
 					<h3>Résumé Contenu d'un composant</h3>
-					<p>Différents contenus pour vos composants</p>
+					<p>Différentes options disponibles pour vos composants</p>
 					<div style="text-align: left;">
 						<ul style="line-height:180%">
-							<li>propriétés : binding vue et modèle</li>
+							<li><code>data</code> : binding View et Model</li>
 							<li><code>computed</code> : propriétés calculées</li>
 							<li><code>watch</code> : propriétés observées</li>
-							<li>lifecycle : intercepteurs</li>
-							<li>fonctions : vos « fonctions » JavaScript</li>
-							<li>composants : composants externes</li>
+							<li><code>lifecycle</code> : intercepteurs</li>
+							<li><code>methods</code> : vos « fonctions » JavaScript</li>
+							<li><code>components</code> : composants externes</li>
 							<li><i>À suivre dans la partie communication : <code>props</code></i></li>
 						</ul>
 					</div>
@@ -1836,81 +1574,91 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 			<section>
 				<section data-background-size="68%" data-background-opacity="0.2"
 					data-background-image="images/componenttree.png">
-					<h3>Communiquer entre composants</h3>
+					<h3>Communiquer entre les composants</h3>
 
 					<div>
-						<p>Parent ➡️ Enfant direct ?</p>
-						<p>Parent ➡️ Petit-enfant ?</p>
-						<p>Enfant ➡️ Parent ?</p>
-						<p>Globalement ?</p>
-						<p>En nommant explicitement ?</p>
+						<p>Composant parent ➡️ composants enfants ?</p>
+						<p>Composant enfant ➡️ composant parent ?</p>
+						<p>À tous les composants ?</p>
+						<p>Communication par référence ?</p>
+						<p>Communication via un gestionnaire d'états ?</p>
 					</div>
 				</section>
 
 				<section>
 					<h3>Props</h3>
 
-					<p>Permet une communication Parent ➡️ Enfant direct</p>
+					<p>Permet une communication Parent ➡️ Enfant</p>
 
-					<div style="line-height: 2.3em;" class="container-flex">
+					<div class="container-flex">
 						<div class="col-2" style="text-align: left;">
 							<p><b>Principe</b></p>
 							<ul>
-								<li><b>Enfant :</b> déclarer des <b>Props</b>
+								<li><b>Enfant :</b> déclarer des <b>Props</b> ~ Propriétés (dans option
+									<code>props</code>)
 								</li>
 								<li><b>Parent :</b> transmettre des valeurs depuis la balise personnalisée</li>
 							</ul>
-							<p><b>Valeurs</b> : statique et réactive</p>
+							<p><b>Valeurs</b></p>
+							<ul>
+								<li>Statique</li>
+								<li>Dynamique via directive <code>v-bind</code></li>
+							</ul>
 						</div>
 						<div class="col-1">
-							<img width="60%" src="images/communicationpropscustomevent.png" />
+							<img width="55%" src="images/communicationpropscustomevent.png" />
 						</div>
 					</div>
 				</section>
 				<section>
 					<h3>Props (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=2|5|8|17>&lt;script setup&gt;
- import { ref, defineProps } from 'vue'
- const clock = ref(new Date().toLocaleTimeString())
-  
- const props = defineProps({ message: String })
-
- setInterval(() =&gt; {
-  computeClock();
- }, 1000);
-
- function computeClock() {
-  clock.value = new Date().toLocaleTimeString();
- }
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;div&gt;{{ clock }} {{ message }}&lt;/div&gt;
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=9-11|2>&lt;template&gt;
+ &lt;div&gt;{{ value }} {{ message }}&lt;/div&gt;
 &lt;/template&gt;
-
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc">propsv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3">propsv3</a> (version sans outil)</p>
+					
+&lt;script&gt;
+ export default {
+  name: &quot;clock&quot;,
+   data() { return { value: &quot;&quot; } },
+   props: {
+    message: String
+   },
+   created() {
+    setInterval(() =&gt; { this.computeClock(); }, 1000);
+   },
+   methods: {
+    computeClock() {
+     this.value = new Date().toLocaleTimeString();
+    }
+   }
+ }
+&lt;/script&gt;</code></pre>
 				</section>
 				<section>
 					<h3>Props (Parent)</h3>
 
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.46em"><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
- import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
-
- const value = ref("HelloWorld")
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;Clock :message="value"&gt;&lt;/Clock&gt;
- &lt;input v-model="value" type="text" /&gt;
- &lt;p&gt;{{ value }}&lt;/p&gt;
+							<pre><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock v-bind:message=&quot;value&quot;/&gt;
+  &lt;input v-model=&quot;value&quot; /&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
 
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc">propsv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3">propsv3</a> (version sans outil)</p>
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() {
+   return { 
+    value: &quot;HelloWorld&quot; 
+   };
+  },
+  components: { Clock }
+ };
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -1932,102 +1680,45 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									let Clock2 = {
+										template: `<div>{{ value }} {{ message }}</div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										props: {
+											message: String
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+										}
+									}
+									new Vue({
+										el: '#app-props',
+										data: {
+											value: 'HelloWorld'
+										},
+										components: {
+											'clock': Clock2
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
-				</section>
-				<section>
-					<h3>Provide/Inject</h3>
-					<p>Permet une communication Parent ➡️ Petit-Enfant</p>
 
-					<div style="line-height: 2.0em;" class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Pourquoi ?</b></p>
-							<ul>
-								<li>
-									Éviter les props « passe-plat »
-								</li>
-							</ul>
-							<p><b>Principe</b></p>
-							<ul>
-								<li><b>Parent :</b> fournir une propriété
-								</li>
-								<li><b>Enfants :</b> injecter la propriété</li>
-							</ul>
-							<p><b>Contrainte</b> : hiérarchie obligatoire</p> 
-						</div>
-						<div class="col-1">
-							<img width="75%" src="images/communicationprovideinject.png" />
-						</div>
-					</div>
 				</section>
-				<section>
-					<h3>Provide/Inject : Parent</h3>
-<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10>&lt;script setup&gt;
- import { ref, provide } from 'vue'
- import Clock from '@/components/Clock.vue'
 
- const value = ref("HelloWorld")
- provide('message', value)
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;Clock&gt;&lt;/Clock&gt;
- &lt;div&gt;
-  &lt;input v-model="value" type="text"/&gt;
- &lt;/div&gt;
-&lt;/template&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-				</section>
-				<section>
-					<h3>Provide/Inject (enfants)</h3>
-<div class="container-flex">
-	<div class="col-2">
-<pre style="font-size: 0.4em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=11>&lt;script setup&gt;
- import { ref } from 'vue'
- import ClockDisplay from './ClockDisplay.vue'
- const clock = ref(...)
- setInterval(() => {
-  computeClock();
- }, 1000);
- function computeClock() { ... }
-&lt;/script&gt;
-&lt;template&gt;
- {{ clock }} &lt;ClockDisplay&gt;&lt;/ClockDisplay&gt;
-&lt;/template&gt;</code></pre>
-<p class="legend">Composant Clock : dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-<pre style="font-size: 0.4em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=3>&lt;script setup&gt;
- import { inject } from 'vue'
- const message = inject('message')
-&lt;/script&gt;
-  
-&lt;template&gt;
- {{ message }}
-&lt;/template&gt;</code></pre>
-<p class="legend">Composant ClockDisplay : dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-	</div>
-	<div class="col-1">
-		<div class="web-container">
-			<div class="web-row">
-				<div class="web-column web-left">
-					<span class="web-dot" style="background:#ED594A;"></span>
-					<span class="web-dot" style="background:#FDD800;"></span>
-					<span class="web-dot" style="background:#5AC05A;"></span>
-				</div>
-				<div class="web-column web-middle">
-					<input class="web-input" value="https://mickael-baron.fr" disabled />
-				</div>
-			</div>
-
-			<div style="height: 250px">
-				<div class="elementContainer" id="app-provide">
-					<Clock></Clock>
-    				<input v-model="value" type="text" />
-				</div>
-			</div>
-		</div>
-	</div>
-				</section>
 				<section>
 					<h3>Evénéments personnalisés</h3>
 
@@ -2035,11 +1726,11 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 					<div class="container-flex">
 						<div class="col-2" style="text-align: left;">
-							<p><b>Principe (gestion événement)</b></p>
+							<p><b>Principe</b></p>
 							<ul>
-								<li><b>Enfant :</b> émettre avec <code>$emit</code>
+								<li><b>Enfant :</b> émettre un événement <code>$emit</code>
 								</li>
-								<li><b>Parent :</b> écouter via <code>v-on</code> ou <code>@</code></li>
+								<li><b>Parent :</b> écouter les événements via directive <code>v-on</code></li>
 							</ul>
 							<p><b>Événement</b></p>
 							<ul>
@@ -2054,53 +1745,54 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 				</section>
 
 				<section>
-					<h3>Evénéments personnalisés (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=15-17>&lt;script setup&gt;
- import { ref } from 'vue'
- const clock = ref(new Date().toLocaleTimeString())
- 
- setInterval(() =&gt; {
-  computeClock();
- }, 1000);
-
- function computeClock() {
-  clock.value = new Date().toLocaleTimeString();
- }
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;button v-on:click="$emit('save-clock', clock)"&gt;
-  {{clock}}
- &lt;/button&gt;
+					<h3>Evénéments personnalisés : Enfant</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=16>&lt;template&gt;
+ &lt;div&gt;
+  &lt;button v-on:click=&quot;saveClock&quot;&gt;{{value}}&lt;/button&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
-
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc">customeventv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3">customeventv3</a> (version sans outil)</p>
+&lt;script&gt;
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { value: &quot;&quot; } },
+  created() { ... },
+  methods: {
+   computeClock() {
+    this.value = new Date().toLocaleTimeString();
+   }
+   saveClock() {
+    this.$emit(&quot;save-clock&quot;, this.value);
+   }
+  }
+ }
+&lt;/script&gt;</code></pre>
 				</section>
 
 				<section>
-					<h3>Evénéments personnalisés (Parent)</h3>
+					<h3>Evénéments personnalisés : Parent</h3>
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.44em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|13">&lt;script setup&gt;
- import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
-
- const value = ref("HelloWorld")
-
- function saveClock(currentClock) {
-  value.value = currentClock;
- }
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;Clock @save-clock="saveClock($event)"/&gt;
- &lt;input v-model="value" type="text" /&gt;
- &lt;p&gt;{{ value }}&lt;/p&gt;
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="4|16-18">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock 
+   @save-clock=&quot;saveClock($event)&quot;/&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
 
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc">customeventv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3">customeventv3</a> (version sans outil)</p>
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() { ... },
+  components: { Clock },
+  methods: {
+   saveClock(currentClock) {
+    this.value = currentClock;
+   }
+  }
+ };
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -2117,114 +1809,130 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 
 								<div style="height: 150px">
 									<div id="app-customevent">
-										<Clock @save-clock="saveClock($event)"></Clock>
-										<input v-model="value" type="text" />
-										<p>{{value}}</p>
+										<clock v-on:save-clock="saveClock($event)"></clock>
+										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									let Clock3 = {
+										template: `<div><button v-on:click="saveClock">{{value}}</button></div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											saveClock() {
+												this.$emit("save-clock", this.value);
+											}
+										}
+									}
+									new Vue({
+										el: '#app-customevent',
+										data: {
+											value: ''
+										},
+										components: {
+											'clock': Clock3
+										},
+										methods: {
+											saveClock(currentClock) {
+												this.value = currentClock;
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
 				</section>
+
 				<section>
-					<h3>Gestionnaire d'état</h3>
-					<p style="margin: 0px;">Partager un modèle de stockage par référence</p>
+					<h3>Bus d'événements</h3>
+
+					<p style="margin: 0px;">Permet une communication à tous les composants</p>
 
 					<div class="container-flex">
 						<div class="col-2" style="text-align: left;">
-							<p><b>Principe (solution DIY)</b></p>
+							<p><b>Principe</b></p>
 							<ul>
-								<li>Créer un stockage</li>
-								<li>Importer le modèle de stockage</li>
-								<li>Utiliser des mutateurs calculés</li>
+								<li>Créer une instance <code>Vue</code></li>
+								<pre><code>import Vue from 'vue';
+export const EB = new Vue();</code></pre>
+								<li>Émettre un événement : <code>$emit</code></li>
+								<li>S'abonner à un événement : <code>$on</code></li>
+								<li>Supprimer abonnement : <code>$off</code></li>
 							</ul>
-							<p><b>Aller plus loin</b></p>
+							<p><b>Problème de performance</b></p>
 							<ul>
-								<li><a target="_blank" href="https://pinia.vuejs.org/">Pinia</a> (anciennement Vuex)</li>
+								<li>Si oubli suppression abonnement</li>
 							</ul>
 						</div>
 						<div class="col-1">
-							<img width="50%" src="images/statemanagement.png" />
+							<img width="50%" src="images/eventbus.png" />
 						</div>
 					</div>
 				</section>
 
 				<section>
-					<h3>Gestionnaire d'état (stockage)</h3>
-					<pre style="font-size: 0.47em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=1|2-5|7-11|13-18>import { reactive } from 'vue'
-const debug = true
-const state = reactive({
- message: 'HelloWorld'
-})
-
-function setMessage(newValue) {
- if (debug) console.log('setMessage triggered with ', newValue)
-
- state.message = newValue
-}
-
-export function store() {
- return {
-  state,
-  setMessage
- }
-}</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-				</section>
-
-
-				<section>
-					<h3>Gestionnaire d'état (parent)</h3>
-					<pre style="font-size: 0.47em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|8|10-13|17>&lt;script setup&gt;
-import { computed } from 'vue'
-
-import Writable from './components/Writable.vue'
-import Readable from './components/Readable.vue'
-import { store } from './store.js'
-
-const { state, setMessage } = store()
-
-const message = computed({
- get() { return state.message },
- set(newValue) { setMessage(newValue) }
-})
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;div&gt;&lt;input v-model="message" type="text" /&gt;{{ message }}&lt;/div&gt;
-  &lt;div&gt;&lt;Writable&gt;&lt;/Writable&gt;&lt;Readable&gt;&lt;/Readable&gt;&lt;/div&gt;
+					<h3>Bus d'événements : émetteur</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=8|16>&lt;template&gt;
+ &lt;div&gt;
+  &lt;button v-on:click=&quot;saveClock&quot;&gt;{{value}}&lt;/button&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
 
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
+&lt;script&gt;
+ import EB from './event-bus.js';
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { value: &quot;&quot; } },
+  created() { ... },
+  methods: {
+   computeClock() { ... }
+   saveClock() {
+    EB.$emit(&quot;save-clock&quot;, this.value);
+   }
+  }
+ }
+&lt;/script&gt;</code></pre>
 				</section>
 
 				<section>
-					<h3>Gestionnaire d'état (enfants)</h3>
+					<h3>Bus d'événements : récepteur</h3>
+
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.45em"><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
- import { store } from '../store.js'
- const { state } = store()
-&lt;/script&gt;
-
-&lt;template&gt;
- {{ state.message }}
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="9|16-18">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock @save-clock=&quot;saveClock&quot;/&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
 
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-<pre style="font-size: 0.45em"><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
- import { store } from '../store.js'
- const { state } = store()
-&lt;/script&gt;
-   
-&lt;template&gt;
- &lt;input v-model="state.message" type="text" /&gt;
-&lt;/template&gt;
-   
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
+&lt;script&gt;
+ import EB from './event-bus.js';
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  name: &quot;helloworld&quot;,
+  data() { ... },
+  components: { Clock },
+  mounted() {
+   EB.$on('save-clock', (val) => {
+    this.value = val;
+   });
+  },
+ };
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -2239,17 +1947,209 @@ const message = computed({
 									</div>
 								</div>
 
-								<div style="height: 275px">
-									<div class="elementContainer" id="app-statemanager">
-										<div>
-											<input v-model="message" type="text" />{{ message }}
-										</div>
-										<div>
-											<Writable></Writable>
-											<Readable></Readable>
-										</div>
+								<div style="height: 150px">
+									<div id="app-eventbus">
+										<clock v-on:save-clock="saveClock($event)"></clock>
+										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									const EventBus = new Vue();
+
+									let Clock4 = {
+										template: `<div><button v-on:click="saveClock">{{value}}</button></div>`,
+										data() {
+											return {
+												value: ""
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											saveClock() {
+												EventBus.$emit('save-clock', this.value);
+											}
+										}
+									}
+									new Vue({
+										el: '#app-eventbus',
+										data: {
+											value: ''
+										},
+										components: {
+											'clock': Clock4
+										},
+										mounted() {
+											EventBus.$on('save-clock', (payLoad) => {
+												this.value = payLoad;
+											});
+										},
+										methods: {
+											saveClock(currentClock) {
+												this.value = currentClock;
+											}
+										}
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<p style="margin: 0px;">Partager un modèle de stockage par référence</p>
+
+					<div class="container-flex">
+						<div class="col-2" style="text-align: left;">
+							<p><b>Principe (solution DIY)</b></p>
+							<ul>
+								<li>Créer un modèle de stockage</li>
+								<pre><code>export const Store = {
+ state: {
+  // Objet JavaScript
+ }
+}</code></pre>
+								<li>Utiliser des mutateurs calculés</li>
+							</ul>
+							<p><b>Aller plus loin</b></p>
+							<ul>
+								<li>Utiliser <a target="_blank" href="https://vuex.vuejs.org/">Vuex</a></li>
+							</ul>
+						</div>
+						<div class="col-1">
+							<img width="50%" src="images/statemanagement.png" />
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10-15>&lt;template&gt;
+ &lt;div&gt;{{ clockValue }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+ import Store from './store.js';
+ export default {
+  name: &quot;clock&quot;,
+  data() { return { sm: Store.state } },
+  computed: {
+   clockValue: {
+    set(value) { this.sm.clockValue = value; },
+    get() { return this.sm.clockValue; }
+   }
+  },
+  ...
+ }
+&lt;/script&gt;</code></pre>
+				</section>
+
+				<section>
+					<h3>Gestionnaire d'état</h3>
+					<div class="container-flex">
+						<div class="col-2">
+							<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="8|15-19">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock&gt;&lt;Clock/&gt;
+  &lt;p&gt;{{ clockValue }}&lt;/p&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+ import Store from './store.js';
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  data() { 
+   return { sm: tore.state } 
+  },
+  components: { Clock },
+  computed: { 
+   clockValue: {
+    get() { 
+     return this.sm.clockValue; 
+  }}},
+ };
+&lt;/script&gt;</code></pre>
+						</div>
+						<div class="col-1">
+							<div class="web-container">
+								<div class="web-row">
+									<div class="web-column web-left">
+										<span class="web-dot" style="background:#ED594A;"></span>
+										<span class="web-dot" style="background:#FDD800;"></span>
+										<span class="web-dot" style="background:#5AC05A;"></span>
+									</div>
+									<div class="web-column web-middle">
+										<input class="web-input" value="https://mickael-baron.fr" disabled />
+									</div>
+								</div>
+
+								<div style="height: 150px">
+									<div class="elementContainer" id="app-statemanager">
+										<clock></clock>
+										<p>{{ clockValue }}</p>
+									</div>
+								</div>
+								<script>
+									const store = {
+										state: {
+											clockValue: ''
+										}
+									}
+
+									let Clock5 = {
+										template: `<div>{{clockValue}}</div>`,
+										data() {
+											return {
+												storeState: store.state
+											}
+										},
+										computed: {
+											clockValue: {
+												set(value) {
+													this.storeState.clockValue = value;
+												},
+												get() {
+													return this.storeState.clockValue;
+												}
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.clockValue = new Date().toLocaleTimeString();
+											}
+										}
+									}
+									new Vue({
+										el: '#app-statemanager',
+										data: {
+											storeState: store.state
+										},
+										components: {
+											'clock': Clock5
+										},
+										computed: {
+											clockValue: {
+												get() {
+													return this.storeState.clockValue;
+												}
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -2265,76 +2165,51 @@ const message = computed({
 						<div class="col-2" style="text-align: left;">
 							<p><b>Principe (parent ➡️ enfants)</b></p>
 							<ul>
-								<li>Utiliser attribut <code>ref</code></li>
-								<li>Déclarer propriété <code>ref</code></li>
+								<li>Définir nom référence via <code>ref</code></li>
+								<li>Appeler via <code>$refs.myref</code></li>
 							</ul>
 
 							<p><b>Principe (enfant ➡️ parent)</b></p>
 							<ul>
-								<li>Rechercher référence du parent</li>
+								<li>Appeler via <code>$parent</code></li>
 							</ul>
 
 							<p><b>Problème</b></p>
 							<ul>
 								<li>Couplage fort</li>
+								<li>Si le composant n'existe plus ?</li>
 							</ul>
 						</div>
 						<div class="col-1">
-							<img width="60%" src="images/componentreferencev3.png" />
+							<img width="60%" src="images/componentreference.png" />
 						</div>
 					</div>
 				</section>
 
 				<section>
-					<h3>Référence directe (parent)</h3>
-
-							<pre style="font-size: 0.48em"><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|16|5|17|10-12">&lt;script setup&gt;
- import { ref } from 'vue'
- import Child from '@/components/Child.vue'
-
- const refChild = ref(null)
- const value = ref("")
-
- function callParent(pValue) { value.value = pValue }
-
- defineExpose({
-  callParent
- })
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;Child ref="refChild"&gt;&lt;/Child&gt;
- &lt;button @click="refChild.callChild()"&gt;Go&lt;/button&gt;
- {{ value }}
-&lt;/template&gt;
-
-&lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3-sfc">referencev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3">referencev3</a> (version sans outil)</p>
-				</section>
-
-				<section>
-					<h3>Référence directe (enfant)</h3>
+					<h3>Référence directe</h3>
 					<div class="container-flex">
 						<div class="col-2">
-							<pre style="font-size: 0.43em"><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="9-11|3|5-7">&lt;script setup&gt;
- import { getCurrentInstance } from 'vue'
- const instance = getCurrentInstance()
-
- function callChild() { 
-  instance.proxy.$parent.callParent("Hello..."); 
- }
-
- defineExpose({
-  callChild
- })
-&lt;/script&gt;
-
-&lt;template&gt;
- &lt;div&gt;Enfant&lt;/div&gt;
+							<pre><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|17">&lt;template&gt;
+ &lt;div&gt;
+  &lt;Clock ref=&quot;refClock&quot;&gt;&lt;Clock/&gt;
+  &lt;button @click=&quot;save()&quot;&gt;
+   Save&lt;/button&gt;
+  &lt;p&gt;{{ value }}&lt;/p&gt;
+ &lt;/div&gt;
 &lt;/template&gt;
-
-&lt;style/&gt;
-</code></pre>
+&lt;script&gt;
+ import Clock from &quot;@/Clock.vue&quot;;
+ export default {
+  data() { 
+   return { value: 'Empty' }},
+  methods: {
+   save() {
+    this.value = 
+     this.$refs.refClock.getClock();
+  }}
+ };
+&lt;/script&gt;</code></pre>
 						</div>
 						<div class="col-1">
 							<div class="web-container">
@@ -2350,12 +2225,52 @@ const message = computed({
 								</div>
 
 								<div style="height: 200px">
-									<div class="elementContainer" id="app-ref-component">
-										<Child ref="refChild"></Child>
-										<button @click="refChild.callChild()">Go</button>
-										{{ value }}
+									<div class="elementContainer" id="app-ref">
+										<clock ref="refClock"></clock>
+										<button @click="save()">Save</button>
+										<p>{{ value }}</p>
 									</div>
 								</div>
+								<script>
+									let Clock6 = {
+										template: `<div>{{value}}</div>`,
+										data() {
+											return {
+												value: ''
+											}
+										},
+										created() {
+											this.computeClock();
+											setInterval(() => {
+												this.computeClock();
+											}, 1000);
+										},
+										methods: {
+											computeClock() {
+												this.value = new Date().toLocaleTimeString();
+											},
+											getClock() {
+												return this.value;
+											}
+										}
+									}
+									new Vue({
+										el: '#app-ref',
+										data() {
+											return {
+												value: 'Empty'
+											}
+										},
+										components: {
+											'clock': Clock6
+										},
+										methods: {
+											save() {
+												this.value = this.$refs.refClock.getClock();
+											}
+										}
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -2379,14 +2294,14 @@ const message = computed({
 								<td>👍</td>
 							</tr>
 							<tr>
-								<td>Provide/Inject</td>
-								<td>Parent ➡️ Petit-Enfant</td>
-								<td>👍👎</td>
-							</tr>
-							<tr>
-								<td>Événement perso</td>
+								<td>Événement personnalisé</td>
 								<td>Enfant ➡️ Parent</td>
 								<td>👍</td>
+							</tr>
+							<tr>
+								<td>Bus événement</td>
+								<td>Globalité</td>
+								<td>👎</td>
 							</tr>
 							<tr>
 								<td>Gestionnaire états</td>
@@ -2401,6 +2316,13 @@ const message = computed({
 						</tbody>
 					</table>
 				</section>
+			</section>
+
+			<!-- Project structure -->
+			<section>
+				<h3>Structure d'un projet Vue.js</h3>
+
+				<img width="70%" src="/images/slides/todo.png" />
 			</section>
 
 			<!-- Routage -->
@@ -2424,17 +2346,16 @@ const message = computed({
 					data-background-image="images/vscode.svg">
 					<h3>Visual Studio Code</h3>
 
-					
 					<div style="text-align: left;">
-						<p>Intégration <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-						<ul>
+						<p><b>Plugin <a href="https://github.com/vuejs/vetur" target="_blank">Vetur</a></b></p>
+						<ul style="line-height:200%">
 							<li>Vérification de la syntaxe</li>
+							<li>Complétion de code avec IntelliSense</li>
 							<li>Formattage</li>
-							<li>Utilisation de snippets</li>
+							<li>Extraits de codes prêts à l'emploi (snippets)</li>
 						</ul>
-						<p><b>Plugins</b> : <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a> et <a href="https://github.com/vuejs/vetur" target="_blank">Vetur</a></p>
 						<p><b>Plugin <a href="https://github.com/vuejs/eslint-plugin-vue"
-									target="_blank">ESLint</a></b></p>
+									target="_blank">Linting</a></b></p>
 						<ul style="line-height:200%">
 							<li>Vérification de la qualité de votre code <a href="https://vuejs.org/"
 									target="_blank">Vue.js</a></li>
@@ -2452,53 +2373,58 @@ const message = computed({
 						<p><b>Installation</b></p>
 						<ul>
 							<li>Dans votre navigateur : <a target="_blank"
-									href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd">Chrome</a>, <a
+									href="https://chrome.google.com/webstore/detail/vuejs-devtools/">Chrome</a>, <a
 									target="_blank"
-									href="https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/">Firefox</a></li>
+									href="https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/">Firefox</a></li>
 							<li><a target="_blank"
-									href="https://devtools.vuejs.org/guide/installation.html#standalonehttps://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md">Application
+									href="https://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md">Application
 									standalone</a></li>
-						</ul>						
+						</ul>
 					</div>
-					<img width="65%" src="images/vuejsdevtoolsv3.png" />
+					<img width="45%" src="images/vuejsdevtools.png" />
 				</section>
 				<section>
-					<h3>Vite</h3>
+					<h3>Vue CLI</h3>
 
 					<p>Outil pour créer des projets Vue.js avec le format .vue</p>
 
-					<div style="text-align: left;">				
-						<p><b>Création d'un projet</b> (<a target="_blank" href="https://github.com/vuejs/create-vue">create-vue</a>)</p>
-						<pre><code>$ npm init vue@latest</code></pre>
+					<div style="text-align: left;">
+						<p><b>Installation</b></p>
+						<pre><code>$ npm install -g @vue/cli @vue/cli-service-global</code></pre>
 
-						<p><b>Installation des dépendances</b></p>
-						<pre><code>$ npm install</code></pre>
+						<p><b>Création projet</b></p>
+						<pre><code>$ vue create hello-world</code></pre>
 
 						<p><b>Exécution pour tester</b></p>
-						<pre><code>$ npm run dev</code></pre>
+						<pre><code>$ npm run serve</code></pre>
 
 						<p><b>Exécution pour déployer</b></p>
 						<pre><code>$ npm run build</code></pre>
 					</div>
 				</section>
 
-				<section data-background-size="90%" data-background-opacity="0.2"
-				data-background-image="images/primevue.svg">
+				<section>
+					<h3>Vue CLI UI</h3>
+
+					<p>Passer par une interface graphique : <code>$ vue ui</code></p>
+
+					<img width="70%" src="images/vuecliui.png" />
+				</section>
+
+				<section>
 					<h3>Bibliothèques / Frameworks</h3>
 
 					<div style="text-align: left;">
 						<p><a target="_blank" href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site
 							statique</p>
-						<p><a target="_blank" href="https://pinia.vuejs.org/">Pinia</a> : gestionnaire d'états</p>
+						<p><a target="_blank" href="https://vuex.vuejs.org/">Vuex</a> : gestionnaire d'états</p>
 						<p><a target="_blank" href="https://nuxtjs.org/">Nuxt.js</a> : framework du framework Vue.js</p>
-						<p>Bibliothèques de composants</p>
-						<ul>
-							<li><a target="_blank" href="https://vuetifyjs.com/">Vuetify</a> : basée sur <a target="_blank" href="https://material.io/">Materiel Design</a></li>
-							<li><a target="_blank" href="https://www.primefaces.org/primevue/">PrimeVue</a> : basée sur <a target="_blank" href="https://www.primefaces.org/">Prime Faces</a></li>
-						</ul>
+						<p><a target="_blank" href="https://vuetifyjs.com/">Vuetify</a> : bibliothèque de composants
+							basée sur <a target="_blank" href="https://material.io/">Materiel Design</a></p>
 						<p>Développement mobile sans WebView</p>
 						<ul>
 							<li><a target="_blank" href="https://nativescript-vue.org" />NativeScript Vue</a></li>
+							<li><a target="_blank" href="https://vue-native.io/">Vue Native</a></li>
 						</ul>
 					</div>
 				</section>
@@ -2512,7 +2438,7 @@ const message = computed({
 
 					<ul>
 						<li><a target="_blank" href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
-						<li><a target="_blank" href="https://vuejs.org/tutorial">vuejs.org/tutorial</a></li>
+						<li><a target="_blank" href="https://vuejs.org/v2/guide/">vuejs.org/v2/guide</a></li>
 						<li><a target="_blank"
 								href="https://github.com/vuejs/awesome-vue">github.com/vuejs/awesome-vue</a>
 						</li>
@@ -2524,10 +2450,31 @@ const message = computed({
 								Define a
 								Component Template</a></li>
 						</li>
-						<li><a target="_blank"
-							href="https://www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf">www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf</a></li>
 					</ul>
 				</section>
+				<section data-background-size="80%" data-background-opacity="0.2"
+				data-background-image="images/cheating.jpg">
+					<h3>Aides mémoires</h3>
+					<ul>
+						<li><a target="_blank"
+								href="https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf">www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf</a>
+						</li>
+						<li><a target="_blank" href="https://devhints.io/vue">devhints.io/vue</a></li>
+						<li><a target="_blank" href="https://marozed.com/vue-cheatsheet">marozed.com/vue-cheatsheet</a>
+						</li>
+						<li><a target="_blank"
+								href="https://github.com/dekadentno/vue-cheat-sheet">github.com/dekadentno/vue-cheat-sheet</a>
+						</li>
+						<li><a target="_blank"
+								href="https://github.com/murraco/vue-cheatsheet">github.com/murraco/vue-cheatsheet</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- Kahoot -->
+			<section>
+				<img width="90%" src="/images/slides/kahoot.svg" />
 			</section>
 
 			<!-- Pratical -->
@@ -2569,9 +2516,8 @@ const message = computed({
 		</div>
 	</div>
 
-	<script src="introduction-vuejs.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
 	<script>
 		Reveal.initialize({
 			hash: true,
