@@ -7,16 +7,16 @@
 
 	<title>Découverte de Docker 🐳</title>
 	<base target="_blank">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/theme/white.min.css" id="theme">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/highlight/monokai.min.css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
 		id="highlight-theme">
 
 	<link rel="stylesheet" type="text/css"
-		href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" />
+		href="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.css" />
 	<style>
 		/* Double colonnes */
 		.container-flex {
@@ -835,9 +835,9 @@ $ psql -U postgres -d postgres -h localhost -p 54321
 		</div>
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/highlight/highlight.min.js"></script>
-	<script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+	<script src="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
 	<script>
 		Reveal.initialize({
 			hash: true,
@@ -864,6 +864,8 @@ $ psql -U postgres -d postgres -h localhost -p 54321
 		Reveal.on( 'slidechanged', event => {
 			const ele = document.getElementsByClassName('asciinema-theme-monokai');
 			for (let i = 0; i < ele.length; i++) {
+				//ele[i].style.height = "199.602px";
+				//ele[i].style.width = "160px";
 				ele[i].style.height = "499.602px";
 				ele[i].style.width = "960px";
 			}			
