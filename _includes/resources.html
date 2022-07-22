@@ -31,7 +31,13 @@
           </div>
           <div class="card-footer">
             <div class="row">
-              <div class="col-sm-8">{{ resource.date | date_to_long_string }}</div>
+              <div class="col-sm-8">
+                {% if resource.update %}
+                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" %}
+                {% else %}
+                  {% include translated_date.html date=resource.date preformatedformat="weekday" %}
+                {% endif %}
+              </div>
               <div class="col-sm card-footer-category">{{ resource.category }}</div>
             </div>
           </div>

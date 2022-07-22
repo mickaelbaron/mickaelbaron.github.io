@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="card-footer {{ text_style }}">
-            {{ post.date | date_to_long_string }}
+            {% include translated_date.html date=post.date preformatedformat="weekday" %}
           </div>
         </a>
       </div>

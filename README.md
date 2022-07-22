@@ -18,13 +18,13 @@ Vous ne trouverez pas sur ce blog (et mes médias sociaux) :
 ## Construire avec Jekyll
 
 ```console
-bundle exec jekyll serve
+$ bundle exec jekyll serve
 ```
 
 ## Construire avec Docker
 
 ```console
-docker run --rm --volume="$PWD/mickaelbaron.github.io:/srv/jekyll" --volume="$PWD/bundles:/usr/local/bundle" -p 4000:4000 -it jekyll/jekyll:latest jekyll serve
+$ docker run --rm --volume="$PWD/mickaelbaron.github.io:/srv/jekyll" --volume="$PWD/bundles:/usr/local/bundle" -p 4000:4000 -it jekyll/jekyll:latest jekyll serve
 ```
 
 > Le dépôt contient de nombreux petits fichiers, l'utilisation de Docker sous macOS peut amener à de gros ralentissement.
