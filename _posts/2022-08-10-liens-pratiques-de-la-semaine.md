@@ -2,6 +2,7 @@
 title: Liens pratiques de la semaine 32 (Août 2022)
 tags: [Kubernetes, JavaScript, Java, Docker]
 category: technological-watch
+twitter: 1557402764791128067
 ---
 
 Vous trouverez dans ce billet une sélection de liens pratiques autour des technologies qui m'ont particulièrement intéressées cette semaine 32 (août 2022).
