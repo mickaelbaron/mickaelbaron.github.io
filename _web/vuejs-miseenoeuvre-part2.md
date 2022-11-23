@@ -1975,7 +1975,7 @@ Cette dernière section s'intéresse au routage de notre application *Single-Pag
 
 * Saisir la ligne de commande suivante `$ npm install vue-router` pour ajouter le module [Vue-Router](https://github.com/vuejs/vue-router) et compléter automatiquement le fichier *package.json*. 
 
-Ci-dessous est présenté une partie du contenu du fichier *package.json* suite à l'ajout de la bibliothèque [AXIOS](https://github.com/axios/axios).
+Ci-dessous est présenté une partie du contenu du fichier *package.json* suite à l'ajout de la bibliothèque [Vue-Router](https://github.com/vuejs/vue-router).
 
 ```javascript
 {
@@ -2011,7 +2011,7 @@ Ce fichier *index.js* contrôle le routage de l'application. Les composants dév
 ```javascript
 <script setup>
 import FooterPolldle from './components/FooterPolldle.vue'
-// Import RouterView component -->
+// Import RouterView component
 import { RouterView } from 'vue-router'
 </script>
 

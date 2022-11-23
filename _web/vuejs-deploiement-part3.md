@@ -581,6 +581,7 @@ COPY index.html ./
 COPY public ./public
 COPY src ./src
 COPY .env.production ./
+COPY vite.config.js ./
 
 RUN npm run build
 
@@ -603,10 +604,11 @@ Détaillons le contenu de ce fichier *Dockerfile* qui propose deux étapes.
 * `WORKDIR /polldle-vue` : fixer le répertoire de travail ;
 * `COPY package*.json ./` : copier le fichier de description du projet dans le répertoire de travail ;
 * `RUN npm install` : installer les modules requis par le projet ;
-* `COPY index.html ./` : copier le fichier racine index.html ;
+* `COPY index.html ./` : copier le fichier racine *index.html* ;
 * `COPY public ./public` : copier le contenu du répertoire *public* dans le répertoire de travail ;
 * `COPY src ./src` : copier le contenu du répertoire *src* dans le répertoire de travail ;
 * `COPY .env.production ./` : copier le fichier d'initialisation des variables d'environnement dans le répertoire de travail ;
+* `COPY vite.config.js ./` : copier le fichier de configuration de [Vite](https://vitejs.dev/) ;
 * `RUN npm run build` : construire les binaires qui seront déposés dans le répertoire *dist*.
 
 **Étapes d'exécution :**
