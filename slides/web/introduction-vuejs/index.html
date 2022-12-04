@@ -1425,8 +1425,8 @@
 
 					<div style="text-align: left;">
 						<p>① Importation (dans la partie <code>script</code>)</p>
-						<pre><code class="language-javascript">import YourComponent1 from "@/components/yourcomponent1.vue"
-import YourComponent2 from "@/components/yourcomponent2.vue"
+						<pre><code class="language-javascript">import YourComponent1 from "./components/yourcomponent1.vue"
+import YourComponent2 from "./components/yourcomponent2.vue"
 ...</code></pre>
 						<p>② Instanciation (dans la partie <code>template</code>)</p>
 						<pre><code class="language-javascript">&lt;YourComponent1&gt;&lt;/YourComponent1&gt;
@@ -1441,7 +1441,7 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 						<div class="col-2">
 							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
  import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
+ import Clock from './components/Clock.vue'
 
  const value = ref("HelloWorld")
 &lt;/script&gt;
@@ -1898,7 +1898,7 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 						<div class="col-2">
 							<pre style="font-size: 0.46em"><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
  import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
+ import Clock from './components/Clock.vue'
 
  const value = ref("HelloWorld")
 &lt;/script&gt;
@@ -1965,7 +1965,7 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 					<h3>Provide/Inject : Parent</h3>
 <pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10>&lt;script setup&gt;
  import { ref, provide } from 'vue'
- import Clock from '@/components/Clock.vue'
+ import Clock from './components/Clock.vue'
 
  const value = ref("HelloWorld")
  provide('message', value)
@@ -2084,7 +2084,7 @@ import YourComponent2 from "@/components/yourcomponent2.vue"
 						<div class="col-2">
 							<pre style="font-size: 0.44em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|13">&lt;script setup&gt;
  import { ref } from 'vue'
- import Clock from '@/components/Clock.vue'
+ import Clock from './components/Clock.vue'
 
  const value = ref("HelloWorld")
 
@@ -2290,7 +2290,7 @@ const message = computed({
 
 							<pre style="font-size: 0.48em"><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|16|5|17|10-12">&lt;script setup&gt;
  import { ref } from 'vue'
- import Child from '@/components/Child.vue'
+ import Child from './components/Child.vue'
 
  const refChild = ref(null)
  const value = ref("")
