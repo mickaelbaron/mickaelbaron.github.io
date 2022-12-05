@@ -7,5 +7,6 @@ description: Apprendre à développer une application SPA (Single-Page Applicati
 category: Atelier
 weight: 9
 date: 2020-12-08
+update: 2022-12-05
 ---
 

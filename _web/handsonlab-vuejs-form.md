@@ -7,4 +7,5 @@ description: Apprendre à utiliser Vue.js comme une bibliothèque dans un site w
 category: Atelier
 weight: 8
 date: 2020-12-08
+update: 2022-09-05
 ---
