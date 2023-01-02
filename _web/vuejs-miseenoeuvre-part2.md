@@ -2199,7 +2199,7 @@ function vote() {
   // To vote for a PollDLE from REST web service
   axios({
     method: 'post',
-    baseURL: url + '/votes,
+    baseURL: url + '/votes',
     data: JSON.stringify({
       polldleOptionResponses: [polldle.polldleOptionResponses]
     }),
