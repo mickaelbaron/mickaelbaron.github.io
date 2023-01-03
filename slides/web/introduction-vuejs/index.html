@@ -1870,7 +1870,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 				<section>
 					<h3>Props (Enfant)</h3>
 					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=2|5|8|17>&lt;script setup&gt;
- import { ref, defineProps } from 'vue'
+ import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
   
  const props = defineProps({ message: String })
@@ -2055,10 +2055,11 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 
 				<section>
 					<h3>Evénéments personnalisés (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=15-17>&lt;script setup&gt;
+					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=15-17|4>&lt;script setup&gt;
  import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
- 
+ defineEmits(['save-clock'])
+
  setInterval(() =&gt; {
   computeClock();
  }, 1000);
