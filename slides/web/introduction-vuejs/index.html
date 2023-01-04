@@ -1869,7 +1869,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 				</section>
 				<section>
 					<h3>Props (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=2|5|8|17>&lt;script setup&gt;
+					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=5|8|17>&lt;script setup&gt;
  import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
   
@@ -2055,7 +2055,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 
 				<section>
 					<h3>Evénéments personnalisés (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=15-17|4>&lt;script setup&gt;
+					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|16-18>&lt;script setup&gt;
  import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
  defineEmits(['save-clock'])
@@ -2469,8 +2469,8 @@ const message = computed({
 					<p>Outil pour créer des projets Vue.js avec le format .vue</p>
 
 					<div style="text-align: left;">				
-						<p><b>Création d'un projet</b> (<a target="_blank" href="https://github.com/vuejs/create-vue">create-vue</a>)</p>
-						<pre><code>$ npm init vue@latest</code></pre>
+						<p><b>Création d'un projet</b> (<a target="_blank" href="https://github.com/vuejs/create-vue">create-vue</a> basé sur <a target="_blank" href="https://vitejs.dev/">Vite</a>)</p>
+						<pre><code>$ npm create vite@latest</code></pre>
 
 						<p><b>Installation des dépendances</b></p>
 						<pre><code>$ npm install</code></pre>
