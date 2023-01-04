@@ -173,9 +173,7 @@ L'outil **npm** se base sur le fichier *package.json* pour télécharger les dé
 
 Le répertoire *public* est utilisé pour stocker les fichiers statiques. 
 
-Le fichier *index.html* est le point d'entrée de votre application (voir ci-après). Tout le code que vous allez développer sera injecté dans `<div id="app"></div>`.
-
-* De façon à intégrer la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) à toute l'application, ajouter le lien CDN de [Bootstrap](https://getbootstrap.com/) après la balise de titre (`<title>`).
+Le fichier *index.html* est le point d'entrée de votre application (voir ci-après). Tout le code que vous allez développer sera injecté dans `<div id="app"></div>`. 
 
 ```html
 <!DOCTYPE html>
@@ -185,8 +183,6 @@ Le fichier *index.html* est le point d'entrée de votre application (voir ci-apr
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polldle UI Vue.js 3</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
   <body>
     <div id="app"></div>
@@ -199,7 +195,7 @@ Le répertoire *src* contient le code [Vue.js](https://vuejs.org/) à proprement
 
 #### Fichier main.js
 
-Le fichier *main.js* sert à configurer notre projet. Il précise les composants à utiliser (`import App from './App.vue'`), initialiser des variables globales et précise où le rendu doit être effectué (`createApp(App).mount('#app')`). Ce fichier *main.js* est en quelque sorte le point d'entrée de l'application pour activer les fonctionnalités de [Vue.js](https://vuejs.org/).
+Le fichier *main.js* sert à configurer notre projet. Il précise les composants à utiliser (`import App from './App.vue'`), initialiser des variables globales, déclarer des composants externes ou des plugins globalement et effectuer le rendu (`createApp(App).mount('#app')`). Ce fichier *main.js* est en quelque sorte le point d'entrée de l'application pour activer les fonctionnalités de [Vue.js](https://vuejs.org/).
 
 ```javascript
 import { createApp } from 'vue'
@@ -207,6 +203,31 @@ import App from './App.vue'
 
 createApp(App).mount('#app')
 ```
+
+Comme nous avons besoin d'utiliser la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) dés le début de cet article, nous allons détailler la procédure pour ajouter cette bibliothèque au projet.
+
+* Saisir la commande suivante pour déclarer la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) avec l’outil de dépendances **npm**.
+
+```
+# Ajout de la dépendance Boostrap (CSS et JS)
+$ npm install --save bootstrap
+```
+
+* Éditer le fichier _main.js_ afin d'importer et de déclarer la bibliothèque CSS [Bootstrap](https://getbootstrap.com/) à l'ensemble du projet.
+
+```javascript
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// Dépendance vers le fichier CSS de Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"
+// Dépendance vers le fichier JavaScript de Bootstrap (pour gérer les aspects dynamiques)
+import "bootstrap"
+
+createApp(App).mount('#app')
+```
+
+Des détails supplémentaires sur la manière d'ajouter des composants externes ou des plugins sont disponibles sur la section [Composant externe ou plugin](#composant-externe-ou-plugin).
 
 #### Fichier App.vue
 
