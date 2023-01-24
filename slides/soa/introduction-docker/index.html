@@ -1,417 +1,585 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Découverte de Docker 🐳</title>
+    <base target="_blank" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css"
+      id="theme"
+    />
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
+      id="highlight-theme"
+    />
 
-	<title>Découverte de Docker 🐳</title>
-	<base target="_blank">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
-		id="highlight-theme">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.css"
+    />
+    <style>
+      /* Double colonnes */
+      .container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: center;
+      }
 
-	<link rel="stylesheet" type="text/css"
-		href="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.css" />
-	<style>
-		/* Double colonnes */
-		.container-flex {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-content: flex-start;
-			align-items: center;
-		}
+      /* Placer des petites images à côté du texte */
+      .wrapper-icon .icon {
+        position: relative;
+        margin: 0 10px 0 0;
+        width: 25px;
+        height: 25px;
+      }
 
-		/* Placer des petites images à côté du texte */
-		.wrapper-icon .icon {
-			position: relative;
-			margin: 0 10px 0 0;
-			width: 25px;
-			height: 25px;
-		}
+      .col-1 {
+        flex: 1;
+      }
 
-		.col-1 {
-			flex: 1;
-		}
+      .col-2 {
+        flex: 2;
+      }
 
-		.col-2 {
-			flex: 2;
-		}
+      .col-3 {
+        flex: 3;
+      }
 
-		.col-3 {
-			flex: 3;
-		}
+      .asciinema-theme-monokai .asciinema-terminal {
+        margin-top: 0px;
+      }
 
-		.asciinema-theme-monokai .asciinema-terminal {
-			margin-top: 0px;
-		}
+      .reveal pre code {
+        font-size: 0.55em;
+        line-height: 1.3em;
+        margin-top: 0px;
+      }
+    </style>
+  </head>
 
-		.reveal pre code {
-    		font-size: 0.55em;
-    		line-height: 1.3em;
-			margin-top: 0px;
-		}
-	</style>
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Page de garde -->
+        <section>
+          <img width="40%" src="/images/baleinebleue.png" />
 
-<body>
-	<div class="reveal">
-		<div class="slides">
-			<!-- Page de garde -->
-			<section>
-				<img width="40%" src="/images/baleinebleue.png" />
+          <h3><s>Adopter une baleine bleue</s></h3>
+          <h4>Découverte de Docker</h4>
+          <p>Mickaël BARON - Version 02-2022</p>
+          <p>
+            <a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a>
+            ou <a href="mailto:baron@ensma.fr">baron@ensma.fr</a>
+          </p>
+          <div class="wrapper-icon">
+            <a href="https://twitter.com/mickaelbaron"
+              ><img
+                class="icon"
+                src="/images/slides/twitter.svg"
+              />@mickaelbaron</a
+            >
+            <a href="https://mickael-baron.fr"
+              ><img
+                class="icon"
+                src="/images/slides/web.svg"
+              />mickael-baron.fr</a
+            >
+          </div>
+        </section>
 
-				<h3><s>Adopter une baleine bleue</s></h3>
-				<h4>Découverte de Docker</h4>
-				<p>Mickaël BARON - Version 02-2022</p>
-				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
-						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
-				<div class="wrapper-icon">
-					<a href="https://twitter.com/mickaelbaron"><img class="icon"
-							src="/images/slides/twitter.svg" />@mickaelbaron</a>
-					<a href="https://mickael-baron.fr"><img class="icon"
-							src="/images/slides/web.svg" />mickael-baron.fr</a>
-				</div>
-			</section>
+        <!-- Licence d'utilisation -->
+        <section>
+          <h3>Licence d'utilisation</h3>
 
-			<!-- Licence d'utilisation -->
-			<section>
-				<h3>Licence d'utilisation</h3>
+          <p><b>Creative Commons</b></p>
+          <p>Contrat Paternité</p>
+          <p>Partage des Conditions Initiales à l'Identique</p>
+          <p>2.0 France</p>
+          <p><img width="50%" src="/images/slides/by-sa.svg" /></p>
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+            >creativecommons.org/licenses/by-sa/4.0</a
+          >
+        </section>
 
-				<p><b>Creative Commons</b></p>
-				<p>Contrat Paternité</p>
-				<p>Partage des Conditions Initiales à l'Identique</p>
-				<p>2.0 France</p>
-				<p><img width="50%" src="/images/slides/by-sa.svg" /></p>
-				<a href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
-			</section>
+        <!-- Qui suis-je ? -->
+        <section>
+          <section>
+            <h3>Qui suis-je ?</h3>
 
-			<!-- Qui suis-je ? -->
-			<section>
-				<section>
-					<h3>Qui suis-je ?</h3>
+            <img
+              width="25%"
+              class="roundedImage"
+              src="/images/slides/mbaron.jpg"
+            />
+            <div class="wrapper-icon">
+              <p>
+                <a href="https://twitter.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/twitter.svg"
+                  />@mickaelbaron</a
+                >
+              </p>
+              <p>
+                <a href="https://mickael-baron.fr"
+                  ><img
+                    class="icon"
+                    src="/images/slides/web.svg"
+                  />mickael-baron.fr</a
+                >
+              </p>
+              <p>
+                <a href="https://github.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/github.svg"
+                  />mickaelbaron</a
+                >
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Ingénieur de Recherche ☀️</h3>
 
-					<img width="25%" class="roundedImage" src="/images/slides/mbaron.jpg" />
-					<div class="wrapper-icon">
-						<p><a href="https://twitter.com/mickaelbaron"><img class="icon"
-									src="/images/slides/twitter.svg" />@mickaelbaron</a></p>
-						<p><a href="https://mickael-baron.fr"><img class="icon"
-									src="/images/slides/web.svg" />mickael-baron.fr</a></p>
-						<p><a href="https://github.com/mickaelbaron"><img class="icon"
-									src="/images/slides/github.svg" />mickaelbaron</a></p>
-					</div>
-				</section>
-				<section>
-					<h3>Ingénieur de Recherche ☀️</h3>
+            <div class="container-flex">
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 200%">
+                  <li>
+                    Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées
+                    et des mo<b>D</b>èles (IDD)
+                  </li>
+                  <li>Valorisation des plateformes logicielles</li>
+                  <li>« Coach technique » auprès des usagés</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="65%" src="/images/slides/isae_ensma.svg" />
+                <img width="65%" src="/images/slides/lias.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a href="https://twitter.com/LIAS_LAB"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@LIAS_LAB</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://www.lias-lab.fr"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />www.lias-lab.fr</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Ancien Responsable 🌑 (2011-2021)</h3>
 
-					<div class="container-flex">
-						<div class="col-1" style="text-align: left;">
-							<ul style="line-height:200%">
-								<li>Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées et des
-									mo<b>D</b>èles
-									(IDD)</li>
-								<li>Valorisation des plateformes logicielles</li>
-								<li>« Coach technique » auprès des usagés</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="65%" src="/images/slides/isae_ensma.svg" />
-							<img width="65%" src="/images/slides/lias.png" />
-							<div class="wrapper-icon">
-								<p><a href="https://twitter.com/LIAS_LAB"><img class="icon"
-											src="/images/slides/twitter.svg" />@LIAS_LAB</a></p>
-								<p><a href="https://www.lias-lab.fr"><img class="icon"
-											src="/images/slides/web.svg" />www.lias-lab.fr</a></p>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Ancien Responsable 🌑 (2011-2021)</h3>
+            <div class="container-flex">
+              <div class="col-1">
+                <img width="100%" src="/images/slides/developpezcom.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a href="https://twitter.com/javaDeveloppez"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@javaDeveloppez</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://java.developpez.com"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />java.developpez.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 150%">
+                  <li>
+                    Rubriques : Java, Java Web, Android, Eclipse, Spring et
+                    Netbeans
+                  </li>
+                  <li>Rédacteurs de tutoriels</li>
+                  <li>Chiffres</li>
+                  <ul>
+                    <li>4 M de visiteurs</li>
+                    <li>12 M pages vues/mois</li>
+                    <li>7500 membres</li>
+                    <li>2000 forums</li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Disclaimer 🧎🏻‍♂️</h3>
+            <div style="text-align: left">
+              <p>De nombreux <u>raccourcis</u> ont été utilisés</p>
+              <p>Niveau : débutant (savoir créer une machine virtuelle)</p>
+              <p>
+                Présentation rapide de
+                <a href="https://www.docker.com/">Docker</a> (format ~ 60 min)
+              </p>
+              <ul style="line-height: 200%">
+                <li>
+                  Focaliser sur le <b>pourquoi</b>
+                  <a href="https://www.docker.com/">Docker</a> est utile
+                </li>
+                <li>Se limiter aux principaux concepts</li>
+                <li>
+                  Illustrer par des démonstrations en live (<a
+                    href="https://asciinema.org/"
+                    >Asciinema</a
+                  >)
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Dans la même série ... avec Docker</h3>
+            <ul style="line-height: 150%">
+              <li>
+                <a
+                  href="https://mickael-baron.fr/soa/microservices-mise-en-oeuvre"
+                  >Mise en œuvre d'architectures microservices avec Java et
+                  Docker (support de cours)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/mickaelbaron/javamicroservices-tutorial"
+                  >Microservices avec Docker - Développement avec le langage
+                  Java (tutoriel)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://localhost:4000/soa/microservices-mise-en-oeuvre-kubernetes"
+                  >Mise en œuvre d'architectures microservices avec Kubernetes
+                  (support de cours)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/mickaelbaron/microservices-kubernetes-gettingstarted-tutorial"
+                  >Microservices avec Kubernetes - Les bases de K8s
+                  (tutoriel)</a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section
+          data-background-size="55%"
+          data-background-opacity="0.2"
+          data-background-image="images/plan.png"
+        >
+          <h3>Objectif du support de cours</h3>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<img width="100%" src="/images/slides/developpezcom.png" />
-							<div class="wrapper-icon">
-								<p><a href="https://twitter.com/javaDeveloppez"><img class="icon"
-											src="/images/slides/twitter.svg" />@javaDeveloppez</a></p>
-								<p><a href="https://java.developpez.com"><img class="icon"
-											src="/images/slides/web.svg" />java.developpez.com</a></p>
-
-							</div>
-						</div>
-						<div class="col-1" style="text-align: left;">
-							<ul style="line-height:150%">
-								<li>Rubriques : Java, Java Web, Android, Eclipse, Spring et Netbeans</li>
-								<li>Rédacteurs de tutoriels</li>
-								<li>Chiffres</li>
-								<ul>
-									<li>4 M de visiteurs</li>
-									<li>12 M pages vues/mois</li>
-									<li>7500 membres</li>
-									<li>2000 forums</li>
-								</ul>
-							</ul>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Disclaimer 🧎🏻‍♂️</h3>
-					<div style="text-align: left;">
-						<p>De nombreux <u>raccourcis</u> ont été utilisés</p>
-						<p>Niveau : débutant (savoir créer une machine virtuelle)</p>
-						<p>Présentation rapide de <a href="https://www.docker.com/">Docker</a> (format ~ 60 min)</p>
-						<ul style="line-height:200%">
-							<li>Focaliser sur le <b>pourquoi</b> <a href="https://www.docker.com/">Docker</a> est utile</li>
-							<li>Se limiter aux principaux concepts</li>
-							<li>Illustrer par des démonstrations en live (<a href="https://asciinema.org/">Asciinema</a>)</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Dans la même série ... avec Docker</h3>
-					<ul style="line-height:150%">
-						<li><a href="https://mickael-baron.fr/soa/microservices-mise-en-oeuvre">Mise en œuvre d'architectures microservices avec Java et Docker (support de cours)</a></li>
-						<li><a href="https://github.com/mickaelbaron/javamicroservices-tutorial">Microservices avec Docker - Développement avec le langage Java (tutoriel)</a></li>
-						<li><a href="http://localhost:4000/soa/microservices-mise-en-oeuvre-kubernetes">Mise en œuvre d'architectures microservices avec Kubernetes (support de cours)</a></li>
-						<li><a href="https://github.com/mickaelbaron/microservices-kubernetes-gettingstarted-tutorial">Microservices avec Kubernetes - Les bases de K8s (tutoriel)</a></li>
-					</ul>
-				</section>
-			</section>
-			<section data-background-size="55%" data-background-opacity="0.2"
-					data-background-image="images/plan.png">
-					<h3>Objectif du support de cours</h3>
-
-					<ul style="line-height:175%">
-						<li>Pourquoi ?</li>
-						<li>Généralités</li>
-						<li>Image</li>
-						<li>Conteneur</li>
-						<li>Construction d'une image</li>
-						<li>Gestion des données</li>
-						<li>Redirection des ports</li>
-					</ul>
-			</section>
-			<section>
-				<section>
-					<h3>Contexte : besoin d'isoler ...</h3>
-					<div style="text-align: left;">
-						<p>Exécuter une application sur un <b>OS non supporté</b></p>
-						<ul>
-							<li>Ex : ROS qui ne fonctionne que sous Ubuntu 16.04</li>
-						</ul>
-						<p><b>Multiplier les instances</b> d’une même application</p>
-						<ul>
-							<li>Ex : monter en charge une application web</li>
-						</ul>
-						<p>Exécuter une application en mode <b>« bac à sable »</b></p>
-						<ul>
-							<li>Ex : tester un prototype de recherche</li>
-						</ul>
-						<p>Reproduire son <b>environnement de production</b></p>
-						<ul>
-							<li>Ex : PHP, MySQL, compilateur, Latex</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Comment isoler ?</h3>
-					<p>Pour isoler une application => trois techniques</p>
-					<div class="container-flex">
-						<div class="col-1">
-							<p><b>Physique</b></p>
-							<img width="85%" src="images/physicalmachine.png" />
-							
-						</div>
-						<div class="col-1">
-							<p><b>Virtualisation</b></p>
-							<img width="85%" src="images/virtualmachine.png" />
-						</div>
-						<div class="col-1">
-							<p><b>Conteneur</b></p>
-							<img width="85%" src="images/container.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Virtualisation VS Conteneur</h3>
-					<p>Comparatif sur les performances (valeurs approx.)</p>
-					<div style="font-size: 45px;">
-						<table style="border-collapse: separate;border-spacing: 0px 30px;">
-							<thead>
-								<tr>
-									<th></th>
-									<th>Virtualisation</th>
-									<th>Conteneur</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><b>Démarrage</b></td>
-									<td>2 min.</td>
-									<td>0.2 sec</td>
-								</tr>
-								<tr>
-									<td><b>Mémoire</b></td>
-									<td>256 Mo min.</td>
-									<td>0.3 Mo</td>
-								</tr>
-								<tr>
-									<td><b>Espace Disque</b></td>
-									<td>1 Go min.</td>
-									<td>0.1 Mo</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</section>
-			</section>
-			<section>
-				<section data-background-size="50%" data-background-opacity="0.1"
-				data-background-image="images/dockerlogo.png">
-					<h3>Généralités Commerciales</h3>
-					<div style="text-align: left;">
-						<p>Docker Inc. est une entreprise fondée en mars 2013</p>
-						<p>Sites web officiels</p>
-						<ul>
-							<li>
-								Site référence : <a href="https://www.docker.com">www.docker.com</a>
-							</li>
-							<li>
-								Documentation : <a href="https://docs.docker.com">docs.docker.com</a>
-							</li>
-							<li>
-								Installation : <a href="https://docs.docker.com/engine/install">docs.docker.com/engine/install</a>
-							</li>
-							<li>
-								Twitter : <a href="https://twitter.com/Docker">twitter.com/Docker</a>
-							</li>
-							<li>
-								Blog : <a href="https://www.docker.com/blog">www.docker.com/blog</a>
-							</li>
-						</ul>
-						<p>Propose des outils du même nom que la société</p>
-					</div>
-				</section>
-				<section data-background-size="60%" data-background-opacity="0.1"
-				data-background-image="images/dockerlinux.png">
-					<h3>Généralités Techniques</h3>
-					<div style="text-align: left;">
-						<p>Basé sur le principe des conteneurs</p>
-						<ul>
-							<li><a href="https://en.wikipedia.org/wiki/LXC">LinuX Containers (LXC)</a> : isolation exécution</li>
-							<li><a href="https://en.wikipedia.org/wiki/Cgroups">cgroups</a> : isolation au niv. noyau Linux</li>
-							<li><a href="https://en.wikipedia.org/wiki/Union_mount">Union Mounting</a> : point de montage</li>
-						</ul>
-						<p>Outils principalement en ligne de commande (CLI)</p>
-						<p>Fonctionne nativement sous Linux</p>
-						<p>Sous Windows et macOS nécessite une machine virtuelle Linux (<a href="https://www.docker.com/products/docker-desktop">DockerDesktop</a>)</p>
-					</div>
-				</section>
-				<section>
-					<h3>Docker : un // avec Java ❤️</h3>
-					<img width="80%" src="images/dockervsjava.png" />
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Images</h3>
-					<div style="text-align: left;">
-						<p>Dans un système Linux, <b>deux systèmes de fichiers</b></p>
-						<ul>
-							<li><em>boots</em> : contient <em>boot loader</em> et noyau (kernel)</li>
-							<li><em>roots</em> : contient structure des répertoires</li>
-						</ul>
-					</div>
-					<img width="70%" src="images/images1.png" />
-				</section>
-				<section>
-					<h3>Images</h3>
-					<div style="text-align: left;">
-						<p>Plusieurs <em>rootfs</em> ?</p>
-						<ul style="line-height:200%">
-							<li>Sous un système Linux classique un seul <em>rootfs</em></li>
-							<li>Sous <a href="https://www.docker.com/">Docker</a> possibilité de <b>plusieurs <em>rootfs</em></b></li>
-						</ul>
-					</div>
-					<img width="45%" src="images/images2.png" />
-				</section>
-				<section>
-					<h3>Images</h3>
-					<div style="text-align: left;">
-						<p>Le <em>rootfs</em> constitue l’<em>image de base</em> d’un conteneur</p>
-						<p>Une image ne peut être modifiée car en <b>lecture seule</b></p>
-					</div>
-					<img width="75%" src="images/images3.png" />
-				</section>
-				<section>
-					<h3>Images</h3>
-					<div style="text-align: left;">
-						<p>Une image est composée de couches appelées <em>layer</em></p>
-						<p>Une couche est liée à la couche inférieure dite <em>parente</em></p>
-						<p>Toutes les couches forme l'<em>image finale</em></p>
-					</div>
-					<div class="container-flex">
-						<div class="col-2">
-							<ul style="line-height:200%">
-								<li>Image finale = Deb emacs Apache</li>
-								<li>Image de base = Debian</li>
-								<li>Deuxième couche = Emacs</li>
-								<li>Couche parente Apache = Emacs</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="100%" src="images/images4.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Images</h3>
-					<div style="text-align: left;">
-						<p>Une <em>image finale</em> peut être réutilisée pour construire de nouvelles images</p>
-						<p>Où trouver des images ?</p>
-						<ul style="line-height:175%">
-							<li>Registre public d'images : <a href="https://hub.docker.com/">hub.docker.com</a></li>
-							<li>Possibilité de créer son <b>registre privé d'images</b></li>
-						</ul>
-					</div>
-					<img width="50%" src="images/dockerhub.png" />
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Conteneur</h3>
-					<div style="text-align: left;">
-						<p>Un <em>conteneur</em> est une <b>couche modifiable</b> liée à la couche inférieure</p>
-						<p>Seul le conteneur est en <b>lecture et écriture</b></p>
-						<p>Comparaison avec le monde Java</p>
-					</div>
-					<div class="container-flex">
-						<div class="col-2">
-							<ul style="line-height:145%">
-								<li>bootfs = JVM</li>
-								<li>Image de base = classe Object</li>
-								<li>Image = classe</li>
-								<li>Relation parent = héritage</li>
-								<li>Conteneur = instance d'une classe</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="100%" src="images/dockercontainer.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Conteneur interactif (démo1)</h3>
-					<p>Commandes : <b>pull, run et ps</b></p>
-					<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Télécharge l&prime;image busybox depuis DockerHub
+          <ul style="line-height: 175%">
+            <li>Pourquoi ?</li>
+            <li>Généralités</li>
+            <li>Image</li>
+            <li>Conteneur</li>
+            <li>Construction d'une image</li>
+            <li>Gestion des données</li>
+            <li>Redirection des ports</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h3>Contexte : besoin d'isoler ...</h3>
+            <div style="text-align: left">
+              <p>Exécuter une application sur un <b>OS non supporté</b></p>
+              <ul>
+                <li>Ex : ROS qui ne fonctionne que sous Ubuntu 16.04</li>
+              </ul>
+              <p><b>Multiplier les instances</b> d’une même application</p>
+              <ul>
+                <li>Ex : monter en charge une application web</li>
+              </ul>
+              <p>Exécuter une application en mode <b>« bac à sable »</b></p>
+              <ul>
+                <li>Ex : tester un prototype de recherche</li>
+              </ul>
+              <p>Reproduire son <b>environnement de production</b></p>
+              <ul>
+                <li>Ex : PHP, MySQL, compilateur, Latex</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Comment isoler ?</h3>
+            <p>Pour isoler une application => trois techniques</p>
+            <div class="container-flex">
+              <div class="col-1">
+                <p><b>Physique</b></p>
+                <img width="85%" src="images/physicalmachine.png" />
+              </div>
+              <div class="col-1">
+                <p><b>Virtualisation</b></p>
+                <img width="85%" src="images/virtualmachine.png" />
+              </div>
+              <div class="col-1">
+                <p><b>Conteneur</b></p>
+                <img width="85%" src="images/container.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Virtualisation VS Conteneur</h3>
+            <p>Comparatif sur les performances (valeurs approx.)</p>
+            <div style="font-size: 45px">
+              <table
+                style="border-collapse: separate; border-spacing: 0px 30px"
+              >
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Virtualisation</th>
+                    <th>Conteneur</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>Démarrage</b></td>
+                    <td>2 min.</td>
+                    <td>0.2 sec</td>
+                  </tr>
+                  <tr>
+                    <td><b>Mémoire</b></td>
+                    <td>256 Mo min.</td>
+                    <td>0.3 Mo</td>
+                  </tr>
+                  <tr>
+                    <td><b>Espace Disque</b></td>
+                    <td>1 Go min.</td>
+                    <td>0.1 Mo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-size="50%"
+            data-background-opacity="0.1"
+            data-background-image="images/dockerlogo.png"
+          >
+            <h3>Généralités Commerciales</h3>
+            <div style="text-align: left">
+              <p>Docker Inc. est une entreprise fondée en mars 2013</p>
+              <p>Sites web officiels</p>
+              <ul>
+                <li>
+                  Site référence :
+                  <a href="https://www.docker.com">www.docker.com</a>
+                </li>
+                <li>
+                  Documentation :
+                  <a href="https://docs.docker.com">docs.docker.com</a>
+                </li>
+                <li>
+                  Installation :
+                  <a href="https://docs.docker.com/engine/install"
+                    >docs.docker.com/engine/install</a
+                  >
+                </li>
+                <li>
+                  Twitter :
+                  <a href="https://twitter.com/Docker">twitter.com/Docker</a>
+                </li>
+                <li>
+                  Blog :
+                  <a href="https://www.docker.com/blog">www.docker.com/blog</a>
+                </li>
+              </ul>
+              <p>Propose des outils du même nom que la société</p>
+            </div>
+          </section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.1"
+            data-background-image="images/dockerlinux.png"
+          >
+            <h3>Généralités Techniques</h3>
+            <div style="text-align: left">
+              <p>Basé sur le principe des conteneurs</p>
+              <ul>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/LXC"
+                    >LinuX Containers (LXC)</a
+                  >
+                  : isolation exécution
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Cgroups">cgroups</a> :
+                  isolation au niv. noyau Linux
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Union_mount"
+                    >Union Mounting</a
+                  >
+                  : point de montage
+                </li>
+              </ul>
+              <p>Outils principalement en ligne de commande (CLI)</p>
+              <p>Fonctionne nativement sous Linux</p>
+              <p>
+                Sous Windows et macOS nécessite une machine virtuelle Linux (<a
+                  href="https://www.docker.com/products/docker-desktop"
+                  >DockerDesktop</a
+                >)
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Docker : un // avec Java ❤️</h3>
+            <img width="80%" src="images/dockervsjava.png" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Images</h3>
+            <div style="text-align: left">
+              <p>Dans un système Linux, <b>deux systèmes de fichiers</b></p>
+              <ul>
+                <li>
+                  <em>boots</em> : contient <em>boot loader</em> et noyau
+                  (kernel)
+                </li>
+                <li><em>roots</em> : contient structure des répertoires</li>
+              </ul>
+            </div>
+            <img width="70%" src="images/images1.png" />
+          </section>
+          <section>
+            <h3>Images</h3>
+            <div style="text-align: left">
+              <p>Plusieurs <em>rootfs</em> ?</p>
+              <ul style="line-height: 200%">
+                <li>Sous un système Linux classique un seul <em>rootfs</em></li>
+                <li>
+                  Sous <a href="https://www.docker.com/">Docker</a> possibilité
+                  de <b>plusieurs <em>rootfs</em></b>
+                </li>
+              </ul>
+            </div>
+            <img width="45%" src="images/images2.png" />
+          </section>
+          <section>
+            <h3>Images</h3>
+            <div style="text-align: left">
+              <p>
+                Le <em>rootfs</em> constitue l’<em>image de base</em> d’un
+                conteneur
+              </p>
+              <p>Une image ne peut être modifiée car en <b>lecture seule</b></p>
+            </div>
+            <img width="75%" src="images/images3.png" />
+          </section>
+          <section>
+            <h3>Images</h3>
+            <div style="text-align: left">
+              <p>Une image est composée de couches appelées <em>layer</em></p>
+              <p>
+                Une couche est liée à la couche inférieure dite <em>parente</em>
+              </p>
+              <p>Toutes les couches forme l'<em>image finale</em></p>
+            </div>
+            <div class="container-flex">
+              <div class="col-2">
+                <ul style="line-height: 200%">
+                  <li>Image finale = Deb emacs Apache</li>
+                  <li>Image de base = Debian</li>
+                  <li>Deuxième couche = Emacs</li>
+                  <li>Couche parente Apache = Emacs</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="100%" src="images/images4.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Images</h3>
+            <div style="text-align: left">
+              <p>
+                Une <em>image finale</em> peut être réutilisée pour construire
+                de nouvelles images
+              </p>
+              <p>Où trouver des images ?</p>
+              <ul style="line-height: 175%">
+                <li>
+                  Registre public d'images :
+                  <a href="https://hub.docker.com/">hub.docker.com</a>
+                </li>
+                <li>Possibilité de créer son <b>registre privé d'images</b></li>
+              </ul>
+            </div>
+            <img width="50%" src="images/dockerhub.png" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Conteneur</h3>
+            <div style="text-align: left">
+              <p>
+                Un <em>conteneur</em> est une <b>couche modifiable</b> liée à la
+                couche inférieure
+              </p>
+              <p>Seul le conteneur est en <b>lecture et écriture</b></p>
+              <p>Comparaison avec le monde Java</p>
+            </div>
+            <div class="container-flex">
+              <div class="col-2">
+                <ul style="line-height: 145%">
+                  <li>bootfs = JVM</li>
+                  <li>Image de base = classe Object</li>
+                  <li>Image = classe</li>
+                  <li>Relation parent = héritage</li>
+                  <li>Conteneur = instance d'une classe</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="100%" src="images/dockercontainer.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Conteneur interactif (démo1)</h3>
+            <p>Commandes : <b>pull, run et ps</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Télécharge l&prime;image busybox depuis DockerHub
 $ docker pull busybox
 Using default tag: latest
 latest: Pulling from library/busybox
@@ -438,16 +606,16 @@ $ 🐳 exit
 $ docker ps –a
 CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS                     PORTS   NAMES
 d2bc3ccd2ee1   busybox   "/bin/sh"   26 minutes ago   Exited (0) 23 minutes ago          goofy_bhabha</code></pre>
-				</section>
-				<section>
-					<h3>Conteneur interactif (démo1)</h3>
-					<p>Commandes : <b>pull, run et ps</b></p>
-					<div id="demo1"></div>
-				</section>
-				<section>
-					<h3>Conteneur détaché (démo2)</h3>
-					<p>Commandes Docker : <b>run, logs, ps, attach</b></p>
-					<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Démarre un processus très long
+          </section>
+          <section>
+            <h3>Conteneur interactif (démo1)</h3>
+            <p>Commandes : <b>pull, run et ps</b></p>
+            <div id="demo1"></div>
+          </section>
+          <section>
+            <h3>Conteneur détaché (démo2)</h3>
+            <p>Commandes Docker : <b>run, logs, ps, attach</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Démarre un processus très long
 $ JOB=$(docker run -d busybox /bin/sh -c 'while true; do echo Hello LIAS $(date); sleep 1; done')
 						
 # Affichage des informations
@@ -473,17 +641,17 @@ CONTAINER ID  IMAGE    COMMAND              CREATED        STATUS           PORT
 01d4dacd55e2  busybox  "/bin/sh -c 'while"  9 minutes ago  Exited (0) 44 s         reverent_franklin
 						
 # Suppression d&prime;un conteneur
-$ docker rm $JOB # Un conteneur doit être arrêté pour le supprimer ou forcer par l’option -f</code></pre>		
-				</section>
-				<section>
-					<h3>Conteneur détaché (démo2)</h3>
-					<p>Commandes : <b>run, logs, ps, attach</b></p>
-					<div id="demo2"></div>	
-				</section>
-				<section>
-					<h3>Conteneur sans état (démo3)</h3>
-					<p>Commandes : <b>run, exec, diff, rm</b></p>
-					<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Création de fichiers dans le répertoire /tmp
+$ docker rm $JOB # Un conteneur doit être arrêté pour le supprimer ou forcer par l’option -f</code></pre>
+          </section>
+          <section>
+            <h3>Conteneur détaché (démo2)</h3>
+            <p>Commandes : <b>run, logs, ps, attach</b></p>
+            <div id="demo2"></div>
+          </section>
+          <section>
+            <h3>Conteneur sans état (démo3)</h3>
+            <p>Commandes : <b>run, exec, diff, rm</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Création de fichiers dans le répertoire /tmp
 $ JOB=$(docker run -d busybox /bin/sh -c 'while true ; do /bin/touch /tmp/$(date +%H%M%S); sleep 3; done')
 
 # Liste le contenu du répertoire /tmp
@@ -506,68 +674,87 @@ $ docker run -it busybox /bin/ls /tmp
 
 # N&prime;avez-vous jamais voulu faire cela ? ‘rm –rf /usr’ 
 $ docker run -it busybox /bin/sh -c '/bin/rm -rf /usr;/bin/ls /'</code></pre>
-				</section>
-				<section>
-					<h3>Conteneur sans état (démo3)</h3>
-					<p>Commandes : <b>run, exec, diff, rm</b></p>
-					<div id="demo3"></div>
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Créer une image</h3>
-					<div style="text-align: left;">
-						<p>À la création d’un conteneur, le système de fichiers correspond à celui de l’image <em>parente</em></p>
-						<p>Lors de l’<b>arrêt du conteneur</b> les modifications sont <b>perdues</b></p>
-						<p>J'aimerais pouvoir conserver ce qui suit ?</p>
-						<ul style="line-height:145%">
-							<li>Installations de programmes</li>
-							<li>Organisation de répertoires</li>
-							<li>Configuration (réseaux, programmes...)</li>
-						</ul>
-						<p>Solution ➡️ créer une nouvelle image</p>
-					</div>
-				</section>
-				<section>
-					<h3>Créer une image</h3>
-					<div style="text-align: left;">
-						<p>Pour créer une nouvelle image <a href="https://www.docker.com/">Docker</a> dans votre dépôt local</p>
-						<ul>
-							<li>commande <em>commit</em></li>
-							<li>utilisation d'un fichier <em>Dockerfile</em></li>
-						</ul>
-						<p>Commande <em>commit</em></p>
-						<ul>
-							<li>Passage d'un conteneur en image</li>
-							<li>Conteneur à l'arrêt ou en exécution</li>
-						</ul>
-						<p>Fichier <em>Dockerfile</em> (détaillé par le suite)</p>
-					</div>
-				</section>
-				<section>
-					<h3>Créer une image (cas d'étude réel)</h3>
-					<div style="text-align: left;">
-						<p>Cas d'étude : <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a></p>
-						<ul>
-							<li>Moteur de stockage de données RDF</li>
-							<li>Interpréteur SPARQL (en ligne de commande</li>
-						</ul>
-						<p>Limitations de la version actuelle <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a></p>
-						<ul>
-							<li>Ne compile (C++) que sous Linux (Ubuntu 16.04)</li>
-							<li>Pas de SPARQL Endpoint (interface web)</li>
-						</ul>
-						<p>Objectifs ➡️ configurer son poste de développeur</p>
-						<ul>
-							<li>Proposer une image Docker de <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a></li>
-							<li>Importer des données et exécuter des requêtes</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Créer image via commit (démo4)</h3>
-					<p>Commandes : <b>run, exec, diff, rm</b></p>
-					<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Créer un conteneur à partir d’une image de base
+          </section>
+          <section>
+            <h3>Conteneur sans état (démo3)</h3>
+            <p>Commandes : <b>run, exec, diff, rm</b></p>
+            <div id="demo3"></div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Créer une image</h3>
+            <div style="text-align: left">
+              <p>
+                À la création d’un conteneur, le système de fichiers correspond
+                à celui de l’image <em>parente</em>
+              </p>
+              <p>
+                Lors de l’<b>arrêt du conteneur</b> les modifications sont
+                <b>perdues</b>
+              </p>
+              <p>J'aimerais pouvoir conserver ce qui suit ?</p>
+              <ul style="line-height: 145%">
+                <li>Installations de programmes</li>
+                <li>Organisation de répertoires</li>
+                <li>Configuration (réseaux, programmes...)</li>
+              </ul>
+              <p>Solution ➡️ créer une nouvelle image</p>
+            </div>
+          </section>
+          <section>
+            <h3>Créer une image</h3>
+            <div style="text-align: left">
+              <p>
+                Pour créer une nouvelle image
+                <a href="https://www.docker.com/">Docker</a> dans votre dépôt
+                local
+              </p>
+              <ul>
+                <li>commande <em>commit</em></li>
+                <li>utilisation d'un fichier <em>Dockerfile</em></li>
+              </ul>
+              <p>Commande <em>commit</em></p>
+              <ul>
+                <li>Passage d'un conteneur en image</li>
+                <li>Conteneur à l'arrêt ou en exécution</li>
+              </ul>
+              <p>Fichier <em>Dockerfile</em> (détaillé par le suite)</p>
+            </div>
+          </section>
+          <section>
+            <h3>Créer une image (cas d'étude réel)</h3>
+            <div style="text-align: left">
+              <p>
+                Cas d'étude :
+                <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a>
+              </p>
+              <ul>
+                <li>Moteur de stockage de données RDF</li>
+                <li>Interpréteur SPARQL (en ligne de commande</li>
+              </ul>
+              <p>
+                Limitations de la version actuelle
+                <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a>
+              </p>
+              <ul>
+                <li>Ne compile (C++) que sous Linux (Ubuntu 16.04)</li>
+                <li>Pas de SPARQL Endpoint (interface web)</li>
+              </ul>
+              <p>Objectifs ➡️ configurer son poste de développeur</p>
+              <ul>
+                <li>
+                  Proposer une image Docker de
+                  <a href="https://github.com/gh-rdf3x/gh-rdf3x">rdf3x</a>
+                </li>
+                <li>Importer des données et exécuter des requêtes</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Créer image via commit (démo4)</h3>
+            <p>Commandes : <b>run, exec, diff, rm</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Créer un conteneur à partir d’une image de base
 $ docker run –it --name gh_rdf3x ubuntu:16.04 /bin/sh
 
 # Exécuter les commandes
@@ -596,33 +783,37 @@ mickaelbaron/gh_rdf3x_manual  latest     c40410395aed    About a minute ago   53
 Ubuntu                        latest     ac6a7980c6c2    5 weeks ago          123 MB
 
 # Création d’un conteneur à partir de la nouvelle image
-$ docker run –it --name gh_rdf3x mickaelbaron/gh_rdf3x_manual /bin/sh</code></pre></section>
-				<section>
-					<h3>Créer image via commit (démo4)</h3>
-					<p>Commandes : <b>run, exec, diff, rm</b></p>
-					<div id="demo4"></div>
-				</section>
-				<section>
-					<h3>Créer image via Dockerfile</h3>
-					<div style="text-align: left;">
-						<p>Un fichier <em>Dockerfile</em> pour créer des images</p>
-						<ul>
-							<li>Provisionner (installer des apps, copier des fichiers)</li>
-							<li>Configuration (port, tâche de fond)</li>
-						</ul>
-						<p>Format du fichier</p>
-						<ul>
-							<li># pour les commentaires</li>
-							<li>INSTRUCTION arguments</li>
-						</ul>
-						<p><b>Chaque instruction</b> est exécutée <b>indépendament</b> et suivie par un <b>commit</b> ➡️ image à chaque instruction</p>
-					</div>
-				</section>
-				<section>
-					<h3>Créer image via Dockerfile (démo5)</h3>
-					<div style="text-align: left;">
-						<p>Préparation à la construction d’une image RDF-3X</p>
-						<pre><code class="language-shell" style="max-height: 500px;font-size: 1em;" data-noescape data-trim># Indique l&prime;image de base
+$ docker run –it --name gh_rdf3x mickaelbaron/gh_rdf3x_manual /bin/sh</code></pre>
+          </section>
+          <section>
+            <h3>Créer image via commit (démo4)</h3>
+            <p>Commandes : <b>run, exec, diff, rm</b></p>
+            <div id="demo4"></div>
+          </section>
+          <section>
+            <h3>Créer image via Dockerfile</h3>
+            <div style="text-align: left">
+              <p>Un fichier <em>Dockerfile</em> pour créer des images</p>
+              <ul>
+                <li>Provisionner (installer des apps, copier des fichiers)</li>
+                <li>Configuration (port, tâche de fond)</li>
+              </ul>
+              <p>Format du fichier</p>
+              <ul>
+                <li># pour les commentaires</li>
+                <li>INSTRUCTION arguments</li>
+              </ul>
+              <p>
+                <b>Chaque instruction</b> est exécutée <b>indépendament</b> et
+                suivie par un <b>commit</b> ➡️ image à chaque instruction
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Créer image via Dockerfile (démo5)</h3>
+            <div style="text-align: left">
+              <p>Préparation à la construction d’une image RDF-3X</p>
+              <pre><code class="language-shell" style="max-height: 500px;font-size: 1em;" data-noescape data-trim># Indique l&prime;image de base
 FROM ubuntu:16.04
 LABEL maintener="Mickael BARON"
 
@@ -637,28 +828,40 @@ RUN git clone https://github.com/gh-rdf3x/gh-rdf3x && \
 
 # Précise le répertoire courant à la création du conteneur
 WORKDIR /output</code></pre>
-					</div>
-				</section>
-				<section>
-					<h3>Créer image via Dockerfile (démo5)</h3>
-					<div id="demo5"></div>
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Persister les données avec les volumes</h3>
-					<div style="text-align: left;">
-						<p>Un conteneur est volatile : les données produites sont perdues lors de la destruction du conteneur</p>
-						<p>Comment s’assurer que si je recrée mon conteneur je retrouverai mes données ? ➡️ utilisation des Volumes</p>
-						<p>Dossier qui se trouve à la fois sur le hôte et sur le conteneur (comme un dossier partagé)</p>
-						<p>Pour créer un volume, utilisation du paramètre <em>-v</em> lors de la création d’un conteneur</p>
-					</div>
-				</section>
-				<section>
-					<h3>Les volumes (démo6)</h3>
-					<p>Commande : <b>run</b></p>
-				
-				<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim>$ ls $(pwd)/data
+            </div>
+          </section>
+          <section>
+            <h3>Créer image via Dockerfile (démo5)</h3>
+            <div id="demo5"></div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Persister les données avec les volumes</h3>
+            <div style="text-align: left">
+              <p>
+                Un conteneur est volatile : les données produites sont perdues
+                lors de la destruction du conteneur
+              </p>
+              <p>
+                Comment s’assurer que si je recrée mon conteneur je retrouverai
+                mes données ? ➡️ utilisation des Volumes
+              </p>
+              <p>
+                Dossier qui se trouve à la fois sur le hôte et sur le conteneur
+                (comme un dossier partagé)
+              </p>
+              <p>
+                Pour créer un volume, utilisation du paramètre <em>-v</em> lors
+                de la création d’un conteneur
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Les volumes (démo6)</h3>
+            <p>Commande : <b>run</b></p>
+
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim>$ ls $(pwd)/data
 lubm-data.nt query.sparql
 
 # Création d&prime;une base RDF-3X via un conteneur Docker
@@ -687,31 +890,41 @@ RDF-3X query interface
 ...    
 
 </code></pre>
-				</section>
-				<section>
-					<h3>Les volumes (démo6)</h3>
-					<p>Commande : <b>run</b></p>
-					<div id="demo6"></div>
-				</section>
-			</section>
-			<section>
-				<section>
-					<h3>Rediriger les ports</h3>
-					<div style="text-align: left;">
-						<p>Lors de la création d’un conteneur, une adresse IP lui est assignée dans un sous-réseau <a href="https://www.docker.com/">Docker</a></p>
-						<p>Pour accéder à un port particulier du conteneur</p>
-						<ul>
-							<li>en passant par l’adresse IP du conteneur:PORT</li>
-							<li>en passant par la redirection de port</li>
-						</ul>
-						<p>La redirection de port permet d’accéder au conteneur en 	utilisant l’accès réseau du système hôte</p>
-						<p>Pour rediriger un port réseau utilisation du paramètre <em>-p portHote:portConteneur</em></p>
-					</div>
-				</section>
-				<section>
-					<h3>Rediriger les ports (démo7)</h3>
-					<p>Commande : <b>run</b></p>
-					<pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Créer un conteneur Postgres avec une redirection du port 5432 vers le 54320 de l’hôte
+          </section>
+          <section>
+            <h3>Les volumes (démo6)</h3>
+            <p>Commande : <b>run</b></p>
+            <div id="demo6"></div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Rediriger les ports</h3>
+            <div style="text-align: left">
+              <p>
+                Lors de la création d’un conteneur, une adresse IP lui est
+                assignée dans un sous-réseau
+                <a href="https://www.docker.com/">Docker</a>
+              </p>
+              <p>Pour accéder à un port particulier du conteneur</p>
+              <ul>
+                <li>en passant par l’adresse IP du conteneur:PORT</li>
+                <li>en passant par la redirection de port</li>
+              </ul>
+              <p>
+                La redirection de port permet d’accéder au conteneur en
+                utilisant l’accès réseau du système hôte
+              </p>
+              <p>
+                Pour rediriger un port réseau utilisation du paramètre
+                <em>-p portHote:portConteneur</em>
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Rediriger les ports (démo7)</h3>
+            <p>Commande : <b>run</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Créer un conteneur Postgres avec une redirection du port 5432 vers le 54320 de l’hôte
 $ docker run --name postgres54320 -p 54320:5432 -d postgres
 efee2388c2e8ed3c8b135731159a809a88f0681385a4ff70c145a0e690a2d57e
 
@@ -737,140 +950,185 @@ $ docker run --name postgres54321 -p 54321:5432 -d postgres
 # Utilisation de l’outil psql depuis l’hôte
 $ psql -U postgres -d postgres -h localhost -p 54321
 ...</code></pre>
-				</section>
-				<section>
-					<h3>Rediriger les ports (démo7)</h3>
-					<p>Commande : <b>run</b></p>
-					<div id="demo7"></div>
-				</section>
-			</section>
-			<section>
-				<h3>Aller plus loin</h3>
-				<div style="text-align: left;">
-				<p>Présentation rapide de <a href="https://www.docker.com/">Docker</a> et de ses commandes</p>
-				<p><b>À approfondir</b></p>
-				<ul>
-					<li>la création des images (multi-stage)</li>
-					<li>la création des sous-réseaux</li>
-					<li>le déport d’affichage X11</li>
-				</ul>
-				<p><b>À découvrir</b></p>
-				<ul>
-					<li>Composition de conteneurs avec <b>docker-compose</b></li>
-					<li>Gestion de conteneurs distants <b>docker-machine</b></li>
-					<li>Orchestration de conteneurs avec <a href="https://mickael-baron.fr/soa/microservices-mise-en-oeuvre-kubernetes">Kubernetes</a></li>
-				</ul>
-				</div>
-			</section>
-			<section>
-				<h3>À quoi cela peut servir (update) ?</h3>
-				<div style="text-align: left;">
-					<p>Pour configurer son poste de travail</p>
-					<ul>
-						<li>NoSQL, ROS, Hadoop, serveur web</li>
-					</ul>
-					<p>Pour une publication</p>
-					<ul>
-						<li>Image de son expérimentation</li>
-						<li>Lien vers l’image sur la publication</li>
-					</ul>
-					<p>Déployer des outils pour la recherche</p>
-					<ul>
-						<li>Faciliter le déploiement et la mise à jour </li>
-						<li>Sharelatex, Redmine, Gitlab, Jenkins, Nexus</li>
-					</ul>
-				</div>
-			</section>
-			<section>
-				<h3>Les inconvénients</h3>
-				<div style="text-align: left;">
-				<p>Eco-système qui évolue rapidement (API Deprecated)</p>
-				<p>Ne pas être « allergique » à la ligne de commande</p>
-				<p>Nécessite d’être root dans le conteneur</p>
-				<p>Déport d’affichage (application graphique)</p>
-				<p>Limité aux systèmes Linux</p>
-				<p><a href="https://www.docker.com/products/docker-desktop">DockerDesktop</a> pas un vrai <a href="https://www.docker.com/">Docker</a></p>
-				<ul>
-					<li>Problème de redirection de port</li>
-					<li>Problème de performance sur les volumes</li>
-				</ul>
-				</div>
-			</section>
-			<section>
-				<h3>Tips 🧹</h3>
-				<div style="text-align: left;">
-					<p>Supprimer tous les conteneurs arrêtés</p>
-					<pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker container prune</code></pre>
-					<p>Supprimer les images qui n’ont pas de nom</p>
-					<pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker image prune</code></pre>
-					<p>Connaître l’IP d’un conteneur</p>
-					<pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker inspect –f '{{.NetworkSettings.IPAddress }}' mycont</code></pre>
-					<p>S’attacher à un conteneur en cours d’exécution</p>
-					<pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker attach mycont <=> docker exec –it mycont /bin/bash</code></pre>
-				</div>
-			</section>
-			<section>
-				<h3>Powered by 🙏</h3>
-				<div class="container-flex">
-					<div class="col-1">
-						<a href="https://asciinema.org">
-						<img width="60%" src="/images/asciinema.png" /></a>
-					</div>
-					<div class="col-1">
-						<a href="https://revealjs.com">
-							<img width="60%" src="/images/revealjs.png" /></a>
-					</div>
-				</div>
-				<div class="container-flex">
-					<div class="col-1">
-						<a href="https://jekyllrb.com/">
-						<img width="60%" src="/images/jekyll.svg" /></a>
-					</div>
-					<div class="col-1">
-						<a href="https://www.docker.com">
-						<img width="60%" src="images/dockerlogo.png" /></a>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
+          </section>
+          <section>
+            <h3>Rediriger les ports (démo7)</h3>
+            <p>Commande : <b>run</b></p>
+            <div id="demo7"></div>
+          </section>
+        </section>
+        <section>
+          <h3>Aller plus loin</h3>
+          <div style="text-align: left">
+            <p>
+              Présentation rapide de
+              <a href="https://www.docker.com/">Docker</a> et de ses commandes
+            </p>
+            <p><b>À approfondir</b></p>
+            <ul>
+              <li>la création des images (multi-stage)</li>
+              <li>la création des sous-réseaux</li>
+              <li>le déport d’affichage X11</li>
+            </ul>
+            <p><b>À découvrir</b></p>
+            <ul>
+              <li>Composition de conteneurs avec <b>docker-compose</b></li>
+              <li>Gestion de conteneurs distants <b>docker-machine</b></li>
+              <li>
+                Orchestration de conteneurs avec
+                <a
+                  href="https://mickael-baron.fr/soa/microservices-mise-en-oeuvre-kubernetes"
+                  >Kubernetes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>À quoi cela peut servir (update) ?</h3>
+          <div style="text-align: left">
+            <p>Pour configurer son poste de travail</p>
+            <ul>
+              <li>NoSQL, ROS, Hadoop, serveur web</li>
+            </ul>
+            <p>Pour une publication</p>
+            <ul>
+              <li>Image de son expérimentation</li>
+              <li>Lien vers l’image sur la publication</li>
+            </ul>
+            <p>Déployer des outils pour la recherche</p>
+            <ul>
+              <li>Faciliter le déploiement et la mise à jour</li>
+              <li>Sharelatex, Redmine, Gitlab, Jenkins, Nexus</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>Les inconvénients</h3>
+          <div style="text-align: left">
+            <p>Eco-système qui évolue rapidement (API Deprecated)</p>
+            <p>Ne pas être « allergique » à la ligne de commande</p>
+            <p>Nécessite d’être root dans le conteneur</p>
+            <p>Déport d’affichage (application graphique)</p>
+            <p>Limité aux systèmes Linux</p>
+            <p>
+              <a href="https://www.docker.com/products/docker-desktop"
+                >DockerDesktop</a
+              >
+              pas un vrai <a href="https://www.docker.com/">Docker</a>
+            </p>
+            <ul>
+              <li>Problème de redirection de port</li>
+              <li>Problème de performance sur les volumes</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>Tips 🧹</h3>
+          <div style="text-align: left">
+            <p>Supprimer tous les conteneurs arrêtés</p>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker container prune</code></pre>
+            <p>Supprimer les images qui n’ont pas de nom</p>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker image prune</code></pre>
+            <p>Connaître l’IP d’un conteneur</p>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker inspect –f '{{.NetworkSettings.IPAddress }}' mycont</code></pre>
+            <p>S’attacher à un conteneur en cours d’exécution</p>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker attach mycont <=> docker exec –it mycont /bin/bash</code></pre>
+          </div>
+        </section>
+        <section>
+          <h3>Powered by 🙏</h3>
+          <div class="container-flex">
+            <div class="col-1">
+              <a href="https://asciinema.org">
+                <img width="60%" src="/images/asciinema.png"
+              /></a>
+            </div>
+            <div class="col-1">
+              <a href="https://revealjs.com">
+                <img width="60%" src="/images/revealjs.png"
+              /></a>
+            </div>
+          </div>
+          <div class="container-flex">
+            <div class="col-1">
+              <a href="https://jekyllrb.com/">
+                <img width="60%" src="/images/jekyll.svg"
+              /></a>
+            </div>
+            <div class="col-1">
+              <a href="https://www.docker.com">
+                <img width="60%" src="images/dockerlogo.png"
+              /></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-	<script src="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
-	<script>
-		Reveal.initialize({
-			hash: true,
-			autoPlayMedia: true,
-			touch: false,
-			slideNumber: 'c/t',
-			showNotes: false,
-			plugins: [RevealHighlight]
-		}).then( () => {
-			var conf = {
-				cols: 130,
-				rows: 30,
-				theme: "monokai",
-				speed: 2
-			}
-			AsciinemaPlayer.create('demo/demo1.cast', document.getElementById('demo1'), conf);
-			AsciinemaPlayer.create('demo/demo2.cast', document.getElementById('demo2'), conf);
-			AsciinemaPlayer.create('demo/demo3.cast', document.getElementById('demo3'), conf);
-			AsciinemaPlayer.create('demo/demo4.cast', document.getElementById('demo4'), conf);
-			AsciinemaPlayer.create('demo/demo5.cast', document.getElementById('demo5'), conf);
-			AsciinemaPlayer.create('demo/demo6.cast', document.getElementById('demo6'), conf);
-			AsciinemaPlayer.create('demo/demo7.cast', document.getElementById('demo7'), conf);
-		});
-		Reveal.on( 'slidechanged', event => {
-			const ele = document.getElementsByClassName('asciinema-theme-monokai');
-			for (let i = 0; i < ele.length; i++) {
-				//ele[i].style.height = "199.602px";
-				//ele[i].style.width = "160px";
-				ele[i].style.height = "499.602px";
-				ele[i].style.width = "960px";
-			}			
-		} );
-	</script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
+    <script src="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        autoPlayMedia: true,
+        touch: false,
+        slideNumber: "c/t",
+        showNotes: false,
+        plugins: [RevealHighlight],
+      }).then(() => {
+        var conf = {
+          cols: 130,
+          rows: 30,
+          theme: "monokai",
+          speed: 2,
+        };
+        AsciinemaPlayer.create(
+          "demo/demo1.cast",
+          document.getElementById("demo1"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo2.cast",
+          document.getElementById("demo2"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo3.cast",
+          document.getElementById("demo3"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo4.cast",
+          document.getElementById("demo4"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo5.cast",
+          document.getElementById("demo5"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo6.cast",
+          document.getElementById("demo6"),
+          conf
+        );
+        AsciinemaPlayer.create(
+          "demo/demo7.cast",
+          document.getElementById("demo7"),
+          conf
+        );
+      });
+      Reveal.on("slidechanged", (event) => {
+        const ele = document.getElementsByClassName("asciinema-theme-monokai");
+        for (let i = 0; i < ele.length; i++) {
+          //ele[i].style.height = "199.602px";
+          //ele[i].style.width = "160px";
+          ele[i].style.height = "499.602px";
+          ele[i].style.width = "960px";
+        }
+      });
+    </script>
+  </body>
 </html>
