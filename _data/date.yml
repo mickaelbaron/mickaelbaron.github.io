@@ -1,4 +1,5 @@
 preformatted_date:
+  full_with_time: "%A %d %B %Y à %H:%M"
   full: "%A %d %B %Y"
   weekday: "%d %b %Y"
   monthday: "%d %B"
