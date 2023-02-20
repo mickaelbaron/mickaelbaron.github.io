@@ -1,6 +1,6 @@
 preformatted_date:
   full: "%A %d %B %Y"
-  weekday:  "%d %b %Y"
+  weekday: "%d %b %Y"
   monthday: "%d %B"
 abbreviated_weekday:
   - Dim
@@ -19,18 +19,18 @@ full_weekday:
   - Vendredi
   - Samedi
 abbreviated_month:
-    - jan.
-    - fév.
-    - mar.
-    - avr.
-    - mai
-    - juin
-    - juil.
-    - août
-    - sept.
-    - oct.
-    - nov.
-    - déc.
+  - jan.
+  - fév.
+  - mar.
+  - avr.
+  - mai
+  - juin
+  - juil.
+  - août
+  - sept.
+  - oct.
+  - nov.
+  - déc.
 full_month:
   - janvier
   - février

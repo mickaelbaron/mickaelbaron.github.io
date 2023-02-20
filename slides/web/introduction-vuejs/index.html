@@ -1,414 +1,559 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Développement web avec Vue.js 3</title>
 
-	<title>Développement web avec Vue.js 3</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css"
+      id="theme"
+    />
+    <!-- Theme utilisée pour la mise au format du code -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
+      id="highlight-theme"
+    />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css" id="theme">
-	<!-- Theme utilisée pour la mise au format du code -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
-		id="highlight-theme">
+    <!-- Référence à Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+      /* Double colonnes */
+      .container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: center;
+      }
 
-	<!-- Référence à Vue.js 3 -->
-	<script src="https://unpkg.com/vue@3"></script>
-	<style>
-		/* Double colonnes */
-		.container-flex {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-content: flex-start;
-			align-items: center;
-		}
+      .col-1 {
+        flex: 1;
+      }
 
-		.col-1 {
-			flex: 1;
-		}
+      .col-2 {
+        flex: 2;
+      }
 
-		.col-2 {
-			flex: 2;
-		}
+      /* Placer des petites images à côté du texte */
+      .wrapper-icon .icon {
+        position: relative;
+        margin: 0 10px 0 0;
+        width: 25px;
+        height: 25px;
+      }
 
-		/* Placer des petites images à côté du texte */
-		.wrapper-icon .icon {
-			position: relative;
-			margin: 0 10px 0 0;
-			width: 25px;
-			height: 25px;
-		}
+      /* Arondir les images */
+      .roundedImage {
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -khtml-border-radius: 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px #343434;
+      }
 
-		/* Arondir les images */
-		.roundedImage {
-			-moz-border-radius: 15px;
-			-webkit-border-radius: 15px;
-			-khtml-border-radius: 15px;
-			border-radius: 15px;
-			box-shadow: 0px 0px 10px #343434;
-		}
+      /* Pour les éléments des démos */
+      .elementContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: center;
+      }
 
-		/* Pour les éléments des démos */
-		.elementContainer {
-			display: flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			justify-content: flex-start;
-			align-content: flex-start;
-			align-items: center;
-		}
+      .elementContainer > * {
+        margin: 10px;
+      }
 
-		.elementContainer>* {
-			margin: 10px;
-		}
+      /* La fausse fenêtre du navigateur */
+      .web-container {
+        border: 3px solid #d0d0d0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
 
-		/* La fausse fenêtre du navigateur */
-		.web-container {
-			border: 3px solid #d0d0d0;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-		}
+      /* Container for columns and the top "toolbar" */
+      .web-row {
+        padding-bottom: 15px;
+        background: #e0e0e0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
 
-		/* Container for columns and the top "toolbar" */
-		.web-row {
-			padding-bottom: 15px;
-			background: #e0e0e0;
-			border-top-left-radius: 8px;
-			border-top-right-radius: 8px;
-		}
+      /* Create three unequal columns that floats next to each other */
+      .web-column {
+        float: left;
+      }
 
-		/* Create three unequal columns that floats next to each other */
-		.web-column {
-			float: left;
-		}
+      .web-left {
+        width: 20%;
+      }
 
-		.web-left {
-			width: 20%;
-		}
+      .web-middle {
+        width: 70%;
+      }
 
-		.web-middle {
-			width: 70%;
-		}
+      /* Clear floats after the columns */
+      .web-row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
 
-		/* Clear floats after the columns */
-		.web-row:after {
-			content: "";
-			display: table;
-			clear: both;
-		}
+      /* Three dots */
+      .web-dot {
+        margin-top: 4px;
+        height: 12px;
+        width: 12px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+      }
 
-		/* Three dots */
-		.web-dot {
-			margin-top: 4px;
-			height: 12px;
-			width: 12px;
-			background-color: #bbb;
-			border-radius: 50%;
-			display: inline-block;
-		}
+      /* Style the input field */
+      .web-input {
+        width: 100%;
+        border-radius: 3px;
+        border: none;
+        background-color: white;
+        margin-top: -8px;
+        height: 25px;
+        color: #666;
+        padding: 5px;
+      }
 
-		/* Style the input field */
-		.web-input {
-			width: 100%;
-			border-radius: 3px;
-			border: none;
-			background-color: white;
-			margin-top: -8px;
-			height: 25px;
-			color: #666;
-			padding: 5px;
-		}
+      /* Page content */
+      .web-content {
+        height: 500px;
+      }
 
-		/* Page content */
-		.web-content {
-			height: 500px;
-		}
+      .legend {
+        font-size: 10px;
+      }
+    </style>
+  </head>
 
-		.legend {
-			font-size:10px
-		}
-	</style>
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Page de garde -->
+        <section>
+          <img width="35%" src="/images/slides/vuejs.svg" />
 
-<body>
-	<div class="reveal">
-		<div class="slides">
-			<!-- Page de garde -->
-			<section>
-				<img width="35%" src="/images/slides/vuejs.svg" />
+          <h3>Développement web avec Vue.js</h3>
+          <p>Mickaël BARON - Version 05-2022</p>
+          <p>
+            <a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a>
+            ou <a href="mailto:baron@ensma.fr">baron@ensma.fr</a>
+          </p>
+          <div class="wrapper-icon">
+            <a target="_blank" href="https://twitter.com/mickaelbaron"
+              ><img
+                class="icon"
+                src="/images/slides/twitter.svg"
+              />@mickaelbaron</a
+            >
+            <a target="_blank" href="https://mickael-baron.fr"
+              ><img
+                class="icon"
+                src="/images/slides/web.svg"
+              />mickael-baron.fr</a
+            >
+          </div>
+        </section>
 
-				<h3>Développement web avec Vue.js</h3>
-				<p>Mickaël BARON - Version 05-2022</p>
-				<p><a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a> ou <a
-						href="mailto:baron@ensma.fr">baron@ensma.fr</a></p>
-				<div class="wrapper-icon">
-					<a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
-							src="/images/slides/twitter.svg" />@mickaelbaron</a>
-					<a target="_blank" href="https://mickael-baron.fr"><img class="icon"
-							src="/images/slides/web.svg" />mickael-baron.fr</a>
-				</div>
-			</section>
+        <!-- Licence d'utilisation -->
+        <section>
+          <h3>Licence d'utilisation</h3>
 
-			<!-- Licence d'utilisation -->
-			<section>
-				<h3>Licence d'utilisation</h3>
+          <p><b>Creative Commons</b></p>
+          <p>Contrat Paternité</p>
+          <p>Partage des Conditions Initiales à l'Identique</p>
+          <p>2.0 France</p>
+          <p><img width="50%" src="/images/slides/by-sa.svg" /></p>
+          <a
+            target="_blank"
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            >creativecommons.org/licenses/by-sa/4.0</a
+          >
+        </section>
 
-				<p><b>Creative Commons</b></p>
-				<p>Contrat Paternité</p>
-				<p>Partage des Conditions Initiales à l'Identique</p>
-				<p>2.0 France</p>
-				<p><img width="50%" src="/images/slides/by-sa.svg" /></p>
-				<a target="_blank"
-					href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>
-			</section>
+        <!-- Qui suis-je ? -->
+        <section>
+          <section>
+            <h3>Qui suis-je ?</h3>
 
-			<!-- Qui suis-je ? -->
-			<section>
-				<section>
-					<h3>Qui suis-je ?</h3>
+            <img
+              width="25%"
+              class="roundedImage"
+              src="/images/slides/mbaron.jpg"
+            />
+            <div class="wrapper-icon">
+              <p>
+                <a target="_blank" href="https://twitter.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/twitter.svg"
+                  />@mickaelbaron</a
+                >
+              </p>
+              <p>
+                <a target="_blank" href="https://mickael-baron.fr"
+                  ><img
+                    class="icon"
+                    src="/images/slides/web.svg"
+                  />mickael-baron.fr</a
+                >
+              </p>
+              <p>
+                <a target="_blank" href="https://github.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/github.svg"
+                  />mickaelbaron</a
+                >
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Ingénieur de Recherche ☀️</h3>
 
-					<img width="25%" class="roundedImage" src="/images/slides/mbaron.jpg" />
-					<div class="wrapper-icon">
-						<p><a target="_blank" href="https://twitter.com/mickaelbaron"><img class="icon"
-									src="/images/slides/twitter.svg" />@mickaelbaron</a></p>
-						<p><a target="_blank" href="https://mickael-baron.fr"><img class="icon"
-									src="/images/slides/web.svg" />mickael-baron.fr</a></p>
-						<p><a target="_blank" href="https://github.com/mickaelbaron"><img class="icon"
-									src="/images/slides/github.svg" />mickaelbaron</a></p>
-					</div>
-				</section>
-				<section>
-					<h3>Ingénieur de Recherche ☀️</h3>
+            <div class="container-flex">
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 200%">
+                  <li>
+                    Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées
+                    et des mo<b>D</b>èles (IDD)
+                  </li>
+                  <li>Valorisation des plateformes logicielles</li>
+                  <li>« Coach technique » auprès des usagés</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="65%" src="/images/slides/isae_ensma.svg" />
+                <img width="65%" src="/images/slides/lias.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a target="_blank" href="https://twitter.com/LIAS_LAB"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@LIAS_LAB</a
+                    >
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://www.lias-lab.fr"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />www.lias-lab.fr</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Ancien Responsable 🌑 (2011-2021)</h3>
 
-					<div class="container-flex">
-						<div class="col-1" style="text-align: left;">
-							<ul style="line-height:200%">
-								<li>Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées et des
-									mo<b>D</b>èles
-									(IDD)</li>
-								<li>Valorisation des plateformes logicielles</li>
-								<li>« Coach technique » auprès des usagés</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="65%" src="/images/slides/isae_ensma.svg" />
-							<img width="65%" src="/images/slides/lias.png" />
-							<div class="wrapper-icon">
-								<p><a target="_blank" href="https://twitter.com/LIAS_LAB"><img class="icon"
-											src="/images/slides/twitter.svg" />@LIAS_LAB</a></p>
-								<p><a target="_blank" href="https://www.lias-lab.fr"><img class="icon"
-											src="/images/slides/web.svg" />www.lias-lab.fr</a></p>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Ancien Responsable 🌑 (2011-2021)</h3>
+            <div class="container-flex">
+              <div class="col-1">
+                <img width="100%" src="/images/slides/developpezcom.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a target="_blank" href="https://twitter.com/javaDeveloppez"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@javaDeveloppez</a
+                    >
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://java.developpez.com"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />java.developpez.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 150%">
+                  <li>
+                    Rubriques : Java, Java Web, Android, Eclipse, Spring et
+                    Netbeans
+                  </li>
+                  <li>Rédacteurs de tutoriels</li>
+                  <li>Chiffres</li>
+                  <ul>
+                    <li>4 M de visiteurs</li>
+                    <li>12 M pages vues/mois</li>
+                    <li>7500 membres</li>
+                    <li>2000 forums</li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<img width="100%" src="/images/slides/developpezcom.png" />
-							<div class="wrapper-icon">
-								<p><a target="_blank" href="https://twitter.com/javaDeveloppez"><img class="icon"
-											src="/images/slides/twitter.svg" />@javaDeveloppez</a></p>
-								<p><a target="_blank" href="https://java.developpez.com"><img class="icon"
-											src="/images/slides/web.svg" />java.developpez.com</a></p>
+        <!-- Plan -->
+        <section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="/images/slides/vuejs.svg"
+          >
+            <h3>Objectif du cours Vue.js (45 min)</h3>
 
-							</div>
-						</div>
-						<div class="col-1" style="text-align: left;">
-							<ul style="line-height:150%">
-								<li>Rubriques : Java, Java Web, Android, Eclipse, Spring et Netbeans</li>
-								<li>Rédacteurs de tutoriels</li>
-								<li>Chiffres</li>
-								<ul>
-									<li>4 M de visiteurs</li>
-									<li>12 M pages vues/mois</li>
-									<li>7500 membres</li>
-									<li>2000 forums</li>
-								</ul>
-							</ul>
-						</div>
+            <ul style="line-height: 200%">
+              <li>Modèle et vue</li>
+              <li>Templating (interpolation et directives)</li>
+              <li>Composants (créer et instancier)</li>
+              <li>Communiquer entre composants</li>
+              <li>Routage</li>
+              <li>
+                Outils pour
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+              </li>
+            </ul>
+          </section>
 
-					</div>
-				</section>
-			</section>
+          <section>
+            <h3>Disclaimer 🧎🏻‍♂️</h3>
 
-			<!-- Plan -->
-			<section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-					data-background-image="/images/slides/vuejs.svg">
-					<h3>Objectif du cours Vue.js (45 min)</h3>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p>Pas le temps ⏳ de tout traiter</p>
+                <ul style="line-height: 165%">
+                  <li><s>Appeler des services web</s></li>
+                  <li><s>Tester</s></li>
+                  <li><s>Déployer</s></li>
+                </ul>
+                <p>Expérimentation via des exercices</p>
+                <p><b>Prérequis minimum</b></p>
+                <ul>
+                  <li>Langages à balises (XML, HTML)</li>
+                  <li>Notions élémentaires JavaScript</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="100%" src="images/vuejsvsreact.jpeg" />
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="/images/slides/github.svg"
+          >
+            <h3>Exemples du cours</h3>
 
-					<ul style="line-height:200%">
-						<li>Modèle et vue</li>
-						<li>Templating (interpolation et directives)</li>
-						<li>Composants (créer et instancier)</li>
-						<li>Communiquer entre composants</li>
-						<li>Routage</li>
-						<li>Outils pour <a href="https://vuejs.org/" target="_blank">Vue.js</a></li>
-					</ul>
-				</section>
+            <p>
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples"
+                >github.com/mickaelbaron/vuejs-examples</a
+              >
+            </p>
+          </section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="/images/slides/vuejs.svg"
+          >
+            <h3>Evolution du cours</h3>
+            <div style="text-align: left">
+              <p>Version 2022</p>
+              <ul>
+                <li>
+                  Support
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3.x
+                </li>
+                <li>Passage à API Composition</li>
+                <li>
+                  Ajout des exemples sur
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples"
+                    >Github</a
+                  >
+                </li>
+              </ul>
+              <p>Version 2020</p>
+              <ul>
+                <li>Version intiale</li>
+                <li>
+                  Support
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a> 2.x
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
 
-				<section>
-					<h3>Disclaimer 🧎🏻‍♂️</h3>
+        <!-- Version supportée -->
+        <section
+          data-background-size="50%"
+          data-background-opacity="0.5|8"
+          data-background-image="/images/slides/vuejs.svg"
+        >
+          <h3>Version supportée dans ce cours</h3>
 
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p>Pas le temps ⏳ de tout traiter</p>
-							<ul style="line-height:165%">
-								<li><s>Appeler des services web</s></li>
-								<li><s>Tester</s></li>
-								<li><s>Déployer</s></li>
-							</ul>
-							<p>Expérimentation via des exercices</p>
-							<p><b>Prérequis minimum</b></p>
-							<ul>
-								<li>Langages à balises (XML, HTML)</li>
-								<li>Notions élémentaires JavaScript</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="100%" src="images/vuejsvsreact.jpeg" />
-						</div>
-					</div>
-				</section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-				data-background-image="/images/slides/github.svg">
-					<h3>Exemples du cours</h3>
-					
-					<p><a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples">github.com/mickaelbaron/vuejs-examples</a></p>
-				</section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-				data-background-image="/images/slides/vuejs.svg">
-					<h3>Evolution du cours</h3>
-					<div style="text-align: left;">
-						<p>Version 2022</p>
-						<ul>
-							<li>Support <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3.x</li>
-							<li>Passage à API Composition</li>
-							<li>Ajout des exemples sur <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples">Github</a></li>
-						</ul>
-						<p>Version 2020</p>
-						<ul>
-							<li>Version intiale</li>
-							<li>Support <a href="https://vuejs.org/" target="_blank">Vue.js</a> 2.x</li>
-						</ul>
-					</div>
-				</section>
-			</section>
+          <p style="color: #34495e; font-size: 450px">3.x</p>
+        </section>
 
-			<!-- Version supportée -->
-			<section data-background-size="50%" data-background-opacity="0.5|8" data-background-image="/images/slides/vuejs.svg">
-				<h3>Version supportée dans ce cours</h3>
+        <!-- Historique -->
+        <section>
+          <section>
+            <h3>Historique</h3>
 
-				<p style="color: #34495e;font-size: 450px;">3.x</p>
-			</section>
+            <div style="text-align: left">
+              <p>Origine</p>
+              <ul>
+                <li>Projet open source</li>
+                <li><i>Evan You</i>, ancien Google, a travaillé sur Angular</li>
+                <li class="wrapper-icon">
+                  <img class="icon" src="/images/slides/github.svg" />
+                  <a target="_blank" href="https://github.com/vuejs/vue"
+                    >/vuejs/vue</a
+                  >
+                  <iframe
+                    src="https://ghbtns.com/github-btn.html?user=vuejs&repo=vue&type=star&count=true&size=large"
+                    frameborder="0"
+                    scrolling="0"
+                    width="170"
+                    height="30"
+                    title="GitHub"
+                  ></iframe>
+                </li>
+                <li>Léger : ~ moins de 33 KB min (minifiée + gzip)</li>
+              </ul>
+              <p>Historique des versions : version actuelle 3</p>
+            </div>
+            <img class="r-stretch" src="images/versionshistoryv3.png" />
+          </section>
+          <section>
+            <h3>Popularité</h3>
 
-			<!-- Historique -->
-			<section>
-				<section>
-					<h3>Historique</h3>
+            <img class="r-stretch" src="images/popularity.png" />
 
-					<div style="text-align: left;">
-						<p>Origine</p>
-						<ul>
-							<li>Projet open source</li>
-							<li><i>Evan You</i>, ancien Google, a travaillé sur Angular</li>
-							<li class="wrapper-icon">
-								<img class="icon" src="/images/slides/github.svg" /> <a target="_blank"
-									href="https://github.com/vuejs/vue">/vuejs/vue</a>
-								<iframe
-									src="https://ghbtns.com/github-btn.html?user=vuejs&repo=vue&type=star&count=true&size=large"
-									frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe></li>
-							<li>Léger : ~ moins de 33 KB min (minifiée + gzip)</li> 
-						</ul>
-						<p>Historique des versions : version actuelle 3</p>
-					</div>
-					<img class="r-stretch" src="images/versionshistoryv3.png" />
-				</section>
-				<section>
-					<h3>Popularité</h3>
+            <p>
+              Source :
+              <a
+                target="_blank"
+                href="https://2019.stateofjs.com/front-end-frameworks/"
+                >stateofjs.com</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Qui utilise Vue.js ?</h3>
 
-					<img class="r-stretch" src="images/popularity.png" />
+            <div class="container-flex">
+              <div class="col-1">
+                <img src="images/logo-baidu.png" />
+              </div>
+              <div class="col-1">
+                <img width="30%" src="images/logo-xiaomi.png" />
+              </div>
+              <div class="col-1">
+                <img src="images/logo-engie.png" />
+              </div>
+            </div>
+            <div class="container-flex">
+              <div class="col-1">
+                <img src="images/logo-gitlab.png" />
+              </div>
+              <div class="col-1">
+                <img width="55%" src="images/logo-expedia.png" />
+              </div>
+              <div class="col-1">
+                <img src="images/logo-alibaba.png" />
+              </div>
+            </div>
+            <div class="container-flex">
+              <div class="col-1">
+                <img src="images/logo-nintendo.png" />
+              </div>
+              <div class="col-1">
+                <img src="images/logo-sainsburys.png" />
+              </div>
+              <div class="col-1">
+                <img src="images/logo-veolia.png" />
+              </div>
+            </div>
+            <p>
+              Source :
+              <a
+                target="_blank"
+                href="https://slides.com/akryum/vue2-introduction#/7/6"
+                >vue2-introduction</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Où trouver de la documentation ?</h3>
 
-					<p>Source : <a target="_blank"
-							href="https://2019.stateofjs.com/front-end-frameworks/">stateofjs.com</a></p>
-				</section>
-				<section>
-					<h3>Qui utilise Vue.js ?</h3>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p>Mon site</p>
+                <ul>
+                  <li>
+                    <a href="https://mickael-baron.fr/web/"
+                      >mickael-baron.fr/web</a
+                    >
+                  </li>
+                  <li>3 x (cours, articles et tutoriaux)</li>
+                </ul>
+                <p>Le site de référence</p>
+                <ul>
+                  <li>Portail : <a href="https://vuejs.org">vuejs.org</a></li>
+                  <li>
+                    Documentation :
+                    <a href="https://vuejs.org/guide">vuejs.org/guide</a>
+                  </li>
+                  <li>
+                    Tutoriel :
+                    <a href="https://vuejs.org/tutorial">vuejs.org/tutorial</a>
+                  </li>
+                  <li>
+                    Exemples :
+                    <a href="https://vuejs.org/examples">vuejs.org/examples</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="100%" src="/images/slides/vuejs.svg" />
+              </div>
+            </div>
+          </section>
+        </section>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<img src="images/logo-baidu.png" />
-						</div>
-						<div class="col-1">
-							<img width="30%" src="images/logo-xiaomi.png" />
-						</div>
-						<div class="col-1">
-							<img src="images/logo-engie.png" />
-						</div>
-					</div>
-					<div class="container-flex">
-						<div class="col-1">
-							<img src="images/logo-gitlab.png" />
-						</div>
-						<div class="col-1">
-							<img width="55%" src="images/logo-expedia.png" />
-						</div>
-						<div class="col-1">
-							<img src="images/logo-alibaba.png" />
-						</div>
-					</div>
-					<div class="container-flex">
-						<div class="col-1">
-							<img src="images/logo-nintendo.png" />
-						</div>
-						<div class="col-1">
-							<img src="images/logo-sainsburys.png" />
-						</div>
-						<div class="col-1">
-							<img src="images/logo-veolia.png" />
-						</div>
-					</div>
-					<p>Source : <a target="_blank"
-							href="https://slides.com/akryum/vue2-introduction#/7/6">vue2-introduction</a></p>
-				</section>
-				<section>
-					<h3>Où trouver de la documentation ?</h3>
+        <!-- HelloWorld -->
+        <section>
+          <section>
+            <h3>HelloWorld en Vue.js</h3>
 
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p>Mon site </p>
-							<ul>
-								<li><a href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
-								<li>3 x (cours, articles et tutoriaux)</li>
-							</ul>
-							<p>Le site de référence</p>
-							<ul>
-								<li>Portail : <a href="https://vuejs.org">vuejs.org</a></li>
-								<li>Documentation : <a href="https://vuejs.org/guide">vuejs.org/guide</a></li>
-								<li>Tutoriel : <a href="https://vuejs.org/tutorial">vuejs.org/tutorial</a></li>
-								<li>Exemples : <a href="https://vuejs.org/examples">vuejs.org/examples</a></li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="100%" src="/images/slides/vuejs.svg" />
-						</div>
-					</div>
-				</section>
-			</section>
-
-			<!-- HelloWorld -->
-			<section>
-				<section>
-					<h3>HelloWorld en Vue.js</h3>
-
-					<pre style="font-size: 0.5em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="1-2|4-7|9-18">&lt;!-- Chargement de la bibliothèque --&gt;
+            <pre
+              style="font-size: 0.5em"
+            ><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="1-2|4-7|9-18">&lt;!-- Chargement de la bibliothèque --&gt;
 &lt;script src=&quot;https://unpkg.com/vue@3&quot;/&gt;
 						
 &lt;div id=&quot;helloworld&quot;&gt;
@@ -426,116 +571,158 @@
    return { value }
  }}).mount('#helloworld');
 &lt;/script&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3-sfc">helloworldv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3">helloworldv3</a> (version sans outil)</p>
-				</section>
-				<section>
-					<h3>HelloWorld en Vue.js</h3>
+            <p class="legend">
+              Dossiers
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3-sfc"
+                >helloworldv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/helloworldv3"
+                >helloworldv3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
+          <section>
+            <h3>HelloWorld en Vue.js</h3>
 
-					<div class="web-container">
-						<div class="web-row">
-							<div class="web-column web-left">
-								<span class="web-dot" style="background:#ED594A;"></span>
-								<span class="web-dot" style="background:#FDD800;"></span>
-								<span class="web-dot" style="background:#5AC05A;"></span>
-							</div>
-							<div class="web-column web-middle">
-								<input disabled="disabled" class="web-input" value="https://mickael-baron.fr">
-							</div>
-						</div>
+            <div class="web-container">
+              <div class="web-row">
+                <div class="web-column web-left">
+                  <span class="web-dot" style="background: #ed594a"></span>
+                  <span class="web-dot" style="background: #fdd800"></span>
+                  <span class="web-dot" style="background: #5ac05a"></span>
+                </div>
+                <div class="web-column web-middle">
+                  <input
+                    disabled="disabled"
+                    class="web-input"
+                    value="https://mickael-baron.fr"
+                  />
+                </div>
+              </div>
 
-						<div style="height: 500px">
-							<div id="helloworld">
-								<input v-model="value" type="text" />
-								<p>{{value}}</p>
-							</div>
-						</div>
-					</div>
-				</section>
-			</section>
+              <div style="height: 500px">
+                <div id="helloworld">
+                  <input v-model="value" type="text" />
+                  <p>{{value}}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
 
-			<!-- Versatile -->
-			<section>
-				<section>
-					<h3>Versatile</h3>
+        <!-- Versatile -->
+        <section>
+          <section>
+            <h3>Versatile</h3>
 
-					<p>Deux utilisations différentes</p>
+            <p>Deux utilisations différentes</p>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<p><u>Bibliothèque</u></p>
-							<img width="75%" src="images/vuejslibrary.png" />
-							<p>Votre code intègre <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-						</div>
-						<div class="col-1">
-							<p><u>Framework</u></p>
+            <div class="container-flex">
+              <div class="col-1">
+                <p><u>Bibliothèque</u></p>
+                <img width="75%" src="images/vuejslibrary.png" />
+                <p>
+                  Votre code intègre
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+                </p>
+              </div>
+              <div class="col-1">
+                <p><u>Framework</u></p>
 
-							<img width="72%" src="images/vuejsframework.png" />
-							<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> intègre votre code</p>
-						</div>
-					</div>
-				</section>
-				<section data-background-size="85%" data-background-opacity="0.1"
-				data-background-image="images/vuejslibrary.png">
-					<h3>Vue.js comme bibliothèque</h3>
+                <img width="72%" src="images/vuejsframework.png" />
+                <p>
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+                  intègre votre code
+                </p>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="85%"
+            data-background-opacity="0.1"
+            data-background-image="images/vuejslibrary.png"
+          >
+            <h3>Vue.js comme bibliothèque</h3>
 
-					<div style="text-align: left;">
-						<p>Quand ?</p>
-						<ul>
-							<li>Petits projets</li>
-							<li>Dans un code existant (formulaire)</li>
-						</ul>
+            <div style="text-align: left">
+              <p>Quand ?</p>
+              <ul>
+                <li>Petits projets</li>
+                <li>Dans un code existant (formulaire)</li>
+              </ul>
 
-						<p>Comment ?</p>
-						<pre><code>&lt;script src="https://unpkg.com/vue@3"&gt;</code></pre>
+              <p>Comment ?</p>
+              <pre><code>&lt;script src="https://unpkg.com/vue@3"&gt;</code></pre>
 
-						<p>Avec quoi ?</p>
-						<ul>
-							<li>Aucun outil supplémentaire (utilisable maintenant)</li>
-						</ul>
+              <p>Avec quoi ?</p>
+              <ul>
+                <li>Aucun outil supplémentaire (utilisable maintenant)</li>
+              </ul>
 
-						<p>Exemples</p>
-						<ul>
-							<li><a href="#/6">HelloWorld</a> et dans les transparents de ce cours</li>
-						</ul>
-					</div>
-				</section>
-				<section data-background-size="85%" data-background-opacity="0.1"
-				data-background-image="images/vuejsframework.png">
-					<h3>Vue.js comme framework</h3>
+              <p>Exemples</p>
+              <ul>
+                <li>
+                  <a href="#/6">HelloWorld</a> et dans les transparents de ce
+                  cours
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="85%"
+            data-background-opacity="0.1"
+            data-background-image="images/vuejsframework.png"
+          >
+            <h3>Vue.js comme framework</h3>
 
-					<div class="container-flex" style="text-align:left;">
-						<div class="col-2">
-							<p>Quand ?</p>
-							<ul>
-								<li>Projets importants</li>
-								<li>Single-Page-Application (SPA)</li>
-							</ul>
+            <div class="container-flex" style="text-align: left">
+              <div class="col-2">
+                <p>Quand ?</p>
+                <ul>
+                  <li>Projets importants</li>
+                  <li>Single-Page-Application (SPA)</li>
+                </ul>
 
-							<p>Comment ?</p>
-							<ul>
-								<li>Fichier Single-File-Component</li>
-							</ul>
+                <p>Comment ?</p>
+                <ul>
+                  <li>Fichier Single-File-Component</li>
+                </ul>
 
-							<p>Avec quoi ?</p>
-							<ul>
-								<li>Des outils : <a target="_blank" href="https://www.npmjs.com/">npm</a> et <a target="_blank" href="https://vitejs.dev/">Vite</a></li>
-							</ul>
-							<pre><code>$ npm create vite@latest</code></pre>
-						</div>
-						<div class="col-1">
-							<img src="images/vue-single-file-componentv3.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Versatile</h3>
+                <p>Avec quoi ?</p>
+                <ul>
+                  <li>
+                    Des outils :
+                    <a target="_blank" href="https://www.npmjs.com/">npm</a> et
+                    <a target="_blank" href="https://vitejs.dev/">Vite</a>
+                  </li>
+                </ul>
+                <pre><code>$ npm create vite@latest</code></pre>
+              </div>
+              <div class="col-1">
+                <img src="images/vue-single-file-componentv3.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Versatile</h3>
 
-					<p>Pour chaque utilisation une écriture différente basée sur l'API Composition</p>
+            <p>
+              Pour chaque utilisation une écriture différente basée sur l'API
+              Composition
+            </p>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<p><u>Bibliothèque</u></p>
-								<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
+            <div class="container-flex">
+              <div class="col-1">
+                <p><u>Bibliothèque</u></p>
+                <pre
+                  style="font-size: 0.32em"
+                ><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
  &lt;body&gt;
   &lt;script src="https://unpkg.com/vue@3"&gt;&lt;/script&gt;
   &lt;div id="helloworld"&gt;
@@ -554,10 +741,12 @@
   &lt;/script&gt;
  &lt;body&gt;
 &lt;html&gt;</code></pre>
-						</div>
-						<div class="col-1">
-							<p><u>Framework</u></p>
-								<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
+              </div>
+              <div class="col-1">
+                <p><u>Framework</u></p>
+                <pre
+                  style="font-size: 0.32em"
+                ><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
  import { ref } from 'vue'
   
  const value = ref('HelloWorld')
@@ -576,88 +765,127 @@
  text-decoration: underline;
 }
 &lt;/style&gt;</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Versatile : attention</h3>
-					<div style="text-align: left;">
-						<p>L'évolution de <a href="https://vuejs.org/" target="_blank">Vue.js</a> a introduit différentes écritures pour développer un composant</p>
-						<ul>
-							<li>API Options (depuis <a href="https://vuejs.org/" target="_blank">Vue.js</a> 1 et 2)</li>
-							<li>API Composition (depuis <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3)</li>
-						</ul>
-						<p>Les différentes API (Options et Composition) peuvent cohabiter</p>
-						<p>Pour éviter de s'y perdre nous utiliserons l'<strong>API Composition</strong></p>
-					</div>
-				</section>
-			</section>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Versatile : attention</h3>
+            <div style="text-align: left">
+              <p>
+                L'évolution de
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a> a
+                introduit différentes écritures pour développer un composant
+              </p>
+              <ul>
+                <li>
+                  API Options (depuis
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a> 1 et
+                  2)
+                </li>
+                <li>
+                  API Composition (depuis
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3)
+                </li>
+              </ul>
+              <p>
+                Les différentes API (Options et Composition) peuvent cohabiter
+              </p>
+              <p>
+                Pour éviter de s'y perdre nous utiliserons l'<strong
+                  >API Composition</strong
+                >
+              </p>
+            </div>
+          </section>
+        </section>
 
-			<!-- Fonctionnement modèle et la vue -->
-			<section>
-				<section>
-					<h3>Modèle et vue</h3>
+        <!-- Fonctionnement modèle et la vue -->
+        <section>
+          <section>
+            <h3>Modèle et vue</h3>
 
-					<p>Inspiration du modèle d'architecture <b>MVVM</b> </br>
-						<b>M</b>odel-<b>V</b>iew-<b>V</b>iew<b>M</b>odel
-					</p>
+            <p>
+              Inspiration du modèle d'architecture <b>MVVM</b> <br />
+              <b>M</b>odel-<b>V</b>iew-<b>V</b>iew<b>M</b>odel
+            </p>
 
-					<p><a href="https://vuejs.org/" target="_blank">Vue.js</a> correspond à la partie
-						<b>V</b>iew<b>M</b>odel
-					</p>
-					<img style="margin:0px" width="75%" src="images/mvvm.png" />
-				</section>
-				<section>
-					<h3>Modèle et vue</h3>
+            <p>
+              <a href="https://vuejs.org/" target="_blank">Vue.js</a> correspond
+              à la partie <b>V</b>iew<b>M</b>odel
+            </p>
+            <img style="margin: 0px" width="75%" src="images/mvvm.png" />
+          </section>
+          <section>
+            <h3>Modèle et vue</h3>
 
-					<p>HelloWorld et le modèle d'architecture <b>MVVM</b></p>
+            <p>HelloWorld et le modèle d'architecture <b>MVVM</b></p>
 
-					<img width="100%" src="images/mvvm-helloworldv3.png" />
+            <img width="100%" src="images/mvvm-helloworldv3.png" />
 
-					<p>Différents concepts clés de <a href="https://vuejs.org/" target="_blank">Vue.js</a> étudiés dans
-						la suite</p>
-					<ul>
-						<li>Interpolation : <code>{{ value }}</code></li>
-						<li>Directive : <code>v-model="value"</code></li>
-						<li>Propriétés réactives : <code>value</code></li>
-						<li>Chaque <strong>MVVM</strong> est un composant</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Propriétés réactives</h3>
-					<div style="text-align: left;">
-						<p>La vue est rafraichie à chaque fois que les propriétés du composant changent</p>
-						<p>Utilisation de <strong>propriétés reactives</strong> qui peuvent notifier la vue de changements</p>
-						<p>Deux mots clés disponibles fournies par <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-						<ul>
-							<li><code>ref</code> : pour les valeurs primitives</li>
-							<li><code>reactive</code> : pour les objets</li>
-						</ul>
-						<p>Nécessite d'<strong>importer</strong> ces mots clés pour les utiliser</p>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : ref</h3>
-					
-					<div style="text-align: left;">
-						<p>Quand ?</p>
-						<ul>
-							<li>Propriétés avec des valeurs primitives</li>
-						</ul>
-						<p>Comment déclarer ?</p>
-						<pre><code class="language-javascript">const property = ref('Helloworld')</code></pre>
-						<p>Comment accéder ou modifier ?</p>
-						<ul>
-							<li>C'est la <strong>valeur</strong> (<code>value</code>) de la référence qui est modifiée ou obtenue</li>
-							<li>Utilisation de <code>property.value</code></li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : ref</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
+            <p>
+              Différents concepts clés de
+              <a href="https://vuejs.org/" target="_blank">Vue.js</a> étudiés
+              dans la suite
+            </p>
+            <ul>
+              <li>Interpolation : <code>{{ value }}</code></li>
+              <li>Directive : <code>v-model="value"</code></li>
+              <li>Propriétés réactives : <code>value</code></li>
+              <li>Chaque <strong>MVVM</strong> est un composant</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Propriétés réactives</h3>
+            <div style="text-align: left">
+              <p>
+                La vue est rafraichie à chaque fois que les propriétés du
+                composant changent
+              </p>
+              <p>
+                Utilisation de <strong>propriétés reactives</strong> qui peuvent
+                notifier la vue de changements
+              </p>
+              <p>
+                Deux mots clés disponibles fournies par
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+              </p>
+              <ul>
+                <li><code>ref</code> : pour les valeurs primitives</li>
+                <li><code>reactive</code> : pour les objets</li>
+              </ul>
+              <p>
+                Nécessite d'<strong>importer</strong> ces mots clés pour les
+                utiliser
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Propriétés réactives : ref</h3>
+
+            <div style="text-align: left">
+              <p>Quand ?</p>
+              <ul>
+                <li>Propriétés avec des valeurs primitives</li>
+              </ul>
+              <p>Comment déclarer ?</p>
+              <pre><code class="language-javascript">const property = ref('Helloworld')</code></pre>
+              <p>Comment accéder ou modifier ?</p>
+              <ul>
+                <li>
+                  C'est la <strong>valeur</strong> (<code>value</code>) de la
+                  référence qui est modifiée ou obtenue
+                </li>
+                <li>Utilisation de <code>property.value</code></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Propriétés réactives : ref</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.48em"
+                ><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
  &lt;input v-model="myprop" type="text" /&gt;
  &lt;p&gt;{{myprop}}&lt;/p&gt;
 &lt;/div&gt;
@@ -677,54 +905,71 @@
   }
  }).mount('#app');
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexref.html">indexref.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexref.html"
+                    >indexref.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        disabled
+                        value="https://mickael-baron.fr"
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 200px">
-									<div id="app-ref">
-										<input v-model="value" type="text" />
-        								<p>{{value}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
+                  <div style="height: 200px">
+                    <div id="app-ref">
+                      <input v-model="value" type="text" />
+                      <p>{{value}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Propriétés réactives : reactive</h3>
 
-					<div style="text-align: left;">
-						<p>Quand ?</p>
-						<ul>
-							<li>Propriétés de type objet</li>
-						</ul>
-						<p>Comment déclarer ?</p>
-						<pre><code class="language-javascript">const property = reactive({ value: 'Helloworld' })</code></pre>
-						<p>Comment <code>reactive</code> fonctionne ?</p>
-						<ul>
-							<li>Création d'un proxy sur l'objet</li>
-							<li>Pas besoin d'utiliser <code>.value</code></li>
-							<li><code>toRef</code> et <code>toRefs</code> pour transformer en ref</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.42em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
+            <div style="text-align: left">
+              <p>Quand ?</p>
+              <ul>
+                <li>Propriétés de type objet</li>
+              </ul>
+              <p>Comment déclarer ?</p>
+              <pre><code class="language-javascript">const property = reactive({ value: 'Helloworld' })</code></pre>
+              <p>Comment <code>reactive</code> fonctionne ?</p>
+              <ul>
+                <li>Création d'un proxy sur l'objet</li>
+                <li>Pas besoin d'utiliser <code>.value</code></li>
+                <li>
+                  <code>toRef</code> et <code>toRefs</code> pour transformer en
+                  ref
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Propriétés réactives : reactive</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.42em"
+                ><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="7-8|12-17|2-3">&lt;div id="app"&gt;
  &lt;input v-model="data.myprop" type="text" /&gt;
  &lt;p&gt;{{data.myprop}}&lt;/p&gt;
 &lt;/div&gt;
@@ -744,37 +989,51 @@
   }
  }).mount('#app');
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexreactive.html">indexreactive.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexreactive.html"
+                    >indexreactive.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        disabled
+                        value="https://mickael-baron.fr"
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 200px">
-									<div id="app-reactive">
-										<input v-model="data.myprop" type="text" />
-        								<p>{{data.myprop}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Propriétés réactives : reactive</h3>
-					<p>Une seule propriété réactive avec <code>toRefs</code></p>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.42em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="14-18|9-10|2-5">&lt;div id="app"&gt;
+                  <div style="height: 200px">
+                    <div id="app-reactive">
+                      <input v-model="data.myprop" type="text" />
+                      <p>{{data.myprop}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Propriétés réactives : reactive</h3>
+            <p>Une seule propriété réactive avec <code>toRefs</code></p>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.42em"
+                ><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="14-18|9-10|2-5">&lt;div id="app"&gt;
  &lt;input v-model="myprop1" type="text" /&gt;
  &lt;p&gt;{{myprop1}}&lt;/p&gt;
  &lt;input v-model="myprop2" type="text" /&gt;
@@ -795,121 +1054,143 @@
   } 
 }).mount('#app');
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexreactivetorefs.html">indexreactivetorefs.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/reactivev3/indexreactivetorefs.html"
+                    >indexreactivetorefs.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        disabled
+                        value="https://mickael-baron.fr"
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 300px">
-									<div id="app-reactivetorefs">
-										<input v-model="myprop1" type="text" />
-        								<p>{{myprop1}}</p>
-										<input v-model="myprop2" type="text" />
-        								<p>{{myprop2}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                  <div style="height: 300px">
+                    <div id="app-reactivetorefs">
+                      <input v-model="myprop1" type="text" />
+                      <p>{{myprop1}}</p>
+                      <input v-model="myprop2" type="text" />
+                      <p>{{myprop2}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
 
-				</section>
-			</section>
+        <!-- Templating -->
+        <section>
+          <section>
+            <h3>Templating avec Vue.js</h3>
 
-			<!-- Templating -->
-			<section>
-				<section>
-					<h3>Templating avec Vue.js</h3>
+            <p>Comment réaliser le databinding ?</p>
 
-					<p>Comment réaliser le databinding ?</p>
+            <div class="container-flex">
+              <div class="col-1">
+                <p><u>Interpolation</u></p>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<p><u>Interpolation</u></p>
+                <img width="100%" src="images/vuejsinterpolation.png" />
+              </div>
+              <div class="col-1">
+                <p><u>Directive</u></p>
 
-							<img width="100%" src="images/vuejsinterpolation.png" />
-						</div>
-						<div class="col-1">
-							<p><u>Directive</u></p>
+                <img width="100%" src="images/vuejsdirective.png" />
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/mustache.png"
+          >
+            <h3>Interpolation Vue.js</h3>
 
-							<img width="100%" src="images/vuejsdirective.png" />
-						</div>
-					</div>
-				</section>
-				<section data-background-size="65%" data-background-opacity="0.2"
-					data-background-image="images/mustache.png">
-					<h3>Interpolation Vue.js</h3>
+            <p>Liaison unidirectionnelle : modèle ➡️ vue</p>
 
-					<p>Liaison unidirectionnelle : modèle ➡️ vue</p>
+            <div style="text-align: left">
+              <p>
+                Utilisation de la notation moustache : <code>{{ ... }}</code>
+              </p>
+              <b>Exemples d'interpolation</b>
 
-					<div style="text-align: left;">
-						<p>Utilisation de la notation moustache : <code>{{ ... }}</code></p>
-						<b>Exemples d'interpolation</b></p>
-
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>{{ myProperty }}
+              <pre><code class="language-javascript" data-noescape data-trim data-line-numbers>{{ myProperty }}
 {{ number + 1 }}
 {{ ok ? 'OUI' : 'NON' }}
 {{ message.split('').reverse().join('') }}</code></pre>
-						<p><b>Limites</b></p>
-						<ul>
-							<li>N'interpètre pas du HTML (voir <code>v-html</code>)</li>
-							<li>Inutilisable dans des attributs HTML (voir <code>v-bind</code>)</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Directives Vue.js</h3>
+              <p><b>Limites</b></p>
+              <ul>
+                <li>N'interpètre pas du HTML (voir <code>v-html</code>)</li>
+                <li>
+                  Inutilisable dans des attributs HTML (voir
+                  <code>v-bind</code>)
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Directives Vue.js</h3>
 
-					<p>Attributs HTML spécifiques à <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
+            <p>
+              Attributs HTML spécifiques à
+              <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+            </p>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<ul>
-								<li><code>v-model</code></li>
-								<li><code>v-bind</code></li>
-								<li>Directives conditionnelles</li>
-								<ul>
-									<li><code>v-if</code></li>
-									<li><code>v-else</code></li>
-									<li><code>v-else-if</code></li>
-									<li><code>v-show</code></li>
-								</ul>
-							</ul>
-							<ul>
-						</div>
-						<div class="col-1">
-							<ul>
-								<li><code>v-for</code></li>
-								<li><code>v-on</code></li>
-								<li><code>v-html</code></li>
-								<li><code>v-text</code></li>
-								<li><code>v-cloak</code></li>
-								<li><code>v-pre</code></li>
-								<li><code>v-once</code></li>
-							</ul>
-						</div>
-					</div>
-					<p>Étudions ces <u>directives</u> par l'exemple</p>
-				</section>
-				<section>
-					<h3>Directive : v-model</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <ul>
+                  <li><code>v-model</code></li>
+                  <li><code>v-bind</code></li>
+                  <li>Directives conditionnelles</li>
+                  <ul>
+                    <li><code>v-if</code></li>
+                    <li><code>v-else</code></li>
+                    <li><code>v-else-if</code></li>
+                    <li><code>v-show</code></li>
+                  </ul>
+                </ul>
+              </div>
+              <div class="col-1">
+                <ul>
+                  <li><code>v-for</code></li>
+                  <li><code>v-on</code></li>
+                  <li><code>v-html</code></li>
+                  <li><code>v-text</code></li>
+                  <li><code>v-cloak</code></li>
+                  <li><code>v-pre</code></li>
+                  <li><code>v-once</code></li>
+                </ul>
+              </div>
+            </div>
+            <p>Étudions ces <u>directives</u> par l'exemple</p>
+          </section>
+          <section>
+            <h3>Directive : v-model</h3>
 
-					<p>Liaison bidirectionnelle (modèle ↔️ vue) pour composants
-						<code>&lt;input&gt; &lt;select&gt; &lt;textarea&gt;</code>
-					</p>
+            <p>
+              Liaison bidirectionnelle (modèle ↔️ vue) pour composants
+              <code>&lt;input&gt; &lt;select&gt; &lt;textarea&gt;</code>
+            </p>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="2-3|10-11">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="2-3|10-11">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;value&quot;/&gt;
  &lt;textarea v-model="value"/&gt;
  &lt;p&gt;{{value}}&lt;/p&gt;
@@ -923,47 +1204,65 @@
   }
  }).mount('#app')
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vmodel.html">vmodel.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" disabled value="https://mickael-baron.fr">
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vmodel.html"
+                    >vmodel.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        disabled
+                        value="https://mickael-baron.fr"
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 200px">
-									<div id="app-vmodel">
-										<div class="elementContainer">
-											<input v-model="value" type="text" />
-											<textarea v-model="value"></textarea>
-										</div>
-										<p>{{value}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Directive : v-bind</h3>
+                  <div style="height: 200px">
+                    <div id="app-vmodel">
+                      <div class="elementContainer">
+                        <input v-model="value" type="text" />
+                        <textarea v-model="value"></textarea>
+                      </div>
+                      <p>{{value}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Directive : v-bind</h3>
 
-					<p>Liaison unidirectionnelle (modèle ➡️ vue) utilisable dans des <u>attributs HTML</u> (ex. :
-						<code>value</code>, <code>disabled</code>)
-					</p>
+            <p>
+              Liaison unidirectionnelle (modèle ➡️ vue) utilisable dans des
+              <u>attributs HTML</u> (ex. : <code>value</code>,
+              <code>disabled</code>)
+            </p>
 
-					<p style="text-align: left;">Syntaxe 👉 <code>v-bind:attribute...</code><br>
-						Syntaxe simplifiée 👉 <code>:attribute...</code></p>
+            <p style="text-align: left">
+              Syntaxe 👉 <code>v-bind:attribute...</code><br />
+              Syntaxe simplifiée 👉 <code>:attribute...</code>
+            </p>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.4em"><code class="language-html" data-noescape data-trim data-line-numbers="3-4|10-11">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.4em"
+                ><code class="language-html" data-noescape data-trim data-line-numbers="3-4|10-11">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;value&quot; /&gt;
  &lt;input v-bind:value=&quot;value&quot; /&gt;
  &lt;input :value=&quot;value&quot; /&gt;
@@ -976,74 +1275,94 @@
    return { value } 
  }}).mount('#app')
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vbind.html">vbind.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vbind.html"
+                    >vbind.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 210px">
-									<div class="elementContainer" id="app-vbind">
-										<input v-model="value" type="text" />
-										<input v-bind:value="value" />
-										<input :value="value" />
-										<p>{{value}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section data-background-size="100%" data-background-opacity="0.2"
-					data-background-image="images/vuejscondition.png">
-					<h3>Directives conditionnelles</h3>
+                  <div style="height: 210px">
+                    <div class="elementContainer" id="app-vbind">
+                      <input v-model="value" type="text" />
+                      <input v-bind:value="value" />
+                      <input :value="value" />
+                      <p>{{value}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="100%"
+            data-background-opacity="0.2"
+            data-background-image="images/vuejscondition.png"
+          >
+            <h3>Directives conditionnelles</h3>
 
-					<p><u>Cacher</u> ou <u>afficher</u> un élément HTML</p>
+            <p><u>Cacher</u> ou <u>afficher</u> un élément HTML</p>
 
-					<div style="text-align: left;">
-						<p><code>v-if, v-else et v-else-if</code></p>
+            <div style="text-align: left">
+              <p><code>v-if, v-else et v-else-if</code></p>
 
-						<ul>
-							<li>Effectuer un rendu d'un élément</li>
-							<li><code>v-else</code> et <code>v-else</code> <u>obligatoirement</u> après
-								<code>v-if</code>
-							</li>
-						</ul>
+              <ul>
+                <li>Effectuer un rendu d'un élément</li>
+                <li>
+                  <code>v-else</code> et <code>v-else</code>
+                  <u>obligatoirement</u> après
+                  <code>v-if</code>
+                </li>
+              </ul>
 
-						<p><code>v-show</code></p>
-						<ul>
-							<li>Masquer un élément via la propriété CSS <code>display</code></li>
-						</ul>
+              <p><code>v-show</code></p>
+              <ul>
+                <li>
+                  Masquer un élément via la propriété CSS <code>display</code>
+                </li>
+              </ul>
 
-						<p>Comment choisir entre <code>v-show</code> et <code>v-if</code> ?</p>
-						<ul>
-							<li>Permutations fréquentes 👉 <code>v-show</code></li>
-						</ul>
-					</div>
+              <p>
+                Comment choisir entre <code>v-show</code> et <code>v-if</code> ?
+              </p>
+              <ul>
+                <li>Permutations fréquentes 👉 <code>v-show</code></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Directives conditionnelles</h3>
 
-				</section>
-				<section>
-					<h3>Directives conditionnelles</h3>
-
-					<div class="container-flex">
-						<div class="col-2">
-							<pre><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="6,8,9|15-16">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="5,7,9|15-16">&lt;div id=&quot;app&quot;&gt;
  &lt;input v-model=&quot;show&quot;&gt;
-   Afficher Vue.js
- &lt;/input&gt;
+ Afficher Vue.js
 
  &lt;img v-show=&quot;show&quot; src=&quot;lias.png&quot;/&gt;
 
  &lt;img v-if=&quot;show&quot; src=&quot;vue.svg&quot;/&gt;
+ 
  &lt;img v-else src=&quot;mbaron.jpg&quot;/&gt;
 &lt;/div&gt;
 
@@ -1055,63 +1374,92 @@
   }
  }).mount('#app')
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vifvshow.html">vifvshow.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vifvshow.html"
+                    >vifvshow.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 450px">
-									<div class="elementContainer" id="app-cond">
-										<input v-model="show" type="checkbox">Afficher Vue.js</input>
-										<img style="height:100px" v-show="show" src="/images/slides/lias.png" />
-										<img style="height:140px" v-if="show" src="/images/slides/vuejs.svg" />
-										<img style="height:250px" v-else src="/images/slides/mbaron.jpg" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                  <div style="height: 450px">
+                    <div class="elementContainer" id="app-cond">
+                      <input v-model="show" type="checkbox" />Afficher Vue.js
+                      <img
+                        style="height: 100px"
+                        v-show="show"
+                        src="/images/slides/lias.png"
+                      />
+                      <img
+                        style="height: 140px"
+                        v-if="show"
+                        src="/images/slides/vuejs.svg"
+                      />
+                      <img
+                        style="height: 250px"
+                        v-else
+                        src="/images/slides/mbaron.jpg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Directive : v-for</h3>
 
-				</section>
-				<section>
-					<h3>Directive : v-for</h3>
+            <p>
+              Effectuer <u>plusieurs fois</u> le rendu d'une liste d'éléments
+            </p>
 
-					<p>Effectuer <u>plusieurs fois</u> le rendu d'une liste d'éléments</p>
+            <div style="text-align: left">
+              <p><b>Tableau (items)</b></p>
+              <pre><code>v-for="(item, index) in items"</code></pre>
+              <ul>
+                <li>item : élément courant (ex. : <code>rouge</code>)</li>
+                <li>index : position (ex. : <code>1</code>)</li>
+              </ul>
 
-					<div style="text-align: left;">
-						<p><b>Tableau (items)</b></p>
-						<pre><code>v-for="(item, index) in items"</code></pre>
-						</li>
-						<ul>
-							<li>item : élément courant (ex. : <code>rouge</code>)</li>
-							<li>index : position (ex. : <code>1</code>)</li>
-						</ul>
+              <p><b>Objet (object)</b></p>
+              <pre><code>v-for="(value, name, index) in object"</code></pre>
+              <ul>
+                <li>
+                  value : valeur de la propriété (ex. : <code>mickaël</code>)
+                </li>
+                <li>
+                  name : nom de la propriété (ex. : <code>firstname</code>)
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Directive : v-for</h3>
 
-						<p><b>Objet (object)</b></p>
-						<pre><code>v-for="(value, name, index) in object"</code></pre>
-						</li>
-						<ul>
-							<li>value : valeur de la propriété (ex. : <code>mickaël</code>)</li>
-							<li>name : nom de la propriété (ex. : <code>firstname</code>)</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Directive : v-for</h3>
-
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-4,6-8|14-16">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-4,6-8|14-16">&lt;div id=&quot;app&quot;&gt;
  &lt;p v-for=&quot;(val,index) in tab&quot;&gt;
   {{val + &quot;,&quot; + index}}
  &lt;/p&gt;
@@ -1130,61 +1478,85 @@
   }
  }).mount('#app')
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vfor.html">vfor.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vfor.html"
+                    >vfor.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 400px">
-									<div class="elementContainer" id="app-vfor">
-										<p style="margin:5px" v-for="(val, index) in tab">
-											{{ val+","+index }}
-										</p>
-										<p style="margin:5px" v-for="(val, name, index) in obj">
-											{{ val + "," + name + "," + index }}
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section data-background-size="50%" data-background-opacity="0.1"
-					data-background-image="images/click.png">
-					<h3>Directive : v-on</h3>
+                  <div style="height: 400px">
+                    <div class="elementContainer" id="app-vfor">
+                      <p style="margin: 5px" v-for="(val, index) in tab">
+                        {{ val+","+index }}
+                      </p>
+                      <p style="margin: 5px" v-for="(val, name, index) in obj">
+                        {{ val + "," + name + "," + index }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="50%"
+            data-background-opacity="0.1"
+            data-background-image="images/click.png"
+          >
+            <h3>Directive : v-on</h3>
 
-					<p>Écouter les événements de la partie <code>View</code> pour éxécuter vos traitements</p>
+            <p>
+              Écouter les événements de la partie <code>View</code> pour
+              éxécuter vos traitements
+            </p>
 
-					<div style="text-align: left;">
-						<p>Syntaxe 👉 <code>v-on:event=...</code><br>
-							Syntaxe simplifiée 👉 <code>@event=...</code></p>
+            <div style="text-align: left">
+              <p>
+                Syntaxe 👉 <code>v-on:event=...</code><br />
+                Syntaxe simplifiée 👉 <code>@event=...</code>
+              </p>
 
-						<p><b>Modificateurs d'événements</b></p>
-						<ul>
-							<li><code>.stop</code> : un évènement stoppé</li>
-							<li><code>.prevent</code> : rechargement page stoppé</li>
-							<li><code>.left</code> : uniquement bouton gauche de la souris</li>
-							<li><code>.once</code> : une seule fois</li>
-							<li>...</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Directive : v-on</h3>
+              <p><b>Modificateurs d'événements</b></p>
+              <ul>
+                <li><code>.stop</code> : un évènement stoppé</li>
+                <li><code>.prevent</code> : rechargement page stoppé</li>
+                <li>
+                  <code>.left</code> : uniquement bouton gauche de la souris
+                </li>
+                <li><code>.once</code> : une seule fois</li>
+                <li>...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Directive : v-on</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7|13-20">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-html" style="max-height: 575px;" data-noescape data-trim data-line-numbers="2-7|13-20">&lt;div id=&quot;app&quot;&gt;
  &lt;button v-on:click=&quot;increase&quot;&gt;
   Augmenter
  &lt;/button&gt;
@@ -1207,53 +1579,82 @@
   }
  }).mount('#app')
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/von.html">von.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/von.html"
+                    >von.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 150px">
-									<div class="elementContainer" id="app-von">
-										<button @click="increase">Augmenter</button>
-										<button @click.once="decrease">Diminuer</button>
-										<p>{{ value }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Autres directives</h3>
+                  <div style="height: 150px">
+                    <div class="elementContainer" id="app-von">
+                      <button @click="increase">Augmenter</button>
+                      <button @click.once="decrease">Diminuer</button>
+                      <p>{{ value }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Autres directives</h3>
 
-					<div style="text-align: left;">
-						<p><code>v-html</code> : interprète du contenu HTML</p>
-						<p><code>v-text</code> : identique à l'interpolation de texte <code>{{ }}</code></p>
-						<p><code>v-once</code> : effectue le rendu une seule fois</p>
-						<p><code>v-cloak</code> : bloque l'affichage tant que la compilation <a
-								href="https://vuejs.org/" target="_blank">Vue.js</a> n'est pas terminée</p>
-						<p><code>v-pre</code> : n'effectue pas de compilation, texte brute</p>
-						<p><code>v-???</code> : possibilité de créer ses propres directives personnalisées : <a
-								target="_blank" href="https://vuejs.org/v2/guide/custom-directive.html">en savoir
-								plus</a></p>
-					</div>
-				</section>
-				<section>
-					<h3>Autres directives</h3>
+            <div style="text-align: left">
+              <p><code>v-html</code> : interprète du contenu HTML</p>
+              <p>
+                <code>v-text</code> : identique à l'interpolation de texte
+                <code>{{ }}</code>
+              </p>
+              <p><code>v-once</code> : effectue le rendu une seule fois</p>
+              <p>
+                <code>v-cloak</code> : bloque l'affichage tant que la
+                compilation
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a> n'est
+                pas terminée
+              </p>
+              <p>
+                <code>v-pre</code> : n'effectue pas de compilation, texte brute
+              </p>
+              <p>
+                <code>v-???</code> : possibilité de créer ses propres directives
+                personnalisées :
+                <a
+                  target="_blank"
+                  href="https://vuejs.org/v2/guide/custom-directive.html"
+                  >en savoir plus</a
+                >
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Autres directives</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="2,4,6,9|15-18">&lt;div id=&quot;app&quot;&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-html" style="max-height: 550px;" data-noescape data-trim data-line-numbers="2,4,6,9|15-18">&lt;div id=&quot;app&quot;&gt;
  &lt;div v-html=&quot;html&quot;&gt;&lt;/div&gt;
 
  &lt;div v-text=&quot;html&quot;&gt;&lt;/div&gt;
@@ -1274,61 +1675,90 @@
   }
  }).mount('#app-directives');
 &lt;/script&gt;</code></pre>
-<p class="legend">Fichier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vhtmltextoncepre.html">vhtmltextoncepre.html</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Fichier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/blob/main/directivesv3/vhtmltextoncepre.html"
+                    >vhtmltextoncepre.html</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 350px">
-									<div class="elementContainer" id="app-directives">
-										<div v-html="html"></div>
-										<div v-text="html"></div>
-										<div v-once>{{value}}</div>
-										<input v-model="value" />
-										<div v-pre>{{value}}</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</section>
+                  <div style="height: 350px">
+                    <div class="elementContainer" id="app-directives">
+                      <div v-html="html"></div>
+                      <div v-text="html"></div>
+                      <div v-once>{{value}}</div>
+                      <input v-model="value" />
+                      <div v-pre>{{value}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
 
-			<!-- Composant -->
-			<section>
-				<section data-background-size="100%" data-background-opacity="0.2"
-					data-background-image="images/componentlego.jpg">
-					<h3>Composant</h3>
+        <!-- Composant -->
+        <section>
+          <section
+            data-background-size="100%"
+            data-background-opacity="0.2"
+            data-background-image="images/componentlego.jpg"
+          >
+            <h3>Composant</h3>
 
-					<p>Mise en place d'un composant ?</p>
+            <p>Mise en place d'un composant ?</p>
 
-					<ol>
-						<li>Savoir développer un composant ?<br><b>Single-File-Component</b></li>
-						<li>Savoir instancier un composant ?<br><b>Balise personnalisée</b></li>
-						<li>Savoir écouter un composant ?<br><b>Propriétés calculées et observateurs</b></li>
-						<li>Savoir contrôler un composant ?<br><b>Cycle de vie</b></li>
-					</ol>
-				</section>
+            <ol>
+              <li>
+                Savoir développer un composant ?<br /><b
+                  >Single-File-Component</b
+                >
+              </li>
+              <li>
+                Savoir instancier un composant ?<br /><b
+                  >Balise personnalisée</b
+                >
+              </li>
+              <li>
+                Savoir écouter un composant ?<br /><b
+                  >Propriétés calculées et observateurs</b
+                >
+              </li>
+              <li>Savoir contrôler un composant ?<br /><b>Cycle de vie</b></li>
+            </ol>
+          </section>
 
-				<section>
-					<h3>Développer un composant ?</h3>
+          <section>
+            <h3>Développer un composant ?</h3>
 
-					<p>Deux manières de développer des composants</p>
+            <p>Deux manières de développer des composants</p>
 
-					<div class="container-flex">
-						<div class="col-1">
-							<p><u>Bibliothèque</u></p>
-							<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
+            <div class="container-flex">
+              <div class="col-1">
+                <p><u>Bibliothèque</u></p>
+                <pre
+                  style="font-size: 0.32em"
+                ><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;html&gt;
  &lt;body&gt;
   &lt;script src="https://unpkg.com/vue@3"&gt;&lt;/script&gt;
   &lt;div id="helloworld"&gt;
@@ -1347,10 +1777,12 @@
   &lt;/script&gt;
  &lt;body&gt;
 &lt;html&gt;</code></pre>
-						</div>
-						<div class="col-1">
-							<p><u>Framework</u></p>
-							<pre style="font-size: 0.32em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
+              </div>
+              <div class="col-1">
+                <p><u>Framework</u></p>
+                <pre
+                  style="font-size: 0.32em"
+                ><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
  import { ref } from 'vue'
   
  const value = ref('HelloWorld')
@@ -1369,33 +1801,37 @@
  text-decoration: underline;
 }
 &lt;/style&gt;</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Développer un composant ?</h3>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Développer un composant ?</h3>
 
-					<p style="margin:0px">Fichier Single-File-Component via format .vue</p>
+            <p style="margin: 0px">
+              Fichier Single-File-Component via format .vue
+            </p>
 
-					<div class="container-flex">
-						<div style="text-align: left" class="col-1">
-							<p><b>Script : ViewModel</b></p>
-							<ul>
-								<li>JavaScript</li>
-								<li>Lien avec le Modèle</li>
-							</ul>
-							<p><b>Template : View</b></p>
-							<ul>
-								<li>HTML</li>
-								<li>Interpolation et directive</li>
-							</ul>
-							<p><b>Style</b></p>
-							<ul>
-								<li>CSS localisé</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<pre style="font-size: 0.39em"><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
+            <div class="container-flex">
+              <div style="text-align: left" class="col-1">
+                <p><b>Script : ViewModel</b></p>
+                <ul>
+                  <li>JavaScript</li>
+                  <li>Lien avec le Modèle</li>
+                </ul>
+                <p><b>Template : View</b></p>
+                <ul>
+                  <li>HTML</li>
+                  <li>Interpolation et directive</li>
+                </ul>
+                <p><b>Style</b></p>
+                <ul>
+                  <li>CSS localisé</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <pre
+                  style="font-size: 0.39em"
+                ><code class="language-html" style="max-height: 500px" data-noescape data-trim>&lt;script setup&gt;
  import { ref } from 'vue'
   
  const value = ref('HelloWorld')
@@ -1414,32 +1850,34 @@
  text-decoration: underline;
 }
 &lt;/style&gt;</code></pre>
-						</div>
-					</div>
-				</section>
+              </div>
+            </div>
+          </section>
 
-				<section>
-					<h3>Instancier un composant ?</h3>
+          <section>
+            <h3>Instancier un composant ?</h3>
 
-					<p>Deux étapes à réaliser depuis un fichier .vue</p>
+            <p>Deux étapes à réaliser depuis un fichier .vue</p>
 
-					<div style="text-align: left;">
-						<p>① Importation (dans la partie <code>script</code>)</p>
-						<pre><code class="language-javascript">import YourComponent1 from "./components/yourcomponent1.vue"
+            <div style="text-align: left">
+              <p>① Importation (dans la partie <code>script</code>)</p>
+              <pre><code class="language-javascript">import YourComponent1 from "./components/yourcomponent1.vue"
 import YourComponent2 from "./components/yourcomponent2.vue"
 ...</code></pre>
-						<p>② Instanciation (dans la partie <code>template</code>)</p>
-						<pre><code class="language-javascript">&lt;YourComponent1&gt;&lt;/YourComponent1&gt;
+              <p>② Instanciation (dans la partie <code>template</code>)</p>
+              <pre><code class="language-javascript">&lt;YourComponent1&gt;&lt;/YourComponent1&gt;
 &lt;YourComponent2&gt;&lt;/YourComponent2&gt;</code></pre>
-					</div>
-				</section>
+            </div>
+          </section>
 
-				<section>
-					<h3>Instancier un composant ?</h3>
+          <section>
+            <h3>Instancier un composant ?</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.48em"
+                ><code class="language-javascript" style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
  import { ref } from 'vue'
  import Clock from './components/Clock.vue'
 
@@ -1454,58 +1892,81 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3-sfc">customelementv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3">customelementv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3-sfc"
+                    >customelementv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customelementv3"
+                    >customelementv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 200px">
-									<div class="elementContainer" id="app-instance">
-										<clock></clock>
-										<input v-model="value" />
-										<p>{{ value }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+                  <div style="height: 200px">
+                    <div class="elementContainer" id="app-instance">
+                      <clock></clock>
+                      <input v-model="value" />
+                      <p>{{ value }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-				<section data-background-size="60%" data-background-opacity="0.2"
-					data-background-image="images/computed.png">
-					<h3>Ecouter composant : calculée</h3>
-					<div style="text-align: left;">
-						<p><b>Problématiques</b></p>
-						<ul>
-							<li>Expressions complexes dans la partie <code>View</code></li>
-							<li>Expressions utilisées plusieurs fois</li>
-						</ul>
-						<p><b>Propriété calculée (computed)</b></p>
-						<ul>
-							<li>Dépendances vers autres propriétés réactives</li>
-						</ul>
-						<p><b>Syntaxe</b></p>
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>const yourProperty = computed(() => {
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="images/computed.png"
+          >
+            <h3>Ecouter composant : calculée</h3>
+            <div style="text-align: left">
+              <p><b>Problématiques</b></p>
+              <ul>
+                <li>Expressions complexes dans la partie <code>View</code></li>
+                <li>Expressions utilisées plusieurs fois</li>
+              </ul>
+              <p><b>Propriété calculée (computed)</b></p>
+              <ul>
+                <li>Dépendances vers autres propriétés réactives</li>
+              </ul>
+              <p><b>Syntaxe</b></p>
+              <pre><code class="language-javascript" data-noescape data-trim data-line-numbers>const yourProperty = computed(() => {
   // Votre code qui dépend d'autres propriétés du composant
  }
 )</code></pre>
-					</div>
-				</section>
-				<section>
-					<h3>Ecouter composant : calculée</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.48em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="5-7|13">&lt;script setup&gt;
+            </div>
+          </section>
+          <section>
+            <h3>Ecouter composant : calculée</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.48em"
+                ><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="5-7|13">&lt;script setup&gt;
  import { ref, computed } from 'vue'
 
  const value = ref('HelloWorld')
@@ -1522,39 +1983,61 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 
 &lt;style/&gt;
 </code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3-sfc">computedv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3">computedv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3-sfc"
+                    >computedv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedv3"
+                    >computedv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 225px">
-									<div class="elementContainer" id="app-computed">
-										<input v-model="value" type="text" />
-										<p>{{ value }}</p>
-										<p>Longueur : {{ messageLength }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Ecouter composant : calculée</h3>
+                  <div style="height: 225px">
+                    <div class="elementContainer" id="app-computed">
+                      <input v-model="value" type="text" />
+                      <p>{{ value }}</p>
+                      <p>Longueur : {{ messageLength }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Ecouter composant : calculée</h3>
 
-					<p>Possibilité de faire des mutateurs calculés (<code>v-model</code>)</p>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="4-13|17">&lt;script setup&gt;
+            <p>
+              Possibilité de faire des mutateurs calculés (<code>v-model</code>)
+            </p>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-javascript" style="max-height: 500px;" data-noescape data-trim data-line-numbers="4-13|17">&lt;script setup&gt;
  import { ref, computed } from 'vue'
  const value = ref('HelloWorld')
  const writableValue = computed({
@@ -1573,57 +2056,82 @@ import YourComponent2 from "./components/yourcomponent2.vue"
  &lt;input v-model="writableValue" /&gt;
  &lt;p&gt;{{ value }}&lt;/p&gt;
 &lt;/template&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3-sfc">computedwritablev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3">computedwritablev3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3-sfc"
+                    >computedwritablev3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/computedwritablev3"
+                    >computedwritablev3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 150px">
-									<div class="elementContainer" id="app-computed-setter">
-										<input v-model="writableValue" type="text" />
-										<p>{{ value }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</section>
-				<section data-background-size="60%" data-background-opacity="0.2"
-					data-background-image="images/observateur.png">
-					<h3>Ecouter composant : observateur</h3>
-					<div style="text-align: left;">
-						<p><b>Problématique</b></p>
-						<ul>
-							<li>Invoquer une fonction lors d'un changement de valeur d'une propriété</li>
-						</ul>
-						<p><b>Observateur (watch et watchEffect)</b></p>
-						<ul>
-							<li>Cible une propriété (watch)</li>
-							<li>Cible plusieurs propriétés (watchEffect)</li>
-						</ul>
-						<p><b>Syntaxe</b></p>
-						<pre><code class="language-javascript" data-noescape data-trim data-line-numbers>watch(value, (newValue, oldValue) => {
+                  <div style="height: 150px">
+                    <div class="elementContainer" id="app-computed-setter">
+                      <input v-model="writableValue" type="text" />
+                      <p>{{ value }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="images/observateur.png"
+          >
+            <h3>Ecouter composant : observateur</h3>
+            <div style="text-align: left">
+              <p><b>Problématique</b></p>
+              <ul>
+                <li>
+                  Invoquer une fonction lors d'un changement de valeur d'une
+                  propriété
+                </li>
+              </ul>
+              <p><b>Observateur (watch et watchEffect)</b></p>
+              <ul>
+                <li>Cible une propriété (watch)</li>
+                <li>Cible plusieurs propriétés (watchEffect)</li>
+              </ul>
+              <p><b>Syntaxe</b></p>
+              <pre><code class="language-javascript" data-noescape data-trim data-line-numbers>watch(value, (newValue, oldValue) => {
  // Votre code
 })</code></pre>
-					</div>
-				</section>
-				<section>
-					<h3>Ecouter composant : observateur</h3>
+            </div>
+          </section>
+          <section>
+            <h3>Ecouter composant : observateur</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-13|17-18">&lt;script setup&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-13|17-18">&lt;script setup&gt;
  import { ref, watch } from 'vue'
 
  const value = ref('')
@@ -1643,36 +2151,56 @@ import YourComponent2 from "./components/yourcomponent2.vue"
  &lt;p&gt;{{ message }}&lt;/p&gt;
 &lt;/template&gt;
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3-sfc">watchv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3">watchv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3-sfc"
+                    >watchv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watchv3"
+                    >watchv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 125px">
-									<div class="elementContainer" id="app-watch">
-										<input v-model="value" type="text" />
-										<p>{{ message }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Ecouter composant : observateur</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-11|16-19">&lt;script setup&gt;
+                  <div style="height: 125px">
+                    <div class="elementContainer" id="app-watch">
+                      <input v-model="value" type="text" />
+                      <p>{{ message }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Ecouter composant : observateur</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code class="language-javascript" style="max-height: 550px;" data-noescape data-trim data-line-numbers="7-11|16-19">&lt;script setup&gt;
  import { ref, watchEffect } from 'vue'
 
  const val1 = ref('')
@@ -1695,75 +2223,100 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3-sfc">watcheffectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3">watcheffectv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3-sfc"
+                    >watcheffectv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/watcheffectv3"
+                    >watcheffectv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 250px">
-									<div class="elementContainer" id="app-watcheffect">
-										<input v-model="val1" type="text" />
-										<input v-model="val2" type="text" />
-										<p>{{ text }}</p>
-										<button @click="stopWatch()">Stop</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Cycle de vie d'un composant</h3>
+                  <div style="height: 250px">
+                    <div class="elementContainer" id="app-watcheffect">
+                      <input v-model="val1" type="text" />
+                      <input v-model="val2" type="text" />
+                      <p>{{ text }}</p>
+                      <button @click="stopWatch()">Stop</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Cycle de vie d'un composant</h3>
 
-					<div class="container-flex">
-						<div style="text-align: left" class="col-1">
-							<ul>
-								<li><code>beforeCreate</code></li>
-								<li><code>created</code></li>
-								<li><code>beforeMount</code></li>
-								<li><code>mounted</code></li>
-								<li><code>beforeUpdate</code></li>
-								<li><code>updated</code></li>
-								<li><code>beforeUmount</code></li>
-								<li><code>Umounted</code></li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="70%" src="images/lifecyclevuejsv3.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Cycle de vie d'un composant</h3>
+            <div class="container-flex">
+              <div style="text-align: left" class="col-1">
+                <ul>
+                  <li><code>beforeCreate</code></li>
+                  <li><code>created</code></li>
+                  <li><code>beforeMount</code></li>
+                  <li><code>mounted</code></li>
+                  <li><code>beforeUpdate</code></li>
+                  <li><code>updated</code></li>
+                  <li><code>beforeUmount</code></li>
+                  <li><code>Umounted</code></li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="70%" src="images/lifecyclevuejsv3.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Cycle de vie d'un composant</h3>
 
-					<div style="text-align: left;">
-						<p>Comment déclencher du code à certaines étapes ?</p>
-						<p>Utilisation de fonctions Hook (avant/après)</p>
-							<ul>
-								<li><code>setup</code> : création</li>
-								<li><code>onBeforeMount/onMounted</code> : ajout dans le DOM</li>
-								<li><code>onBeforeUpdate/onUpdated</code> : modification (propriété, DOM)</li>
-								<li><code>onBeforeUmount/onUmounted</code> : desctruction</li>
-								<li><code>onErrorCaptured</code> : capture des erreurs</li>
-							</ul>
-					</div>
-				</section>
-				<section>
-					<h3>Cycle de vie d'un composant</h3>
+            <div style="text-align: left">
+              <p>Comment déclencher du code à certaines étapes ?</p>
+              <p>Utilisation de fonctions Hook (avant/après)</p>
+              <ul>
+                <li><code>setup</code> : création</li>
+                <li>
+                  <code>onBeforeMount/onMounted</code> : ajout dans le DOM
+                </li>
+                <li>
+                  <code>onBeforeUpdate/onUpdated</code> : modification
+                  (propriété, DOM)
+                </li>
+                <li><code>onBeforeUmount/onUmounted</code> : desctruction</li>
+                <li><code>onErrorCaptured</code> : capture des erreurs</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Cycle de vie d'un composant</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.40em"><code style="max-height: 570px;" data-noescape data-trim data-line-numbers="4-14">&lt;script setup&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.4em"
+                ><code style="max-height: 570px;" data-noescape data-trim data-line-numbers="4-14">&lt;script setup&gt;
  import { createApp,ref,onBeforeMount... } from 'vue'
 
  display("before Create")
@@ -1788,88 +2341,124 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3-sfc">lifecyclev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3">lifecyclev3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3-sfc"
+                    >lifecyclev3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/lifecyclev3"
+                    >lifecyclev3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 300px">
-									<div class="elementContainer" id="app-lifecycle">
-										<input v-model="value" type="text" />
-										<p>{{ value }}</p>
-										<p>👇 Display the console</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section data-background-size="75%" data-background-opacity="0.2"
-					data-background-image="images/summary.jpg">
-					<h3>Résumé Contenu d'un composant</h3>
-					<p>Différents contenus pour vos composants</p>
-					<div style="text-align: left;">
-						<ul style="line-height:180%">
-							<li>propriétés : binding vue et modèle</li>
-							<li><code>computed</code> : propriétés calculées</li>
-							<li><code>watch</code> : propriétés observées</li>
-							<li>lifecycle : intercepteurs</li>
-							<li>fonctions : vos « fonctions » JavaScript</li>
-							<li>composants : composants externes</li>
-							<li><i>À suivre dans la partie communication : <code>props</code></i></li>
-						</ul>
-					</div>
-				</section>
-			</section>
+                  <div style="height: 300px">
+                    <div class="elementContainer" id="app-lifecycle">
+                      <input v-model="value" type="text" />
+                      <p>{{ value }}</p>
+                      <p>👇 Display the console</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-size="75%"
+            data-background-opacity="0.2"
+            data-background-image="images/summary.jpg"
+          >
+            <h3>Résumé Contenu d'un composant</h3>
+            <p>Différents contenus pour vos composants</p>
+            <div style="text-align: left">
+              <ul style="line-height: 180%">
+                <li>propriétés : binding vue et modèle</li>
+                <li><code>computed</code> : propriétés calculées</li>
+                <li><code>watch</code> : propriétés observées</li>
+                <li>lifecycle : intercepteurs</li>
+                <li>fonctions : vos « fonctions » JavaScript</li>
+                <li>composants : composants externes</li>
+                <li>
+                  <i
+                    >À suivre dans la partie communication :
+                    <code>props</code></i
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
 
-			<!-- Communication entre composant -->
-			<section>
-				<section data-background-size="68%" data-background-opacity="0.2"
-					data-background-image="images/componenttree.png">
-					<h3>Communiquer entre composants</h3>
+        <!-- Communication entre composant -->
+        <section>
+          <section
+            data-background-size="68%"
+            data-background-opacity="0.2"
+            data-background-image="images/componenttree.png"
+          >
+            <h3>Communiquer entre composants</h3>
 
-					<div>
-						<p>Parent ➡️ Enfant direct ?</p>
-						<p>Parent ➡️ Petit-enfant ?</p>
-						<p>Enfant ➡️ Parent ?</p>
-						<p>Globalement ?</p>
-						<p>En nommant explicitement ?</p>
-					</div>
-				</section>
+            <div>
+              <p>Parent ➡️ Enfant direct ?</p>
+              <p>Parent ➡️ Petit-enfant ?</p>
+              <p>Enfant ➡️ Parent ?</p>
+              <p>Globalement ?</p>
+              <p>En nommant explicitement ?</p>
+            </div>
+          </section>
 
-				<section>
-					<h3>Props</h3>
+          <section>
+            <h3>Props</h3>
 
-					<p>Permet une communication Parent ➡️ Enfant direct</p>
+            <p>Permet une communication Parent ➡️ Enfant direct</p>
 
-					<div style="line-height: 2.3em;" class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Principe</b></p>
-							<ul>
-								<li><b>Enfant :</b> déclarer des <b>Props</b>
-								</li>
-								<li><b>Parent :</b> transmettre des valeurs depuis la balise personnalisée</li>
-							</ul>
-							<p><b>Valeurs</b> : statique et réactive</p>
-						</div>
-						<div class="col-1">
-							<img width="60%" src="images/communicationpropscustomevent.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Props (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=5|8|17>&lt;script setup&gt;
+            <div style="line-height: 2.3em" class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe</b></p>
+                <ul>
+                  <li><b>Enfant :</b> déclarer des <b>Props</b></li>
+                  <li>
+                    <b>Parent :</b> transmettre des valeurs depuis la balise
+                    personnalisée
+                  </li>
+                </ul>
+                <p><b>Valeurs</b> : statique et réactive</p>
+              </div>
+              <div class="col-1">
+                <img
+                  width="60%"
+                  src="images/communicationpropscustomevent.png"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Props (Enfant)</h3>
+            <pre
+              style="font-size: 0.5em"
+            ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=5|8|17>&lt;script setup&gt;
  import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
   
@@ -1889,14 +2478,30 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc">propsv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3">propsv3</a> (version sans outil)</p>
-				</section>
-				<section>
-					<h3>Props (Parent)</h3>
+            <p class="legend">
+              Dossiers
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc"
+                >propsv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3"
+                >propsv3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
+          <section>
+            <h3>Props (Parent)</h3>
 
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.46em"><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.46em"
+                ><code style="max-height: 575px;" data-noescape data-trim data-line-numbers="3|9">&lt;script setup&gt;
  import { ref } from 'vue'
  import Clock from './components/Clock.vue'
 
@@ -1910,60 +2515,75 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc">propsv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3">propsv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3-sfc"
+                    >propsv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/propsv3"
+                    >propsv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 250px">
-									<div class="elementContainer" id="app-props">
-										<clock :message="value"></clock>
-										<input v-model="value" />
-										<p>{{ value }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Provide/Inject</h3>
-					<p>Permet une communication Parent ➡️ Petit-Enfant</p>
+                  <div style="height: 250px">
+                    <div class="elementContainer" id="app-props">
+                      <clock :message="value"></clock>
+                      <input v-model="value" />
+                      <p>{{ value }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Provide/Inject</h3>
+            <p>Permet une communication Parent ➡️ Petit-Enfant</p>
 
-					<div style="line-height: 2.0em;" class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Pourquoi ?</b></p>
-							<ul>
-								<li>
-									Éviter les props « passe-plat »
-								</li>
-							</ul>
-							<p><b>Principe</b></p>
-							<ul>
-								<li><b>Parent :</b> fournir une propriété
-								</li>
-								<li><b>Enfants :</b> injecter la propriété</li>
-							</ul>
-							<p><b>Contrainte</b> : hiérarchie obligatoire</p> 
-						</div>
-						<div class="col-1">
-							<img width="75%" src="images/communicationprovideinject.png" />
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Provide/Inject : Parent</h3>
-<pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10>&lt;script setup&gt;
+            <div style="line-height: 2em" class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Pourquoi ?</b></p>
+                <ul>
+                  <li>Éviter les props « passe-plat »</li>
+                </ul>
+                <p><b>Principe</b></p>
+                <ul>
+                  <li><b>Parent :</b> fournir une propriété</li>
+                  <li><b>Enfants :</b> injecter la propriété</li>
+                </ul>
+                <p><b>Contrainte</b> : hiérarchie obligatoire</p>
+              </div>
+              <div class="col-1">
+                <img width="75%" src="images/communicationprovideinject.png" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Provide/Inject : Parent</h3>
+            <pre><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|10>&lt;script setup&gt;
  import { ref, provide } from 'vue'
  import Clock from './components/Clock.vue'
 
@@ -1977,13 +2597,29 @@ import YourComponent2 from "./components/yourcomponent2.vue"
   &lt;input v-model="value" type="text"/&gt;
  &lt;/div&gt;
 &lt;/template&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-				</section>
-				<section>
-					<h3>Provide/Inject (enfants)</h3>
-<div class="container-flex">
-	<div class="col-2">
-<pre style="font-size: 0.4em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=11>&lt;script setup&gt;
+            <p class="legend">
+              Dossiers
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc"
+                >provideinjectv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3"
+                >provideinjectv3</a
+              >
+              (sans outil)
+            </p>
+          </section>
+          <section>
+            <h3>Provide/Inject (enfants)</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.4em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=11>&lt;script setup&gt;
  import { ref } from 'vue'
  import ClockDisplay from './ClockDisplay.vue'
  const clock = ref(...)
@@ -1995,8 +2631,24 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;template&gt;
  {{ clock }} &lt;ClockDisplay&gt;&lt;/ClockDisplay&gt;
 &lt;/template&gt;</code></pre>
-<p class="legend">Composant Clock : dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-<pre style="font-size: 0.4em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=3>&lt;script setup&gt;
+                <p class="legend">
+                  Composant Clock : dossier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc"
+                    >provideinjectv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3"
+                    >provideinjectv3</a
+                  >
+                  (sans outil)
+                </p>
+                <pre
+                  style="font-size: 0.4em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=3>&lt;script setup&gt;
  import { inject } from 'vue'
  const message = inject('message')
 &lt;/script&gt;
@@ -2004,58 +2656,84 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;template&gt;
  {{ message }}
 &lt;/template&gt;</code></pre>
-<p class="legend">Composant ClockDisplay : dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc">provideinjectv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3">provideinjectv3</a> (sans outil)</p>
-	</div>
-	<div class="col-1">
-		<div class="web-container">
-			<div class="web-row">
-				<div class="web-column web-left">
-					<span class="web-dot" style="background:#ED594A;"></span>
-					<span class="web-dot" style="background:#FDD800;"></span>
-					<span class="web-dot" style="background:#5AC05A;"></span>
-				</div>
-				<div class="web-column web-middle">
-					<input class="web-input" value="https://mickael-baron.fr" disabled />
-				</div>
-			</div>
+                <p class="legend">
+                  Composant ClockDisplay : dossier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3-sfc"
+                    >provideinjectv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/provideinjectv3"
+                    >provideinjectv3</a
+                  >
+                  (sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-			<div style="height: 250px">
-				<div class="elementContainer" id="app-provide">
-					<Clock></Clock>
-    				<input v-model="value" type="text" />
-				</div>
-			</div>
-		</div>
-	</div>
-				</section>
-				<section>
-					<h3>Evénéments personnalisés</h3>
+                  <div style="height: 250px">
+                    <div class="elementContainer" id="app-provide">
+                      <Clock></Clock>
+                      <input v-model="value" type="text" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Evénéments personnalisés</h3>
 
-					<p>Permet une communication Enfant ➡️ Parent</p>
+            <p>Permet une communication Enfant ➡️ Parent</p>
 
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Principe (gestion événement)</b></p>
-							<ul>
-								<li><b>Enfant :</b> émettre avec <code>$emit</code>
-								</li>
-								<li><b>Parent :</b> écouter via <code>v-on</code> ou <code>@</code></li>
-							</ul>
-							<p><b>Événement</b></p>
-							<ul>
-								<li>nom d'identification</li>
-								<li>objet de transfert</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="55%" src="images/communicationpropscustomevent.png" />
-						</div>
-					</div>
-				</section>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe (gestion événement)</b></p>
+                <ul>
+                  <li><b>Enfant :</b> émettre avec <code>$emit</code></li>
+                  <li>
+                    <b>Parent :</b> écouter via <code>v-on</code> ou
+                    <code>@</code>
+                  </li>
+                </ul>
+                <p><b>Événement</b></p>
+                <ul>
+                  <li>nom d'identification</li>
+                  <li>objet de transfert</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img
+                  width="55%"
+                  src="images/communicationpropscustomevent.png"
+                />
+              </div>
+            </div>
+          </section>
 
-				<section>
-					<h3>Evénéments personnalisés (Enfant)</h3>
-					<pre style="font-size: 0.5em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|16-18>&lt;script setup&gt;
+          <section>
+            <h3>Evénéments personnalisés (Enfant)</h3>
+            <pre
+              style="font-size: 0.5em"
+            ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|16-18>&lt;script setup&gt;
  import { ref } from 'vue'
  const clock = ref(new Date().toLocaleTimeString())
  defineEmits(['save-clock'])
@@ -2076,14 +2754,30 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc">customeventv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3">customeventv3</a> (version sans outil)</p>
-				</section>
+            <p class="legend">
+              Dossiers
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc"
+                >customeventv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3"
+                >customeventv3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
 
-				<section>
-					<h3>Evénéments personnalisés (Parent)</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.44em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|13">&lt;script setup&gt;
+          <section>
+            <h3>Evénéments personnalisés (Parent)</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.44em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|13">&lt;script setup&gt;
  import { ref } from 'vue'
  import Clock from './components/Clock.vue'
 
@@ -2101,58 +2795,83 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossiers <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc">customeventv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3">customeventv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossiers
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3-sfc"
+                    >customeventv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/customeventv3"
+                    >customeventv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 150px">
-									<div id="app-customevent">
-										<Clock @save-clock="saveClock($event)"></Clock>
-										<input v-model="value" type="text" />
-										<p>{{value}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Gestionnaire d'état</h3>
-					<p style="margin: 0px;">Partager un modèle de stockage par référence</p>
+                  <div style="height: 150px">
+                    <div id="app-customevent">
+                      <Clock @save-clock="saveClock($event)"></Clock>
+                      <input v-model="value" type="text" />
+                      <p>{{value}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Gestionnaire d'état</h3>
+            <p style="margin: 0px">
+              Partager un modèle de stockage par référence
+            </p>
 
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Principe (solution DIY)</b></p>
-							<ul>
-								<li>Créer un stockage</li>
-								<li>Importer le modèle de stockage</li>
-								<li>Utiliser des mutateurs calculés</li>
-							</ul>
-							<p><b>Aller plus loin</b></p>
-							<ul>
-								<li><a target="_blank" href="https://pinia.vuejs.org/">Pinia</a> (anciennement Vuex)</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="50%" src="images/statemanagement.png" />
-						</div>
-					</div>
-				</section>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe (solution DIY)</b></p>
+                <ul>
+                  <li>Créer un stockage</li>
+                  <li>Importer le modèle de stockage</li>
+                  <li>Utiliser des mutateurs calculés</li>
+                </ul>
+                <p><b>Aller plus loin</b></p>
+                <ul>
+                  <li>
+                    <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a>
+                    (anciennement Vuex)
+                  </li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="50%" src="images/statemanagement.png" />
+              </div>
+            </div>
+          </section>
 
-				<section>
-					<h3>Gestionnaire d'état (stockage)</h3>
-					<pre style="font-size: 0.47em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=1|2-5|7-11|13-18>import { reactive } from 'vue'
+          <section>
+            <h3>Gestionnaire d'état (stockage)</h3>
+            <pre
+              style="font-size: 0.47em"
+            ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=1|2-5|7-11|13-18>import { reactive } from 'vue'
 const debug = true
 const state = reactive({
  message: 'HelloWorld'
@@ -2170,13 +2889,28 @@ export function store() {
   setMessage
  }
 }</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-				</section>
+            <p class="legend">
+              Dossier
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc"
+                >statemanagerv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3"
+                >statemanagerv3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
 
-
-				<section>
-					<h3>Gestionnaire d'état (parent)</h3>
-					<pre style="font-size: 0.47em"><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|8|10-13|17>&lt;script setup&gt;
+          <section>
+            <h3>Gestionnaire d'état (parent)</h3>
+            <pre
+              style="font-size: 0.47em"
+            ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=6|8|10-13|17>&lt;script setup&gt;
 import { computed } from 'vue'
 
 import Writable from './components/Writable.vue'
@@ -2197,14 +2931,30 @@ const message = computed({
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-				</section>
+            <p class="legend">
+              Dossier
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc"
+                >statemanagerv3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3"
+                >statemanagerv3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
 
-				<section>
-					<h3>Gestionnaire d'état (enfants)</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.45em"><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
+          <section>
+            <h3>Gestionnaire d'état (enfants)</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.45em"
+                ><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
  import { store } from '../store.js'
  const { state } = store()
 &lt;/script&gt;
@@ -2214,8 +2964,24 @@ const message = computed({
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-<pre style="font-size: 0.45em"><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
+                <p class="legend">
+                  Dossier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc"
+                    >statemanagerv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3"
+                    >statemanagerv3</a
+                  >
+                  (version sans outil)
+                </p>
+                <pre
+                  style="font-size: 0.45em"
+                ><code style="max-height: 580px;" data-noescape data-trim>&lt;script setup&gt;
  import { store } from '../store.js'
  const { state } = store()
 &lt;/script&gt;
@@ -2225,71 +2991,90 @@ const message = computed({
 &lt;/template&gt;
    
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc">statemanagerv3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3">statemanagerv3</a> (version sans outil)</p>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+                <p class="legend">
+                  Dossier
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3-sfc"
+                    >statemanagerv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/statemanagerv3"
+                    >statemanagerv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 275px">
-									<div class="elementContainer" id="app-statemanager">
-										<div>
-											<input v-model="message" type="text" />{{ message }}
-										</div>
-										<div>
-											<Writable></Writable>
-											<Readable></Readable>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                  <div style="height: 275px">
+                    <div class="elementContainer" id="app-statemanager">
+                      <div>
+                        <input v-model="message" type="text" />{{ message }}
+                      </div>
+                      <div>
+                        <Writable></Writable>
+                        <Readable></Readable>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-				</section>
+          <section>
+            <h3>Référence directe</h3>
 
-				<section>
-					<h3>Référence directe</h3>
+            <p style="margin: 0px">Accéder à un composant par référence</p>
 
-					<p style="margin: 0px;">Accéder à un composant par référence</p>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe (parent ➡️ enfants)</b></p>
+                <ul>
+                  <li>Utiliser attribut <code>ref</code></li>
+                  <li>Déclarer propriété <code>ref</code></li>
+                </ul>
 
-					<div class="container-flex">
-						<div class="col-2" style="text-align: left;">
-							<p><b>Principe (parent ➡️ enfants)</b></p>
-							<ul>
-								<li>Utiliser attribut <code>ref</code></li>
-								<li>Déclarer propriété <code>ref</code></li>
-							</ul>
+                <p><b>Principe (enfant ➡️ parent)</b></p>
+                <ul>
+                  <li>Rechercher référence du parent</li>
+                </ul>
 
-							<p><b>Principe (enfant ➡️ parent)</b></p>
-							<ul>
-								<li>Rechercher référence du parent</li>
-							</ul>
+                <p><b>Problème</b></p>
+                <ul>
+                  <li>Couplage fort</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="60%" src="images/componentreferencev3.png" />
+              </div>
+            </div>
+          </section>
 
-							<p><b>Problème</b></p>
-							<ul>
-								<li>Couplage fort</li>
-							</ul>
-						</div>
-						<div class="col-1">
-							<img width="60%" src="images/componentreferencev3.png" />
-						</div>
-					</div>
-				</section>
+          <section>
+            <h3>Référence directe (parent)</h3>
 
-				<section>
-					<h3>Référence directe (parent)</h3>
-
-							<pre style="font-size: 0.48em"><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|16|5|17|10-12">&lt;script setup&gt;
+            <pre
+              style="font-size: 0.48em"
+            ><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="3|16|5|17|10-12">&lt;script setup&gt;
  import { ref } from 'vue'
  import Child from './components/Child.vue'
 
@@ -2310,14 +3095,30 @@ const message = computed({
 &lt;/template&gt;
 
 &lt;style/&gt;</code></pre>
-<p class="legend">Dossier <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3-sfc">referencev3-sfc</a> (version SFC) et <a target="_blank" href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3">referencev3</a> (version sans outil)</p>
-				</section>
+            <p class="legend">
+              Dossier
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3-sfc"
+                >referencev3-sfc</a
+              >
+              (version SFC) et
+              <a
+                target="_blank"
+                href="https://github.com/mickaelbaron/vuejs-examples/tree/main/referencev3"
+                >referencev3</a
+              >
+              (version sans outil)
+            </p>
+          </section>
 
-				<section>
-					<h3>Référence directe (enfant)</h3>
-					<div class="container-flex">
-						<div class="col-2">
-							<pre style="font-size: 0.43em"><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="9-11|3|5-7">&lt;script setup&gt;
+          <section>
+            <h3>Référence directe (enfant)</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                  style="font-size: 0.43em"
+                ><code style="max-height: 550px;" data-noescape data-trim data-line-numbers="9-11|3|5-7">&lt;script setup&gt;
  import { getCurrentInstance } from 'vue'
  const instance = getCurrentInstance()
 
@@ -2336,250 +3137,371 @@ const message = computed({
 
 &lt;style/&gt;
 </code></pre>
-						</div>
-						<div class="col-1">
-							<div class="web-container">
-								<div class="web-row">
-									<div class="web-column web-left">
-										<span class="web-dot" style="background:#ED594A;"></span>
-										<span class="web-dot" style="background:#FDD800;"></span>
-										<span class="web-dot" style="background:#5AC05A;"></span>
-									</div>
-									<div class="web-column web-middle">
-										<input class="web-input" value="https://mickael-baron.fr" disabled />
-									</div>
-								</div>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
 
-								<div style="height: 200px">
-									<div class="elementContainer" id="app-ref-component">
-										<Child ref="refChild"></Child>
-										<button @click="refChild.callChild()">Go</button>
-										{{ value }}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+                  <div style="height: 200px">
+                    <div class="elementContainer" id="app-ref-component">
+                      <Child ref="refChild"></Child>
+                      <button @click="refChild.callChild()">Go</button>
+                      {{ value }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-				<section>
-					<h3>Résumé</h3>
+          <section>
+            <h3>Résumé</h3>
 
-					<table>
-						<thead>
-							<tr>
-								<th>Technique</th>
-								<th>Usage</th>
-								<th>Avis</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Props</td>
-								<td>Parent ➡️ Enfant</td>
-								<td>👍</td>
-							</tr>
-							<tr>
-								<td>Provide/Inject</td>
-								<td>Parent ➡️ Petit-Enfant</td>
-								<td>👍👎</td>
-							</tr>
-							<tr>
-								<td>Événement perso</td>
-								<td>Enfant ➡️ Parent</td>
-								<td>👍</td>
-							</tr>
-							<tr>
-								<td>Gestionnaire états</td>
-								<td>Globalité</td>
-								<td>👍</td>
-							</tr>
-							<tr>
-								<td>Référence</td>
-								<td>Parent ↔️ Enfant</td>
-								<td>👎👎</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-			</section>
+            <table>
+              <thead>
+                <tr>
+                  <th>Technique</th>
+                  <th>Usage</th>
+                  <th>Avis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Props</td>
+                  <td>Parent ➡️ Enfant</td>
+                  <td>👍</td>
+                </tr>
+                <tr>
+                  <td>Provide/Inject</td>
+                  <td>Parent ➡️ Petit-Enfant</td>
+                  <td>👍👎</td>
+                </tr>
+                <tr>
+                  <td>Événement perso</td>
+                  <td>Enfant ➡️ Parent</td>
+                  <td>👍</td>
+                </tr>
+                <tr>
+                  <td>Gestionnaire états</td>
+                  <td>Globalité</td>
+                  <td>👍</td>
+                </tr>
+                <tr>
+                  <td>Référence</td>
+                  <td>Parent ↔️ Enfant</td>
+                  <td>👎👎</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
 
-			<!-- Routage -->
-			<section>
-				<h3>Routage</h3>
+        <!-- Routage -->
+        <section>
+          <h3>Routage</h3>
 
-				<img width="70%" src="/images/slides/todo.png" />
-			</section>
+          <img width="70%" src="/images/slides/todo.png" />
+        </section>
 
-			<!-- Outils -->
-			<section>
-				<section>
-					<h3>Outils pour Vue.JS</h3>
+        <!-- Outils -->
+        <section>
+          <section>
+            <h3>Outils pour Vue.JS</h3>
 
-					<img width="75%" src="images/vuejstools.jpg" />
+            <img width="75%" src="images/vuejstools.jpg" />
 
-					<p>Outils pour le développeur</p>
-				</section>
+            <p>Outils pour le développeur</p>
+          </section>
 
-				<section data-background-size="60%" data-background-opacity="0.2"
-					data-background-image="images/vscode.svg">
-					<h3>Visual Studio Code</h3>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="images/vscode.svg"
+          >
+            <h3>Visual Studio Code</h3>
 
-					
-					<div style="text-align: left;">
-						<p>Intégration <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-						<ul>
-							<li>Vérification de la syntaxe</li>
-							<li>Formattage</li>
-							<li>Utilisation de snippets</li>
-						</ul>
-						<p><b>Plugins</b> : <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a> et <a href="https://github.com/vuejs/vetur" target="_blank">Vetur</a></p>
-						<p><b>Plugin <a href="https://github.com/vuejs/eslint-plugin-vue"
-									target="_blank">ESLint</a></b></p>
-						<ul style="line-height:200%">
-							<li>Vérification de la qualité de votre code <a href="https://vuejs.org/"
-									target="_blank">Vue.js</a></li>
-						</ul>
-					</div>
-				</section>
+            <div style="text-align: left">
+              <p>
+                Intégration
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+              </p>
+              <ul>
+                <li>Vérification de la syntaxe</li>
+                <li>Formattage</li>
+                <li>Utilisation de snippets</li>
+              </ul>
+              <p>
+                <b>Plugins</b> :
+                <a href="https://github.com/johnsoncodehk/volar" target="_blank"
+                  >Volar</a
+                >
+                et
+                <a href="https://github.com/vuejs/vetur" target="_blank"
+                  >Vetur</a
+                >
+              </p>
+              <p>
+                <b
+                  >Plugin
+                  <a
+                    href="https://github.com/vuejs/eslint-plugin-vue"
+                    target="_blank"
+                    >ESLint</a
+                  ></b
+                >
+              </p>
+              <ul style="line-height: 200%">
+                <li>
+                  Vérification de la qualité de votre code
+                  <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-				<section>
-					<h3>Vue DevTools</h3>
+          <section>
+            <h3>Vue DevTools</h3>
 
-					<div style="text-align: left;">
-						<p><a href="https://github.com/vuejs/vue-devtools" target="_blank">Vue DevTools</a> permet
-							d'introspecter votre application <a href="https://vuejs.org/" target="_blank">Vue.js</a>
-							depuis le navigateur</p>
-						<p><b>Installation</b></p>
-						<ul>
-							<li>Dans votre navigateur : <a target="_blank"
-									href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd">Chrome</a>, <a
-									target="_blank"
-									href="https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/">Firefox</a></li>
-							<li><a target="_blank"
-									href="https://devtools.vuejs.org/guide/installation.html#standalonehttps://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md">Application
-									standalone</a></li>
-						</ul>						
-					</div>
-					<img width="65%" src="images/vuejsdevtoolsv3.png" />
-				</section>
-				<section>
-					<h3>Vite</h3>
+            <div style="text-align: left">
+              <p>
+                <a href="https://github.com/vuejs/vue-devtools" target="_blank"
+                  >Vue DevTools</a
+                >
+                permet d'introspecter votre application
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a> depuis
+                le navigateur
+              </p>
+              <p><b>Installation</b></p>
+              <ul>
+                <li>
+                  Dans votre navigateur :
+                  <a
+                    target="_blank"
+                    href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd"
+                    >Chrome</a
+                  >,
+                  <a
+                    target="_blank"
+                    href="https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/"
+                    >Firefox</a
+                  >
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://devtools.vuejs.org/guide/installation.html#standalonehttps://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md"
+                    >Application standalone</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <img width="65%" src="images/vuejsdevtoolsv3.png" />
+          </section>
+          <section>
+            <h3>Vite</h3>
 
-					<p>Outil pour créer des projets Vue.js avec le format .vue</p>
+            <p>Outil pour créer des projets Vue.js avec le format .vue</p>
 
-					<div style="text-align: left;">				
-						<p><b>Création d'un projet</b> (<a target="_blank" href="https://github.com/vuejs/create-vue">create-vue</a> basé sur <a target="_blank" href="https://vitejs.dev/">Vite</a>)</p>
-						<pre><code>$ npm create vite@latest</code></pre>
+            <div style="text-align: left">
+              <p>
+                <b>Création d'un projet</b> (<a
+                  target="_blank"
+                  href="https://github.com/vuejs/create-vue"
+                  >create-vue</a
+                >
+                basé sur <a target="_blank" href="https://vitejs.dev/">Vite</a>)
+              </p>
+              <pre><code>$ npm create vite@latest</code></pre>
 
-						<p><b>Installation des dépendances</b></p>
-						<pre><code>$ npm install</code></pre>
+              <p><b>Installation des dépendances</b></p>
+              <pre><code>$ npm install</code></pre>
 
-						<p><b>Exécution pour tester</b></p>
-						<pre><code>$ npm run dev</code></pre>
+              <p><b>Exécution pour tester</b></p>
+              <pre><code>$ npm run dev</code></pre>
 
-						<p><b>Exécution pour déployer</b></p>
-						<pre><code>$ npm run build</code></pre>
-					</div>
-				</section>
+              <p><b>Exécution pour déployer</b></p>
+              <pre><code>$ npm run build</code></pre>
+            </div>
+          </section>
 
-				<section data-background-size="90%" data-background-opacity="0.2"
-				data-background-image="images/primevue.svg">
-					<h3>Bibliothèques / Frameworks</h3>
+          <section
+            data-background-size="90%"
+            data-background-opacity="0.2"
+            data-background-image="images/primevue.svg"
+          >
+            <h3>Bibliothèques / Frameworks</h3>
 
-					<div style="text-align: left;">
-						<p><a target="_blank" href="https://github.com/vuejs/vuepress">VuePress</a> : générateur de site
-							statique</p>
-						<p><a target="_blank" href="https://pinia.vuejs.org/">Pinia</a> : gestionnaire d'états</p>
-						<p><a target="_blank" href="https://nuxtjs.org/">Nuxt.js</a> : framework du framework Vue.js</p>
-						<p><a target="_blank" href="https://test-utils.vuejs.org/">Vue Test Utils</a> : tests</p>
-						<p>Bibliothèques de composants</p>
-						<ul>
-							<li><a target="_blank" href="https://vuetifyjs.com/">Vuetify</a> : basée sur <a target="_blank" href="https://material.io/">Materiel Design</a></li>
-							<li><a target="_blank" href="https://www.primefaces.org/primevue/">PrimeVue</a> : basée sur <a target="_blank" href="https://www.primefaces.org/">Prime Faces</a></li>
-						</ul>
-					</div>
-				</section>
-			</section>
+            <div style="text-align: left">
+              <p>
+                <a target="_blank" href="https://github.com/vuejs/vuepress"
+                  >VuePress</a
+                >
+                : générateur de site statique
+              </p>
+              <p>
+                <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a> :
+                gestionnaire d'états
+              </p>
+              <p>
+                <a target="_blank" href="https://nuxtjs.org/">Nuxt.js</a> :
+                framework du framework Vue.js
+              </p>
+              <p>
+                <a target="_blank" href="https://test-utils.vuejs.org/"
+                  >Vue Test Utils</a
+                >
+                : tests
+              </p>
+              <p>Bibliothèques de composants</p>
+              <ul>
+                <li>
+                  <a target="_blank" href="https://vuetifyjs.com/">Vuetify</a> :
+                  basée sur
+                  <a target="_blank" href="https://material.io/"
+                    >Materiel Design</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.primefaces.org/primevue/"
+                    >PrimeVue</a
+                  >
+                  : basée sur
+                  <a target="_blank" href="https://www.primefaces.org/"
+                    >Prime Faces</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
 
-			<!-- Go further -->
-			<section>
-				<section data-background-size="90%" data-background-opacity="0.2"
-					data-background-image="/images/slides/gofurther.jpg">
-					<h3>Allez plus loin</h3>
+        <!-- Go further -->
+        <section>
+          <section
+            data-background-size="90%"
+            data-background-opacity="0.2"
+            data-background-image="/images/slides/gofurther.jpg"
+          >
+            <h3>Allez plus loin</h3>
 
-					<ul>
-						<li><a target="_blank" href="https://mickael-baron.fr/web/">mickael-baron.fr/web</a></li>
-						<li><a target="_blank" href="https://vuejs.org/tutorial">vuejs.org/tutorial</a></li>
-						<li><a target="_blank"
-								href="https://github.com/vuejs/awesome-vue">github.com/vuejs/awesome-vue</a>
-						</li>
-						<li><a target="_blank"
-								href="https://flaviocopes.com/vue-developer-roadmap/">flaviocopes.com/vue-developer-roadmap</a>
-						</li>
-						<li><a target="_blank"
-								href="https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/">7 Ways to
-								Define a
-								Component Template</a></li>
-						</li>
-						<li><a target="_blank"
-							href="https://www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf">www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf</a></li>
-					</ul>
-				</section>
-			</section>
+            <ul>
+              <li>
+                <a target="_blank" href="https://mickael-baron.fr/web/"
+                  >mickael-baron.fr/web</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://vuejs.org/tutorial"
+                  >vuejs.org/tutorial</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://github.com/vuejs/awesome-vue"
+                  >github.com/vuejs/awesome-vue</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://flaviocopes.com/vue-developer-roadmap/"
+                  >flaviocopes.com/vue-developer-roadmap</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/"
+                  >7 Ways to Define a Component Template</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf"
+                  >www.vuemastery.com/pdf/Vue-3-Cheat-Sheet.pdf</a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
 
-			<!-- Pratical -->
-			<section>
-				<h3>Place aux travaux pratiques</h3>
+        <!-- Pratical -->
+        <section>
+          <h3>Place aux travaux pratiques</h3>
 
-				<div class="wrapper-icon">
-					<p>Disponibles sur Github <img class="icon" src="/images/slides/github.svg" /> : <a target="_blank"
-							href="https://github.com/mickaelbaron">github.com/mickaelbaron</a></p>
-				</div>
+          <div class="wrapper-icon">
+            <p>
+              Disponibles sur Github
+              <img class="icon" src="/images/slides/github.svg" /> :
+              <a target="_blank" href="https://github.com/mickaelbaron"
+                >github.com/mickaelbaron</a
+              >
+            </p>
+          </div>
 
-				<div class="container-flex">
-					<div class="col-1">
-						<p><b>Intégration dans un existant</b></p>
-						<ul style="line-height:150%">
-							<li>Déclaration</li>
-							<li>Interpolation</li>
-							<li>Directives</li>
-							<li class="wrapper-icon">
-								<img class="icon" src="/images/slides/github.svg" /> <a target="_blank"
-									href="https://github.com/mickaelbaron/vuejs-form-tutorial">/vuejs-form-tutorial</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-1">
-						<p><b>Single Page Application (SPA)</b></p>
-						<ul style="line-height:150%">
-							<li>Coder composant</li>
-							<li>Vue CLI</li>
-							<li>Communication</li>
-							<li class="wrapper-icon">
-								<img class="icon" src="/images/slides/github.svg" /> <a target="_blank"
-									href="https://github.com/mickaelbaron/vuejs-spa-tutorial">/vuejs-spa-tutorial</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
+          <div class="container-flex">
+            <div class="col-1">
+              <p><b>Intégration dans un existant</b></p>
+              <ul style="line-height: 150%">
+                <li>Déclaration</li>
+                <li>Interpolation</li>
+                <li>Directives</li>
+                <li class="wrapper-icon">
+                  <img class="icon" src="/images/slides/github.svg" />
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-form-tutorial"
+                    >/vuejs-form-tutorial</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-1">
+              <p><b>Single Page Application (SPA)</b></p>
+              <ul style="line-height: 150%">
+                <li>Coder composant</li>
+                <li>Vue CLI</li>
+                <li>Communication</li>
+                <li class="wrapper-icon">
+                  <img class="icon" src="/images/slides/github.svg" />
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-spa-tutorial"
+                    >/vuejs-spa-tutorial</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
-	<script src="introduction-vuejs.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
-	<script>
-		Reveal.initialize({
-			hash: true,
-			autoPlayMedia: true,
-			touch: false,
-			slideNumber: 'c/t',
-			showNotes: false,
-			plugins: [RevealHighlight]
-		});
-	</script>
-</body>
-
+    <script src="introduction-vuejs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        autoPlayMedia: true,
+        touch: false,
+        slideNumber: "c/t",
+        showNotes: false,
+        plugins: [RevealHighlight],
+      });
+    </script>
+  </body>
 </html>
