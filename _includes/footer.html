@@ -1,11 +1,14 @@
 <footer class="mt-auto py-3 text-center">
-
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> by
+    <strong>{{ site.author.name }}</strong>
+  </small>
+  <div>
     <small class="text-muted mb-2">
-      <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
-      by <strong>{{ site.author.name }}</strong>
+      {% capture nowunix %}{{'now'}}{% endcapture %} Dernière mise à jour : {%
+      include translated_date.html date=nowunix preformatedformat="full" %}
     </small>
-  
-    {% include social.html %}
-  
-  </footer>
-  
+  </div>
+
+  {% include social.html %}
+</footer>
