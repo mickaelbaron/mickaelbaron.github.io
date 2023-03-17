@@ -32,7 +32,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.css"
+      href="/assets/css/asciinema-player.css"
     />
     <style>
       /* Double colonnes */
@@ -610,7 +610,11 @@ d2bc3ccd2ee1   busybox   "/bin/sh"   26 minutes ago   Exited (0) 23 minutes ago 
           <section>
             <h3>Conteneur interactif (démo1)</h3>
             <p>Commandes : <b>pull, run et ps</b></p>
-            <div id="demo1"></div>
+            <div
+              class="asciinema"
+              file="demo/demo1.cast"
+              style="height: 500px"
+            ></div>
           </section>
           <section>
             <h3>Conteneur détaché (démo2)</h3>
@@ -646,7 +650,11 @@ $ docker rm $JOB # Un conteneur doit être arrêté pour le supprimer ou forcer 
           <section>
             <h3>Conteneur détaché (démo2)</h3>
             <p>Commandes : <b>run, logs, ps, attach</b></p>
-            <div id="demo2"></div>
+            <div
+              class="asciinema"
+              file="demo/demo2.cast"
+              style="height: 500px"
+            ></div>
           </section>
           <section>
             <h3>Conteneur sans état (démo3)</h3>
@@ -678,7 +686,11 @@ $ docker run -it busybox /bin/sh -c '/bin/rm -rf /usr;/bin/ls /'</code></pre>
           <section>
             <h3>Conteneur sans état (démo3)</h3>
             <p>Commandes : <b>run, exec, diff, rm</b></p>
-            <div id="demo3"></div>
+            <div
+              class="asciinema"
+              file="demo/demo3.cast"
+              style="height: 500px"
+            ></div>
           </section>
         </section>
         <section>
@@ -788,7 +800,11 @@ $ docker run –it --name gh_rdf3x mickaelbaron/gh_rdf3x_manual /bin/sh</code></
           <section>
             <h3>Créer image via commit (démo4)</h3>
             <p>Commandes : <b>run, exec, diff, rm</b></p>
-            <div id="demo4"></div>
+            <div
+              class="asciinema"
+              file="demo/demo4.cast"
+              style="height: 500px"
+            ></div>
           </section>
           <section>
             <h3>Créer image via Dockerfile</h3>
@@ -832,7 +848,11 @@ WORKDIR /output</code></pre>
           </section>
           <section>
             <h3>Créer image via Dockerfile (démo5)</h3>
-            <div id="demo5"></div>
+            <div
+              class="asciinema"
+              file="demo/demo5.cast"
+              style="height: 500px"
+            ></div>
           </section>
         </section>
         <section>
@@ -894,7 +914,11 @@ RDF-3X query interface
           <section>
             <h3>Les volumes (démo6)</h3>
             <p>Commande : <b>run</b></p>
-            <div id="demo6"></div>
+            <div
+              class="asciinema"
+              file="demo/demo6.cast"
+              style="height: 500px"
+            ></div>
           </section>
         </section>
         <section>
@@ -954,7 +978,11 @@ $ psql -U postgres -d postgres -h localhost -p 54321
           <section>
             <h3>Rediriger les ports (démo7)</h3>
             <p>Commande : <b>run</b></p>
-            <div id="demo7"></div>
+            <div
+              class="asciinema"
+              file="demo/demo7.cast"
+              style="height: 500px"
+            ></div>
           </section>
         </section>
         <section>
@@ -1068,8 +1096,17 @@ $ psql -U postgres -d postgres -h localhost -p 54321
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
-    <script src="https://unpkg.com/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
+    <script src="/assets/js/asciinema-player.min.js"></script>
     <script>
+      {
+        const asciinemas = document.getElementsByClassName("asciinema");
+        for (let i = 0; i < asciinemas.length; i++) {
+          const img = document.createElement("img");
+          img.setAttribute("src", "/images/asciinema.png");
+          asciinemas[i].appendChild(img);
+        }
+      }
+
       Reveal.initialize({
         hash: true,
         autoPlayMedia: true,
@@ -1077,58 +1114,31 @@ $ psql -U postgres -d postgres -h localhost -p 54321
         slideNumber: "c/t",
         showNotes: false,
         plugins: [RevealHighlight],
-      }).then(() => {
-        var conf = {
-          cols: 130,
-          rows: 30,
-          theme: "monokai",
-          speed: 2,
-        };
-        AsciinemaPlayer.create(
-          "demo/demo1.cast",
-          document.getElementById("demo1"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo2.cast",
-          document.getElementById("demo2"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo3.cast",
-          document.getElementById("demo3"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo4.cast",
-          document.getElementById("demo4"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo5.cast",
-          document.getElementById("demo5"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo6.cast",
-          document.getElementById("demo6"),
-          conf
-        );
-        AsciinemaPlayer.create(
-          "demo/demo7.cast",
-          document.getElementById("demo7"),
-          conf
-        );
       });
-      Reveal.on("slidechanged", (event) => {
-        const ele = document.getElementsByClassName("asciinema-theme-monokai");
-        for (let i = 0; i < ele.length; i++) {
-          //ele[i].style.height = "199.602px";
-          //ele[i].style.width = "160px";
-          ele[i].style.height = "499.602px";
-          ele[i].style.width = "960px";
+
+      function checkForCasts(event) {
+        const asciinema =
+          event.currentSlide.getElementsByClassName("asciinema")[0];
+        if (asciinema) {
+          const filename = asciinema.getAttribute("file");
+          if (asciinema && !asciinema.playerObject) {
+            // Remove image
+            const firstelementChild = asciinema.firstElementChild;
+            if (firstelementChild) {
+              asciinema.firstElementChild.remove();
+            }
+
+            asciinema.playerObject = AsciinemaPlayer.create(
+              filename,
+              asciinema,
+              { fit: "none", cols: 130, rows: 30, theme: "monokai", speed: 2 }
+            );
+          }
         }
-      });
+      }
+
+      Reveal.on("ready", checkForCasts);
+      Reveal.on("slidechanged", checkForCasts);
     </script>
   </body>
 </html>
