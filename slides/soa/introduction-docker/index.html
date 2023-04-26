@@ -85,7 +85,7 @@
 
           <h3><s>Adopter une baleine bleue</s></h3>
           <h4>Découverte de Docker</h4>
-          <p>Mickaël BARON - Version 02-2022</p>
+          <p>Mickaël BARON - Version 04-2023</p>
           <p>
             <a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a>
             ou <a href="mailto:baron@ensma.fr">baron@ensma.fr</a>
@@ -251,7 +251,7 @@
               </p>
               <ul style="line-height: 200%">
                 <li>
-                  Focaliser sur le <b>pourquoi</b>
+                  Focaliser sur <b>pourquoi</b>
                   <a href="https://www.docker.com/">Docker</a> est utile
                 </li>
                 <li>Se limiter aux principaux concepts</li>
@@ -402,7 +402,7 @@
               <p>Sites web officiels</p>
               <ul>
                 <li>
-                  Site référence :
+                  Site de référence :
                   <a href="https://www.docker.com">www.docker.com</a>
                 </li>
                 <li>
@@ -475,10 +475,9 @@
               <p>Dans un système Linux, <b>deux systèmes de fichiers</b></p>
               <ul>
                 <li>
-                  <em>boots</em> : contient <em>boot loader</em> et noyau
-                  (kernel)
+                  <em>bootfs</em> : contient le noyau du système hôte
                 </li>
-                <li><em>roots</em> : contient structure des répertoires</li>
+                <li><em>rootfs</em> : contient structure des répertoires</li>
               </ul>
             </div>
             <img width="70%" src="images/images1.png" />
@@ -731,7 +730,7 @@ $ docker run -it busybox /bin/sh -c '/bin/rm -rf /usr;/bin/ls /'</code></pre>
               </p>
               <ul>
                 <li>Moteur de stockage de données RDF</li>
-                <li>Interpréteur SPARQL (en ligne de commande</li>
+                <li>Interpréteur SPARQL (en ligne de commande)</li>
               </ul>
               <p>
                 Limitations de la version actuelle
@@ -861,22 +860,22 @@ WORKDIR /output</code></pre>
             <h3>Les volumes (démo6)</h3>
             <p>Commande : <b>run</b></p>
 
-            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim>$ ls $(pwd)/data
+            <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim>$ ls "$PWD"/data
 lubm-data.nt query.sparql
 
 # Création d&prime;une base RDF-3X via un conteneur Docker
 # Volume où seront stockés les données d’entrées .nt et requêtes SPARQL
-# -v $(pwd)/data:/data : associe $(pwd)/data du hôte au répertoire /data du conteneur
+# -v "$PWD"/data:/data : associe "$PWD"/data du hôte au répertoire /data du conteneur
 # Volume où seront stockés les bases RDF-3X
-# -v $(pwd)/output:/output : associe $(pwd)/output du hôte au répertoire /output du conteneur 
-$ docker run --rm -v $(pwd)/data:/data -v $(pwd)/output:/output mickaelbaron/gh_rdf3x 
+# -v "$PWD"/output:/output : associe "$PWD"/output du hôte au répertoire /output du conteneur 
+$ docker run --rm -v "$PWD"/data:/data -v "$PWD"/output:/output mickaelbaron/gh_rdf3x 
            /gh-rdf3x/bin/rdf3xload /output/datadb /data/lubm-data.nt
 
-$ ls $(pwd)/output
+$ ls "$PWD"/output
 datadb
 
 # Exécution d&prime;une requête SPARQL à partir d&prime;une base RDF-3X créée précédemment
-$ docker run --rm -v $(pwd)/data:/data -v $(pwd)/output:/output mickaelbaron/gh_rdf3x 
+$ docker run --rm -v "$PWD"/data:/data -v "$PWD"/output:/output mickaelbaron/gh_rdf3x 
            /gh-rdf3x/bin/rdf3xquery /output/datadb /data/query.sparql
 RDF-3X query interface
 (c) 2008 Thomas Neumann. Web site: http://www.mpi-inf.mpg.de/~neumann/rdf3x
@@ -1008,7 +1007,6 @@ $ psql -U postgres -d postgres -h localhost -p 54321
           <div style="text-align: left">
             <p>Eco-système qui évolue rapidement (API Deprecated)</p>
             <p>Ne pas être « allergique » à la ligne de commande</p>
-            <p>Nécessite d’être root dans le conteneur</p>
             <p>Déport d’affichage (application graphique)</p>
             <p>Limité aux systèmes Linux</p>
             <p>
@@ -1018,7 +1016,7 @@ $ psql -U postgres -d postgres -h localhost -p 54321
               pas un vrai <a href="https://www.docker.com/">Docker</a>
             </p>
             <ul>
-              <li>Problème de redirection de port</li>
+              <li>Problème de redirection de ports</li>
               <li>Problème de performance sur les volumes</li>
             </ul>
           </div>
