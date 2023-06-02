@@ -52,6 +52,9 @@
             </div>
           </div>
           <div class="card-footer {{ text_style }}">
+            {% if post.english %}
+              <i class="fas fa-flag-usa"></i>
+            {% endif %}
             {% include translated_date.html date=post.date preformatedformat="weekday" %}
           </div>
         </a>

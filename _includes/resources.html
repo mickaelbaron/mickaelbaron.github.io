@@ -32,6 +32,9 @@
           <div class="card-footer">
             <div class="row">
               <div class="col-sm-8">
+                {% if resource.english %}
+                  <i class="fas fa-flag-usa"></i>
+                {% endif %}
                 {% if resource.update %}
                   <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" %}
                 {% else %}
