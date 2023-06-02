@@ -4,7 +4,7 @@ tags: [DevOps, Kubernetes, Coder]
 category: technical
 description: "This post aims at describing the deployment of Coder on a Kubernetes cluster via the K3s distribution."
 english: true
-twitter: 
+twitter: 1664646863302082560
 ---
 
 This post aims at describing the deployment of [Coder](https://coder.com/) on a Kubernetes cluster via the [K3s](https://k3s.io/) distribution. 
