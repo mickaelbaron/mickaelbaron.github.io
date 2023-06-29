@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>
+      Environnement de développement à distance : tour d'horizon des solutions
+      et présentation de Onyxia
+    </title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css"
+      id="theme"
+    />
+    <!-- Theme utilisée pour la mise au format du code -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
+      id="highlight-theme"
+    />
+
+    <style>
+      /* Double colonnes */
+      .container-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: center;
+      }
+
+      .col-1 {
+        flex: 1;
+      }
+
+      .col-2 {
+        flex: 2;
+      }
+
+      /* Placer des petites images à côté du texte */
+      .wrapper-icon .icon {
+        position: relative;
+        margin: 0 10px 0 0;
+        width: 25px;
+        height: 25px;
+      }
+
+      /* Arondir les images */
+      .roundedImage {
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -khtml-border-radius: 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px #343434;
+      }
+
+      /* Pour les éléments des démos */
+      .elementContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: center;
+      }
+
+      .elementContainer > * {
+        margin: 10px;
+      }
+
+      /* Container for columns and the top "toolbar" */
+      .web-row {
+        padding-bottom: 15px;
+        background: #e0e0e0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      /* Create three unequal columns that floats next to each other */
+      .web-column {
+        float: left;
+      }
+
+      .web-left {
+        width: 20%;
+      }
+
+      .web-middle {
+        width: 70%;
+      }
+
+      /* Clear floats after the columns */
+      .web-row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Three dots */
+      .web-dot {
+        margin-top: 4px;
+        height: 12px;
+        width: 12px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      /* Style the input field */
+      .web-input {
+        width: 100%;
+        border-radius: 3px;
+        border: none;
+        background-color: white;
+        margin-top: -8px;
+        height: 25px;
+        color: #666;
+        padding: 5px;
+      }
+
+      /* Page content */
+      .web-content {
+        height: 500px;
+      }
+
+      .legend {
+        font-size: 10px;
+      }
+
+      table tr.strike-through-row {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Page de garde -->
+        <section>
+          <img width="35%" src="images/onyxia.svg" />
+
+          <h4>Environnements de développement à distance</h4>
+          <h4>Solutions existantes ? Présentation d'Onyxia</h4>
+          <p>Mickaël BARON - Version 06-2023</p>
+          <div class="wrapper-icon">
+            <a target="_blank" href="https://twitter.com/mickaelbaron"
+              ><img
+                class="icon"
+                src="/images/slides/twitter.svg"
+              />@mickaelbaron</a
+            >
+            <a target="_blank" href="https://mickael-baron.fr"
+              ><img
+                class="icon"
+                src="/images/slides/web.svg"
+              />mickael-baron.fr</a
+            >
+          </div>
+        </section>
+
+        <!-- Licence d'utilisation -->
+        <section>
+          <h3>Licence d'utilisation</h3>
+
+          <p><b>Creative Commons</b></p>
+          <p>Contrat Paternité</p>
+          <p>Partage des Conditions Initiales à l'Identique</p>
+          <p>2.0 France</p>
+          <p><img width="50%" src="/images/slides/by-sa.svg" /></p>
+          <a
+            target="_blank"
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            >creativecommons.org/licenses/by-sa/4.0</a
+          >
+        </section>
+
+        <!-- Qui suis-je ? -->
+        <section>
+          <section>
+            <h3>Qui suis-je ?</h3>
+
+            <img
+              width="25%"
+              class="roundedImage"
+              src="/images/slides/mbaron.jpg"
+            />
+            <div class="wrapper-icon">
+              <p>
+                <a target="_blank" href="https://twitter.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/twitter.svg"
+                  />@mickaelbaron</a
+                >
+              </p>
+              <p>
+                <a target="_blank" href="https://mickael-baron.fr"
+                  ><img
+                    class="icon"
+                    src="/images/slides/web.svg"
+                  />mickael-baron.fr</a
+                >
+              </p>
+              <p>
+                <a target="_blank" href="https://github.com/mickaelbaron"
+                  ><img
+                    class="icon"
+                    src="/images/slides/github.svg"
+                  />mickaelbaron</a
+                >
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Ingénieur de Recherche ☀️</h3>
+
+            <div class="container-flex">
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 200%">
+                  <li>
+                    Recherche dans l'équipe <b>I</b>ngénierie des <b>D</b>onnées
+                    et des mo<b>D</b>èles (IDD)
+                  </li>
+                  <li>Valorisation des plateformes logicielles</li>
+                  <li>« Coach technique » auprès des usagés</li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img width="65%" src="/images/slides/isae_ensma.svg" />
+                <img width="65%" src="/images/slides/lias.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a target="_blank" href="https://twitter.com/LIAS_LAB"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@LIAS_LAB</a
+                    >
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://www.lias-lab.fr"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />www.lias-lab.fr</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Ancien Responsable 🌑 (2011-2021)</h3>
+
+            <div class="container-flex">
+              <div class="col-1">
+                <img width="100%" src="/images/slides/developpezcom.png" />
+                <div class="wrapper-icon">
+                  <p>
+                    <a target="_blank" href="https://twitter.com/javaDeveloppez"
+                      ><img
+                        class="icon"
+                        src="/images/slides/twitter.svg"
+                      />@javaDeveloppez</a
+                    >
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://java.developpez.com"
+                      ><img
+                        class="icon"
+                        src="/images/slides/web.svg"
+                      />java.developpez.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="col-1" style="text-align: left">
+                <ul style="line-height: 150%">
+                  <li>
+                    Rubriques : Java, Java Web, Android, Eclipse, Spring et
+                    Netbeans
+                  </li>
+                  <li>Rédacteurs de tutoriels</li>
+                  <li>Chiffres</li>
+                  <ul>
+                    <li>4 M de visiteurs</li>
+                    <li>12 M pages vues/mois</li>
+                    <li>7500 membres</li>
+                    <li>2000 forums</li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- Plan -->
+        <section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="images/onyxia.svg"
+          >
+            <h3>Objectif de la présentation (20 min)</h3>
+
+            <ul style="line-height: 200%">
+              <li>Contexte et problématiques</li>
+              <li>Solutions existantes</li>
+              <li>Onyxia</li>
+              <ul>
+                <li>Démonstration</li>
+                <li>Fonctionnement</li>
+              </ul>
+              <li>Déploiement au LIAS ?</li>
+              <li>Futures contributions</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Contexte et problématiques -->
+        <section>
+          <section>
+            <h3>Contexte</h3>
+            <div style="text-align: left">
+              <p>
+                Environnement de développement pour la <b>recherche</b> et la
+                <b>formation</b>
+              </p>
+              <p>Exigences attendues ?</p>
+              <div class="container-flex">
+                <div class="col-1" style="text-align: left">
+                  <ul style="line-height: 200%">
+                    <li>Compilateur (Javac)</li>
+                    <li>Éditeur (VSCode)</li>
+                    <li>Utilitaire (cURL)</li>
+                    <li>Données (fichiers, DB)</li>
+                  </ul>
+                </div>
+                <div class="col-1" style="text-align: left">
+                  <ul style="line-height: 200%">
+                    <li>Code source (Git)</li>
+                    <li>Matériel (GPU)</li>
+                    <li>Isolation (Conteneur)</li>
+                    <li>Personnalisation UI</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Problématiques</h3>
+            <div style="text-align: left">
+              <p>Limites du poste de travail ?</p>
+              <ul style="line-height: 150%">
+                <li>Différentes versions des compilateurs</li>
+                <ul>
+                  <li>LTS ou dernière version</li>
+                </ul>
+                <li>Nombreux éditeurs de code</li>
+                <ul>
+                  <li>VSCode, Jupyter, PyCharm, Theia</li>
+                </ul>
+                <li>Différents métiers</li>
+                <ul>
+                  <li>Dev. Web, Dev. Backend, Data Scientist</li>
+                </ul>
+                <li>Accès à du matériel spécifique</li>
+                <ul>
+                  <li>ARM, GPU, capteurs/actionneurs</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Problématiques : formation</h3>
+            <div style="text-align: left">
+              <ul style="line-height: 200%">
+                <li>Besoin de remonter les besoins logiciels à la DSI</li>
+                <li>Pas d'isolation</li>
+                <ul>
+                  <li>Conflit avec les variables d'environnement</li>
+                  <li>Conflit avec les bibliothèques</li>
+                </ul>
+                <li>
+                  Reproduction difficile de son environnement de développement
+                </li>
+                <li>Perte du contexte d'édition et d'exécution</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Problématiques : recherche</h3>
+            <div style="text-align: left">
+              <ul style="line-height: 175%">
+                <li>Utilisation de machines virtuelles (PaaS)</li>
+                <ul>
+                  <li>Maintenir un OS</li>
+                  <li>Surdimensionné par rapport au besoin</li>
+                </ul>
+                <li>Partager des ressources matérielles</li>
+                <ul>
+                  <li>GPU, capteurs/actionneurs</li>
+                </ul>
+                <li>Accès distants (OpenVPN)</li>
+                <ul>
+                  <li>Manipuler SSH</li>
+                  <li>Conserver l'exécution NoHup/Screen</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- Solutions -->
+        <section>
+          <section
+            data-background-size="80%"
+            data-background-opacity="0.1"
+            data-background-image="images/cooking-bro.svg"
+          >
+            <h3>Environnements de développement à distance</h3>
+            <p>🇬🇧 Remote Development Workspaces (RDW)</p>
+            <div class="col-1" style="text-align: left">
+              <p>Recette pour un bon RDW ?</p>
+              <ul style="line-height: 220%">
+                <li>Environnement de développement Web</li>
+                <li>Image Docker pour la chaîne de compilation</li>
+                <li>Générateur (Spawner) de conteneur</li>
+                <li>Orchestrateur (Moteur de conteneur)</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Solutions du marché 😱</h3>
+            <div class="container-flex">
+              <div class="col-1">
+                <a target="_blank" href="https://aws.amazon.com/cloud9/"
+                  ><img width="50%" src="images/cloud9_logo.jpeg"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://coder.com/"
+                  ><img width="75%" src="images/coder_logo.png"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://codesandbox.io/"
+                  ><img width="40%" src="images/codesandbox_logo.png"
+                /></a>
+              </div>
+            </div>
+            <div class="container-flex">
+              <div class="col-1">
+                <a target="_blank" href="https://docs.github.com/codespaces"
+                  ><img width="50%" src="images/githubcodespaces_logo.png"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a
+                  target="_blank"
+                  href="https://docs.gitlab.com/ee/user/workspace/"
+                  ><img width="50%" src="images/gitlab_logo.svg"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://www.gitpod.io/"
+                  ><img width="50%" src="images/gitpod_logo.png"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://colab.research.google.com/"
+                  ><img width="50%" src="images/googlecolab_logo.png"
+                /></a>
+              </div>
+            </div>
+            <div class="container-flex">
+              <div class="col-1">
+                <a target="_blank" href="https://jupyter.org/hub"
+                  ><img width="75%" src="images/jupyterhub_logo.svg"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://www.onyxia.sh/"
+                  ><img width="50%" src="images/onyxia_logo.png"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://replit.com/"
+                  ><img width="50%" src="images/replit_logo.png"
+                /></a>
+              </div>
+              <div class="col-1">
+                <a target="_blank" href="https://www.eclipse.org/che/"
+                  ><img width="75%" src="images/eclipseche_logo.png"
+                /></a>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Critères de choix ?</h3>
+            <ul>
+              <li>Distribution : où sera déployé la solution ?</li>
+              <ul>
+                <li>SAAS ou en local (auto-hébergé)</li>
+              </ul>
+              <li>Coût 💰: fonctionnement/investissement ?</li>
+              <ul>
+                <li>Gratuit, Payant ou coût de l'infra.</li>
+              </ul>
+              <li>Extensible : ajouter des fonctionnalités ?</li>
+              <ul>
+                <li>Langages, outils, etc.</li>
+              </ul>
+              <li>EDI : interaction avec le code ?</li>
+              <ul>
+                <li>Web (VSCode), bureau (Eclipse), console (Vi)</li>
+              </ul>
+              <li>Autres critères : difficilement mesurables</li>
+              <ul>
+                <li>Communauté, doc., facilité installation</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <h3>Critères de choix</h3>
+            <table style="font-size: 60%; line-height: 220%">
+              <thead>
+                <tr>
+                  <th>Solution</th>
+                  <th>Distribution</th>
+                  <th>Coût</th>
+                  <th>Extensible</th>
+                  <th>EDI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="fragment strike" data-fragment-index="1">
+                  <td>Cloud9</td>
+                  <td>SAAS</td>
+                  <td>Amazon 💰</td>
+                  <td>Oui</td>
+                  <td>Cloud9 IDE&#169;</td>
+                </tr>
+                <tr class="fragment highlight-blue" data-fragment-index="4">
+                  <td>Coder</td>
+                  <td>Local</td>
+                  <td>Votre Cloud</td>
+                  <td>Oui</td>
+                  <td>Web et Bureau</td>
+                </tr>
+                <tr class="fragment strike" data-fragment-index="1">
+                  <td>CodeSpaces</td>
+                  <td>SAAS</td>
+                  <td>Github 💰</td>
+                  <td>Oui</td>
+                  <td>Web</td>
+                </tr>
+                <tr class="fragment strike" data-fragment-index="1">
+                  <td>Gitlab</td>
+                  <td>SAAS et Local</td>
+                  <td>Gitlab 💰</td>
+                  <td>Oui</td>
+                  <td>WebIDE&#169;</td>
+                </tr>
+                <tr class="fragment strike" data-fragment-index="1">
+                  <td>Colab</td>
+                  <td>SAAS</td>
+                  <td>Google 💰</td>
+                  <td>Non</td>
+                  <td>Jupyter Notebook&#169;</td>
+                </tr>
+                <tr class="fragment strike" data-fragment-index="2">
+                  <td>JupyterHub</td>
+                  <td>Local</td>
+                  <td>Votre cloud</td>
+                  <td>Non</td>
+                  <td>Jupyter Notebook&#169;</td>
+                </tr>
+                <tr class="fragment highlight-blue" data-fragment-index="4">
+                  <td>Onyxia</td>
+                  <td>SAAS et Local</td>
+                  <td>Votre cloud</td>
+                  <td>Oui</td>
+                  <td>Web</td>
+                </tr>
+                <tr class="fragment strike" data-fragment-index="3">
+                  <td>Che</td>
+                  <td>Local</td>
+                  <td>Votre cloud</td>
+                  <td>Oui</td>
+                  <td>Web</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <!-- Onyxia -->
+        <section>
+          <section
+            data-background-size="60%"
+            data-background-opacity="0.2"
+            data-background-image="images/onyxia.svg"
+          >
+            <h3>Onyxia : origine</h3>
+
+            <div style="text-align: left">
+              <ul style="line-height: 225%">
+                <li>Projet open source depuis 2020</li>
+                <li>
+                  <i
+                    >Porté par
+                    <a target="_blank" href="https://www.insee.fr">INSEE</a></i
+                  >
+                </li>
+                <li>
+                  Site web :
+                  <a target="_blank" href="https://www.onyxia.sh"
+                    >www.onyxia.sh</a
+                  >
+                </li>
+                <li class="wrapper-icon">
+                  <img class="icon" src="/images/slides/github.svg" />
+                  <a
+                    target="_blank"
+                    href="https://github.com/InseeFrLab/onyxia-web"
+                    >/InseeFrLab/onyxia-web</a
+                  >
+                  <iframe
+                    src="https://ghbtns.com/github-btn.html?user=InseeFrLab&repo=onyxia-web&type=star&count=true&size=large"
+                    frameborder="0"
+                    scrolling="0"
+                    width="170"
+                    height="30"
+                    title="GitHub"
+                  ></iframe>
+                </li>
+                <li class="wrapper-icon">
+                  <img class="icon" src="images/slack.svg" />
+                  <a
+                    target="_blank"
+                    href="https://join.slack.com/t/3innovation/shared_invite/zt-1hnzukjcn-6biCSmVy4qvyDGwbNI~sWg"
+                    >Slack Onyxia</a
+                  >
+                </li>
+                <li>Découverte ? Conférence technique Devoxx 2023</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Onyxia : principe</h3>
+            <img width="100%" src="images/principe_onyxia.jpg" />
+          </section>
+          <section
+            data-background-size="80%"
+            data-background-opacity="0.2"
+            data-background-image="images/demo-time.svg"
+          >
+            <h3>Onyxia : démonstration</h3>
+            <div style="text-align: left">
+              <p>
+                Instance LIAS :
+                <a target="_blank" href="https://onyxia.lias-lab.fr"
+                  >onyxia.lias-lab.fr</a
+                >
+              </p>
+              <p>Scénario de la démonstration</p>
+              <ul style="line-height: 175%">
+                <li>Description du Dashboard</li>
+                <li>Affichage des services Onyxia</li>
+                <li>Création d'un service</li>
+                <li>Accès au terminal Linux d'un service Onyxia</li>
+                <li>Manipulation des fichiers via MinIO</li>
+                <li>Sous le capot avec k9s</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Onyxia : fonctionnement</h3>
+            <img width="100%" src="images/schema_onyxia.jpg" />
+          </section>
+          <section>
+            <h3>Onyxia : les instances référencées ?</h3>
+            <ul style="line-height: 250%">
+              <li>
+                <a target="_blank" href="https://datalab.sspcloud.fr/"
+                  >SSP Cloud</a
+                >
+                : Cloud de l'INSEE (liste blanche EMAIL)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://eig.etalab.gouv.fr/defis/nubonyxia/"
+                  >Nubonyxia</a
+                >
+                : Cloud Interministériel de la DGFip
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.expertisefrance.fr/fiche-projet?id=850376"
+                  >DATAFID</a
+                >
+                : Cloud porté par Expertise France
+              </li>
+              <li>
+                Onyxia LIAS :
+                <a href="https://onyxia.lias-lab.fr">Cloud laboratoire</a> (en
+                construction)
+              </li>
+              <li>Laboratoires de recherche, universités, entreprises ?</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Onyxia : services disponibles</h3>
+            <div style="text-align: left; line-height: 135%">
+              <p>
+                <a
+                  href="https://github.com/InseeFrLab/helm-charts-interactive-services"
+                  target="_blank"
+                  >Science de la données</a
+                >
+              </p>
+              <ul>
+                <li>Python, R, PyTorch, TenserFlow, Spark, etc.</li>
+              </ul>
+              <p>
+                <a
+                  href="https://github.com/InseeFrLab/helm-charts-databases"
+                  target="_blank"
+                  >Bases de données</a
+                >
+              </p>
+              <ul>
+                <li>Postgres, Jena TDB, Neo4j, MariaDB, etc.</li>
+              </ul>
+              <p>Automatisation, visualisation, etc.</p>
+              <p>
+                <a
+                  href="https://github.com/lias-laboratory/helm-charts-development"
+                  target="_blank"
+                  >Développement logiciel</a
+                >
+                (contrib. LIAS)
+              </p>
+              <ul>
+                <li>Java, C++, Ada, Go, Javascript, etc.</li>
+              </ul>
+            </div>
+            <p>Services utilisables en <b>dehors</b> de Onyxia</p>
+          </section>
+        </section>
+
+        <!-- Déploiement -->
+        <section>
+          <section
+            data-background-size="90%"
+            data-background-opacity="0.2"
+            data-background-image="images/production.svg"
+          >
+            <h3>Déploiement ?</h3>
+            <ul style="line-height: 175%">
+              <li>
+                Infrastructure
+                <ul>
+                  <li>Des serveurs (CPU, mémoire, disque, GPU)</li>
+                  <li>Par 👤 ~ 2 vCPU, 8 Go mémoire, 50 Go disque</li>
+                </ul>
+              </li>
+              <li>
+                Compétences
+                <ul>
+                  <li>Kubernetes, Image Docker, authentification</li>
+                </ul>
+              </li>
+              <li>
+                Utilisateurs
+                <ul>
+                  <li>Formation, tests de montée en charge</li>
+                  <li>Intégration dans le SI (LDAP, Cloud ENSMA)</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Conclusion -->
+        <section>
+          <section
+            data-background-size="50%"
+            data-background-opacity="0.2"
+            data-background-image="images/onyxia.svg"
+          >
+            <h3>Conclusion</h3>
+            <div style="text-align: left; line-height: 155%">
+              <ul>
+                <li>Onyxia</li>
+                <ul>
+                  <li>Services et outils</li>
+                  <li>Dashboard</li>
+                </ul>
+                <li>Services disponibles en local ou sur une VM</li>
+                <li>Mise en place progressive de Onyxia</li>
+                <li>Contributions au projet Onyxia</li>
+                <ul>
+                  <li>Nouveaux services (Ada, C++, Rust, Java, etc)</li>
+                  <li>Rédaction d'articles</li>
+                  <li>Présentation à différents services de l'ENSMA/UP</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Remerciements</h3>
+            <p>
+              L'équipe INSEE :
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/frédéric-comte-38ab33137"
+                >Frédéric Comte</a
+              >
+              et
+              <a target="_blank" href="https://twitter.com/levittolivier"
+                >Olivier Levitt</a
+              >
+              pour l'assistance à la mise en place de l'instance Onyxia
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        autoPlayMedia: true,
+        touch: false,
+        slideNumber: "c/t",
+        showNotes: false,
+        plugins: [RevealHighlight],
+      });
+    </script>
+  </body>
+</html>
