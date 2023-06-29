@@ -12,7 +12,7 @@ twitter: 1674471703387185177
 
 Les Environnements de développement à distance proposent la possibilité d’éditer son code logiciel directement depuis un navigateur. L’ensemble des outils de la chaîne de compilation est alors déporté sur le serveur. Ils permettent donc de fournir un environnement de développement distant prêt à l’emploi et de réduire les problèmes d’installation et de configuration du poste de développeur dus à l’hétérogénéité des architectures et des logiciels manipulés. 
 
-Les transparents fournis font suite à un séminaire que j'ai donné le 29 juin 2023 au laboratoire LIAS. J'ai présenté le résultat d'un état l'art « technique » sur le sujet et j'ai détaillé Onyxia, une solution open source développée par l'INSEE pour ses collaborateurs. 
+Les transparents fournis font suite à un séminaire que j'ai donné le 29 juin 2023 au laboratoire [LIAS](https://www.lias-lab.fr). J'ai présenté le résultat d'un état l'art « technique » sur le sujet et j'ai détaillé Onyxia, une solution open source développée par l'INSEE pour ses collaborateurs. 
 
 Les transparents au format non intégré : [rdw-onyxia](/slides/divers/rdw-onyxia)
 
