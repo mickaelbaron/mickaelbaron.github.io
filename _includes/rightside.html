@@ -1,2 +1,20 @@
 <p class="text-muted">{{ site.aboutme }}</p>
-<a class="twitter-timeline" data-height="1500" href="https://twitter.com/mickaelbaron?ref_src=twsrc%5Etfw">Tweets by mickaelbaron</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p class="text-muted">Derniers articles et billets</p>
+
+{% assign collections = '' | split: '' %}      
+{% for collection in site.collections %}
+{% assign collections = collections | concat: collection.docs %}
+{% endfor %}
+
+{% assign collections = collections | sort: 'date' | reverse %}
+
+{% for resource in collections limit:5%}
+
+{% if resource.category == 'announcement' or resource.category == 'technical' or resource.category == 'technical' or resource.category == 'lectures' %}
+{% include post.html post=resource display='short' %}
+{% elsif resource.category == 'Cours' or resource.category == 'Atelier' or resource.category == 'Article' %}
+{% include article.html resource=resource display='short' %}
+{% endif %}
+
+{% endfor %}

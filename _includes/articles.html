@@ -1,70 +1,17 @@
 <div class="row">
   <div class="col-md-9">
-    <div class="card-group mt-2">
+    <div class="card-columns mt-2 mt-5">
 
-      {% for post in site.posts %}
+      {% assign pages = include.id | sort: 'weight' %}
 
-      {% if post.category == 'announcement' %}
-      {% assign card_style = 'bg-info' %}
-      {% assign text_style = 'text-white' %}
-      {% assign badge_style = 'badge-light text-info' %}
-      {% elsif post.category == 'technical' %}
-      {% assign card_style = 'bg-success' %}
-      {% assign text_style = 'text-white' %}
-      {% assign badge_style = 'badge-light text-success' %}
-      {% elsif post.category == 'lectures' %}
-      {% assign card_style = 'bg-danger' %}
-      {% assign text_style = 'text-white' %}
-      {% assign badge_style = 'badge-light text-danger' %}
-      {% else %}
-      {% assign card_style = 'bg-light' %}
-      {% assign text_style = 'text-dark' %}
-      {% assign badge_style = 'badge-dark' %}
-      {% endif %}
-
-      {% comment %} Determine Article URL {% endcomment %}
-      {% if post.external_url %}
-      {% assign article_url = post.external_url %}
-      {% else %}
-      {% assign article_url = post.url | relative_url %}
-      {% endif %}
-
-      <div class="col-xl-4 col-md-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-        <a href="{{ article_url }}" class="resource card {{ card_style }}">
-          <div class="card-body {{ text_style }}">
-            <div class="card-title">{{ post.title }}</div>
-            {% if post.blogger_orig_url %}
-            <div class="ribbon orange"><span>Ancien Blog</span></div>
-            {% endif %}
-            <p class="card-text">
-              {% for tag in post.tags %}
-              <span class="badge {{ badge_style }}">{{ tag }}</span>
-              {% endfor %}
-            </p>
-            <div class="card-text">
-              {% if post.description %}
-                <p>{{ post.description }} </p>
-              {% else %}
-                {{ post.excerpt }}
-              {% endif %}
-              <br>
-              <small><i>Lire la suite</i></small>
-            </div>
-          </div>
-          <div class="card-footer {{ text_style }}">
-            {% if post.english %}
-              <i class="fas fa-flag-usa"></i>
-            {% endif %}
-            {% include translated_date.html date=post.date preformatedformat="weekday" %}
-          </div>
-        </a>
-      </div>
-
+      {% for resource in pages %}
+      {% include article.html resource=resource %}
       {% endfor %}
 
     </div>
+
   </div>
-  <div class="col-md-3 mt-2">
+  <div class="col-md-3 mt-5">
     {% include rightside.html %}
   </div>
 </div>

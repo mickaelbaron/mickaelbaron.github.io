@@ -1,16 +1,45 @@
-<div class="row">
-  <div class="col-md-9">
-    <div class="card-columns mt-2 mt-5">
-
-      {% assign pages = include.id | sort: 'weight' %}
-
-      {% for resource in pages %}
+      {% assign resource = include.resource %}
       {% comment %} Determine resource link {% endcomment %}
       {% if resource.direct_link %}
       {% assign resource_link = resource.direct_link %}
       {% else %}
       {% assign resource_link = resource.url | relative_url %}
       {% endif %}
+
+      {% if include.display == 'short' %}
+
+      <div class="wow animated fadeIn" data-wow-delay=".15s">
+        <a href="{{ resource_link }}" class="resource card text-dark">
+          {% if resource.image %}
+          <img class="card-img-top" src="{{ resource.image }}" alt="Card image cap">
+          {% endif %}
+          <div class="card-body">
+            <div class="card-title">{{ resource.title }}</div>
+            <p class="card-text">
+              {% for tag in resource.tags %}
+              <span class="badge badge-pill text-primary border border-primary">{{tag}}</span>
+              {% endfor %}
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-sm-8">
+                {% if resource.english %}
+                  <i class="fas fa-flag-usa"></i>
+                {% endif %}
+                {% if resource.update %}
+                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" %}
+                {% else %}
+                  {% include translated_date.html date=resource.date preformatedformat="weekday" %}
+                {% endif %}
+              </div>
+              <div class="col-sm card-footer-category">{{ resource.category }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% else %}
 
       <div class="wow animated fadeIn" data-wow-delay=".15s">
         <a href="{{ resource_link }}" class="resource card text-dark">
@@ -47,12 +76,4 @@
         </a>
       </div>
 
-      {% endfor %}
-
-    </div>
-
-  </div>
-  <div class="col-md-3 mt-5">
-    {% include rightside.html %}
-  </div>
-</div>
+      {% endif %}
