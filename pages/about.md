@@ -44,7 +44,7 @@ Vous ne trouverez pas sur ce blog (et mes médias sociaux) :
 
 Pour me contacter, vous pouvez utiliser les différents média sociaux :
 
-* Twitter <i class="fab fa-1x fa-twitter"></i> : <a class="social twitter mx-1" href="https://twitter.com/{{ site.author.twitter }}">{{ site.author.twitter }}</a>
+* Twitter <i class="fab fa-1x fa-x-twitter"></i> : <a class="social twitter mx-1" href="https://twitter.com/{{ site.author.twitter }}">{{ site.author.twitter }}</a>
 * Github <i class="fab fa-1x fa-github"></i> : <a class="social github mx-1" href="https://github.com/{{ site.author.github }}">{{ site.author.github }}</a>
 * LinkedIN <i class="fab fa-1x fa-linkedin"></i> : <a class="social linkedin mx-1" href="https://www.linkedin.com/in/{{ site.author.linkedin }}">{{ site.author.linkedin }}</a>
 * Email <i class="fas fa-1x fa-envelope"></i> : <a class="social email mx-1" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
