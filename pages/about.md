@@ -49,6 +49,10 @@ Pour me contacter, vous pouvez utiliser les différents média sociaux :
 * LinkedIN <i class="fab fa-1x fa-linkedin"></i> : <a class="social linkedin mx-1" href="https://www.linkedin.com/in/{{ site.author.linkedin }}">{{ site.author.linkedin }}</a>
 * Email <i class="fas fa-1x fa-envelope"></i> : <a class="social email mx-1" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
 
+Vous pouvez également soutenir mes contributions en faisant des dons sur la plateforme Buy Me A Coffee, cliquer 👇
+
+[!["Buy Me A Coffee"](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/mickaelbaron){:target="_blank"}
+
 ## Crédits
 
 Ce blog a été construit à partir de Jekyll et il utilise l'excellent thème [portfolYOU] proposé par [Youssef Raafat].
