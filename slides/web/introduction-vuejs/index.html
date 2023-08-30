@@ -32,6 +32,13 @@
     <!-- Référence à Vue.js 3 -->
     <script src="https://unpkg.com/vue@3"></script>
     <style>
+      .vertical-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
       /* Double colonnes */
       .container-flex {
         display: flex;
@@ -156,7 +163,7 @@
           <img width="35%" src="/images/slides/vuejs.svg" />
 
           <h3>Développement web avec Vue.js</h3>
-          <p>Mickaël BARON - Version 05-2022</p>
+          <p>Mickaël BARON - Version 09-2023</p>
           <p>
             <a href="mailto:baron.mickael@gmail.com">baron.mickael@gmail.com</a>
             ou <a href="mailto:baron@ensma.fr">baron@ensma.fr</a>
@@ -179,18 +186,27 @@
 
         <!-- Licence d'utilisation -->
         <section>
-          <h3>Licence d'utilisation</h3>
+          <section>
+            <h3>Licence d'utilisation</h3>
 
-          <p><b>Creative Commons</b></p>
-          <p>Contrat Paternité</p>
-          <p>Partage des Conditions Initiales à l'Identique</p>
-          <p>2.0 France</p>
-          <p><img width="50%" src="/images/slides/by-sa.svg" /></p>
-          <a
-            target="_blank"
-            href="https://creativecommons.org/licenses/by-sa/4.0/"
-            >creativecommons.org/licenses/by-sa/4.0</a
-          >
+            <p><b>Creative Commons</b></p>
+            <p>Contrat Paternité</p>
+            <p>Partage des Conditions Initiales à l'Identique</p>
+            <p>2.0 France</p>
+            <p><img width="50%" src="/images/slides/by-sa.svg" /></p>
+            <a
+              target="_blank"
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              >creativecommons.org/licenses/by-sa/4.0</a
+            >
+          </section>
+          <section>
+            <div class="vertical-center">
+              <a href="https://www.buymeacoffee.com/mickaelbaron" target="_blank">
+                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 120px !important; width: 434px !important"/>
+              </a>
+            </div>
+          </section>
         </section>
 
         <!-- Qui suis-je ? -->
@@ -378,10 +394,16 @@
             data-background-opacity="0.2"
             data-background-image="/images/slides/vuejs.svg"
           >
-            <h3>Evolution du cours</h3>
+            <h3>Évolution du cours</h3>
             <div style="text-align: left">
+              <p>Version 2023</p>
+              <ul style="line-height: 200%">
+                <li>
+                  Communication bidirectionnelle avec V-MODEL pour composant
+                </li>
+              </ul>
               <p>Version 2022</p>
-              <ul>
+              <ul style="line-height: 200%">
                 <li>
                   Support
                   <a href="https://vuejs.org/" target="_blank">Vue.js</a> 3.x
@@ -394,14 +416,6 @@
                     href="https://github.com/mickaelbaron/vuejs-examples"
                     >Github</a
                   >
-                </li>
-              </ul>
-              <p>Version 2020</p>
-              <ul>
-                <li>Version intiale</li>
-                <li>
-                  Support
-                  <a href="https://vuejs.org/" target="_blank">Vue.js</a> 2.x
                 </li>
               </ul>
             </div>
@@ -2424,8 +2438,9 @@ import YourComponent2 from "./components/yourcomponent2.vue"
               <p>Parent ➡️ Enfant direct ?</p>
               <p>Parent ➡️ Petit-enfant ?</p>
               <p>Enfant ➡️ Parent ?</p>
-              <p>Globalement ?</p>
-              <p>En nommant explicitement ?</p>
+              <p>Parent ↔️ Enfant ?</p>
+              <p>Globalement 🌎 ?</p>
+              <p>En nommant explicitement 🫵 ?</p>
             </div>
           </section>
 
@@ -2449,7 +2464,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
               <div class="col-1">
                 <img
                   width="60%"
-                  src="images/communicationpropscustomevent.png"
+                  src="images/communicationprops.png"
                 />
               </div>
             </div>
@@ -2723,7 +2738,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
               <div class="col-1">
                 <img
                   width="55%"
-                  src="images/communicationpropscustomevent.png"
+                  src="images/communicationcustomevent.png"
                 />
               </div>
             </div>
@@ -2840,9 +2855,242 @@ import YourComponent2 from "./components/yourcomponent2.vue"
             </div>
           </section>
           <section>
+            <h3>V-Model pour composant</h3>
+            <p>Permet une communication Parent ↔️ Enfant</p>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe</b></p>
+                <ul style="line-height: 170%">
+                  <li>Utilisation de <code>v-model</code></li>
+                  <li><b>Parent :</b> passage de valeur en utilisant <code>v-model</code></li>
+                  <li>
+                    <b>Enfant</b>
+                    <ul>
+                      <li>Définir un Prop <code>modelValue</code></li>
+                      <li>Émettre un événement avec <code>update:modelValue</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img
+                  width="55%"
+                  src="images/communicationpropscustomevent.png"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>V-Model pour composant</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                style="font-size: 0.40em"
+              ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-11>&lt;script setup&gt;
+ import { ref } from "vue"
+                
+ defineProps({ modelValue })
+ defineEmits(["update:modelValue"])
+&lt;/script&gt;
+                
+&lt;template&gt;
+ &lt;input :value="modelValue"
+        @input="$emit('update:modelValue', 
+                       $event.target.value)"/&gt;
+&lt;/template&gt;</code></pre>
+                <p class="legend">
+                  Composant FormInput
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/componentvmodelv3-sfc"
+                    >customeventv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/componentvmodelv3"
+                    >customeventv3</a
+                  >
+                  (version sans outil)
+                </p>
+                <pre
+                  style="font-size: 0.40em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|5|9">&lt;script setup&gt;
+ import { ref, reactive } from "vue"
+ import FormInput from "./components/FormInput.vue"
+                  
+ const person = reactive({ name: "" })
+&lt;/script&gt;
+                  
+&lt;template&gt;
+ &lt;FormInput v-model="person.name"&gt;&lt;/Forminput&gt;
+ &lt;p&gt;{{ person.name }}&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+                <p class="legend">
+                  Composant parent
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/componentvmodelv3-sfc"
+                    >customeventv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/componentvmodelv3"
+                    >customeventv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
+
+                  <div style="height: 150px">
+                    <div id="app-componentvmodel">
+                      <FormInput v-model="person.name"></FormInput>
+                      <p>{{ person.name }}</p>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>V-Model multiple pour composant</h3>
+            <p>Permet des communications Parent ↔️ Enfant</p>
+            <div class="container-flex">
+              <div class="col-2" style="text-align: left">
+                <p><b>Principe</b></p>
+                <ul style="line-height: 170%">
+                  <li>Utilisation de plusieurs <code>v-model</code></li>
+                  <li><b>Parent :</b> passage de valeurs en utilisant <code>v-model:prop_name</code></li>
+                  <li>
+                    <b>Enfant</b>
+                    <ul>
+                      <li>Définir tous les Props</li>
+                      <li>Émettre des événements avec <code>update:prop_name</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-1">
+                <img
+                  width="55%"
+                  src="images/communicationpropscustomevent.png"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>V-Model multiple pour composant</h3>
+            <div class="container-flex">
+              <div class="col-2">
+                <pre
+                style="font-size: 0.36em"
+              ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-10>&lt;script setup&gt;
+ import { ref } from "vue"
+                
+ defineProps({ name, city })
+ defineEmits(["update:name", "update:city"])
+&lt;/script&gt;
+                
+&lt;template&gt;
+ &lt;input :value="name" @input="$emit('update:name',..."/&gt;
+ &lt;input :value="city" @input="$emit('update:city',..."/&gt;
+&lt;/template&gt;</code></pre>
+                <p class="legend">
+                  Composant FormInput
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/multiplecomponentvmodelv3-sfc"
+                    >multiplecustomeventv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/multiplecomponentvmodelv3"
+                    >multiplecustomeventv3</a
+                  >
+                  (version sans outil)
+                </p>
+                <pre
+                  style="font-size: 0.36em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="5|9-12">&lt;script setup&gt;
+ import { ref, reactive } from "vue"
+ import FormInput from "./components/FormInput.vue"
+                  
+ const person = reactive({ name: "", city: "" })
+&lt;/script&gt;
+                  
+&lt;template&gt;
+ &lt;FormInput 
+    v-model:name="person.name" 
+    v-model:city="person.city"&gt;
+ &lt;/Forminput&gt;
+ &lt;p&gt;{{ person.name }} {{ person.city }}&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+                <p class="legend">
+                  Composant parent
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/multiplecomponentvmodelv3-sfc"
+                    >multiplecustomeventv3-sfc</a
+                  >
+                  (version SFC) et
+                  <a
+                    target="_blank"
+                    href="https://github.com/mickaelbaron/vuejs-examples/tree/main/multiplecomponentvmodelv3"
+                    >multiplecustomeventv3</a
+                  >
+                  (version sans outil)
+                </p>
+              </div>
+              <div class="col-1">
+                <div class="web-container">
+                  <div class="web-row">
+                    <div class="web-column web-left">
+                      <span class="web-dot" style="background: #ed594a"></span>
+                      <span class="web-dot" style="background: #fdd800"></span>
+                      <span class="web-dot" style="background: #5ac05a"></span>
+                    </div>
+                    <div class="web-column web-middle">
+                      <input
+                        class="web-input"
+                        value="https://mickael-baron.fr"
+                        disabled
+                      />
+                    </div>
+                  </div>
+
+                  <div style="height: 300px">
+                    <div id="app-multiplecomponentvmodel">
+                      <MultipleFormInput v-model:name="person.name" v-model:city="person.city"></MultipleFormInput>
+                      <p>{{ person.name }}</p>
+                      <p>{{ person.city }}</p>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
             <h3>Gestionnaire d'état</h3>
             <p style="margin: 0px">
-              Partager un modèle de stockage par référence
+              Permet une communication globale 🌎
             </p>
 
             <div class="container-flex">
@@ -3043,7 +3291,7 @@ const message = computed({
           <section>
             <h3>Référence directe</h3>
 
-            <p style="margin: 0px">Accéder à un composant par référence</p>
+            <p style="margin: 0px">En nommant explicitement 🫵</p>
 
             <div class="container-flex">
               <div class="col-2" style="text-align: left">
@@ -3187,7 +3435,7 @@ const message = computed({
                 <tr>
                   <td>Provide/Inject</td>
                   <td>Parent ➡️ Petit-Enfant</td>
-                  <td>👍👎</td>
+                  <td>👍</td>
                 </tr>
                 <tr>
                   <td>Événement perso</td>
@@ -3196,11 +3444,11 @@ const message = computed({
                 </tr>
                 <tr>
                   <td>Gestionnaire états</td>
-                  <td>Globalité</td>
+                  <td>Globalité 🌎</td>
                   <td>👍</td>
                 </tr>
                 <tr>
-                  <td>Référence</td>
+                  <td>En nommant 🫵</td>
                   <td>Parent ↔️ Enfant</td>
                   <td>👎👎</td>
                 </tr>
