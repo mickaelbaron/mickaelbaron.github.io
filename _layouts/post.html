@@ -38,4 +38,8 @@ layout: page2c
 
 {% if page.twitter %}
 {% include twitter-box.html %}
+{% elsif page.comments %}
+  {% if page.comments == "utterances" %}
+    {% include utterances.html %}
+  {% endif %}
 {% endif %}
