@@ -1,7 +1,7 @@
 ---
 title: Introduction aux technologies HTTP pour communiquer via des flux
 tags: [SOA, WebSocket, SSE]
-image: /images/ws_vs_sse.jpg
+image: /images/streaming_messages.jpg
 description: Présentation des technologies HTTP pour savoir communiquer via des flux et réaliser des communications de type "Push Serveur" avec WebSocket et Server-Sent Event (SSE).
 category: Cours
 date: 2019-02-19
