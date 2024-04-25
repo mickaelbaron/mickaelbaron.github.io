@@ -1097,7 +1097,7 @@ Nous prendrons comme exemple le composant *CreatePolldle* défini dans le fichie
 import { ref, reactive } from 'vue'
 
 // Import CreatePolldleOption component
-import CreatePolldleOption from "./components/CreatePolldleOption.vue";
+import CreatePolldleOption from "./CreatePolldleOption.vue";
 ...
 </script>
 <template>
