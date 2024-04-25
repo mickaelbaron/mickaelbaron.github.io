@@ -1785,7 +1785,7 @@ $ mvn clean package
 [INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
 [INFO]
 [INFO] polldle-parent ..................................... SUCCESS [  0.124 s]
-[INFO] poddle-api ......................................... SUCCESS [  1.506 s]
+[INFO] polldle-api ........................................ SUCCESS [  1.506 s]
 [INFO] polldle-server ..................................... SUCCESS [  6.614 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
