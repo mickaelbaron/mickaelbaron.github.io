@@ -673,7 +673,7 @@ La directive `v-model` crée une liaison bidirectionnelle entre un composant de 
           type="text"
           class="large-input mx-auto d-block"
           placeholder="Add your question here"
-          v-model="poddle.question"
+          v-model="polldle.question"
         >
       </div>
     </div>
