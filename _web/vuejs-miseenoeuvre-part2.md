@@ -673,7 +673,7 @@ La directive `v-model` crée une liaison bidirectionnelle entre un composant de 
           type="text"
           class="large-input mx-auto d-block"
           placeholder="Add your question here"
-          v-model="poddle.question"
+          v-model="polldle.question"
         >
       </div>
     </div>
@@ -1097,7 +1097,7 @@ Nous prendrons comme exemple le composant *CreatePolldle* défini dans le fichie
 import { ref, reactive } from 'vue'
 
 // Import CreatePolldleOption component
-import CreatePolldleOption from "./components/CreatePolldleOption.vue";
+import CreatePolldleOption from "./CreatePolldleOption.vue";
 ...
 </script>
 <template>
@@ -1785,7 +1785,7 @@ $ mvn clean package
 [INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
 [INFO]
 [INFO] polldle-parent ..................................... SUCCESS [  0.124 s]
-[INFO] poddle-api ......................................... SUCCESS [  1.506 s]
+[INFO] polldle-api ........................................ SUCCESS [  1.506 s]
 [INFO] polldle-server ..................................... SUCCESS [  6.614 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
