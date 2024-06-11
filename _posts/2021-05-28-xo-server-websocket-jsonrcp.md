@@ -1,6 +1,6 @@
 ---
 title: J'ai besoin de... communiquer en Python et Java vers XO-Server en passant par du Websocket/JSON-RPC
-tags: [Xen]
+tags: [XCP-NG, Xen]
 category: technical
 description: Dans ce billet j'explique comment communiquer en Python et Java vers XO-Server, le backend de Xen Orchestra
 twitter: 1398330862387744769
