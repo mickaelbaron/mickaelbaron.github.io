@@ -124,6 +124,8 @@ $ sudo shutdown now
 
 The creation of the virtual image *custom-ubuntu22.04* from an ISO file is complete, and a template can now be created.
 
+**Note:** for Ubuntu 24.04, you will need to delete the /etc/cloud/cloud-init.disabled file, which disables Cloud-Init by default, and the /etc/netplan/50-cloud-init.yaml file for network configuration.
+
 ### From a cloud image in OVA format
 
 Canonical (the Ubuntu company) provides Ubuntu images that have been configured to run on cloud systems. The website <https://cloud-images.ubuntu.com> provides all versions of Ubuntu. XCP-NG supports the open virtual machine format OVA used by VMWare and VirtualBox systems.
