@@ -1,5 +1,5 @@
 ---
-title: "Create and use custom XCP-NG templates: application to Ubuntu"
+title: "Create and use custom XCP-NG templates: a guide for Ubuntu"
 tags: [XCP-NG, Xen]
 category: technical
 description: "This post explains in detail the steps to create and to use custom XCP-NG templates with Cloud-Init"
@@ -41,9 +41,9 @@ At the end of this step, the result will be essentially the same, and both solut
 
 ### From an ISO file
 
-* Download an ISO file of Ubuntu 22.04.04 LTS version: <https://ubuntu.com/download/server>
+* Download an ISO file of Ubuntu 22.04.04 LTS version: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
-In order to access the ISO file during the virtual machine creation step, you will need to create a storage called ISO Store. There are several types available (Local, NFS, or SMB). For this post, we will be using the first type. Feel free to browse through this post to learn how to create a local storage: <https://xcp-ng.org/blog/2022/05/05/how-to-create-a-local-iso-repository-in-xcp-ng/>. In the following, I assume that there is a local storage on a machine managed by XCP-NG.
+In order to access the ISO file during the virtual machine creation step, you will need to create a storage called ISO Store. There are several types available (Local, NFS, or SMB). For this post, we will be using the first type. Feel free to browse through this [post](https://xcp-ng.org/blog/2022/05/05/how-to-create-a-local-iso-repository-in-xcp-ng/) to learn how to create a local storage. In the following, I assume that there is a local storage on a machine managed by XCP-NG.
 
 * From the [Xen Orchestra](https://xen-orchestra.com) side menu, click on the **Import** option and choose the **Disk** sub-option.
 
@@ -68,13 +68,13 @@ $ sudo apt update
 $ sudo apt dist-upgrade
 ```
 
-* Install the package *xe-guest-utilities-latest* to improve communication between the XCP-NG hypervisor and the virtual machine (<https://docs.xcp-ng.org/vms/#%EF%B8%8F-guest-tools>)
+* Install the package *xe-guest-utilities-latest* to improve communication between the XCP-NG hypervisor and the virtual machine ([Guest tools](https://docs.xcp-ng.org/vms/#%EF%B8%8F-guest-tools)).
 
 ```
 $ sudo apt install xe-guest-utilities
 ```
 
-* Update the *cloud-init* package
+* Update the *cloud-init* package.
 
 ```
 $ sudo apt install cloud-init
@@ -124,13 +124,13 @@ $ sudo shutdown now
 
 The creation of the virtual image *custom-ubuntu22.04* from an ISO file is complete, and a template can now be created.
 
-**Note:** for Ubuntu 24.04, you will need to delete the /etc/cloud/cloud-init.disabled file, which disables Cloud-Init by default, and the /etc/netplan/50-cloud-init.yaml file for network configuration.
+**Note:** for Ubuntu 24.04, you will need to delete the */etc/cloud/cloud-init.disabled* file, which disables Cloud-Init by default, and the /etc/netplan/50-cloud-init.yaml file for network configuration.
 
 ### From a cloud image in OVA format
 
-Canonical (the Ubuntu company) provides Ubuntu images that have been configured to run on cloud systems. The website <https://cloud-images.ubuntu.com> provides all versions of Ubuntu. XCP-NG supports the open virtual machine format OVA used by VMWare and VirtualBox systems.
+Canonical (the Ubuntu company) provides Ubuntu images that have been configured to run on cloud systems. The [website](https://cloud-images.ubuntu.com) provides all versions of Ubuntu. XCP-NG supports the open virtual machine format OVA used by VMWare and VirtualBox systems.
 
-* Download an OVA file of Ubuntu 22.04 version: <https://cloud-images.ubuntu.com/jammy>.
+* Download an OVA file of [Ubuntu 22.04 version](https://cloud-images.ubuntu.com/jammy).
 
 * From the [Xen Orchestra](https://xen-orchestra.com) side menu, click on the **Import** option and choose the **VM** sub-option.
 
@@ -152,7 +152,7 @@ The template has been created and added to the list of existing templates. The c
 
 ## Using the template
 
-Using the previously created template will allow you to rely on an existing virtual machine on which it will be possible to add configurations supported by Cloud-init. The documentation for [Cloud-init](https://cloud-init.io/) regarding configurations is not easily accessible (<https://cloudinit.readthedocs.io/en/latest/index.html>). This GitHub repository (<https://github.com/number5/cloud-init/tree/main/doc/examples>) associated with the official documentation makes it easier to understand the complexity of [Cloud-init](https://cloud-init.io/).
+Using the previously created template will allow you to rely on an existing virtual machine on which it will be possible to add configurations supported by Cloud-init. The [documentation](https://cloudinit.readthedocs.io/en/latest/index.html) for [Cloud-init](https://cloud-init.io/) regarding configurations is not user friendly. This [GitHub repository](https://github.com/number5/cloud-init/tree/main/doc/examples) associated with the official documentation makes it easier to understand the complexity of [Cloud-init](https://cloud-init.io/).
 
 Two configurations are available: one that describes the content of *cloud-config* and one that describes the content of *network-config*. In the following, we provide examples of these configurations. I encourage readers to use these examples and the official documentation to tailor them to their needs. 
 
@@ -223,7 +223,7 @@ Xen Orchestra offers the ability to insert variables such as the virtual machine
 
 The solution using XO-CLI can address this issue, as command-line automation is made easier.
 
-### À partir de Xen Orchestra CLI
+### From Xen Orchestra CLI
 
 XO-CLI (Xen Orchestra CLI) is a command-line solution that allows for the administration of virtual machines. The tool can query either a REST API or a JSON-RPC API over WebSocket. The REST API is limited and only allows for simple operations, whereas the latter can handle all operations. It is noteworthy that communication via the JSON-RPC API over WebSocket is used between the graphical layer and the [Xen Orchestra](https://xen-orchestra.com) server.
 
@@ -269,10 +269,10 @@ ssh_authorized_keys:
 "
 ```
 
-Note that it is possible to use a programming language to call the JSON-RPC API over WebSocket. This post provides more details on how to use either Python or Java: <https://mickael-baron.fr/blog/2021/05/28/xo-server-websocket-jsonrcp>.
+Note that it is possible to use a programming language to call the JSON-RPC API over WebSocket. This [post](https://mickael-baron.fr/blog/2021/05/28/xo-server-websocket-jsonrcp) provides more details on how to use either Python or Java.
 
 ## Conclusion
 
-This post has detailed the creation of templates based on the Ubuntu distribution. The steps presented can also be applied to other Linux distributions, such as Debian. Regarding the creation of Linux virtual machines from a template using [Cloud-init](https://cloud-init.io/), there are still many configurations to explore. The [Cloud-init](https://cloud-init.io/) documentation, despite its complexity, allows you to express all the constraints to initialize virtual machines tailored to your needs.
+This post has detailed the creation of templates based on the Ubuntu distribution. These described steps can also be applied to other Linux distributions, such as Debian. Regarding the creation of Linux virtual machines from a template using [Cloud-init](https://cloud-init.io/), there are still many configurations to explore. The [Cloud-init](https://cloud-init.io/) documentation, despite its complexity, allows you to express all the constraints to initialize virtual machines tailored to your needs.
 
-Note that all actions performed with the [Xen Orchestra](https://xen-orchestra.com) UI tool can also be executed using the XO-CLI command-line tool. Thus, it is possible to automate the creation of Cloud image templates and virtual machines based on these templates within a CI/CD tool.
+All actions performed with the [Xen Orchestra](https://xen-orchestra.com) UI tool can also be executed using the XO-CLI command-line tool. Thus, it is possible to automate the creation of Cloud image templates and virtual machines based on these templates within a CI/CD tool.
