@@ -3,7 +3,7 @@ title: "A step-by-step pratical guide for deploying NVIDIA GPUs on Kubernetes"
 tags: [kubernetes]
 category: technical
 description: "This blog post shows how to build a Kubernetes (k8s) cluster that takes GPU resources into account."
-english: false
+english: true
 comments: utterances
 ---
 
