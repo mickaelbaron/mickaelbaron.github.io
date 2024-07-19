@@ -746,7 +746,8 @@ Stay tuned and give your feedbacks in the comments.
 
 ## Resources
 
-* https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html
-* https://www.jimangel.io/posts/nvidia-rtx-gpu-kubernetes-setup/
-* https://blog.scottlowe.org/2019/08/15/reconstructing-the-join-command-for-kubeadm/
-* https://blog.scottlowe.org/2019/07/12/calculating-ca-certificate-hash-for-kubeadm/
+* [https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html)
+* [https://www.jimangel.io/posts/nvidia-rtx-gpu-kubernetes-setup/](https://www.jimangel.io/posts/nvidia-rtx-gpu-kubernetes-setup/)
+* [https://blog.scottlowe.org/2019/08/15/reconstructing-the-join-command-for-kubeadm/](https://blog.scottlowe.org/2019/08/15/reconstructing-the-join-command-for-kubeadm/)
+* [https://blog.scottlowe.org/2019/07/12/calculating-ca-certificate-hash-for-kubeadm/](https://blog.scottlowe.org/2019/07/12/calculating-ca-certificate-hash-for-kubeadm/)
+* [https://github.com/otwld/ollama-helm](https://github.com/otwld/ollama-helm)
