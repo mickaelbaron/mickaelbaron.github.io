@@ -11,21 +11,21 @@
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css"
       id="theme"
     />
     <!-- Theme utilisée pour la mise au format du code -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.min.css"
       id="highlight-theme"
     />
 
@@ -170,10 +170,10 @@
           </p>
           <div class="wrapper-icon">
             <a target="_blank" href="https://github.com/mickaelbaron"
-            ><img
-              class="icon"
-              src="/images/slides/github.svg"
-            />mickaelbaron</a
+              ><img
+                class="icon"
+                src="/images/slides/github.svg"
+              />mickaelbaron</a
             >
             <a target="_blank" href="https://mickael-baron.fr"
               ><img
@@ -202,8 +202,15 @@
           </section>
           <section>
             <div class="vertical-center">
-              <a href="https://www.buymeacoffee.com/mickaelbaron" target="_blank">
-                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 120px !important; width: 434px !important"/>
+              <a
+                href="https://www.buymeacoffee.com/mickaelbaron"
+                target="_blank"
+              >
+                <img
+                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                  alt="Buy Me A Coffee"
+                  style="height: 120px !important; width: 434px !important"
+                />
               </a>
             </div>
           </section>
@@ -259,11 +266,11 @@
                   <p>
                     <a target="_blank" href="https://github.com/lias-laboratory"
                       ><img
-                      class="icon"
-                      src="/images/slides/github.svg"
+                        class="icon"
+                        src="/images/slides/github.svg"
                       />lias-laboratory</a
                     >
-                    </p>
+                  </p>
                   <p>
                     <a target="_blank" href="https://www.lias-lab.fr"
                       ><img
@@ -2454,10 +2461,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                 <p><b>Valeurs</b> : statique et réactive</p>
               </div>
               <div class="col-1">
-                <img
-                  width="60%"
-                  src="images/communicationprops.png"
-                />
+                <img width="60%" src="images/communicationprops.png" />
               </div>
             </div>
           </section>
@@ -2728,10 +2732,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                 </ul>
               </div>
               <div class="col-1">
-                <img
-                  width="55%"
-                  src="images/communicationcustomevent.png"
-                />
+                <img width="55%" src="images/communicationcustomevent.png" />
               </div>
             </div>
           </section>
@@ -2854,12 +2855,17 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                 <p><b>Principe</b></p>
                 <ul style="line-height: 145%">
                   <li>Utilisation de <code>v-model</code></li>
-                  <li><b>Parent :</b> passage de valeur en utilisant <code>v-model</code></li>
+                  <li>
+                    <b>Parent :</b> passage de valeur en utilisant
+                    <code>v-model</code>
+                  </li>
                   <li>
                     <b>Enfant</b>
                     <ul>
                       <li>Définir un Prop <code>modelValue</code></li>
-                      <li>Émettre un événement avec <code>update:modelValue</code></li>
+                      <li>
+                        Émettre un événement avec <code>update:modelValue</code>
+                      </li>
                     </ul>
                   </li>
                 </ul>
@@ -2877,8 +2883,8 @@ import YourComponent2 from "./components/yourcomponent2.vue"
             <div class="container-flex">
               <div class="col-2">
                 <pre
-                style="font-size: 0.40em"
-              ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-11>&lt;script setup&gt;
+                  style="font-size: 0.4em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-11>&lt;script setup&gt;
  import { ref } from "vue"
                 
  defineProps({ modelValue })
@@ -2906,7 +2912,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                   (version sans outil)
                 </p>
                 <pre
-                  style="font-size: 0.40em"
+                  style="font-size: 0.4em"
                 ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers="3|5|9">&lt;script setup&gt;
  import { ref, reactive } from "vue"
  import FormInput from "./components/FormInput.vue"
@@ -2954,7 +2960,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                   <div style="height: 150px">
                     <div id="app-componentvmodel">
                       <FormInput v-model="person.name"></FormInput>
-                      <p>{{ person.name }}</p>                      
+                      <p>{{ person.name }}</p>
                     </div>
                   </div>
                 </div>
@@ -2969,12 +2975,18 @@ import YourComponent2 from "./components/yourcomponent2.vue"
                 <p><b>Principe</b></p>
                 <ul style="line-height: 150%">
                   <li>Utilisation de plusieurs <code>v-model</code></li>
-                  <li><b>Parent :</b> passage de valeurs en utilisant <code>v-model:prop_name</code></li>
+                  <li>
+                    <b>Parent :</b> passage de valeurs en utilisant
+                    <code>v-model:prop_name</code>
+                  </li>
                   <li>
                     <b>Enfant</b>
                     <ul>
                       <li>Définir tous les Props</li>
-                      <li>Émettre des événements avec <code>update:prop_name</code></li>
+                      <li>
+                        Émettre des événements avec
+                        <code>update:prop_name</code>
+                      </li>
                     </ul>
                   </li>
                 </ul>
@@ -2992,8 +3004,8 @@ import YourComponent2 from "./components/yourcomponent2.vue"
             <div class="container-flex">
               <div class="col-2">
                 <pre
-                style="font-size: 0.36em"
-              ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-10>&lt;script setup&gt;
+                  style="font-size: 0.36em"
+                ><code style="max-height: 580px;" data-noescape data-trim data-line-numbers=4|5|9-10>&lt;script setup&gt;
  import { ref } from "vue"
                 
  defineProps({ name, city })
@@ -3070,9 +3082,12 @@ import YourComponent2 from "./components/yourcomponent2.vue"
 
                   <div style="height: 300px">
                     <div id="app-multiplecomponentvmodel">
-                      <MultipleFormInput v-model:name="person.name" v-model:city="person.city"></MultipleFormInput>
+                      <MultipleFormInput
+                        v-model:name="person.name"
+                        v-model:city="person.city"
+                      ></MultipleFormInput>
                       <p>{{ person.name }}</p>
-                      <p>{{ person.city }}</p>                      
+                      <p>{{ person.city }}</p>
                     </div>
                   </div>
                 </div>
@@ -3081,9 +3096,7 @@ import YourComponent2 from "./components/yourcomponent2.vue"
           </section>
           <section>
             <h3>Gestionnaire d'état</h3>
-            <p style="margin: 0px">
-              Permet une communication globale 🌎
-            </p>
+            <p style="margin: 0px">Permet une communication globale 🌎</p>
 
             <div class="container-flex">
               <div class="col-2" style="text-align: left">
@@ -3731,8 +3744,8 @@ const message = computed({
     </div>
 
     <script src="introduction-vuejs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
     <script>
       Reveal.initialize({
         hash: true,

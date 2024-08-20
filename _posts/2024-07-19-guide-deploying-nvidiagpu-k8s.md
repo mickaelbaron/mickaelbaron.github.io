@@ -4,6 +4,7 @@ tags: [kubernetes]
 category: technical
 description: "This blog post shows how to build a Kubernetes (k8s) cluster that takes GPU resources into account."
 english: true
+toc: true
 comments: utterances
 ---
 

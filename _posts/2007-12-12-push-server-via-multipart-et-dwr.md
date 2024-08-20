@@ -3,6 +3,7 @@ title: Push Server via Multipart et DWR
 tags: [Java, Web]
 blogger_orig_url: https://keulkeul.blogspot.com/2007/12/push-server-via-multipart-et-dwr.html
 category: technical
+toc: true
 ---
 
 L'idée de ce billet est de vous présenter deux solutions pour faire du push serveur.

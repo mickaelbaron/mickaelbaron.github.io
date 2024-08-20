@@ -21,6 +21,10 @@ layout: page2c
 
 </p>
 
+{% if page.toc == true %}
+{% include toc.html html=content h_max=3 %}
+{% endif %}
+
 {{ content }}
 
 {% if page.blogger_orig_url %}

@@ -4,6 +4,7 @@ tags: [XCP-NG, Xen]
 category: technical
 description: "This post explains in detail the steps to create and to use custom XCP-NG templates with Cloud-Init"
 english: true
+toc: true
 comments: utterances
 ---
 

@@ -4,6 +4,7 @@ tags: [Divers]
 blogger_orig_url: https://keulkeul.blogspot.com/2011/07/jai-besoin-de-realiser-un-tunnel-ssh-et.html
 description: Je vous propose un billet pour décrire pas à pas la mise en place d'un tunnel ou pont SSH.
 category: technical
+toc: true
 ---
 
 Je vous propose un billet un peu particulier puisque cela ne va pas traiter de Java ou d'Eclipse mais de configuration réseau. L'idée est de décrire pas à pas la mise en place d'un tunnel ou pont SSH. L'intérêt est de pouvoir encapsuler des données d'un protocole dans un autre protocole (ici le protocole SSH) et ainsi assurer une sécurité puisque les données qui transiteront dans le tunnel SSH seront chiffrées.

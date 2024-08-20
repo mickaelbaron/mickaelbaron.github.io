@@ -4,6 +4,7 @@ tags: [Divers]
 blogger_orig_url: https://keulkeul.blogspot.com/2012/09/jai-besoin-de-construire-une-piratebox.html
 description: Ce billet s'intéresse à construire une PirateBox pour partager des données de manière anonyme.
 category: technical
+toc: true
 ---
 
 Suite à un article publié sur [Le Monde](http://www.lemonde.fr/technologies/article/2012/07/06/boites-pirates-hacktivistes-et-monde-physique_1730501_651865.html), j'ai découvert une [conférence vidéo](http://www.youtube.com/watch?v=jdogMpsmQos&feature=player_embedded) de [Gaël Musquet](http://www.linkedin.com/in/gmusquet) donnée à l'occasion du festival [Pas Sage en Seine](http://www.passageenseine.org/) et qui présentait le principe de la [PirateBox](http://fr.wikipedia.org/wiki/PirateBox). Une PirateBox est un réseau sans fil, local qui permet d'échanger des fichiers de manière anonyme. L'idée m'est alors venue de créer une PirateBox afin de pouvoir partager mes différents outils de développements préférés (Eclipse, Java...). Cela est aussi une occasion de découvrir des choses intéressantes sur l'installation et la configuration d'un système embarqué comme [OpenWRT](https://openwrt.org/).

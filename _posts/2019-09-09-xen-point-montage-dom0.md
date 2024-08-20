@@ -3,6 +3,7 @@ title: J'ai besoin de... monter une image d'un disque virtuel (VDI) sur un syst�
 tags: [Xen]
 category: technical
 description: Dans ce billet, j’explique comment accéder à une image de disque virtuel (VDI) depuis un système hôte Xen en realisant un point de montage.
+toc: true
 twitter: 1171067019158011904
 ---
 

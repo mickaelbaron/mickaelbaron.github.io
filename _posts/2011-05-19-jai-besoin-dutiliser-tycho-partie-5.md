@@ -4,6 +4,7 @@ tags: [Eclipse, Tycho]
 category: technical
 description: Ce billet se propose d'utiliser Tycho pour construire automatiquement un product Eclipse avec Maven 3 et son plugin Tycho.
 blogger_orig_url: https://keulkeul.blogspot.com/2011/05/jai-besoin-dutiliser-tycho-partie-5.html
+toc: true
 twitter: 71265110626271232
 ---
 

@@ -3,6 +3,7 @@ title: J'ai besoin d'... installer Coder sur K3s
 tags: [DevOps, Kubernetes, Coder]
 category: technical
 description: "Dans ce billet j'explique comment déployer Coder, une solution d'environnement de développement en ligne, sur un cluster Kubernetes K3s"
+toc: true
 twitter: 1633480804625006592
 ---
 

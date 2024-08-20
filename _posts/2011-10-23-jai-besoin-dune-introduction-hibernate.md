@@ -3,6 +3,7 @@ title: J'ai besoin ... d'une introduction à Hibernate OGM
 tags: [Hibernate]
 blogger_orig_url: https://keulkeul.blogspot.com/2011/10/jai-besoin-dune-introduction-hibernate.html
 category: technical
+toc: true
 description: L'objectif de ce billet est d'apprendre à manipuler Hibernate OGM.
 ---
 
