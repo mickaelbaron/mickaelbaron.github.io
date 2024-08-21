@@ -407,10 +407,19 @@ $ sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
 $ rm cilium-linux-amd64.tar.gz
 ```
 
+To configure the installation of [Cilium](https://github.com/cilium), you can use a configuration file. For instance, in the _values.yaml_ file shown below, the CIDR (Classless Inter-Domain Routing) used to assign IPs to the Pods is modified.
+
+```
+ipam:
+  mode: "cluster-pool"
+  operator:
+    clusterPoolIPv4PodCIDRList: ["172.20.0.0/16"]
+```
+
 * Install [Cilium](https://github.com/cilium). The installed version will be shown.
 
 ```
-$ cilium install
+$ cilium install --helm-values values.yaml
 ℹ️  Using Cilium version 1.15.6
 🔮 Auto-detected cluster name: kubernetes
 🔮 Auto-detected kube-proxy has been installed
