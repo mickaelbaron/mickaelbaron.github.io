@@ -162,7 +162,7 @@
 
           <h4>Environnements de développement à distance</h4>
           <h4>Solutions existantes ? Présentation d'Onyxia</h4>
-          <p>Mickaël BARON - Version 06-2023</p>
+          <p>Mickaël BARON - Version 10-2024</p>
           <div class="wrapper-icon">
             <a target="_blank" href="https://github.com/mickaelbaron"
               ><img
@@ -178,7 +178,7 @@
             >
           </div>
         </section>
-        
+
         <!-- Licence d'utilisation -->
         <section>
           <section>
@@ -197,8 +197,15 @@
           </section>
           <section>
             <div class="vertical-center">
-              <a href="https://www.buymeacoffee.com/mickaelbaron" target="_blank">
-                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 120px !important; width: 434px !important"/>
+              <a
+                href="https://www.buymeacoffee.com/mickaelbaron"
+                target="_blank"
+              >
+                <img
+                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                  alt="Buy Me A Coffee"
+                  style="height: 120px !important; width: 434px !important"
+                />
               </a>
             </div>
           </section>
@@ -323,7 +330,7 @@
             data-background-opacity="0.2"
             data-background-image="images/onyxia.svg"
           >
-            <h3>Objectif de la présentation (20 min)</h3>
+            <h3>Objectif de la présentation (45 min)</h3>
 
             <ul style="line-height: 200%">
               <li>Contexte et problématiques</li>
@@ -333,7 +340,7 @@
                 <li>Démonstration</li>
                 <li>Fonctionnement</li>
               </ul>
-              <li>Déploiement au LIAS ?</li>
+              <li>Déploiement au LIAS</li>
               <li>Futures contributions</li>
             </ul>
           </section>
@@ -363,7 +370,7 @@
                     <li>Code source (Git)</li>
                     <li>Matériel (GPU)</li>
                     <li>Isolation (Conteneur)</li>
-                    <li>Personnalisation UI</li>
+                    <li>Customisation (Thème)</li>
                   </ul>
                 </div>
               </div>
@@ -396,7 +403,7 @@
           <section>
             <h3>Problématiques : formation</h3>
             <div style="text-align: left">
-              <ul style="line-height: 200%">
+              <ul style="line-height: 175%">
                 <li>Besoin de remonter les besoins logiciels à la DSI</li>
                 <li>Pas d'isolation</li>
                 <ul>
@@ -407,6 +414,7 @@
                   Reproduction difficile de son environnement de développement
                 </li>
                 <li>Perte du contexte d'édition et d'exécution</li>
+                <li>Mobilité des usagés (formation par apprentissage)</li>
               </ul>
             </div>
           </section>
@@ -521,9 +529,9 @@
           <section>
             <h3>Critères de choix ?</h3>
             <ul>
-              <li>Distribution : où sera déployé la solution ?</li>
+              <li>Distribution : où sera déployée la solution ?</li>
               <ul>
-                <li>SAAS ou en local (auto-hébergé)</li>
+                <li>SaaS ou en local (auto-hébergé)</li>
               </ul>
               <li>Coût 💰: fonctionnement/investissement ?</li>
               <ul>
@@ -627,7 +635,7 @@
             <h3>Onyxia : origine</h3>
 
             <div style="text-align: left">
-              <ul style="line-height: 225%">
+              <ul style="line-height: 175%">
                 <li>Projet open source depuis 2020</li>
                 <li>
                   <i
@@ -643,13 +651,11 @@
                 </li>
                 <li class="wrapper-icon">
                   <img class="icon" src="/images/slides/github.svg" />
-                  <a
-                    target="_blank"
-                    href="https://github.com/InseeFrLab/onyxia-web"
+                  <a target="_blank" href="https://github.com/InseeFrLab/onyxia"
                     >/InseeFrLab/onyxia-web</a
                   >
                   <iframe
-                    src="https://ghbtns.com/github-btn.html?user=InseeFrLab&repo=onyxia-web&type=star&count=true&size=large"
+                    src="https://ghbtns.com/github-btn.html?user=InseeFrLab&repo=onyxia&type=star&count=true&size=large"
                     frameborder="0"
                     scrolling="0"
                     width="170"
@@ -665,8 +671,19 @@
                     >Slack Onyxia</a
                   >
                 </li>
+                <li>
+                  Référencée sur le
+                  <a
+                    target="_blank"
+                    href="https://code.gouv.fr/sill/detail?name=Onyxia"
+                    >SILL<sup>1</sup></a
+                  >
+                </li>
                 <li>Découverte ? Conférence technique Devoxx 2023</li>
               </ul>
+            </div>
+            <div style="text-align: right; font-size: x-small">
+              1 : Socle Interministériel des Logiciels Libres
             </div>
           </section>
           <section>
@@ -680,20 +697,31 @@
           >
             <h3>Onyxia : démonstration</h3>
             <div style="text-align: left">
-              <p>
-                Instance LIAS :
-                <a target="_blank" href="https://onyxia.lias-lab.fr"
-                  >onyxia.lias-lab.fr</a
-                >
-              </p>
+              <p>Deux instances à l'ISAE-ENSMA :</p>
+              <ul>
+                <li>
+                  Enseignement :
+                  <a target="_blank" href="https://onyxia-ia.ensma.fr"
+                    >onyxia-ia.ensma.fr</a
+                  >
+                </li>
+                <li>
+                  Recherche :
+                  <a target="_blank" href="https://onyxia.lias-lab.fr"
+                    >onyxia.lias-lab.fr</a
+                  >
+                </li>
+              </ul>
               <p>Scénario de la démonstration</p>
-              <ul style="line-height: 175%">
+              <ul style="line-height: 155%">
                 <li>Description du Dashboard</li>
                 <li>Affichage des services Onyxia</li>
                 <li>Création d'un service</li>
                 <li>Accès au terminal Linux d'un service Onyxia</li>
-                <li>Manipulation des fichiers via MinIO</li>
-                <li>Sous le capot avec k9s</li>
+                <li>
+                  Sous le capot avec
+                  <a target="_blank" href="https://k9scli.io/">k9s</a>
+                </li>
               </ul>
             </div>
           </section>
@@ -703,7 +731,7 @@
           </section>
           <section>
             <h3>Onyxia : les instances référencées ?</h3>
-            <ul style="line-height: 250%">
+            <ul style="line-height: 200%">
               <li>
                 <a target="_blank" href="https://datalab.sspcloud.fr/"
                   >SSP Cloud</a
@@ -724,12 +752,17 @@
                   href="https://www.expertisefrance.fr/fiche-projet?id=850376"
                   >DATAFID</a
                 >
-                : Cloud porté par Expertise France
+                : Expertise France
               </li>
               <li>
-                Onyxia LIAS :
-                <a href="https://onyxia.lias-lab.fr">Cloud laboratoire</a> (en
-                construction)
+                <a target="_blank" href="https://www.ssb.no/en"
+                  >Statistics Norway</a
+                >
+                : Institut national de statistique 🇳🇴
+              </li>
+              <li>
+                <a target="_blank" href="https://www.groupe-genes.fr">Genes</a>
+                : Groupe des écoles nationales d'économie et statistique
               </li>
               <li>Laboratoires de recherche, universités, entreprises ?</li>
             </ul>
@@ -760,7 +793,7 @@
               <p>Automatisation, visualisation, etc.</p>
               <p>
                 <a
-                  href="https://github.com/lias-laboratory/helm-charts-development"
+                  href="https://github.com/lias-laboratory/onyxia-helm-charts-dev"
                   target="_blank"
                   >Développement logiciel</a
                 >
@@ -781,29 +814,93 @@
             data-background-opacity="0.2"
             data-background-image="images/production.svg"
           >
-            <h3>Déploiement ?</h3>
-            <ul style="line-height: 175%">
-              <li>
-                Infrastructure
-                <ul>
-                  <li>Des serveurs (CPU, mémoire, disque, GPU)</li>
-                  <li>Par 👤 ~ 2 vCPU, 8 Go mémoire, 50 Go disque</li>
-                </ul>
-              </li>
-              <li>
-                Compétences
-                <ul>
-                  <li>Kubernetes, Image Docker, authentification</li>
-                </ul>
-              </li>
-              <li>
-                Utilisateurs
-                <ul>
-                  <li>Formation, tests de montée en charge</li>
-                  <li>Intégration dans le SI (LDAP, Cloud ENSMA)</li>
-                </ul>
-              </li>
-            </ul>
+            <h3>Déploiement à l'ISAE-ENSMA</h3>
+            <div style="text-align: left; line-height: 150%">
+              <p>Infrastructure matérielle</p>
+              <ul>
+                <li>Des serveurs (CPU, mémoire, disque, GPU)</li>
+                <li>Par 👤 ~ 2 vCPU, 8 Go mémoire, 50 Go disque</li>
+              </ul>
+              <p>Infrastructure logicielle</p>
+              <ul>
+                <li>Kubernetes, images Docker, Keycloak (OpenID)</li>
+                <li>Déploiement par Helm</li>
+                <li>Un service Onyxia ~ un Pod</li>
+                <li>
+                  Règles
+                  <a target="_blank" href="https://kyverno.io/">Kyverno</a> pour
+                  la définition des
+                  <a
+                    target="_blank"
+                    href="https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+                    >Quotas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/feedback-bro.svg"
+          >
+            <h3>Retour d'XP - enseignement</h3>
+            <div style="text-align: left; line-height: 135%">
+              <p>Mise en place</p>
+              <ul>
+                <li>Début d'installation : 26 août 2024</li>
+                <li>Mise en prod : 8 octobre 2024</li>
+                <li>Déploiement et customisation : ~ 1 mois</li>
+                <li>Création d'images Docker spécifiques : 1 semaine</li>
+              </ul>
+              <p>Matières dispensées</p>
+              <ul>
+                <li>Base de la programmation (Python) : TBA</li>
+                <li>Dév logiciel (Ada, C/C++ et Java) : 25 🧑‍🎓</li>
+                <li>Base de l'IA (sans GPU) : TBA</li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/feedback-bro.svg"
+          >
+            <h3>Retour d'XP - recherche</h3>
+            <div style="text-align: left; line-height: 135%">
+              <p>Mise en place</p>
+              <ul>
+                <li>Livraison prévue début décembre : 🤞</li>
+                <li>Seconde instance Onyxia // avec l'enseignement</li>
+                <li>Fournir des ressources GPU (besoin croissant)</li>
+              </ul>
+              <p>Difficultés</p>
+              <ul>
+                <li>Pas forcément technique, mais organisationnelle</li>
+                <li>Comment éviter l'<b>accaparement</b> des ressources ?</li>
+                <li>Définir des règles sur les quotas</li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/finance-bro.svg"
+          >
+            <h3>Limites de Onyxia</h3>
+            <div style="text-align: left; line-height: 175%">
+              <p>Limites des solutions de type RDW<sup>2</sup></p>
+              <p>Contraintes propores aux enseignement de l'ENSMA</p>
+              <ul>
+                <li>Système embarqués : carte Arduino</li>
+                <li>Développement client lourd</li>
+              </ul>
+              <p>Pas de mécanisme de libération de ressources (cron)</p>
+              <p>Gestion des ressources critiques (ex: GPU)</p>
+              <div style="text-align: right; font-size: x-small">
+                2 : Remote Development Workspaces
+              </div>
+            </div>
           </section>
         </section>
 
@@ -815,25 +912,30 @@
             data-background-image="images/onyxia.svg"
           >
             <h3>Conclusion</h3>
-            <div style="text-align: left; line-height: 155%">
+            <div style="text-align: left; line-height: 135%">
               <ul>
                 <li>Onyxia</li>
                 <ul>
-                  <li>Services et outils</li>
-                  <li>Dashboard</li>
+                  <li>Dashboard (sans état)</li>
+                  <li>Services (ex : Python + VScode)</li>
                 </ul>
                 <li>Services disponibles en local ou sur une VM</li>
                 <li>Mise en place progressive de Onyxia</li>
                 <li>Contributions au projet Onyxia</li>
                 <ul>
-                  <li>Nouveaux services (Ada, C++, Rust, Java, etc)</li>
+                  <li>Nouveaux services (Ada, Java)</li>
+                  <li>Remontés de bugs, PR et fonctionnalités</li>
                   <li>Rédaction d'articles</li>
-                  <li>Présentation à différents services de l'ENSMA/UP</li>
+                  <li>Présentation de vulgarisation : ENSMA, UP</li>
                 </ul>
               </ul>
             </div>
           </section>
-          <section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/team_work-bro.svg"
+          >
             <h3>Remerciements</h3>
             <p>
               L'équipe INSEE :
@@ -841,12 +943,24 @@
                 target="_blank"
                 href="https://www.linkedin.com/in/frédéric-comte-38ab33137"
                 >Frédéric Comte</a
+              >,
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/joseph-garrone-0b583490/"
+                >Joseph Garrone</a
               >
               et
-              <a target="_blank" href="https://twitter.com/levittolivier"
+              <a target="_blank" href="https://github.com/olevitt"
                 >Olivier Levitt</a
               >
               pour l'assistance à la mise en place de l'instance Onyxia
+            </p>
+            <p>
+              L'équipe de la DSI de l'<a target="_blank" href="https://www.ensma.fr/">ISAE-ENSMA</a> pour l'intégration de
+              l'instance Onyxia
+            </p>
+            <p>
+              Les collègues du département Informatique et Automatique de l'<a target="_blank" href="https://www.ensma.fr/">ISAE-ENSMA</a> pour leur implication
             </p>
           </section>
         </section>
