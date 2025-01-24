@@ -601,7 +601,7 @@ Digest: sha256:e4f93f6ed15a0cdd342f5aae387886fba0ab98af0a102da6276eaf24d6e6ade0
 Status: Downloaded newer image for busybox:latest
 						
 # Création d&prime;un conteneur
-$ docker run -it busybox /bin/sh # -i = interactif –t = dans la console en cours
+$ docker run -it busybox /bin/sh # -i = interactif -t = dans la console en cours
 
 # Liste le contenu du rootfs du conteneur
 $ 🐳 ls
@@ -614,7 +614,7 @@ $ 🐳 ps -ef
 $ 🐳 exit
 
 # Affichage des conteneurs (en cours, arrêtés, stoppés...)
-$ docker ps –a
+$ docker ps -a
 CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS                     PORTS   NAMES
 d2bc3ccd2ee1   busybox   "/bin/sh"   26 minutes ago   Exited (0) 23 minutes ago          goofy_bhabha</code></pre>
           </section>
@@ -670,7 +670,7 @@ $ docker exec $JOB /bin/ls /tmp
 072208
 072211
 
-# Changement sur le système de fichier – C = Changement, A = Ajout, D = Delete
+# Changement sur le système de fichier - C = Changement, A = Ajout, D = Delete
 $ docker diff $JOB
 C /tmp
 A /tmp/072208
@@ -683,7 +683,7 @@ $ docker rm -f $JOB
 # Si nouveau conteneur les anciens fichiers ne sont plus là
 $ docker run -it busybox /bin/ls /tmp
 
-# N&prime;avez-vous jamais voulu faire cela ? ‘rm –rf /usr’ 
+# N&prime;avez-vous jamais voulu faire cela ? ‘rm -rf /usr’ 
 $ docker run -it busybox /bin/sh -c '/bin/rm -rf /usr;/bin/ls /'</code></pre>
           </section>
           <section>
@@ -766,7 +766,7 @@ $ docker run -it busybox /bin/sh -c '/bin/rm -rf /usr;/bin/ls /'</code></pre>
             <h3>Créer image via commit (démo4)</h3>
             <p>Commandes : <b>run, exec, diff, rm</b></p>
             <pre><code class="language-shell" style="max-height: 500px;" data-noescape data-trim># Créer un conteneur à partir d’une image de base
-$ docker run –it --name gh_rdf3x ubuntu:16.04 /bin/sh
+$ docker run -it --name gh_rdf3x ubuntu:16.04 /bin/sh
 
 # Exécuter les commandes
 $ 🐳 apt-get update -y && apt-get install -y git g++ make
@@ -794,7 +794,7 @@ mickaelbaron/gh_rdf3x_manual  latest     c40410395aed    About a minute ago   53
 Ubuntu                        latest     ac6a7980c6c2    5 weeks ago          123 MB
 
 # Création d’un conteneur à partir de la nouvelle image
-$ docker run –it --name gh_rdf3x mickaelbaron/gh_rdf3x_manual /bin/sh</code></pre>
+$ docker run -it --name gh_rdf3x mickaelbaron/gh_rdf3x_manual /bin/sh</code></pre>
           </section>
           <section>
             <h3>Créer image via commit (démo4)</h3>
@@ -840,6 +840,32 @@ RUN git clone https://github.com/gh-rdf3x/gh-rdf3x && \
 # Précise le répertoire courant à la création du conteneur
 WORKDIR /output</code></pre>
             </div>
+          </section>
+          <section>
+            <h3>Créer image via Dockerfile (démo5)</h3>
+            <p>Commandes : <b>build, images</b></p>
+            <pre><code class="language-shell" style="max-height: 500px;font-size: 0.6em;" data-noescape data-trim># Création d'une image Docker qui s'appellera mickaelbaron/gh_rdf3x
+$ docker build -t mickaelbaron/gh_rdf3x .
+Sending build context to Docker daemon  4.608kB
+Step 1/5 : FROM ubuntu:16.04
+ ---> 2a697363a870
+Step 2/5 : LABEL maintener="Mickael BARON"
+ ---> Running in 056ff059199a
+Removing intermediate container 056ff059199a
+ ---> f37bced0cd93
+ Step 3/5 : RUN apt-get update -y && apt-get install -y git g++ make
+ ---> Running in 96248bf9ee99
+...
+# Attendre que la construction de l'image se termine : installation, git clone et compilation
+
+# Affiche la liste des images en cache
+$ docker images
+REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
+mickaelbaron/gh_rdf3x          latest              ec7ca00d72be        5 seconds ago       494MB
+mickaelbaron/gh_rdf3x_manual   latest              0e8eb106a4a8        2 hours ago         494MB
+ubuntu                         16.04               2a697363a870        13 days ago         119MB
+ubuntu                         latest              7698f282e524        13 days ago         69.9MB
+busybox                        latest              64f5d945efcc        2 weeks ago         1.2MB</code></pre>
           </section>
           <section>
             <h3>Créer image via Dockerfile (démo5)</h3>
@@ -901,6 +927,8 @@ RDF-3X query interface
 ...    
 
 </code></pre>
+<p style="font-size: 0.6em;">Fichiers pour démo :  <a href="data/lubm-data.nt">lubm-data.nt</a> et <a href="data/query.sparql">query.sparql</a></p>
+
           </section>
           <section>
             <h3>Les volumes (démo6)</h3>
@@ -1041,9 +1069,9 @@ $ psql -U postgres -d postgres -h localhost -p 54321
             <p>Supprimer les images qui n’ont pas de nom</p>
             <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker image prune</code></pre>
             <p>Connaître l’IP d’un conteneur</p>
-            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker inspect –f '{{.NetworkSettings.IPAddress }}' mycont</code></pre>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker inspect -f '{{.NetworkSettings.IPAddress }}' mycont</code></pre>
             <p>S’attacher à un conteneur en cours d’exécution</p>
-            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker attach mycont <=> docker exec –it mycont /bin/bash</code></pre>
+            <pre><code class="language-shell" style="font-size: 1em;" data-noescape data-trim>$ docker attach mycont <=> docker exec -it mycont /bin/bash</code></pre>
           </div>
         </section>
         <section>
