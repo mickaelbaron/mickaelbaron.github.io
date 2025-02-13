@@ -2,7 +2,7 @@
 title: "Advanced Kubernetes Deployment on an NVIDIA GPUs Cluster: NGINX Ingress Controler, Local Storage, and Prometheus Monitoring"
 tags: [kubernetes]
 category: technical
-description: "This blog post builds on our previous one about deploying NVIDIA GPUs on Kubernetes by adding support for NGINX Ingress Controller, Local Storage, and Prometheus Monitoring."
+description: "This blog post completes our previous one on deploying NVIDIA GPUs on Kubernetes, by adding support for NGINX Ingress Controller, Local Storage, and Prometheus Monitoring."
 english: true
 toc: true
 comments: utterances
