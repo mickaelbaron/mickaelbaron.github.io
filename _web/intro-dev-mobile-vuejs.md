@@ -7,7 +7,7 @@ description: Cette introduction présente les principales solutions pour dévelo
 category: Cours
 date: 2021-03-18
 weight: 3
-twitter: 1374321681532133382
+comments: utterances
 ---
 
 Ce support de cours présente dans une première partie les principales solutions pour développer une application mobile (**app web**, **PWA**, **Native** et **Hybride**) puis se focalise dans une seconde partie sur le développement d'applications mobiles orientées web via les solutions PWA et Hybride ([NativeScript](https://nativescript-vue.org/)) avec le framework <a target="_blank" href="https://vuejs.org/">Vue.js</a>.
