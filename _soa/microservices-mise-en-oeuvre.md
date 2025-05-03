@@ -11,7 +11,7 @@ weight: 14
 
 Ce support de cours présente la mise en œuvre d'architectures Microservices avec Java et [Docker](https://www.docker.com/). Tout au long de la présentation une étude de cas sera déroulée pour illustrer les différents usages des outils et bibliothèques présentés.
 
-Ainsi, dans une première partie la bibliothèque [KumuluzEE](https://ee.kumuluz.com/) est présentée pour la partie codage de Microservices avec le langage Java et la spécification [MicroProfile](https://microprofile.io/).
+Ainsi, dans une première partie le framework [Open Liberty](https://openliberty.io/) est présentée pour la partie codage de Microservices avec le langage Java et la spécification [MicroProfile](https://microprofile.io/).
 
 Dans une deuxième partie, [Docker](https://www.docker.com/) est présenté pour montrer comment isoler un Microservice.
 

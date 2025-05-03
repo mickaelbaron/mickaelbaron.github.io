@@ -1,4 +1,5 @@
 # Local Site Directories
+.DS_STORE
 _site/
 .sass-cache/
 .jekyll-cache/
