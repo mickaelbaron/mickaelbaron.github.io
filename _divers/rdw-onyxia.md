@@ -6,7 +6,7 @@ image: /slides/divers/rdw-onyxia/images/onyxia.svg
 description: Transparents d'un séminaire technique que j'ai donné le 29 juin 2023 au laboratoire LIAS. J'ai présenté le résultat d'un état l'art « technique » sur le sujet et j'ai détaillé Onyxia, une solution open source développée par l'INSEE pour ses collaborateurs.
 category: Article
 date: 2023-06-29
-update: 2024-10-18
+update: 2025-09-17
 weight: 11
 comments: utterances
 ---
