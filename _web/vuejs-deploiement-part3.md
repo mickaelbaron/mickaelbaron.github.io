@@ -9,7 +9,7 @@ date: 2019-07-09
 update: 2022-07-21
 weight: 6
 toc: true
-twitter: 1550374237059354636
+comments: utterances
 ---
 
 L'objectif de cet article en plusieurs parties est de vous présenter le framework web JavaScript [Vue.js](https://vuejs.org/) en se focalisant sur les principaux concepts au travers d'un exemple unique.
@@ -73,8 +73,13 @@ La construction des binaires se fait par l'intermédiaire de [Maven](https://mav
 
 * Exécuter la ligne de commande suivante pour compiler la couche serveur à partir de [Maven](https://maven.apache.org/).
 
-```console
-$ mvn clean package
+```bash
+mvn clean package
+``` 
+
+La sortie console attendue :
+
+```bash
 ...
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
@@ -92,7 +97,7 @@ $ mvn clean package
 
 [Maven](https://maven.apache.org/) compilera le code source, exécutera les tests unitaires et préparera les binaires finals. Ces derniers sont disponibles dans le répertoire *polldle-server/target*, nous les détaillons ci-dessous :
 
-```console
+```bash
 polldle-server/target
 ├── classes
 │   ├── fr
@@ -124,7 +129,7 @@ Le composant serveur (Java) n'offre pas de grandes possibilités de configuratio
 
 * Exécuter les lignes de commande suivantes pour initialiser deux variables d'environnement.
 
-```console
+```bash
 export KUMULUZEE_SERVER_HTTP_PORT=9991
 export KUMULUZEE_SERVER_BASEURL=http://0.0.0.0
 ```
@@ -137,8 +142,13 @@ Comme vu dans la partie construction des binaires, les fichiers nécessaires à 
 
 * Démarrer l'exécution du composant serveur (Java) via la ligne de commande ci-dessous.
 
-```console
-$ java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
+```bash
+java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
+```
+
+La sortie console attendue :
+
+```bash
 ...
 2022-07-20 11:35:53.394 INFO -- com.kumuluz.ee.jetty.JettyFactory -- Starting KumuluzEE on Jetty with 5 minimum and 100 maximum threads
 2022-07-20 11:35:53.454 INFO -- com.kumuluz.ee.jetty.JettyFactory -- Starting KumuluzEE on port(s): 9991 [http/1.1]
@@ -201,8 +211,13 @@ La construction de l'image du composant serveur (Java) se base sur le fichier *D
 
 * Exécuter la ligne de commande suivante (toujours depuis le répertoire *polldle-backend*) pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant serveur (Java).
 
-```console
-$ docker build --tag mickaelbaron/polldle-backend .
+```bash
+docker build --tag mickaelbaron/polldle-backend .
+```
+
+La sortie console attendue :
+
+```bash
 [+] Building 79.6s (16/16) FINISHED
  => [internal] load build definition from Dockerfile                                                                                        0.1s
  => => transferring dockerfile: 651B                                                                                                        0.0s
@@ -266,8 +281,13 @@ On remarque que le nombre d'étapes est identique au nombre de lignes contenues 
 
 * Exécuter la ligne de commande suivante pour s'assurer que l'image intitulée *mickaelbaron/polldle-backend* a été construite.
 
-```console
-$ docker images
+```bash
+docker images
+```
+
+La sortie console attendue :
+
+```bash
 REPOSITORY                            TAG             IMAGE ID       CREATED          SIZE
 mickaelbaron/polldle-backend          latest          40b9c0f37a52   10 minutes ago   164MB
 ```
@@ -280,8 +300,13 @@ Nous pouvons désormais créer un conteneur afin de tester l'image construite po
 
 * Se positionner dans le répertoire *polldle-vue* et créer un conteneur basé sur l'image [Docker](https://www.docker.com/) précédente.
 
-```console
-$ docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 -p 9991:9991 mickaelbaron/polldle-backend
+```bash
+docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 -p 9991:9991 mickaelbaron/polldle-backend
+```
+
+La sortie console attendue :
+
+```bash
 b3c5fd42962cee0dd0cd45f2c6ed35ca1926ab0d9a9efbedb3cea0241062bc9e
 ```
 
@@ -289,18 +314,27 @@ Un conteneur nommé `backend` sera créé sur la base de l'image `mickaelbaron/p
 
 * Exécuter la ligne de commande suivante pour s'assurer que le contenu a été correctement créé et qu'il est toujours en exécution.
 
-```console
-$ docker ps
+```bash
+docker ps
+```
+
+La sortie console attendue : 
+
+```bash
 CONTAINER ID   IMAGE                          COMMAND                    STATUS              PORTS                     NAMES
 a7710eea60e9   mickaelbaron/polldle-backend   "java -cp /polldle/c…"     Up About a minute   0.0.0.0:9991->9991/tcp    backend
 ```
 
 * Toujours depuis le répertoire *polldle-vue*, démarrer l'exécution en mode développement de la couche client ([Vue.js](https://vuejs.org/)).
 
-```console
-$ npm install
-$ npm run dev
+```bash
+npm install
+npm run dev
+```
 
+La sortie console attendue :
+
+```bash
 > polldle-vue@0.0.0 dev
 > vite
 
@@ -332,7 +366,7 @@ Des variables d'environnement sont déclarées et initialisées dans des fichier
 
 À titre d'exemple, voici les fichiers que vous pourriez trouver à la racine d'un projet [Vue.js](https://vuejs.org/).
 
-```console
+```bash
 .env             : variables d'environnement disponibles quel que soit le mode ;
 .env.development : variables d'environnement disponibles pour le développement (npm run dev) ;
 .env.production  : variables d'environnement disponibles pour la production (npm run build).
@@ -431,9 +465,13 @@ Comme montré dans les codes précédents, l'ancienne valeur `http://127.0.0.1:9
 
 Pour l'instant, nous avons vu comment tester le projet [Vue.js](https://vuejs.org/) en exécutant : `npm run dev`.
 
-```console
-$ npm run dev
+```bash
+npm run dev
+```
 
+La sortie console attendue :
+
+```bash
 > polldle-vue-15@0.0.0 dev
 > vite
 
@@ -448,9 +486,13 @@ Nous allons maintenant construire les *binaires* pour la version qui sera déplo
 
 * Exécuter `npm run build` où `build` est un script défini dans le fichier *package.json*.
 
-```console
-$ npm run build
+```bash
+npm run build
+```
 
+La sortie console attendue :
+
+```
 > polldle-vue-16@0.0.0 build
 > vite build
 
@@ -463,7 +505,7 @@ dist/assets/index.d2ce934b.js    436.06 KiB / gzip: 155.19 KiB
 
 Le résultat de cette construction est disponible dans le répertoire *dist* où l'on retrouve le contenu CSS, JavaScript et le fichier *index.html*
 
-```console
+```bash
 .
 ├── assets
 │   ├── index.d2ce934b.js
@@ -528,23 +570,27 @@ VUE_APP_SERVER_URL = http://localhost:9991
 
 * Installer les modules requis et construire les binaires pour notre projet [Vue.js](https://vuejs.org/).
 
-```console
-$ npm install
-$ npm run build
+```bash
+npm install
+npm run build
 ```
 
-* Si le conteneur du composant serveur (Java) est toujours en exécution (`$ docker ps`), vous pouvez passer à l'étape suivante, sinon, exécuter la ligne de commande suivante.
+* Si le conteneur du composant serveur (Java) est toujours en exécution (`docker ps`), vous pouvez passer à l'étape suivante, sinon, exécuter la ligne de commande suivante.
 
-```console
-$ docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 -p 9991:9991 mickaelbaron/polldle-backend
+```bash
+docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 -p 9991:9991 mickaelbaron/polldle-backend
+```
+
+La sortie console attendue : 
+
+```bash
 b3c5fd42962cee0dd0cd45f2c6ed35ca1926ab0d9a9efbedb3cea0241062bc9e
 ```
 
 * Créer un conteneur [Docker](https://www.docker.com/) basé sur une image [NGINX](https://www.nginx.com/).
 
-```console
-$ docker run -d --rm -p 80:80 --name frontend -v $(pwd)/dist:/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf nginx:stable-alpine nginx -g "daemon off;"
-60f1489e822c794477b322dbfa4df79794769480206c11fae42f3c5f113c992e
+```bash
+docker run -d --rm -p 80:80 --name frontend -v $(pwd)/dist:/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf nginx:stable-alpine nginx -g "daemon off;"
 ```
 
 Un conteneur [Docker](https://www.docker.com/) sera créé, en mode détaché (`-d`), automatiquement supprimé (`--rm`), avec une redirection de port (`-p 80:80`), portant le nom (`--name frontent`) et partageant le répertoire *dist* et le fichier *nginx.conf* (`-v`).
@@ -553,8 +599,8 @@ Un conteneur [Docker](https://www.docker.com/) sera créé, en mode détaché (`
 
 * Une fois testée, arrêter et détruire le conteneur nommé *frontend*.
 
-```console
-$ docker rm -f frontend
+```bash
+docker rm -f frontend
 ```
 
 #### Dockerfile pour le composant client (Vue.js)
@@ -625,8 +671,13 @@ La construction de l'image [Docker](https://www.docker.com/) du composant client
 
 * Toujours depuis le répertoire *polldle/polldle-vue-17*, exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client ([Vue.js](https://vuejs.org/)).
 
-```console
-$ docker build --tag mickaelbaron/polldle-vue .
+```bash
+docker build --tag mickaelbaron/polldle-vue .
+```
+
+La sortie console attendue :
+
+```bash
 [+] Building 21.4s (20/20) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                   0.0s
  => => transferring dockerfile: 84B                                                                                                                    0.0s
@@ -659,8 +710,13 @@ $ docker build --tag mickaelbaron/polldle-vue .
 
 * S'assurer que l'image intitulée *mickaelbaron/polldle-vue* a été construite.
 
-```console
-$ docker images
+```bash
+docker images
+```
+
+La sortie console attendue :
+
+```bash
 REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
 mickaelbaron/polldle-backend   latest              c976b72dafd3        60 seconds ago      165MB
 mickaelbaron/polldle-vue       latest              f34078d6c901        34 seconds ago      23.2MB
@@ -672,17 +728,19 @@ Nous pouvons désormais créer un conteneur afin de tester l'image [Docker](http
 
 * Se positionner dans le répertoire *polldle-vue-17* et exécuter la ligne de commande suivante pour créer un conteneur basé sur l'image *mickaelbaron/polldle-vue*.
 
-```console
-$ docker run -d --name frontend -p 80:80 mickaelbaron/polldle-vue
-0e65e7ad22e68856f81c2aacbbbc9686dc1a209fae11d848488ed050b7acb237
+```bash
+docker run -d --name frontend -p 80:80 mickaelbaron/polldle-vue
 ```
 
 Un conteneur nommé `frontend` sera créé sur la base de l'image `mickaelbaron/polldle-vue`. L'option `-p 80:80` est utilisée pour la redirection de port.
 
 * S'assurer que le contenu a été correctement créé et qu'il est toujours en exécution.
 
-```console
-$ docker ps
+```bash
+docker ps
+```
+
+```bash
 CONTAINER ID        IMAGE                          COMMAND                  STATUS              PORTS                    NAMES
 0e65e7ad22e6        mickaelbaron/polldle-vue       "nginx -g 'daemon of…"   6 minutes ago       0.0.0.0:80->80/tcp       frontend
 346e0d4413ce        mickaelbaron/polldle-backend   "java -cp /polldle/c…"   6 minutes ago       0.0.0.0:9991->9991/tcp   backend
@@ -752,8 +810,13 @@ La construction de l'image [Docker](https://www.docker.com/) du composant *rever
 
 * Exécuter la ligne de commande suivante (toujours depuis le répertoire *polldle-rp-without_subpath*).
 
-```console
-$ docker build --tag mickaelbaron/polldle-rp .
+```bash
+docker build --tag mickaelbaron/polldle-rp .
+```
+
+La sortie console attendue :
+
+```bash
 [+] Building 1.8s (8/8) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                   0.0s
  => => transferring dockerfile: 247B                                                                                                                   0.0s
@@ -774,8 +837,13 @@ $ docker build --tag mickaelbaron/polldle-rp .
 
 * Exécuter la ligne de commande suivante pour s'assurer que l'image [Docker](https://www.docker.com/) intitulée *mickaelbaron/polldle-rp* a été construite.
 
-```console
-$ docker images
+```bash
+docker images
+```
+
+La sortie console attendue :
+
+```bash
 REPOSITORY                     TAG          IMAGE ID       CREATED          SIZE
 mickaelbaron/polldle-rp        latest       bbf1d8de51df   45 seconds ago   23.5MB
 mickaelbaron/polldle-backend   latest       c976b72dafd3   20 hours ago     165MB
@@ -788,31 +856,33 @@ Comme les conteneurs [Docker](https://www.docker.com/) basés sur les images *mi
 
 * Exécuter la ligne de commande suivante pour supprimer les conteneurs en cours d'exécution.
 
-```console
-$ docker rm -f frontend
-$ docker rm -f backend
+```bash
+docker rm -f frontend
+docker rm -f backend
 ```
 
 * Exécuter la ligne de commande suivante pour créer les conteneurs [Docker](https://www.docker.com/) basés sur les images *mickaelbaron/polldle-vue* et *mickaelbaron/polldle-backend*.
 
-```console
-$ docker run -d --name frontend mickaelbaron/polldle-vue
-8539edcb89de22b4274d3fbfe9eb69d5b037a22abbae9e657728cf34f6c7df90
-$ docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 mickaelbaron/polldle-backend
-f3aab5e71bf7da38c265a8999142065bff10f826eeb47cfb4f9d7dce872f7d22
+```bash
+docker run -d --name frontend mickaelbaron/polldle-vue
+docker run -d --name backend -e KUMULUZEE_SERVER_HTTP_PORT=9991 mickaelbaron/polldle-backend
 ```
 
 * Créer ensuite un conteneur basé sur l'image [Docker](https://www.docker.com/) *mickaelbaron/polldle-rt*.
 
-```console
-$ docker run -d --name rp -p 80:80 mickaelbaron/polldle-rp
-78bd18008796758326eb9f48ae57279cef17d96c319478b3a2fc1c541fd3cee4
+```bash
+docker run -d --name rp -p 80:80 mickaelbaron/polldle-rp
 ```
 
 * Afficher la liste des conteneurs avec la commande suivante :
 
-```console
-$ docker ps -a
+```bash
+docker ps -a
+```
+
+La sortie console attendue :
+
+```bash
 CONTAINER ID        IMAGE                          COMMAND                  STATUS                      PORTS       NAMES
 78bd18008796        mickaelbaron/polldle-rp        "nginx -g 'daemon of…"   Exited (1) 19 minutes ago               rp
 781f589d49eb        mickaelbaron/polldle-vue       "nginx -g 'daemon of…"   Up 22 hours                 80/tcp      frontend
@@ -823,8 +893,13 @@ Nous constatons que le conteneur *rp* ne fonctionne pas correctement. Pour conna
 
 * Examiner les logs du conteneur *rp*.
 
-```console
-$ docker logs rp
+```bash
+docker logs rp
+```
+
+La sortie console attendue :
+
+```bash
 2022/07/20 15:02:36 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/conf.d/default.conf:5
 nginx: [emerg] host not found in upstream "backend" in /etc/nginx/conf.d/default.conf:5
 ```
@@ -833,24 +908,22 @@ Cette erreur indique que le nom de domaine *backend* n'est pas connu. Il en va d
 
 * Créer un sous-réseau [Docker](https://www.docker.com/) appelé *polldlenetwork*.
 
-```console
-$ docker network create polldlenetwork
-3605b7022d16414a2855fde4101052e7f36e43ba94a41dbc83659b9a9d351386
+```bash
+docker network create polldlenetwork
 ```
 
 * Ajouter les conteneurs *frontend* et *backend* à ce nouveau sous-réseau [Docker](https://www.docker.com/).
 
-```console
-$ docker network connect polldlenetwork backend
-$ docker network connect polldlenetwork frontend
+```bash
+docker network connect polldlenetwork backend
+docker network connect polldlenetwork frontend
 ```
 
 * Supprimer le conteneur *rp* et le recréer dans le sous-réseau [Docker](https://www.docker.com/) *polldlenetwork*.
 
-```console
-$ docker rm -f rp
-$ docker run -d --name rp --network polldlenetwork -p 80:80 mickaelbaron/polldle-rp
-66bc312c2579cba754dc1649bf5f976d061e680fd5a4b1e34772c70425032565
+```bash
+docker rm -f rp
+docker run -d --name rp --network polldlenetwork -p 80:80 mickaelbaron/polldle-rp
 ```
 
 * Ouvrir un navigateur et tester l'URL suivante : [http://localhost](http://localhost/).
@@ -949,10 +1022,14 @@ La valeur du chemin de base est déterminée par la propriété `base`. Cette va
 
 * S'assurer que les modifications apportées fonctionnent correctement.
 
-```console
-$ npm install
-$ npm run subpath
+```bash
+npm install
+npm run subpath
+```
 
+La sortie console attendue : 
+
+```bash
 > polldle-vue-18@0.0.0 subpath
 > vite build --mode subpath
 
@@ -972,8 +1049,8 @@ Le mode *subpath* a bien été pris en compte. Vous pouvez examiner le contenu g
 
 Pour rappel, voici les deux commandes pour construire les binaires du composant client ([Vue.js](https://vuejs.org/)) :
 
-* sans sous-chemin : `$ npm run build` ;
-* avec sous-chemin : `$ npm run subpath`.
+* sans sous-chemin : `npm run build` ;
+* avec sous-chemin : `npm run subpath`.
 
 Le choix de la commande dépend donc de ce qu'on veut obtenir comme binaire. Nous allons modifier le fichier *Dockerfile* afin de pouvoir choisir la commande lors de la construction de l'image [Docker](https://www.docker.com/).
 
@@ -1013,8 +1090,8 @@ L'instruction `ARG script_name=build` permet de créer une variable `script_name
 
 * Depuis l'invite de commande, se positionner dans le répertoire *polldle/polldle-vue-19* et exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant client ([Vue.js](https://vuejs.org/)).
 
-```console
-$ docker build --tag mickaelbaron/polldle-vue . --build-arg script_name=subpath
+```bash
+docker build --tag mickaelbaron/polldle-vue . --build-arg script_name=subpath
 ```
 
 Pour passer une valeur à la variable `script_name`, l'option `--build-arg` a été utilisée.
@@ -1074,8 +1151,8 @@ Tout comme le fichier *Dockerfile* du composant client (Vue.js), une variable es
 
 * Depuis l'invite de commande, se positionner dans le répertoire *polldle-rp* et exécuter la ligne de commande suivante pour démarrer la construction de l'image [Docker](https://www.docker.com/) du composant *reverse-proxy* (NGINX).
 
-```console
-$ docker build --tag mickaelbaron/polldle-rp . --build-arg script_name=subpath
+```bash
+docker build --tag mickaelbaron/polldle-rp . --build-arg script_name=subpath
 ```
 
 ### Résumé pour définir un sous-chemin
@@ -1089,16 +1166,16 @@ Nous pouvons désormais tester notre application composée de trois composants (
 
 * Exécuter la ligne de commande suivante pour supprimer les conteneurs en cours d'exécution.
 
-```console
-$ docker rm -f rp backend frontend
+```bash
+docker rm -f rp backend frontend
 ```
 
 * Exécuter les trois lignes de commande suivante pour créer les conteneurs des composants.
 
-```console
-$ docker run -d --name backend --network polldlenetwork -e KUMULUZEE_SERVER_HTTP_PORT=9991 mickaelbaron/polldle-backend
-$ docker run -d --name frontend --network polldlenetwork mickaelbaron/polldle-vue
-$ docker run -d --name rp --network polldlenetwork -p 80:80 mickaelbaron/polldle-rp
+```bash
+docker run -d --name backend --network polldlenetwork -e KUMULUZEE_SERVER_HTTP_PORT=9991 mickaelbaron/polldle-backend
+docker run -d --name frontend --network polldlenetwork mickaelbaron/polldle-vue
+docker run -d --name rp --network polldlenetwork -p 80:80 mickaelbaron/polldle-rp
 ```
 
 * Ouvrir un navigateur et tester l'URL suivante : [http://localhost/polldle](http://localhost/polldle).
@@ -1158,12 +1235,17 @@ L'option *compose* permet de construire toutes les images [Docker](https://www.d
 * `docker compose build COMPONENT` : construire l'image [Docker](https://www.docker.com/) du composant `COMPONENT` (*frontend*, *backend* ou *rp*) ;
 * `docker compose build --build-arg script_name=subpath` : construire toutes les images [Docker](https://www.docker.com/) en précisant avec ou sans sous-chemin.
 
-Dans l'hypothèse, où aucune image [Docker](https://www.docker.com/) n'a été construite, la commande `$ docker compose up -d` est suffisante.
+Dans l'hypothèse, où aucune image [Docker](https://www.docker.com/) n'a été construite, la commande `docker compose up -d` est suffisante.
 
 * Ouvrir un terminal et exécuter la ligne de commande suivante :
 
-```console
+```bash
 docker compose up -d
+```
+
+La sortie console attendue :
+
+```bash
 [+] Running 0/3
  ⠿ rp Error                                                         3.0s
  ⠿ backend Error                                                    2.0s
@@ -1179,8 +1261,13 @@ docker compose up -d
 
 * Pour vérifier que les trois conteneurs ont été créés.
 
-```console
-$ docker compose ps
+```bash
+docker compose ps
+```
+
+La sortie console attendue : 
+
+```bash
 NAME                                     COMMAND                  SERVICE      STATUS      PORTS
 vuejs3-polldle-tutorial-src-backend-1    "java -cp /polldle/c…"   backend      running     0.0.0.0:9991->9991/tcp
 vuejs3-polldle-tutorial-src-frontend-1   "nginx -g 'daemon of…"   frontend     running     80/tcp

@@ -11,7 +11,7 @@ weight: 7
 toc: true
 authors: [diabatem]
 deprecated: true
-twitter: 1146667460445331456
+comments: utterances
 ---
 
 L'objectif de cet article en plusieurs parties est de vous présenter le framework web JavaScript [Vue.js](https://vuejs.org/) en se focalisant sur les principaux concepts au travers d'un exemple unique.
@@ -71,8 +71,13 @@ Nous allons montrer dans cette section comment créer un projet [Vue.js](https:/
 
 * Pour découvrir les possibilités de Vue CLI, ouvrir un terminal et saisir la commande suivante :
 
-```console
-$ vue -h
+```bash
+vue -h
+```
+
+La sortie console attendue :
+
+```bash
 Usage: vue <command> [options]
 
 Options:
@@ -97,9 +102,13 @@ Commands:
 
 * Pour obtenir des informations sur votre environnement de développement et s'assurer que tout est correctement installé (**npm**, et **Vue CLI**), saisir la ligne commande suivante :
 
-```console
-$ vue info
+```bash
+vue info
+```
 
+La sortie console attendue :
+
+```bash
 Environment Info:
 
   System:
@@ -120,13 +129,13 @@ Environment Info:
 
 * Nous allons créer notre premier projet avec **Vue CLI** en mode console. Depuis la racine du dossier *vuejs-polldle-tutorial-src* (obtenu en récupérant les codes source depuis le dépôt [https://github.com/mickaelbaron/vuejs-polldle-tutorial-src](https://github.com/mickaelbaron/vuejs-polldle-tutorial-src)), saisir la ligne de commande suivante, une série de questions vous seront posées. 
 
-```console
-$ vue create polldle-vue-00
+```bash
+vue create polldle-vue-00
 ```
 
 * Sélectionner le second élément afin de choisir manuellement le paramétrage.
 
-```console
+```bash
 Vue CLI v4.4.5
 ? Please pick a preset:
   default (babel, eslint)
@@ -135,7 +144,7 @@ Vue CLI v4.4.5
 
 * Sélectionner les plugins [Babel](https://babeljs.io/) (un compilateur JavaScript permettant d'utiliser des syntaxes récentes du langage qui seront traduites en JavaScript compréhensible par la plupart des versions des navigateurs) et **Linter / Formatter** (un outil d'analyse statique du code JavaScript permettant de détecter des erreurs avant l'exécution et des problèmes de style). 
 
-```console
+```bash
 ? Check the features needed for your project: (Press <space> to select, <a> to toggle all, <i> to invert selection)
 ❯◉ Babel
  ◯ TypeScript
@@ -150,7 +159,7 @@ Vue CLI v4.4.5
 
 * Pour l'option **Linter / Formatter**, choisir le premier élément afin d'afficher la moindre erreur détectée. C'est assez contraignant au début (moindre espace en trop est une erreur), mais quel plaisir d'avoir un code propre qui respecte les conventions de codage. Le **Linter** utilisé par défaut sera [ESLint](https://eslint.org/).
 
-```console
+```bash
 ? Pick a linter / formatter config:
 ❯ ESLint with error prevention only
   ESLint + Airbnb config
@@ -160,7 +169,7 @@ Vue CLI v4.4.5
 
 * Choisir le premier élément pour lancer le **Linter** à chaque sauvegarde d'un fichier JavaScript.
 
-```console
+```bash
 ? Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)
 ❯◉ Lint on save
  ◯ Lint and fix on commit
@@ -168,7 +177,7 @@ Vue CLI v4.4.5
 
 * Choisir le second élément pour stocker les informations spécifiques de [Babel](https://babeljs.io/) et [ESLint](https://eslint.org/) dans le fichier *package.json*. À noter que même avec ce choix, un fichier *babel.config.js* sera quand même créé.
 
-```console
+```bash
 ? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?
   In dedicated config files
 ❯ In package.json
@@ -176,20 +185,20 @@ Vue CLI v4.4.5
 
 * Pour savoir si vous souhaitez que vos précédents choix soient considérés par défaut pour les prochaines créations de projets.
 
-```console
+```bash
 ? Save this as a preset for future projects? (y/N)
 ```
 
 * Choisir le gestionnaire de packages (**Yarn** ou **NPM**) à utiliser par défaut pour télécharger les dépendances. Cette option n'est disponible que si vous disposez de plus d'un gestionnaire de packages installé sur votre système. Ayant utilisé par la suite NPM, je vous demanderai de sélectionner le second choix.
 
-```console
+```bash
   Use Yarn
 ❯ Use NPM
 ```
 
 * La création de votre projet va se dérouler.
 
-```console
+```bash
 Vue CLI v4.4.5
 ✨  Creating project in /Users/baronm/vuejs-polldle-tutorial-src/polldle-vue-00.
 ⚙️  Installing CLI plugins. This might take a while...
@@ -203,7 +212,7 @@ Vue CLI v4.4.5
 
 Intéressons-nous à détailler les différents fichiers et répertoires qui ont été générés lors de la précédente section.
 
-```console
+```bash
 polldle-vue-00
 ├── README.md
 ├── babel.config.js
@@ -254,7 +263,7 @@ Le fichier *package.json* est donné en exemple ci-dessous. Des métadonnées so
 }
 ```
 
-Le répertoire *node_modules* contient l'ensemble des modules nécessaires pour la construction du projet. Ce répertoire est obtenu automatiquement en exécutant le script `$ npm install`. L'outil **npm** se base alors sur le fichier *package.json* pour télécharger les modules directs et transitifs. Par comparaison, c'est très ressemblant à Maven de l'univers Java où *pom.xml* correspond au fichier *package.json*.
+Le répertoire *node_modules* contient l'ensemble des modules nécessaires pour la construction du projet. Ce répertoire est obtenu automatiquement en exécutant le script `npm install`. L'outil **npm** se base alors sur le fichier *package.json* pour télécharger les modules directs et transitifs. Par comparaison, c'est très ressemblant à Maven de l'univers Java où *pom.xml* correspond au fichier *package.json*.
 
 Le répertoire *public* est utilisé pour stocker les fichiers statiques HTML. Le fichier *index.html* est le point d'entrée de votre application (voir ci-dessous). Tout le code que vous allez développer sera injecté dans `<div id="app"></div>`.
 
@@ -321,11 +330,15 @@ Ce répertoire contiendra tous les composants que vous allez développer. Tous l
 
 * Pour tester ce nouveau projet, se déplacer à la racine du dossier *polldle-vue-00* et exécuter la ligne de commande suivante :
 
-> La commande `$ npm run serve` est un alias défini dans *package.json* qui lance `vue-cli-service serve`.
+> La commande `npm run serve` est un alias défini dans *package.json* qui lance `vue-cli-service serve`.
 
-```console
-$ npm run serve
+```bash
+npm run serve
+```
 
+La sortie console attendue :
+
+```bash
  ...
 
  DONE  Compiled successfully in 2977ms
@@ -343,19 +356,19 @@ $ npm run serve
 
 ![Ecran pour la création d'un PollDLE](/images/vuejs2-miseenoeuvre-part2/first_vuejs.png)
 
-Tout au long de cet article et à chaque fois qu'il vous sera demandé de compléter des fichiers dans un répertoire de la forme *polldle-vue-x*, pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+Tout au long de cet article et à chaque fois qu'il vous sera demandé de compléter des fichiers dans un répertoire de la forme *polldle-vue-x*, pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
-> Si un problème de ce genre se produit : *npm WARN Local package.json exists, but node_modules missing, did you mean to install?*, assurez-vous d'avoir fait un `$ npm install` pour télécharger l'ensemble des modules nécessaires. Les fichiers téléchargés seront déposés dans le répertoire *node_modules*.
+> Si un problème de ce genre se produit : *npm WARN Local package.json exists, but node_modules missing, did you mean to install?*, assurez-vous d'avoir fait un `npm install` pour télécharger l'ensemble des modules nécessaires. Les fichiers téléchargés seront déposés dans le répertoire *node_modules*.
 
 ## Modèle et vue
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-01* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-01* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Nous allons initialiser les différents modèles et vues des composants *CreatePolldle* et *FooterPolldle* de l'application PollDLE sans effectuer aucun binding, c'est-à-dire sans relier les vues aux modèles et inversement. En effet, nous voulons montrer qu'un composant est constitué d'une partie vue (HTML classique) et d'une partie modèle (JavaScript) et que l'intérêt de [Vue.js](https://vuejs.org/) est de fournir un ensemble d'outillages (les différentes sections qui vont suivre) pour rendre dynamique l'interface graphique. Par ailleurs, nous ne nous attarderons pas sur les spécificités d'un composant (communication entre des composants ou son cycle de vie) puisque nous y reviendrons plus tard dans une section dédiée.
 
 À cette étape voici le contenu du répertoire *src/components*.
 
-```console
+```bash
 polldle-vue-01
 ...
     ├── components
@@ -545,7 +558,7 @@ N'hésitez par à consulter les autres fichiers *.vue* pour découvrir comment l
 
 ## Templating avec Vue.js
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-02* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-02* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Dans cette section, nous allons apprendre à réaliser le binding entre la vue et le modèle via le *templating*. Pour cela et comme précisé en première partie de cet article, deux outillages sont disponibles : l'interpolation via la notation moustache et les directives qui sont des attributs enrichissant les balises HTML.
 
@@ -872,7 +885,7 @@ Dans ce cas, la directive `v-once` prend tout son sens, car le rendu ne sera ré
 
 #### Rendu conditionnel
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-03* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-03* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Nous allons dans cette section détailler les directives `v-show` et `v-if`. Ces directives permettent d'afficher ou de masquer du contenu HTML soit par une simple permutation basée sur du CSS (`v-show`) soit par un contrôle du rend (`v-if`).
 
@@ -997,7 +1010,7 @@ Il faut aussi noter que la directive `v-show` réalise le rendu HTML quoi qu'il 
 
 #### Rendu de liste
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-04* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-04* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Nous étudions dans cette section la directive `v-for` qui permet de réaliser plusieurs fois le rendu d'un élément (où s'applique la directive).
 
@@ -1053,7 +1066,7 @@ Cette section s'intéresse à la notion de composant. Nous verrons comment **dé
 
 ### Savoir développer un composant
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-05* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-05* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Pour développer un composant avec [Vue.js](https://vuejs.org/), il existe plusieurs façons qui sont parfaitement résumées dans cet article : [https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.](https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/.) Dans le périmètre de notre article, nous nous limiterons au développement du composant via l'utilisation d'un fichier portant l'extension *.vue*. Cette manière de développer est appelée composants monofichiers ou composants à fichier unique (*Single File Components* en anglais). Nous avions déjà évoqué dans la partie introductive de [Vue.js](https://vuejs.org/) la description d'un composant sous cette forme. Pour rappel, ce fichier avec l'extension *.vue* est décomposé en trois parties qui définissent :
 
@@ -1112,7 +1125,7 @@ Quand un composant est développé via un monofichier, c'est à la charge de [Vu
 
 ### Savoir instancier un composant
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-06* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-06* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Précédemment, nous avons vu comment **développer** un composant, nous allons maintenant voir comment l'**instancier** au sein d'autres composants [Vue.js](https://vuejs.org/). À ce propos, deux types de composants sont à distinguer : les composants que vous avez développés (c'est le cas du composant *CreatePolldleOption*) et les composants externes (c'est le cas de la bibliothèque Highcharts via le composant [vue-highcharts](https://github.com/weizhenye/vue-highcharts)). Quelle que soit l'origine des composants, la manière de les utiliser au sein d'un composant reste identique.
 
@@ -1239,7 +1252,7 @@ Le contenu généré est conforme au composant *CreatePolldleOption*. Ce code n'
 
 #### Composant externe ou plugin
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-07* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-07* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Au sens de composant externe, nous considérons une bibliothèque développée par un tiers et que l'on souhaite intégrer à notre projet. Au niveau de [Vue.js](https://vuejs.org/), ce type de composant est aussi appelé plugin. C'est le cas pour la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) pour le rendu des résultats d'un Polldle.
 
@@ -1249,8 +1262,13 @@ Quand vous souhaitez ajouter une bibliothèque dans votre projet, vous devez gé
 
 * Saisir la ligne commande suivante permettant d'ajouter la bibliothèque JavaScript [Highcharts](https://www.highcharts.com/) et de sa version packagée [vue-highcharts](https://github.com/weizhenye/vue-highcharts) avec l'outil de dépendances **npm**. 
 
-```console
-$ npm install highcharts vue-highcharts
+```bash
+npm install highcharts vue-highcharts
+```
+
+La sortie console attendue :
+
+```bash
 ...
 + vue-highcharts@0.1.0
 + highcharts@8.1.2
@@ -1316,7 +1334,7 @@ Le code ajouté n'est pas complet, car il implique une communication entre le co
 
 ### Savoir écouter un composant : propriétés calculées et observateurs
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-08* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-08* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Lors de changement des propriétés du modèle, on peut vouloir calculer de nouvelles propriétés (les propriétés calculées) ou déclencher des opérations coûteuses (les observateurs).
 
@@ -1410,7 +1428,7 @@ Dans cet exemple, le nom de la fonction observateur prend le même nom que la pr
 
 ### Cycle de vie
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-09* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-09* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Un cycle de vie est utilisé comportant un ensemble d'étapes. Chaque étape est associée à un *hook* permettant d'exécuter un code particulier.
 
@@ -1523,7 +1541,7 @@ export default {
 
 Lors de l'exécution du *hook* `mounted`, le résultat suivant sera affiché dans la console du développeur.
 
-```console
+```bash
 PollDLEVoting done simply in real-timeAdd your PollDLE optionsClear all PollDLE OptionsCreate PollDLESummary of your PollDLE  The question is:  Number of PollDLE options: 0
 ```
 
@@ -1537,7 +1555,7 @@ Précédemment, nous avons vu comment créer une instance d'un composant. Toutef
 
 #### Via la référence d'un composant
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-10* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-10* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 La communication directe via la référence d'un composant est unidirectionnelle (composant parent vers le composant enfant). Elle permet à un composant parent d'accéder à un composant enfant via sa référence. L'inverse ne sera pas possible. Cette solution amène à un couplage fort entre les composants. En effet, cela suppose d'avoir accès à la référence du composant et de s'assurer que lors de l'utilisation de ce composant celui-ci est toujours existant. Si ce n'est plus le cas, il faudra s'assurer de mettre à jour la référence à manipuler.
 
@@ -1591,7 +1609,7 @@ La propriété observée `data` est modifiée à chaque fois qu'un vote est effe
 
 #### Via les Props
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-11* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-11* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 La communication par **props** (qui sont des propriétés) consiste à transmettre des données d'un composant parent à un composant enfant. Ce type de communication est unidirectionnelle (composant parent vers le composant enfant). La communication par **props** impose d'une part que du côté du composant enfant soit déclarées les propriétés à recevoir (section `props`) et d'autre part que les valeurs des propriétés soient transmises lors de l'instanciation du composant.
 
@@ -1716,7 +1734,7 @@ Dans le code montré ci-dessus, pour chaque instance nouvellement créée du com
 
 #### Via les événements personnalisés
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-12* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-12* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Une communication par événements personnalisés (_Custom Event_) amène à un faible couplage entre un composant parent et un composant enfant. Ce type de communication est à choisir dans le cas où vous souhaitez que votre composant enfant puisse communiquer avec le composant parent.
 
@@ -1791,7 +1809,7 @@ Ce code a pour effet d'appeler la fonction `removedPolldleOption($event)` où `$
 
 ## Invocation de service REST
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-13* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-13* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Nous traitons dans cette section de la communication entre la couche web développée avec [Vue.js](https://vuejs.org/) et la couche serveur développée avec le langage Java. Nous avons déjà évoqué cela en montrant l'utilisation de l'objet `EventSource` pour faire du *push* serveur et récupérer le flux des mises à jour des votes. Nous avions alors montré que le code produit ne concernait pas des concepts [Vue.js](https://vuejs.org/), mais JavaScript. Il en est de même pour l'invocation de service web REST. Même si l'écosystème de [Vue.js](https://vuejs.org/) a fourni le plugin [Vue Resource](https://github.com/pagekit/vue-resource) pour faciliter le développement d'appels de service web REST, celui-ci n'est plus recommandé. En effet, les développeurs de [Vue.js](https://vuejs.org/) ont décidé que fournir une bibliothèque spécifique à ce type de tâches était redondant face à la richesse de ce que peut proposer l'écosystème JavaScript.
 
@@ -1838,8 +1856,13 @@ L'objectif de cette section est de montrer comment compiler et exécuter le code
 
 * Ouvrir un nouveau terminal, se positionner à la racine du répertoire *polldle-backend* et exécuter la ligne de commande suivante pour compiler la couche serveur à partir de [Maven](https://maven.apache.org/). 
 
-```console
-$ mvn clean package
+```bash
+mvn clean package
+```
+
+La sortie console attendue :
+
+```bash
 ...
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for polldle-parent 0.4-SNAPSHOT:
@@ -1859,14 +1882,19 @@ $ mvn clean package
 
 * Initialiser la variable d'environnement `KUMULUZEE_SERVER_HTTP_PORT` pour modifier le port d'écoute du serveur.
 
-```console
+```bash
 export KUMULUZEE_SERVER_HTTP_PORT=9991
 ```
 
 * Saisir la ligne de commande suivante pour exécuter le serveur qui diffusera les services web REST.
 
-```console
-$ java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
+```bash
+java -cp "polldle-server/target/dependency/*:polldle-server/target/classes" com.kumuluz.ee.EeApplication
+```
+
+La sortie console attendue :
+
+```bash
 ...
 2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.AbstractConnector -- Started ServerConnector@4c402120{HTTP/1.1, (http/1.1)}{0.0.0.0:9991}
 2020-06-30 21:29:53.508 INFO -- org.eclipse.jetty.server.Server -- Started @1932ms
@@ -1935,7 +1963,7 @@ Lors de la création d'un objet `Request`, nous précisons, l'URL du serveur (qu
 
 [AXIOS](https://github.com/axios/axios) est une bibliothèque JavaScript non disponible par défaut dans un projet [Vue.js](https://vuejs.org/). Il faut donc l'intégrer dans le projet (*package.json*) et télécharger les dépendances.
 
-* Saisir la ligne de commande suivante `$ npm install axios` pour ajouter la bibliothèque [AXIOS](https://github.com/axios/axios) et compléter automatiquement le fichier *package.json*. 
+* Saisir la ligne de commande suivante `npm install axios` pour ajouter la bibliothèque [AXIOS](https://github.com/axios/axios) et compléter automatiquement le fichier *package.json*. 
 
 * Éditer ensuite le fichier *VotePolldle.vue* pour ajouter la dépendance de la bibliothèque JavaScript [AXIOS](https://github.com/axios/axios) au composant *VotePolldle* (remplacer le commentaire `// Add dependency to AXIO JavaScript library` par le code présenté ci-dessous). 
 
@@ -2034,7 +2062,7 @@ Le code ajouté permet d'invoquer le service web REST dédié au vote (création
 
 ## Routage avec Vue.js
 
-> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-14* pour profiter des codes qui vont illustrer cette section. Pensez à faire `$ npm install` pour installer les modules et `$ npm run serve` pour démarrer l'exécution en mode développement.
+> Nous vous invitons à vous positionner dans le répertoire *polldle-vue-14* pour profiter des codes qui vont illustrer cette section. Pensez à faire `npm install` pour installer les modules et `npm run serve` pour démarrer l'exécution en mode développement.
 
 Cette dernière section s'intéresse au routage de notre application *Single-Page application*. En fonction de l'état de l'URL, nous allons pouvoir choisir quel sera le composant à afficher.
 
@@ -2046,7 +2074,7 @@ Cette dernière section s'intéresse au routage de notre application *Single-Pag
 
 ### Initialisation et activation du routage
 
-* Saisir la ligne de commande suivante `$ npm install vue-router` pour ajouter le module [Vue-Router](https://github.com/vuejs/vue-router) et compléter automatiquement le fichier *package.json*. 
+* Saisir la ligne de commande suivante `npm install vue-router` pour ajouter le module [Vue-Router](https://github.com/vuejs/vue-router) et compléter automatiquement le fichier *package.json*. 
 
 * Créer un dossier *router* à la racine du dossier *src* puis ajouter un fichier *index.js* en recopiant le code ci-dessous.
 
