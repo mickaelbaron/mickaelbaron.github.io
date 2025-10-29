@@ -162,7 +162,7 @@
 
           <h4>Environnements de développement à distance</h4>
           <h4>Solutions existantes ? Présentation d'Onyxia</h4>
-          <p>Mickaël BARON - Version 09-2025</p>
+          <p>Mickaël BARON - Version 11-2025</p>
           <div class="wrapper-icon">
             <a target="_blank" href="https://github.com/mickaelbaron"
               ><img
@@ -340,7 +340,7 @@
                 <li>Démonstration</li>
                 <li>Fonctionnement</li>
               </ul>
-              <li>Déploiement au LIAS</li>
+              <li>Déploiement à l'ISAE-ENSMA</li>
               <li>Futures contributions</li>
             </ul>
           </section>
@@ -697,23 +697,8 @@
           >
             <h3>Onyxia : démonstration</h3>
             <div style="text-align: left">
-              <p>Deux instances à l'ISAE-ENSMA</p>
-              <ul>
-                <li>
-                  Enseignement :
-                  <a target="_blank" href="https://onyxia-ia.ensma.fr"
-                    >onyxia-ia.ensma.fr</a
-                  >
-                </li>
-                <li>
-                  Recherche :
-                  <a target="_blank" href="https://codelab.lias-lab.fr"
-                    >codelab.lias-lab.fr</a
-                  >
-                </li>
-              </ul>
               <p>Scénario de la démonstration</p>
-              <ul style="line-height: 155%">
+              <ul style="line-height: 220%">
                 <li>Description du Dashboard</li>
                 <li>Affichage des services Onyxia</li>
                 <li>Création d'un service</li>
@@ -769,7 +754,7 @@
           </section>
           <section>
             <h3>Onyxia : services disponibles</h3>
-            <div style="text-align: left; line-height: 135%">
+            <div style="text-align: left; line-height: 230%">
               <p>
                 <a
                   href="https://github.com/InseeFrLab/helm-charts-interactive-services"
@@ -790,20 +775,20 @@
               <ul>
                 <li>Postgres, Jena TDB, Neo4j, MariaDB, etc.</li>
               </ul>
-              <p>Automatisation, visualisation, etc.</p>
-              <p>
-                <a
-                  href="https://github.com/lias-laboratory/onyxia-helm-charts-dev"
+              <p><a
+                  href="https://github.com/InseeFrLab/helm-charts-automation"
                   target="_blank"
-                  >Développement logiciel</a
-                >
-                (contrib. LIAS)
+                  >Automatisation</a
+                > <a
+                  href="https://github.com/InseeFrLab/helm-charts-datavisualization"
+                  target="_blank"
+                  >Visualisation</a
+                >, etc.
+
+                                
               </p>
-              <ul>
-                <li>Java, C++, Ada, Go, Javascript, etc.</li>
-              </ul>
             </div>
-            <p>Services utilisables en <b>dehors</b> de Onyxia</p>
+            <p><b>Possibilité de créer ses propres services Onyxia</b></p>
           </section>
         </section>
 
@@ -818,7 +803,7 @@
             <div style="text-align: left; line-height: 150%">
               <p>Infrastructure matérielle</p>
               <ul>
-                <li>Des serveurs (CPU, mémoire, disque, GPU)</li>
+                <li>Des serveurs (CPU, mémoires, disques, GPU)</li>
                 <li>Par 👤 ~ 2 vCPU, 8 Go mémoire, 50 Go disque</li>
               </ul>
               <p>Infrastructure logicielle</p>
@@ -844,16 +829,41 @@
             <div style="text-align: left; line-height: 135%">
               <p>Mise en place</p>
               <ul>
+                <li>
+                  URL de l'instance : <a target="_blank" href="https://onyxia-ia.ensma.fr"
+                    >onyxia-ia.ensma.fr</a
+                  >
+                </li>
                 <li>Début d'installation : 26 août 2024</li>
                 <li>Mise en prod : 8 octobre 2024</li>
                 <li>Déploiement et customisation : ~ 1 mois</li>
-                <li>Création d'images Docker spécifiques : 1 semaine</li>
               </ul>
-              <p>Matières dispensées</p>
+              <p>Enseignements dispensés</p>
               <ul>
-                <li>Base de la programmation (Python) : TBA</li>
-                <li>Dév logiciel (Ada, C/C++ et Java) : 25 🧑‍🎓</li>
+                <li>Développement logiciel (Ada, C/C++ et Java) : 25 🧑‍🎓</li>
+                <li>Base de la programmation (Python) : TBA (2026)</li>
                 <li>Base de l'IA (sans GPU) : TBA</li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/feedback-bro.svg"
+          >
+            <h3>Retour d'XP - enseignement</h3>
+            <div style="text-align: left; line-height: 150%">
+              <p>Avantages</p>
+              <ul>
+                <li>Intégration du système d'authentification (CAS)</li>
+                <li>Outils magiques pour les étudiants</li>
+                <li>Simplicité pour créer ses propres services Onyxia</li>
+              </ul>
+              <p>Inconvénients</p>
+              <ul>
+                <li>Pas de montage du stockage habituel des étudiants</li>
+                <li>Hors périmètre de la DSI de l'ISAE-ENSMA</li>
+                <li>Service Onyxia proposé par l'intance trop générique</li>
               </ul>
             </div>
           </section>
@@ -866,15 +876,39 @@
             <div style="text-align: left; line-height: 135%">
               <p>Mise en place</p>
               <ul>
+                <li>URL de l'instance : <a target="_blank" href="https://codelab.lias-lab.fr"
+                    >codelab.lias-lab.fr</a
+                  ></li>
                 <li>Mise en prod : février 2025</li>
                 <li>Seconde instance Onyxia // avec l'enseignement</li>
                 <li>Fournir des ressources GPU (besoin croissant)</li>
               </ul>
-              <p>Difficultés</p>
+              <p>Usages</p>
+              <ul>
+                <li>Utilisation de modèles d'IA générative</li>
+                <li>Alternative aux machines virtuelles</li>
+                <li>Exécutions longues sans perte de contexte</li>
+              </ul>
+            </div>
+          </section>
+          <section
+            data-background-size="65%"
+            data-background-opacity="0.2"
+            data-background-image="images/feedback-bro.svg"
+          >
+            <h3>Retour d'XP - recherche</h3>
+            <div style="text-align: left; line-height: 150%">
+              <p>Avantages</p>
+              <ul>
+                <li>Accès aux ressources GPU contrôlées par rôles</li>
+                <li>Libération auto des ressources (accaparement)</li>
+                <li>Intégration transparente avec le dépôt Git</li>
+                <li>Authentification par CAS et manuelle (extérieurs)</li>
+              </ul>
+              <p>Inconvénients</p>
               <ul>
                 <li>Pas forcément technique, mais organisationnelle</li>
-                <li>Comment éviter l'<b>accaparement</b> des ressources ?</li>
-                <li>Définir des règles sur la non utilisation des GPU</li>
+                <li>Difficile de changer les habitudes d'usage</li>
               </ul>
             </div>
           </section>
@@ -886,7 +920,7 @@
             <h3>Limites de Onyxia</h3>
             <div style="text-align: left; line-height: 175%">
               <p>Limites des solutions de type RDW<sup>2</sup></p>
-              <p>Contraintes propres aux enseignement de l'ENSMA</p>
+              <p>Spécificités des enseignements de l'ISAE-ENSMA</p>
               <ul>
                 <li>Systèmes embarqués : carte Arduino</li>
                 <li>Développement client lourd</li>
@@ -923,7 +957,7 @@
                   <li>Nouveaux services (Ada, Java)</li>
                   <li>Remontés de bugs, PR et fonctionnalités</li>
                   <li>Rédaction d'articles</li>
-                  <li>Présentation de vulgarisation : ENSMA, UP</li>
+                  <li>Présentation de vulgarisation : ISAE-ENSMA, UP</li>
                 </ul>
               </ul>
             </div>
