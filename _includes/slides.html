@@ -1,5 +1,8 @@
 <div>
-  {% if include.type == "speakerdeck" %}
+  {% if include.type == "speakerdeck169" %}
+  <script async class="speakerdeck-embed" data-id="{{ include.id }}" data-ratio="1.77795276"
+    src="//speakerdeck.com/assets/embed.js"></script>  
+  {% elsif include.type == "speakerdeck" %}
   <script async class="speakerdeck-embed" data-id="{{ include.id }}" data-ratio="1.41436464088398"
     src="//speakerdeck.com/assets/embed.js"></script>
   {% elsif include.type == "slideshare" %}
