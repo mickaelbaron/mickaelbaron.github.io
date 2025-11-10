@@ -7,6 +7,7 @@ category: Cours
 date: 2010-03-17
 update: 2025-11-08
 weight: 3
+comments: utterances
 ---
 
 Ce support de cours est une introduction au protocole de communication SOAP utilisé pour communiquer avec un service web étendu. Ce support de cours débute par une présentation de la structure d'un message SOAP. Il est suivi d'une description de l'en-tête et du corps d'un message SOAP.
