@@ -5,7 +5,7 @@ image: /images/jaxrs.png
 description: Introduction au développement de services web REST avec le langage Java et JAX-RS.
 category: Cours
 date: 2011-03-22
-update: 2019-01-02
+update: 2025-11-11
 weight: 8
 comments: utterances
 ---

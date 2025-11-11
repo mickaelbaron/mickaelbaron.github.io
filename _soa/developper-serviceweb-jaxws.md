@@ -2,7 +2,7 @@
 title: Développez des services web étendus avec Java et JAX-WS
 tags: [Service web, SOAP, JAX-WS]
 image: /images/jaxws.png
-description: Introduction au développement de services web étendus ou SOAP avec le langage Java et JAX-RS.
+description: Introduction au développement de services web étendus ou SOAP avec le langage Java et JAX-WS.
 category: Cours
 date: 2010-04-22
 update: 2025-11-09
