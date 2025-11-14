@@ -5,9 +5,9 @@ image: /images/java_ws-vs-sse.png
 description: Présentation des bibliothèques Tyrus (JSR 356) et JAX-RS pour développer en Java la partie serveur et cliente de WebSocket et de Server-Sent Event (SSE).
 category: Cours
 date: 2019-02-19
-update: 2020-01-15
+update: 2025-11-14
 weight: 11
-twitter : 1233455129539551233
+comments: utterances
 ---
 
 Ce support de cours présente les bibliothèques Tyrus (JSR 356) et JAX-RS pour développer en Java la partie serveur et cliente de WebSocket et de Server-Sent Event. Pour les deux technologies un plan similaire sera suivi : généralités, développement serveur, développement de la couche cliente et problématiques de déploiement.
@@ -17,4 +17,4 @@ L'intégralité des exemples sont disponibles sur mon compte Github :
 * [https://github.com/mickaelbaron/ws-examples](https://github.com/mickaelbaron/ws-examples) ;
 * [https://github.com/mickaelbaron/sse-examples](https://github.com/mickaelbaron/sse-examples).
 
-{% include slides.html type="speakerdeck" id="2deabc1efa4e44fe95910a518d1e7513" %}
+{% include slides.html type="speakerdeck169" id="2deabc1efa4e44fe95910a518d1e7513" %}
