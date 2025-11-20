@@ -7,4 +7,5 @@ description: Apprendre à développer une application en utilisant des technolog
 category: Atelier
 weight: 12
 date: 2020-07-21
+comments: utterances
 ---
