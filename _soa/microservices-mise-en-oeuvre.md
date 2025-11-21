@@ -7,6 +7,7 @@ category: Cours
 date: 2016-03-04
 update: 2019-01-03
 weight: 14
+comments: utterances
 ---
 
 Ce support de cours présente la mise en œuvre d'architectures Microservices avec Java et [Docker](https://www.docker.com/). Tout au long de la présentation une étude de cas sera déroulée pour illustrer les différents usages des outils et bibliothèques présentés.
@@ -17,4 +18,4 @@ Dans une deuxième partie, [Docker](https://www.docker.com/) est présenté pour
 
 Enfin dans une troisième partie, [Docker Compose]([Docker](https://www.docker.com/)) est présenté pour expliquer comment composer des Microservices.
 
-{% include slides.html type="speakerdeck" id="81fcfd703105450eb9a8d2451b2e6012" %}
+{% include slides.html type="speakerdeck169" id="81fcfd703105450eb9a8d2451b2e6012" %}
