@@ -8,6 +8,7 @@ category: Cours
 date: 2010-07-02
 update: 2012-02-07
 weight: 11
+comments: utterances
 ---
 
 Ce support de cours s'intéresse à détailler la construction d'Eclipse Forms avec la plateforme Eclipse. L'API Eclipse Forms permet de construire des interfaces graphiques ayant un look proche des interfaces Web. Il fait partie de la série des supports de cours liée au Workbench.

@@ -8,6 +8,7 @@ category: Cours
 date: 2006-09-27
 update: 2013-01-08
 weight: 4
+comments: utterances
 ---
 
 Support de cours sur les Java Server Pages : les différents types de Tag, objets implicites, cycle de vie, gestion des erreurs, introduction aux Java Beans, collaboration de JSP et collaboration de Servlets et JSP.

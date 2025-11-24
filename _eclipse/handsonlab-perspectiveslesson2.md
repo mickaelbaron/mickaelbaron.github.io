@@ -8,6 +8,7 @@ weight: 13
 date: 2009-10-12
 update: 2013-05-27
 toc: true
+comments: utterances
 ---
 
 Le but de cette deuxième leçon est d'apprendre à construire des perspectives.

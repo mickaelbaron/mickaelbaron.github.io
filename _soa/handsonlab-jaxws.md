@@ -7,4 +7,5 @@ description: Apprendre à développer des services web étendus ou SOAP avec JAX
 category: Atelier
 weight: 6
 date: 2016-01-25
+update: 2025-05-01
 ---

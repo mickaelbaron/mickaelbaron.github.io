@@ -9,6 +9,7 @@ date: 2007-06-14
 update: 2013-08-04
 weight: 1
 deprecated: true
+comments: utterances
 ---
 
 Ce support de cours débute une longue série liée au développement de clients riches avec la plateforme Eclipse.

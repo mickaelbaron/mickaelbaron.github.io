@@ -7,5 +7,5 @@ description: Apprendre à développer des services web REST avec JAX-RS, Maven e
 category: Atelier
 weight: 9
 date: 2016-01-25
-update: 2019-02-02
+update: 2025-05-01
 ---

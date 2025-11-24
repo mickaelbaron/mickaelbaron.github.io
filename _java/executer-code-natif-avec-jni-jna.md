@@ -10,6 +10,7 @@ update: 2013-05-24
 weight: 7
 toc: true
 authors: [martinif]
+comments: utterances
 ---
 
 [JNI](https://dico.developpez.com/html/1020-Langages-JNI-Java-Native-Interface.php) (Java Native Interface) et [JNA](https://dico.developpez.com/html/3165-Langages-JNA-Java-Native-Access.php) (Java Native Access) sont deux technologies qui permettent d'adresser du code natif dans du code Java. Nous explorerons dans cet article une comparaison de ces deux technologies en les appliquant à un même exemple dans le but de dresser un bilan de leur utilisation.

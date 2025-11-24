@@ -7,4 +7,5 @@ description: Apprendre à inspecter et à invoquer un service web SOAP via l’o
 category: Atelier
 weight: 5
 date: 2011-02-20
+update: 2021-05-01
 ---

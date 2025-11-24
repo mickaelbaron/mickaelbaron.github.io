@@ -8,6 +8,7 @@ category: Cours
 date: 2006-09-27
 update: 2013-08-04
 weight: 3
+comments: utterances
 ---
 
 Support de cours sur Apache Tomcat : installation et configuration d'un serveur d'application Tomcat et déploiement des applications Web développées avec le langage Java.

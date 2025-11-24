@@ -8,6 +8,7 @@ weight: 15
 date: 2010-03-17
 update: 2013-05-27
 toc: true
+comments: utterances
 ---
 
 Le but de cette quatrième leçon est d'apprendre à ajouter des commandes puis à appliquer des restrictions sur l'affichage et le comportement de ces commandes.

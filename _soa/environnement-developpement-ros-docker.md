@@ -8,6 +8,7 @@ category: Article
 date: 2018-05-28
 weight: 19
 toc: true
+comments: utterances
 ---
 
 Ce tutoriel s'intéresse à présenter ROS (*Robot Operating System)* et à décrire comment proposer à un développeur un environnement de développement prêt à l'emploi quel que soit le système d'exploitation utilisé pour le développement et pour le déploiement. Notre proposition s'appuiera sur l'utilisation exclusive des outils **Docker** pour créer des conteneurs basés sur des images **Docker** ROS.

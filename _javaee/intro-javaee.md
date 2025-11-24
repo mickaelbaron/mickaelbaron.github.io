@@ -8,6 +8,7 @@ category: Cours
 date: 2006-09-23
 update: 2013-01-21
 weight: 1
+comments: utterances
 ---
 
 Ce support de cours s'intéresse à la présentation des différentes architectures pour le développement WEB, des différents types de client (lourd et léger) en insistant, pour les clients légers, sur les technologies existantes côté client et serveur, puis rappel concernant le protocole HTTP, et enfin précisions sur le fait que ce support de cours s'intéresse à Java EE.

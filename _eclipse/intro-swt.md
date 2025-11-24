@@ -8,6 +8,7 @@ category: Cours
 weight: 2
 date: 2007-01-25
 update: 2013-01-25
+comments: utterances
 ---
 
 Ce support de cours s'intéresse à présenter la boîte à outils SWT : évolution des boîtes à outils pour Java, conteneurs, composants de type Control, agents de placement, gestion des événements, `Graphical Context`, co-habitation entre SWT et Swing, traitement synchrone et asynchrone (ThreadUI) et les boîtes de dialogue.

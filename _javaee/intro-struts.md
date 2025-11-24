@@ -8,6 +8,7 @@ category: Cours
 date: 2006-11-01
 update: 2013-01-25
 weight: 7
+comments: utterances
 ---
 
 Support de cours sur la partie liée au framework Struts : fonctionnement général (schéma, *struts-config.xml*), `Action`, `ActionForm`, `ActionErrors`, `DynaActionForm`, plug-in Validator (vérification des données côté client et serveur), rappel sur les expressions régulières, changement de locale, coopération entre Struts et JSTL.

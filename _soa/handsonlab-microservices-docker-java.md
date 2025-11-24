@@ -7,4 +7,5 @@ description: Apprendre à développer une application basée sur une architectur
 category: Atelier
 weight: 15
 date: 2019-03-18
+update: 2025-05-01
 ---

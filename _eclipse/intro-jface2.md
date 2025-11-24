@@ -8,6 +8,7 @@ category: Cours
 date: 2008-03-25
 update: 2013-01-26
 weight: 4
+comments: utterances
 ---
 
 Ce support de cours s'intéresse à présenter les composants additionnels JFace suivants : les boîtes de dialogue, les Wizards, les préférences et la gestion des ressources.

@@ -8,6 +8,7 @@ category: Cours
 date: 2006-11-12
 update: 2012-12-21
 weight: 1
+comments: utterances
 ---
 
 Support de cours sur la programmation orientée objet appliquée au langage Java : introduction au langage Java, bases du langage, classes et objets, héritage et polymorphisme et les indispensables (package, collections, exception, flux de fichiers).

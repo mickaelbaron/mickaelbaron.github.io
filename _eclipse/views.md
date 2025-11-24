@@ -8,6 +8,7 @@ category: Cours
 date: 2009-08-19
 update: 2009-08-19
 weight: 8
+comments: utterances
 ---
 
 Ce support de cours s'intéresse à détailler la construction de vues avec la plateforme Eclipse. Il fait partie de la série des supports de cours liée au Workbench. Les aspects suivants sont étudiés : construction déclarative, étude des classes `ViewPart`, `StickyView` et `Category`, vues multiples, registre des vues, cycle de vie, communication entre vues (en direct, le service de sélection et `IAdaptable`).

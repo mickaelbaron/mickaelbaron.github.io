@@ -8,6 +8,7 @@ category: Cours
 date: 2009-04-20
 update: 2009-08-06
 weight: 10
+comments: utterances
 ---
 
 Ce support cours est une courte introduction au langage de description Schema XML. Nous étudions les aspects suivants : définition de types simples (`Element`, `Attributs` et `Restrictions`), définition de types complexes (attributs, à partir de types simples, sous éléments et mixe) puis annotations.

@@ -9,6 +9,7 @@ date: 2007-06-18
 update: 2013-01-15
 weight: 4
 deprecated: true
+comments: utterances
 ---
 
 Ce support de cours présente une introduction de Java Web Start : pour faciliter le déploiement d'applications Java.

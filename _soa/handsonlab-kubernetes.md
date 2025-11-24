@@ -7,4 +7,5 @@ description: Apprendre à démystifier Kubernetes (K8s) en s'intéressant aux co
 category: Atelier
 weight: 17
 date: 2022-01-30
+update: 2025-04-01
 ---

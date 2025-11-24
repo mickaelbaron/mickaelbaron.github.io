@@ -8,6 +8,7 @@ weight: 14
 date: 2010-02-02
 update: 2013-05-27
 toc: true
+comments: utterances
 ---
 
 Le but de cette troisième leçon est d'apprendre à communiquer entre des plug-ins et des vues.

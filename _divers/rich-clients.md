@@ -9,6 +9,7 @@ date: 2008-04-07
 update: 2009-01-11
 weight: 9
 deprecated: true
+comments: utterances
 ---
 
 Ce support cours présente les différentes technologies du marché concernant les clients riches : définition et clarification du terme « client riche », XUL, Ajax (« à la mano » et via GWT), FLASH (Flex, AIR et Lazlo), Eclipse RCP, Eclipse RAP, .NET Framework (ClickOne.net, WPF, XAML, Silverlight), Java (Applet, Java Web Start).
