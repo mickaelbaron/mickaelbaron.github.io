@@ -6,7 +6,7 @@ image: /images/vuejs.jpg
 description: Cette première partie s'intéresse à présenter les principaux concepts qu'un framework web JavaScript nouvelle génération doit proposer et comment ils ont été intégrés dans Vue.js.
 category: Article
 date: 2019-07-02
-update: 2022-06-28
+update: 2025-12-10
 weight: 4
 toc: true
 comments: utterances
@@ -32,7 +32,7 @@ Le plan est le suivant :
 
 ## Un framework web JavaScript, c'est quoi ?
 
-Le développement d'applications web a connu trois évolutions majeures. Ces évolutions ont vu naître différentes technologies comme le montre la figure ci-dessous (source figure : [https://twitter.com/lofidewanto/...](https://twitter.com/lofidewanto/status/1128981965632364544)).
+Le développement d'applications web a connu trois évolutions majeures. Ces évolutions ont vu naître différentes technologies comme le montre la figure ci-dessous (source figure : [https://github.com/mraible/history-of-web-frameworks-timeline](https://github.com/mraible/history-of-web-frameworks-timeline)).
 
 ![Historique des frameworks web](/images/vuejs-generalites-part1/webframeworkhistory.jpg)
 
@@ -46,16 +46,16 @@ La troisième période se situe après 2010 jusqu'à nos jours. Nous sommes pass
 
 Les frameworks JavaScript du marché sont les suivants (sans être exhaustifs) :
 
-* [Angular](https://angular.io/) ;
+* [Angular](https://angular.dev/) ;
 * [Backbone.js](https://backbonejs.org/) ;
 * [Ember.js](https://www.emberjs.com/) ;
 * [Knockout](https://knockoutjs.com/).
 * [Meteor.js](https://www.meteor.com/) ;
 * [Mithril](https://mithril.js.org/) ;
-* [React.js](https://reactjs.org/) ;
+* [React](https://react.dev/) ;
 * [Vue.js](https://vuejs.org/).
 
-Aujourd'hui fin 2019, [Angular](https://angular.io/), [React.js](https://reactjs.org/) et [Vue.js](https://vuejs.org/) sont les frameworks web JavaScript qui ont réussi à s'imposer.
+Aujourd'hui fin 2019, [Angular](https://angular.dev/), [React](https://react.dev/) et [Vue.js](https://vuejs.org/) sont les frameworks web JavaScript qui ont réussi à s'imposer.
 
 Après analyse rapide des différents frameworks ci-dessus, quatre fonctionnalités que doit posséder un framework web JavaScript de nos jours ont été identifiées. Détaillons dans la suite ces quatre fonctionnalités.
 
@@ -105,13 +105,13 @@ Les frameworks web JavaScript offrent ce mécanisme en interceptant le changemen
 
 ## Présentation du framework web Vue.js
 
-De nos jours pour développer des applications web, le choix du framework se limite souvent à [Angular](https://angular.io/) ou [React.js](https://angular.io/). C'est un raccourci rapide, mais c'est une réalité du marché, il n'y a qu'à voir les offres d'emploi ou les conférences autour de [Angular](https://angular.io/) et [React.js](https://angular.io/). Et pourtant, il existe de nombreux frameworks de très bonne qualité, et [Vue.js](https://vuejs.org/) en fait partie.
+De nos jours pour développer des applications web, le choix du framework se limite souvent à [Angular](https://angular.dev/) ou [React](https://react.dev/). C'est un raccourci rapide, mais c'est une réalité du marché, il n'y a qu'à voir les offres d'emploi ou les conférences autour de [Angular](https://angular.dev/) et [React](https://react.dev/). Et pourtant, il existe de nombreux frameworks de très bonne qualité, et [Vue.js](https://vuejs.org/) en fait partie.
 
 [Vue.js](https://vuejs.org/) est un framework JavaScript pour le développement d'interfaces web. La première version a été publiée en 2014 par [Evan You](https://evanyou.me/), un ancien de chez Google. Dans la suite de cette section, nous allons montrer ce que peut apporter ou pas [Vue.js](https://vuejs.org/) face à ces deux ténors du marché.
 
 ### Facilité d'apprentissage
 
-La plupart des développeurs de sites web connaissent au moins les trois technologies suivantes : HTML, CSS et JavaScript. L'avantage de [Vue.js](https://vuejs.org/) est de se limiter à ces technologies et il n'est pas nécessaire de monter en compétence sur un nouveau langage comme pourrait l'être [React.js](https://angular.io/) avec le langage JSX. Même si JSX est similaire à HTML, il incombe aux développeurs de se familiariser avec ce nouveau langage.
+La plupart des développeurs de sites web connaissent au moins les trois technologies suivantes : HTML, CSS et JavaScript. L'avantage de [Vue.js](https://vuejs.org/) est de se limiter à ces technologies et il n'est pas nécessaire de monter en compétence sur un nouveau langage comme pourrait l'être [React](https://react.dev/) avec le langage JSX. Même si JSX est similaire à HTML, il incombe aux développeurs de se familiariser avec ce nouveau langage.
 
 ```html
 <div id="editor">
@@ -170,7 +170,7 @@ Pour utiliser ce composant *hellowolrd* depuis un autre composant, nous l'utilis
 
 Pour rappel le DOM (Document Object Model) est un objet représentant un document HTML et une API pour manipuler cet objet. Dans le cas d'une modification sur le DOM (par exemple ajouter une entrée `<li>...</li>` à une liste `<ul>`), il sera nécessaire d'utiliser l'API pour trouver l'élément `<ul>`, créer un nouvel élément `<li>...</li>`, ajouter cet élément à l'élément liste `<ul>` et effectuer la mise à jour du DOM. Comme on peut le comprendre, cela est très couteux et historiquement cette API n'était pas taillée pour gérer de nombreuses modifications qui peuvent intervenir fréquemment (toutes les secondes). Pour cette raison entre autres, le DOM virtuel a été mis en place.
 
-La notion de DOM virtuel a été popularisée par [React.js](https://reactjs.org/). Il s'agit d'une copie du DOM original. Les modifications apportées sur cette copie peuvent être réalisées sans passer par le DOM et surtout sans utiliser l'API initiale. Ainsi, l'intérêt d'un DOM virtuel est de pouvoir faciliter la mise à jour du rendu de la vue sur des fréquences plus élevées.
+La notion de DOM virtuel a été popularisée par [React](https://react.dev/). Il s'agit d'une copie du DOM original. Les modifications apportées sur cette copie peuvent être réalisées sans passer par le DOM et surtout sans utiliser l'API initiale. Ainsi, l'intérêt d'un DOM virtuel est de pouvoir faciliter la mise à jour du rendu de la vue sur des fréquences plus élevées.
 
 ### Popularité et communauté
 
@@ -179,16 +179,16 @@ Vous trouverez ci-dessous quelques statistiques concernant les trois frameworks 
 |  Framework  |  GitHub Stars  |  GitHub Forks  |  Emplois  |
 | :---------: | -------------: | -------------: | --------: |
 |   Angular   |     46,316     |     12,168     |   4870    |
-|   React.js  |    124,921     |     22,701     |   9080    |
+|   React.    |    124,921     |     22,701     |   9080    |
 |   Vue.js    |    131,609     |     18,786     |    548    |
 
-Comme vous pouvez le constater, [Vue.js](https://vuejs.org/) se positionne bien au niveau popularité Github par rapport à [Angular](https://angular.io/) ou [React.js](https://angular.io/). Pour [Angular](https://angular.io/), cela s'explique puisqu'une première version sous le nom de [Angular.js](https://angularjs.org/) est aussi disponible, toujours en développement et en production. Par contre côté offres d'emploi, [Vue.js](https://vuejs.org/) est largement en dessous.
+Comme vous pouvez le constater, [Vue.js](https://vuejs.org/) se positionne bien au niveau popularité Github par rapport à [Angular](https://angular.dev/) ou [React](https://react.dev/). Pour [Angular](https://angular.dev/), cela s'explique puisqu'une première version sous le nom de [Angular.js](https://angularjs.org/) est aussi disponible, toujours en développement et en production. Par contre côté offres d'emploi, [Vue.js](https://vuejs.org/) est largement en dessous.
 
-Au niveau des entreprises qui utilisent [Vue.js](https://vuejs.org/), voici une liste non exhaustive de grandes entreprises : Facebook, Netflix, Adobe, Xiaomi, Alibaba, WizzAir, EuroNews, Grammarly, Laracasts, GitLab, Codeship, Livestorm, Trustpilot, Nintendo et Behance. Vous pourrez trouver sur ce [site](https://www.netguru.com/blog/vue-js-companies) un complément des entreprises qui utilisent cette bibliothèque.
+Au niveau des entreprises qui utilisent [Vue.js](https://vuejs.org/), voici une liste non exhaustive de grandes entreprises : GitLab, Alibaba, Xiaomi, Nintendo et Behance. Vous pourrez trouver sur ce [site](https://www.netguru.com/blog/vue-js-companies) un complément des entreprises qui utilisent cette bibliothèque.
 
-Au niveau des ressources pour l'apprentissage de [Vue.js](https://vuejs.org/), nous avons constaté qu'elles étaient moins nombreuses que pour [Angular](https://angular.io/) ou [React.js](https://angular.io/). D'un autre côté, comme [Vue.js](https://vuejs.org/) est simple à comprendre et à prendre en main, a-t-on besoin d'autant de ressources ?
+Au niveau des ressources pour l'apprentissage de [Vue.js](https://vuejs.org/), nous avons constaté qu'elles étaient moins nombreuses que pour [Angular](https://angular.dev/) ou [React](https://react.dev/). D'un autre côté, comme [Vue.js](https://vuejs.org/) est simple à comprendre et à prendre en main, a-t-on besoin d'autant de ressources ?
 
-Enfin, le dernier concerne la disponibilité de bibliothèques externes (en gros des composants) qui permettent de faciliter le développement avec [Vue.js](https://vuejs.org/). C'est assez difficile à estimer. Vous trouverez sur ce lien ( [awesome-vue](https://github.com/vuejs/awesome-vue) des composants externes pour enrichir vos développements.
+Enfin, le dernier concerne la disponibilité de bibliothèques externes (en gros des composants) qui permettent de faciliter le développement avec [Vue.js](https://vuejs.org/). C'est assez difficile à estimer. Vous trouverez sur ce lien [awesome-vue](https://github.com/vuejs/awesome-vue) des composants externes pour enrichir vos développements.
 
 ### Intégration progressive
 
@@ -226,7 +226,7 @@ Dans le cas d'une utilisation de [Vue.js](https://vuejs.org/) comme une biblioth
 
 Comme vous pouvez le remarquer, il suffira de déclarer dans la balise `<head>...</head>` l'URL de la version de distribution de [Vue.js](https://vuejs.org/), d'utiliser des directives dans la partie HTML et d'initialiser des objets dans la partie `<script>...</script>`.
 
-Dans le cas d'une utilisation comme un framework web JavaScript (ce qui nous intéresse dans cet article), le développeur se fera aider par l'outil en ligne de commande [Vite](https://vitejs.dev/) que nous présenterons dans la section suivante.
+Dans le cas d'une utilisation comme un framework web JavaScript (ce qui nous intéresse dans cet article), le développeur se fera aider par l'outil en ligne de commande [Vite](https://vite.dev/) que nous présenterons dans la section suivante.
 
 ## Outillage et installation pour Vue.js
 
@@ -238,7 +238,7 @@ Nous distinguons deux types d'outils : les **outils « classiques »** pour l
 
 ### Outils pour le développeur web
 
-* [Chrome](https://www.google.com/chrome/) ou [Firefox](https://www.mozilla.org/fr/firefox/) : comme nous développons une application web, un navigateur sera nécessaire ;
+* [Chrome](https://www.google.com/chrome/) ou [Firefox](https://www.firefox.com/fr/) : comme nous développons une application web, un navigateur sera nécessaire ;
 * [Visual Studio Code](https://code.visualstudio.com/) : un très bon éditeur de texte facilement modulable ;
 * [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com) : l'outil ultime pour le développement avec JavaScript ;
 * [node.js](https://nodejs.org/) : le complément à npm pour fournir un serveur web ;
@@ -250,13 +250,13 @@ Dans la liste ci-dessus, les trois derniers éléments (Java, Maven et Docker) n
 
 ### Outils pour le développeur Vue.js
 
-* [Volar](https://github.com/johnsoncodehk/volar) : une extension pour développer avec [Vue.js](https://vuejs.org/) sous Visual Studio Code.
+* [Volar](https://github.com/vuejs/language-tools) : une extension pour développer avec [Vue.js](https://vuejs.org/) sous Visual Studio Code.
 * [Vue-DevTools](https://github.com/vuejs/devtools) : extension pour le navigateur web pour faciliter le débogage des applications [Vue.js](https://vuejs.org/).
-* [Vite](https://vitejs.dev/) : outillage standard pour développer avec [Vue.js](https://vuejs.org/).
+* [Vite](https://vite.dev/) : outillage standard pour développer avec [Vue.js](https://vuejs.org/).
 
 #### Volar
 
-[Volar](https://github.com/johnsoncodehk/volar) est une extension pour Visual Studio Code. Elle permet d'ajouter de nombreuses fonctionnalités pour faciliter le développement. Voici quelques fonctionnalités que nous avons retenues :
+[Volar](https://github.com/vuejs/language-tools) est une extension pour Visual Studio Code. Elle permet d'ajouter de nombreuses fonctionnalités pour faciliter le développement. Voici quelques fonctionnalités que nous avons retenues :
 
 * affichage d'aide contextuelle s'il y a un problème de syntaxe ;
 * autocomplétion sur les directives, modèle d'un composant ;
@@ -278,7 +278,7 @@ Cette extension permet de visualiser et de naviguer à travers les différents c
 
 #### Vite
 
-[Vite](https://vitejs.dev/) est un outil en ligne de commande pour faciliter la construction, le test et le déploiement de son application web. C'est un utilitaire de développement qui se place au-dessus de nombreux outils (webpack par exemple) pour rendre plus accessible le développement web avec [Vue.js](https://vuejs.org/).
+[Vite](https://vite.dev/) est un outil en ligne de commande pour faciliter la construction, le test et le déploiement de son application web. C'est un utilitaire de développement qui se place au-dessus de nombreux outils (webpack par exemple) pour rendre plus accessible le développement web avec [Vue.js](https://vuejs.org/).
 
 ## Conclusion et remerciements
 
@@ -292,7 +292,7 @@ Je tiens à remercier [Claude Leloup](https://www.developpez.net/forums/u124512/
 
 * [Vue.js](https://vuejs.org/) : documentation officielle, traduite en plusieurs langues. 
 * [Vue.js: Good, Bad, and Choice](https://hackernoon.com/vue-js-good-bad-and-choice-dcc1d27f82c6) : une bonne analyse sur [Vue.js](https://vuejs.org/).
-* [I created the exact same app in React and Vue. Here are the differences](https://javascript.plainenglish.io/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd) : une même application développée avec Vue.js et React.js. 
+* [I created the exact same app in React and Vue. Here are the differences](https://javascript.plainenglish.io/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd) : une même application développée avec Vue.js et React. 
 * [State of Vue.js 2021](https://www.monterail.com/state-of-vue-2021-report) : une analyse sur [Vue.js](https://vuejs.org/) pour l'année 2021.
 * [Programmaon Web Avancée et Mobile - Bibliothèques et frameworks côté client](https://aurelient.github.io/mif13/2018/cours/cm2-frameworks.pdf) : un support de cours sur les frameworks web JavaScript.
 * [Awesome Vue.js](https://github.com/vuejs/awesome-vue) : la page Awesome Github pour [Vue.js](https://vuejs.org/).
