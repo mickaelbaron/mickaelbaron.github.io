@@ -559,7 +559,7 @@ La réponse fournit des informations permettant, entre autres, de déterminer qu
     "preferred_username",
     "email",
     "acr"
-  ],
+  ]
 ```
 
 À cette étape de configuration lors de la phase d'authentification, vous pourrez le faire soit en passant par le fournisseur d'identité OpenID fraichement configuré soit passer par les comptes créés manuellement par l'administrateur [Keycloak](https://www.keycloak.org/).
@@ -574,14 +574,13 @@ La raison, c'est que notre fournisseur d'identité OpenID regroupent les informa
 
 Nous montrons dans la suite comment faire correspondre (mapper) des attributs du fournisseur (claim) qui sont contenus dans un objet `attributes` avec des attributs du modèle utilisateur [Keycloak](https://www.keycloak.org/).
 
-```json
-...
-attributes={
-  uid=[baronm], 
-  displayName=[Mickaël BARON], 
-  givenName=[Mickaël], 
-  sn=[BARON], 
-  email=[edouard.moreau@ensma.fr]
+```javascript
+"attributes": {
+  "uid": ["baronm"],
+  "displayName": ["Mickaël BARON"],
+  "givenName": ["Mickaël"],
+  "sn": ["BARON"],
+  "email": ["mickael.baron@ensma.fr"]
 }
 ```
 
