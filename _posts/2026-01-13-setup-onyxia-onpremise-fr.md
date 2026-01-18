@@ -1,9 +1,9 @@
 ---
-title: "A Guide to Deploying Onyxia On-Premises (part 1): basic installation and user account management with Keycloak"
+title: "Guide de déploiement d’Onyxia en local (partie 1) : installation de base et gestion des comptes utilisateurs avec Keycloak"
 tags: [kubernetes]
 category: technical
-description: ""
-english: true
+description: "Ce billet décrit une approche incrémentale pour déployer Onyxia avec une gestion des utilisateurs et une authentification intégrées via Keycloak, y compris la manière de se connecter à un fournisseur d’identité OpenID externe."
+english: false
 toc: true
 comments: utterances
 ---
@@ -19,6 +19,8 @@ Dans ce billet de blog, nous adoptorons une approche incrémentale, en commença
 D'autres points pourront être abordés dans des prochains billets, notamment l'installation et l'intégration d'un stockage S3, la gestion des secrets avec [Vault](https://github.com/hashicorp/vault), ainsi que l'utilisation de Prometheus pour la supervision du cluster Kubernetes. Sur cette base, nous mettrons en place des stratégies d’allocation de ressources afin d'éviter, par exemple, l'accaparement des ressources critiques telles que les GPU. Enfin, nous verrons ultérieurement comment créer ses propres services. 
 
 Enfin, contrairement à la documentation officielle d’[Onyxia](https://www.onyxia.sh/) qui s’appuie sur [Argo CD](https://github.com/argoproj/argo-cd) pour le déploiement, nous réaliserons ici toutes les opérations via l'outil en ligne de commande [kubectl](https://github.com/kubernetes/kubectl). Bien que l’approche avec [Argo CD](https://github.com/argoproj/argo-cd) soit recommandée pour un environnement de production, l’objectif de ce billet est de proposer une première installation simple afin de découvrir et tester la plateforme [Onyxia](https://www.onyxia.sh/).
+
+**Note** : ce billet a été écrit par un humain et les captures d'écran tirées d'une application en fonctionnement. L’intelligence artificielle a été utilisée uniquement pour la correction orthographique et la reformulation de certaines phrases.
 
 ## Prérequis
 
