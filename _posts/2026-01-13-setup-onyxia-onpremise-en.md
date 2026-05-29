@@ -73,7 +73,7 @@ helm repo add onyxia https://inseefrlab.github.io/onyxia
 helm repo list
 ```
 
-La sortie console attendue :
+The expected result is as follows:
 
 ```bash
 NAME                  	URL
@@ -90,7 +90,7 @@ prometheus-community  	https://prometheus-community.github.io/helm-charts
 helm install onyxia onyxia/onyxia -f onyxia-values.yaml --version 10.28.9 --create-namespace --namespace onyxia
 ```
 
-La sortie console attendue :
+The expected result is as follows:
 
 ```bash
 NAME: onyxia
@@ -110,7 +110,7 @@ Two pods should be created: one for the server part, which provides the API, and
 kubectl get pods -n onyxia
 ```
 
-La sortie console attendue :
+The expected result is as follows:
 
 ```bash
 NAME                          READY   STATUS    RESTARTS   AGE
@@ -134,7 +134,7 @@ When version or configuration updates for [Onyxia](https://www.onyxia.sh/) are r
 helm repo update onyxia
 ```
 
-La sortie console attendue :
+The expected result is as follows:
 
 ```bash
 Hang tight while we grab the latest from your chart repositories...
@@ -148,7 +148,7 @@ Update Complete. ⎈Happy Helming!⎈
 helm search repo onyxia -l
 ```
 
-La sortie console attendue :
+The expected result is as follows:
 
 ```bash
 NAME         	CHART VERSION	APP VERSION	DESCRIPTION
