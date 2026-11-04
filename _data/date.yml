@@ -3,6 +3,7 @@ preformatted_date:
   full: "%A %d %B %Y"
   weekday: "%d %b %Y"
   monthday: "%d %B"
+  content: "%d %b"
 abbreviated_weekday:
   - Dim
   - Lun

@@ -17,7 +17,7 @@ comments: utterances
 
 Cet article est une version plus étoffée d'un [billet](https://blog.developpez.com/adiguba/p4221/java/jni_pour_les_nuls) posté par [adiguba](https://www.developpez.net/forums/u1195/adiguba/) sur le [blog Java](https://blog.developpez.com/adiguba/) de [Developpez.com](https://www.developpez.com/).
 
-Les sources de l'exemple sont disponibles : [jnijna.zip](/fichiers/jnijna.zip).
+Les sources de l'exemple sont disponibles : [jnijna.zip](/files/jnijna.zip).
 
 ## Introduction
 

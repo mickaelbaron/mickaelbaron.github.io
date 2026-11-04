@@ -28,9 +28,9 @@
                   <i class="fas fa-flag-usa"></i>
                 {% endif %}
                 {% if resource.update %}
-                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" %}
+                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" english=resource.english %}
                 {% else %}
-                  {% include translated_date.html date=resource.date preformatedformat="weekday" %}
+                  {% include translated_date.html date=resource.date preformatedformat="weekday" english=resource.english %}
                 {% endif %}
               </div>
               <div class="col-sm card-footer-category">{{ resource.category }}</div>
@@ -65,9 +65,9 @@
                   <i class="fas fa-flag-usa"></i>
                 {% endif %}
                 {% if resource.update %}
-                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" %}
+                  <i class="fas fa-sync"></i> {% include translated_date.html date=resource.update preformatedformat="weekday" english=resource.english %}
                 {% else %}
-                  {% include translated_date.html date=resource.date preformatedformat="weekday" %}
+                  {% include translated_date.html date=resource.date preformatedformat="weekday" english=resource.english %}
                 {% endif %}
               </div>
               <div class="col-sm card-footer-category">{{ resource.category }}</div>

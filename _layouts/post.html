@@ -5,13 +5,22 @@ layout: page2c
 <h1><b>{{ page.title }}</b></h1>
 
 <p class="article-metadata text-muted">
-  {{ page.date | date_to_long_string }} -
+  {% include translated_date.html date=page.date preformatedformat="content" english=page.english %} -
   <b>
     {% assign words = content | number_of_words %}
-    {% if words < 360 %}
-    less than 1 min read time
+    {% if words < 180 %}
+      {% if page.english == true %}
+      less than a minute read
+      {% else %}
+      moins d’une minute de lecture
+      {% endif %}
     {% else %}
-    {{ words | divided_by:180 }} mins read time
+      {% assign reading_time = words | divided_by:180.0 | ceil %}
+      {% if page.english == true %}
+      {{ reading_time }} min read
+      {% else %}
+      {{ reading_time }} min de lecture
+      {% endif %}
     {% endif %}
   </b>
 
@@ -35,7 +44,7 @@ layout: page2c
 {% endif %}
 
 <footer>
-  Ce billet est <b>open source</b>. Vous avez noté un problème de typographie ?</br>
+  Ce billet est <b>open source</b>. Vous avez noté un problème de typographie ?<br>
   Ou quelque chose d'obscur ? Améliorer ce billet à partir du dépôt
   <a href="{{ site.github.repository_url }}/edit/master/{{ page.path }}">GitHub</a>.
 </footer>

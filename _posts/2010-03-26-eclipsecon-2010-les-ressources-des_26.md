@@ -6,7 +6,7 @@ category: technological-watch
 description: Voici une liste de présentations qui m'ont intéressé et qui ont eu lieu hier mercredi 24 mars et dont les orateurs ont fourni les supports (transparents, démonstrations...).
 ---
 
-Après le [lundi]({% post_url 2010-03-23-eclipsecon-2010-les-ressources-des %}) et le [mardi](% post_url 2010-03-24-eclipsecon-2010-les-ressources-des_24 %), voici une liste de présentations qui ont eu lieu mercredi 24 mars à l'[EclipseCON 2010](http://www.eclipsecon.org/2010/) et dont les orateurs ont fourni les supports (transparents, démonstrations, ...).  
+Après le [lundi]({% post_url 2010-03-23-eclipsecon-2010-les-ressources-des %}) et le [mardi]({% post_url 2010-03-24-eclipsecon-2010-les-ressources-des_24 %}), voici une liste de présentations qui ont eu lieu mercredi 24 mars à l'[EclipseCON 2010](http://www.eclipsecon.org/2010/) et dont les orateurs ont fourni les supports (transparents, démonstrations...).  
 
 * Eclipse UI Test Automation with SWTBot ([lien EclipseCON 2010](http://www.eclipsecon.org/2010/sessions/sessions?id=1258)).
 * API Design and Evolution ([lien EclipseCON 2010](http://www.eclipsecon.org/2010/sessions/sessions?id=1427)).

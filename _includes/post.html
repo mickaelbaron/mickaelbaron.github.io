@@ -40,7 +40,7 @@
             {% if post.english %}
               <i class="fas fa-flag-usa"></i>
             {% endif %}
-            {% include translated_date.html date=post.date preformatedformat="weekday" %}
+            {% include translated_date.html date=post.date preformatedformat="weekday" english=post.english %}
           </div>
         </a>
       </div>
@@ -73,7 +73,7 @@
             {% if post.english %}
               <i class="fas fa-flag-usa"></i>
             {% endif %}
-            {% include translated_date.html date=post.date preformatedformat="weekday" %}
+            {% include translated_date.html date=post.date preformatedformat="weekday" english=post.english %}
           </div>
         </a>
       </div>

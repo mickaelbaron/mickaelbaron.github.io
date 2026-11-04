@@ -38,7 +38,7 @@ weight: 11
           {% assign url = post.url | relative_url %}
         {% endif %}
       <a href="{{ url }}"><li>{{ post.title }}</li></a>
-      <small class="text-muted"> - {{ post.date | date_to_long_string }}</small>
+      <small class="text-muted"> - {% include translated_date.html date=post.date preformatedformat="long" english=post.english %}</small>
       <br/>
       {% endif %}
     {% endfor %}

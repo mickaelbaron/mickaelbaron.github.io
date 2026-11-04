@@ -12,6 +12,6 @@ Voici le descriptif :
 * installation et configuration d'un serveur d'application Tomcat ;
 * Déploiement des applications Web.
 
-Vous trouverez sur ce [lien](/javaee/tomcat) un contenu détaillé de ce support de cours.
+Vous trouverez sur ce [lien](/javaee/intro-tomcat) un contenu détaillé de ce support de cours.
 
 {% include slides.html type="speakerdeck" id="51b75334f0a14eef82e5f168d09fe0e5" %}

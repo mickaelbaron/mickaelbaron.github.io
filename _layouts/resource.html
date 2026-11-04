@@ -5,9 +5,9 @@ layout: page2c
 <h1><b> {{ page.title }} </b></h1>
 
 <p class="article-metadata text-muted">
-  {{ page.date | date_to_long_string }}
+  {% include translated_date.html date=page.date preformatedformat="content" english=page.english %}
   {% if page.update %}
-  - <i>mise à jour le {{ page.update | date_to_long_string }}</i>
+  - <i>{% if page.english %}updated on{% else %}mise à jour le{% endif %} {% include translated_date.html date=page.update preformatedformat="content" english=page.english %}</i>
   {% endif %}
   {% if page.category == "Article" %}
   - <b>

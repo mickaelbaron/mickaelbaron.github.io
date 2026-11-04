@@ -28,6 +28,6 @@ Les parties suffixés par \* ne sont complètement terminées. C'est déjà un g
   
 Je suis en train d'embellir le code des exemples qui seront mis à disposition sur ce blog très prochainement.
   
-Vous trouverez sur ce [lien](/javaee/intro-jfs) un contenu détaillé de ce support de cours.
+Vous trouverez sur ce [lien](/javaee/intro-jsf) un contenu détaillé de ce support de cours.
 
 {% include slides.html type="speakerdeck" id="a3e955e4cf8f4b719ac8403431b62757" %}
