@@ -3,6 +3,27 @@ body {
     font-size: 15px;
 }
 
+.buymeacoffee-button {
+    width: 217px;
+    height: 60px;
+}
+
+.buymeacoffee-sidebar .buymeacoffee-button {
+    width: 100%;
+    height: auto;
+}
+
+.sidebar-section-title {
+    margin: 1.5rem 0 1rem;
+    padding: 0.35rem 0 0.5rem 0.75rem;
+    border-left: 3px solid $primary;
+    border-bottom: 1px solid #dee2e6;
+    color: $dark;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
 .logo-cursor {
 	content:"_";
 	opacity: 0;
